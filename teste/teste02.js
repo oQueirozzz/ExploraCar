@@ -1,8 +1,3 @@
-// function toggleMenu() {
-//     const sidebar = document.getElementById('sidebar');
-//     sidebar.classList.toggle('active');
-// }
-
 $(function () {
     $(".menu-link").click(function () {
      $(".menu-link").removeClass("is-active");
