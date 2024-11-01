@@ -1,7 +1,7 @@
-// function toggleMenu() {
-//     const sidebar = document.getElementById('sidebar');
-//     sidebar.classList.toggle('active');
-// }
+function toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
 
 $(function () {
     $(".menu-link").click(function () {
@@ -76,3 +76,5 @@ $(function () {
    toggleButton.addEventListener('click', () => {
      document.body.classList.toggle('light-mode');
    });
+
+  

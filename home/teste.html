@@ -1,34 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Lateral Expansível</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+
 </head>
+
+
 <body>
     <header>
         <div class="cabecalho">
-            <!-- <div id="menu-toggle" onclick="toggleMenu()">
-                <i class="material-symbols-outlined">menu</i>
-            </div> -->
-            <div class="container" onclick="this.classList.toggle('active')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200">
-                    <g stroke-width="6.5" stroke-linecap="round">
-                        <path d="M72 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
-                        <path
-                            d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
-                            fill="none" stroke="#fff" />
-                        <path d="M72 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
-                        <path
-                            d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
-                            fill="none" stroke="#fff" />
-                        <path d="M100.75 82.286h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
-                        <path d="M100.75 125.143h28.75" fill="#009100" fill-rule="evenodd" stroke="#fff" />
-                    </g>
-                </svg>
+            <div id="menu-toggle" onclick="toggleMenu()">
+                <i class="material-symbols-outlined ">menu</i>
             </div>
+
             <div class="logo"></div>
             <div class="entrar">
                 <img src="img/file.png" alt="">
@@ -36,9 +26,10 @@
             </div>
         </div>
         <nav id="sidebar">
-            <ul>
-                <li><a href="#"><img src="img/carroICON.jpg" alt="veiculos" id="transparent"> </a><span>Carros</span></li>
-                <li><a href="#"><img src="#" alt="Sobre"> </a><span>Sobre Nós</span></li>
+            <ul class="menu">
+                <li><a href="#"><img src="img/carroICON.jpg" alt="veiculos" id="transparent"> <span>Carros</span></a>
+                </li>
+                <li><a href="#"><img src="img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
                 <li><img src="icons/beach.png" alt="Praia"> <span>Pacotes</span></li>
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
@@ -49,8 +40,15 @@
                 <hr>
             </ul>
         </nav>
- 
+
+        <main>
+            <section>
+                <div class="banner"></div>
+            </section>
+        </main>
+
     </header>
     <script src="script.js"></script>
 </body>
+
 </html>
