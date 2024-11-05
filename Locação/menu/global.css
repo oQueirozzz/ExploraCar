@@ -1,0 +1,180 @@
+/* Estilos para o ícone de menu de 3 barras */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 100,    /* Preenchimento completo do ícone */
+        'wght' 1000,   /* Peso máximo para maior visibilidade */
+        'GRAD' 100,    /* Gradiente para realce */
+        'opsz' 100;    /* Tamanho otimizado do ícone */
+}
+ 
+/* Define o cabeçalho como fixo no topo da página ao rolar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+ 
+/* Configuração do botão do menu lateral (3 barras) */
+#menu-toggle {
+    font-size: 24px;            /* Tamanho da fonte do ícone */
+    padding: 10px;              /* Espaçamento interno */
+    cursor: pointer;            /* Indica interatividade */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;                /* Garante que o ícone fica sobre outros elementos */
+    border-radius: 10px;        /* Bordas arredondadas */
+}
+ 
+/* Cor de fundo do botão ao passar o mouse */
+#menu-toggle:hover {
+    background-color: #ccc;
+}
+ 
+/* Estilos para a barra lateral */
+#sidebar {
+    width: 80px;                 /* Largura padrão */
+    height: 100vh;               /* Altura total da janela */
+    position: fixed;             /* Fixa no lado esquerdo da tela */
+    left: 0;
+    top: 0;
+    transition: width 0.3s;      /* Animação ao expandir/recolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;            /* Distância do topo */
+    overflow: hidden;            /* Oculta conteúdo excedente */
+    background-color: #fff;
+}
+ 
+/* Expande a barra lateral ao ativar */
+#sidebar.active {
+    width: 200px;               /* Largura expandida */
+    height: 90vh;               /* Altura ajustada */
+    margin-top: 70px;
+    background-color: #fff;
+}
+ 
+/* Configurações do cabeçalho */
+.cabecalho {
+    background-color: #fff;
+    color: #333;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    border-bottom: 3px solid #b9b1b1; /* Borda inferior */
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    transition: top 0.3s; /* Suaviza a animação de rolagem */
+}
+ 
+/* Logotipo com imagem de fundo */
+.logo {
+    width: 150px;
+    height: 70px;
+    background: url(img/Captura\ de\ tela\ 2024-10-29\ 154053.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: 90px;
+    margin-top: 12px;
+}
+ 
+/* Botão 'Entrar' */
+.entrar {
+    margin: 15px 50px 0px 0px;
+    width: 100px;
+    border: solid black 1px;
+    border-radius: 5px;
+    height: 50px;
+    background-color: #fff;
+    color: #333;
+}
+ 
+/* Cor de fundo e texto ao passar o mouse */
+.entrar:hover {
+    background-color: #e2d9d9d8;
+    color: white;
+}
+ 
+/* Imagem dentro do botão 'Entrar' */
+.entrar img {
+    width: 30%;
+    height: 50%;
+    padding-top: 13px;
+}
+ 
+/* Botão dentro do elemento 'Entrar' */
+.entrar button {
+    background-color: transparent;
+    border: none;
+    height: 10%;
+    width: 10%;
+    font-size: 15px;
+    transform: translateY(-8px);
+}
+ 
+/* Estilos para a borda lateral da barra */
+#sidebar {
+    border-right: 3px solid #b9b1b1;
+    transform: translateY(12px);
+}
+ 
+/* Configuração dos itens de menu da barra lateral */
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+ 
+/* Estilo de cada item de menu */
+#sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+ 
+/* Links dos itens de menu */
+#sidebar ul li a {
+    text-decoration: none;
+    display: flex;
+}
+ 
+/* Imagem dos ícones de cada item */
+#sidebar ul li img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+ 
+/* Texto dos itens de menu, oculto por padrão */
+#sidebar ul li span {
+    display: none;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+ 
+/* Exibe o texto dos itens de menu quando a barra lateral está ativa */
+#sidebar.active ul li span {
+    display: inline;
+    text-align: center;
+}
+ 
+ 
+ 
+#sidebar.active #logo {
+    display: block;
+}
+ 
+#sidebar.active #entrar {
+    display: block;
+}
+ 

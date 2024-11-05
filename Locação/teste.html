@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cards</title>
+    <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
+    <link rel="stylesheet" href="veiculos.css">
+    <link rel="stylesheet" href="menu/global.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+</head>
+
+<body>
+    <header>
+        <div class="cabecalho">
+            <div id="menu-toggle" onclick="toggleMenu()">
+                <i class="material-symbols-outlined ">menu</i>
+            </div>
+ 
+            <div class="logo"></div>
+            <div class="entrar">
+                <img src="img/file.png" alt="">
+                <a href="#"><button>Entrar</button></a>
+            </div>
+        </div>
+        <nav id="sidebar">
+            <ul class="menu">
+                <li><a href="#"><img src="img/carroICON.jpg" alt="veiculos" id="transparent"> <span>Carros</span></a>
+                </li>
+                <li><a href="#"><img src="img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
+                <li><img src="icons/beach.png" alt="Praia"> <span>Pacotes</span></li>
+                <hr>
+                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
+                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
+                <hr>
+                <li><img src="icons/briefcase.png" alt="Business"> <span>KAYAK for Business</span></li>
+                <li><img src="icons/heart.png" alt="Trips"> <span>Trips</span></li>
+                <hr>
+            </ul>
+        </nav>
+ </header>
+ <div class="button-container">
+    <button class="brand-button" onclick="addCards(5, 'Toyota', this)">
+        <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
+        Toyota
+    </button>
+    <button class="brand-button" onclick="addCards(5, 'Ford', this)">
+        <img src="./img/img Logos/Ford Logo.png" alt="Ford Logo">
+        Ford
+    </button>
+    <button class="brand-button" onclick="addCards(5, 'Chevrolet', this)">
+        <img src="./img/img Logos/Chevrolet Logo.png" alt="Chevrolet Logo">
+        Chevrolet
+    </button>
+    <button class="brand-button" onclick="addCards(5, 'Volkswagen', this)">
+        <img src="./img/img Logos/Volkswagen Logo.png" alt="Volkswagen Logo">
+        Volkswagen
+    </button>
+    <button class="brand-button" onclick="addCards(5, 'Fiat', this)">
+        <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
+        Fiat
+    </button>
+    
+</div>
+        <div id="card-container"></div>
+
+    <script>
+        // Esse aqui é um array que monta os cards dos carros com titulo, imagem, descrição e preço...
+        const vehicles = {
+            'Toyota': [{
+                    title: 'Toyota Corolla',
+                    img: './img/img Carros/img Toyota/Corolla.png',
+                    desc: 'O Toyota Corolla é um sedã compacto conhecido por sua confiabilidade e eficiência. Com design elegante e interior confortável, oferece tecnologia avançada e recursos de segurança. É uma escolha popular pela durabilidade e baixo custo de manutenção.',
+                    descontPrice: 'de R$ 1.750,00 por ',
+                    price: 'R$ 1.050,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Toyota Yaris Hatch',
+                    img: './img/img Carros/img Toyota/Yaris Hatch.png',
+                    desc: 'O Toyota Yaris Hatch é um hatchback compacto com design moderno e interior confortável. Oferece tecnologia avançada e recursos de segurança, além de ser eficiente em combustível e ágil na condução, ideal para o uso urbano.',
+                    descontPrice: 'de R$ 1.260,00 por ',
+                    price: 'R$ 840,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Toyota Yaris Sedã',
+                    img: './img/img Carros/img Toyota/Yaris Sedã.png',
+                    desc: 'O Toyota Yaris Sedã é um sedã compacto com design elegante e interior espaçoso. Oferece tecnologia avançada e recursos de segurança, além de ser eficiente em combustível, ideal para o uso diário.',
+                    descontPrice: 'de R$ 1.260,00 por ',
+                    price: 'R$ 840,00 ',
+                    diaria: ''
+                },
+                {
+                    title: 'Toyota Corolla Cross',
+                    img: './img/img Carros/img Toyota/Corolla Cross.png',
+                    desc: 'O Toyota Corolla Cross é um SUV compacto que une a confiabilidade do Corolla à versatilidade de um crossover. Com design moderno e interior espaçoso, oferece tecnologia avançada e conforto, ideal para quem busca um veículo prático e estiloso.',
+                    descontPrice: 'de R$ 2.100,00 por ',
+                    price: 'R$ 1.400,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Toyota SW4',
+                    img: './img/img Carros/img Toyota/SW4.png',
+                    desc: 'O Toyota SW4 é uma SUV robusta e versátil, ideal para uso urbano e off-road. Com design imponente e interior espaçoso, oferece tecnologia e segurança, sendo conhecida pela durabilidade e desempenho em terrenos desafiadores. É uma excelente opção para famílias e aventureiros.',
+                    descontPrice: 'de R$ 4.900,00 por ',
+                    price: 'R$ 2.800,00 ',
+                    diaria: 'R$ ' 
+                }
+            ],
+            'Ford': [{
+                    title: 'Ford Bronco Sport',
+                    img: './img/img Carros/img Ford/FordBroncoSport.png',
+                    desc: 'O Ford Bronco Sport é um SUV compacto projetado para aventuras off-road, com tração nas quatro rodas e modos de condução. Seu interior é espaçoso e tecnológico, equilibrando desempenho em trilhas e conforto urbano.',
+                    descontPrice: 'de R$  3.500,00 por ',
+                    price: 'R$ 2.100,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Ford Eco Sport',
+                    img: './img/img Carros/img Ford/FordEcoSport.png',
+                    desc: 'O Ford EcoSport é um SUV compacto versátil, ideal para a cidade. Com design moderno e boa altura do solo, oferece conforto interno e espaço para carga. Equipado com tecnologia avançada, é uma opção prática e funcional para o dia a dia.',
+                    descontPrice: 'de R$ 1.400 ,00 por ',
+                    price: 'R$ 840,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Ford Fiesta',
+                    img: './img/img Carros/img Ford/FordFiesta.png',
+                    desc: 'O Ford Fiesta é um hatchback compacto ágil e estiloso. Conhecido pela eficiência e diversão ao dirigir, oferece conforto interno e tecnologias modernas, sendo uma opção prática para o dia a dia.',
+                    descontPrice: 'de R$ 1.260,00 por ',
+                    price: 'R$  700,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Ford Fusion',
+                    img: './img/img Carros/img Ford/FordFusion.png',
+                    desc: 'O Ford Fusion é um sedã médio elegante, com design sofisticado e interior espaçoso. Oferece tecnologias avançadas de segurança e conectividade, além de motorização eficiente, tornando-se uma escolha confortável e estilosa.',
+                    descontPrice: 'de R$ 1.750,00 por ',
+                    price: 'R$ 1.050,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Ford Ka Sedan',
+                    img: './img/img Carros/img Ford/FordKaSedan.png',
+                    desc: 'O Ford Ka Sedan é um compacto que combina praticidade e conforto. Com um design moderno e amplo espaço interno, oferece bom desempenho e eficiência de combustível. É ideal para o dia a dia, com tecnologias úteis e um bom porta-malas, tornando-se uma escolha acessível e funcional.',
+                    descontPrice: 'de R$ 1.050,00 por ',
+                    price: 'R$ 630,00 ',
+                    diaria: 'R$ '
+                }
+            ],
+            'Chevrolet': [{
+                    title: 'Chevrolet Onix',
+                    img: './img/img Carros/img Chevrolet/Onix.avif',
+                    desc: 'O Chevrolet Onix é um hatchback compacto popular no Brasil, conhecido por seu design moderno, eficiência de combustível e tecnologia avançada. Com um interior espaçoso e várias opções de versões, ele atende diferentes perfis de consumidores, unindo economia e conforto.',
+                    descontPrice: 'de R$ 1.260,00 por ',
+                    price: 'R$ 700,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Chevrolet Tracker Lt',
+                    img: './img/img Carros/img Chevrolet/TrackerLt.avif',
+                    desc: 'O Chevrolet Tracker LT é um SUV compacto com design moderno e interior espaçoso. Destaca-se pela tecnologia avançada, como tela touchscreen e conectividade, além de oferecer boa segurança. É uma opção prática e econômica para o dia a dia.',
+                    descontPrice: 'de R$ 1.960,00 por ',
+                    price: 'R$ 1.260,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Chevrolet Tracker Premier',
+                    img: './img/img Carros/img Chevrolet/TrackerPremier.avif',
+                    desc: 'O Chevrolet Tracker Premier é a versão topo de linha do SUV compacto, com design sofisticado e interior bem equipado. Destaca-se pela tecnologia avançada e um motor eficiente, proporcionando uma condução ágil e estilosa.',
+                    descontPrice: 'de R$ 2.100,00 por ',
+                    price: 'R$ 1.400,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Chevrolet Montana Premier',
+                    img: './img/img Carros/img Chevrolet/MontanaPremier.avif',
+                    desc: 'O Chevrolet Montana Premier é uma picape compacta que une robustez e versatilidade. Com design moderno e interior espaçoso, conta com tecnologia avançada e recursos de segurança. Seu motor eficiente oferece desempenho ágil, ideal para uso urbano e atividades mais exigentes.',
+                    descontPrice: 'de R$ 1.750,00 por ',
+                    price: 'R$ 1.050,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Chevrolet Onix Plus Premier',
+                    img: './img/img Carros/img Chevrolet/OnixPlusPremier.avif',
+                    desc: 'O Chevrolet Onix Plus Premier é a versão topo de linha do sedã compacto, com design moderno e interior espaçoso. Oferece tecnologia avançada e recursos de segurança, além de um motor eficiente para uma condução confortável e prática.',
+                    descontPrice: 'de R$ 1.400,00 por ',
+                    price: 'R$  840,00 ',
+                    diaria: 'R$ '
+                }
+            ],
+            'Volkswagen': [{
+                    title: 'Volkswagen Gol',
+                    img: './img/img Carros/img Volkswagen/Gol.png',
+                    desc: 'O Volkswagen Gol é um hatchback compacto reconhecido por sua eficiência e praticidade. Com design moderno, é um dos carros mais vendidos no Brasil, oferecendo bom desempenho e baixo custo de manutenção. Seu interior é espaçoso e confortável, perfeito para o dia a dia e viagens.',
+                    descontPrice: 'de R$ 1.050,00 por ',
+                    price: 'R$ 600,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Volkswagen Jetta',
+                    img: './img/img Carros/img Volkswagen/Jetta.png',
+                    desc: 'O Volkswagen Jetta é um sedã médio que une elegância e desempenho. Com design sofisticado e interior espaçoso, oferece conforto e tecnologia avançada. Seus motores potentes garantem uma condução prazerosa, tornando-o uma ótima escolha para viagens e uso diário.',
+                    descontPrice: 'de R$ 2.100,00 por ',
+                    price: 'R$ 1.400,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Volkswagen Polo',
+                    img: './img/img Carros/img Volkswagen/Polo.png',
+                    desc: 'O Volkswagen Polo é um hatchback compacto que une estilo e conforto. Com design moderno e interior espaçoso, oferece conectividade e segurança avançadas. Seu desempenho eficiente o torna uma excelente opção para o dia a dia.',
+                    descontPrice: 'de R$ 1.260,00 por ',
+                    price: 'R$ 700,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Volkswagen T-Cross',
+                    img: './img/img Carros/img Volkswagen/T-Cross.png',
+                    desc: 'O Volkswagen T-Cross é um SUV compacto que une praticidade e estilo. Com design moderno e interior espaçoso, é ideal para famílias. Oferece tecnologia avançada e uma condução confortável, sendo uma ótima escolha para o dia a dia',
+                    descontPrice: 'de R$ 1.750,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Volkswagen Virtus',
+                    img: './img/img Carros/img Volkswagen/Virtus.png',
+                    desc: 'O Volkswagen Virtus é um sedã elegante que une espaço e tecnologia. Com design sofisticado, seu interior é amplo e confortável, ideal para passageiros. Oferece recursos modernos de conectividade e segurança, tornando-se uma excelente opção para o dia a dia.',
+                    descontPrice: 'de R$ 1.540,00 por ',
+                    price: 'R$  1.050,00 ',
+                    diaria: 'R$ '
+                }
+            ],
+            'Fiat': [{
+                    title: '',
+                    img: './img/img Carros/img Fiat/Fiat Uno.png',
+                    desc: '',
+                    descontPrice: 'de R$ ,00 por',
+                    price: 'R$ ,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: '',
+                    img: './img/img Carros/img Fiat/Fiat Palio.png',
+                    desc: '',
+                    descontPrice: 'de R$ ,00 por',
+                    price: 'R$ ,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: '',
+                    img: './img/img Carros/img Fiat/Fiat Argo.png',
+                    desc: '',
+                    descontPrice: 'de R$ ,00 por',
+                    price: '',
+                    diaria: 'R$ ,00 '
+                },
+                {
+                    title: '',
+                    img: './img/img Carros/img Fiat/Fiat Toro.png',
+                    desc: '',
+                    descontPrice: 'de R$ ,00 por ',
+                    price: 'R$ ,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: '',
+                    img: './img/img Carros/img Fiat/Fiat Siena.png',
+                    desc: '',
+                    descontPrice: 'de R$ ,00 por ',
+                    price: 'R$  ,00 ',
+                    diaria: 'R$ '
+                }
+            ]
+        };
+
+        // Atualiza a variável diaria com base no price
+        for (const brand in vehicles) {
+            vehicles[brand].forEach(vehicle => {
+                if (vehicle.price) {
+                    const price = parseFloat(vehicle.price.replace('R$', '').replace('.', '').replace(',', '.')); // Converte R$ para número
+                    vehicle.diaria = `R$ ${(price / 7).toFixed(2).replace('.', ',')}`;
+                }
+            });
+        }
+
+
+        let cardsGenerated = {
+            'Toyota': false,
+            'Ford': false,
+            'Chevrolet': false
+        };
+
+        function addCards(number, type, button) {
+            removeAllCards(); // Remove todos os cards antes de adicionar novos
+            if (!cardsGenerated[type]) {
+                const cardContainer = document.getElementById('card-container');
+                for (let i = 0; i < number; i++) {
+                    const vehicle = vehicles[type][i];
+                    const newCard = document.createElement('div');
+                    newCard.className = 'card';
+                    newCard.dataset.type = type;
+                    newCard.innerHTML = `
+                        <img src="${vehicle.img}" alt="Imagem do carro ${type} ${i+1}">
+                        <div class="card-info">
+                            <h2>${vehicle.title}</h2>
+                            <p>${vehicle.desc}</p>
+                        </div>
+                        <div class="card-price">
+                            <p id="desconto">${vehicle.descontPrice}</p>
+                            <p>${vehicle.price}</p>
+                            <p id="diaria">${vehicle.diaria} por dia</p>
+                            <button>Reservar</button>
+                        </div>
+                    `;
+                    cardContainer.appendChild(newCard);
+                }
+                cardsGenerated[type] = true;
+            }
+            setActiveButton(button); // Define o botão como ativo
+        }
+
+        function removeAllCards() {
+            const cardContainer = document.getElementById('card-container');
+            cardContainer.innerHTML = ''; // Remove todos os cards
+            cardsGenerated = {
+                'Toyota': false,
+                'Ford': false,
+                'Chevrolet': false
+            };
+            resetActiveButtons(); // Reseta o estado dos botões
+        }
+
+        function setActiveButton(activeButton) {
+            const buttons = document.querySelectorAll('.brand-button');
+            buttons.forEach(button => {
+                button.classList.remove('active'); // Remove a classe ativa de todos os botões
+            });
+            activeButton.classList.add('active'); // Adiciona a classe ativa ao botão clicado
+        }
+
+        function resetActiveButtons() {
+            const buttons = document.querySelectorAll('.brand-button');
+            buttons.forEach(button => {
+                button.classList.remove('active'); // Remove a classe ativa de todos os botões
+            });
+        }
+    </script>
+    <script src="menu/global.js"></script>
+</body>
+
+</html>
