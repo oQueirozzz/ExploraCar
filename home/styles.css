@@ -2,78 +2,82 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
- 
-/* 3 barras do menu lateral */
+
+
+
+/* Estilos para o ícone de menu de 3 barras */
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 100,
-  'wght' 1000,
-  'GRAD' 100,
-  'opsz' 100
+    font-variation-settings:
+        'FILL' 100,    /* Preenchimento completo do ícone */
+        'wght' 1000,   /* Peso máximo para maior visibilidade */
+        'GRAD' 100,    /* Gradiente para realce */
+        'opsz' 100;    /* Tamanho otimizado do ícone */
 }
 
-
+/* Define o cabeçalho como fixo no topo da página ao rolar */
 header {
     position: sticky;
     top: 0;
 }
- 
+
+/* Configuração do botão do menu lateral (3 barras) */
 #menu-toggle {
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
+    font-size: 24px;            /* Tamanho da fonte do ícone */
+    padding: 10px;              /* Espaçamento interno */
+    cursor: pointer;            /* Indica interatividade */
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 10; /*deixa o botão de 3 barras acima do menu*/
-    border-radius: 10px;
+    z-index: 10;                /* Garante que o ícone fica sobre outros elementos */
+    border-radius: 10px;        /* Bordas arredondadas */
 }
+
+/* Cor de fundo do botão ao passar o mouse */
 #menu-toggle:hover {
     background-color: #ccc;
 }
- 
+
+/* Estilos para a barra lateral */
 #sidebar {
-    width: 80px;
-    height: 100vh;
-    position: fixed;
+    width: 80px;                 /* Largura padrão */
+    height: 100vh;               /* Altura total da janela */
+    position: fixed;             /* Fixa no lado esquerdo da tela */
     left: 0;
     top: 0;
-    transition: width 0.3s;
+    transition: width 0.3s;      /* Animação ao expandir/recolher */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
-    overflow: hidden;
+    margin-top: 70px;            /* Distância do topo */
+    overflow: hidden;            /* Oculta conteúdo excedente */
     background-color: #fff;
 }
- 
+
+/* Expande a barra lateral ao ativar */
 #sidebar.active {
-    width: 200px;
-    height: 90vh;
+    width: 200px;               /* Largura expandida */
+    height: 90vh;               /* Altura ajustada */
     margin-top: 70px;
     background-color: #fff;
 }
 
-.cabecalho, .logo .entrar .barra {
-    position: sticky;
-    top: 0;
-}
-.cabecalho{
+/* Configurações do cabeçalho */
+.cabecalho {
     background-color: #fff;
     color: #333;
     width: 100%;
     z-index: 1;
     display: flex;
-    border-bottom: 3px solid #b9b1b1;
+    border-bottom: 3px solid #b9b1b1; /* Borda inferior */
     justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
-    transition: top 0.3s; /*Suaviza a animção*/
+    transition: top 0.3s; /* Suaviza a animação de rolagem */
 }
 
- 
-.logo{
+/* Logotipo com imagem de fundo */
+.logo {
     width: 150px;
     height: 70px;
     background: url(img/Captura\ de\ tela\ 2024-10-29\ 154053.png);
@@ -81,104 +85,173 @@ header {
     background-repeat: no-repeat;
     position: relative;
     margin-left: 90px;
-    margin-top: 12px
- 
+    margin-top: 12px;
 }
-.entrar{
+
+/* Botão 'Entrar' */
+.entrar {
     margin: 15px 50px 0px 0px;
-    width: 100px;    
+    width: 100px;
     border: solid black 1px;
     border-radius: 5px;
     height: 50px;
     background-color: #fff;
-    color: #333;   
+    color: #333;
 }
-.entrar:hover{
+
+/* Cor de fundo e texto ao passar o mouse */
+.entrar:hover {
     background-color: #e2d9d9d8;
     color: white;
 }
-.entrar img{
+
+/* Imagem dentro do botão 'Entrar' */
+.entrar img {
     width: 30%;
     height: 50%;
     padding-top: 13px;
 }
-.entrar button{
+
+/* Botão dentro do elemento 'Entrar' */
+.entrar button {
     background-color: transparent;
     border: none;
     height: 10%;
     width: 10%;
     font-size: 15px;
     transform: translateY(-8px);
-
 }
 
-/* .entrar button:hover{
-    background-color: black;
-    color: white;
-} */
-
-
+/* Estilos para a borda lateral da barra */
 #sidebar {
     border-right: 3px solid #b9b1b1;
-   transform: translateY(12px);
-
+    transform: translateY(12px);
 }
 
- 
+/* Configuração dos itens de menu da barra lateral */
 #sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 }
- 
+
+/* Estilo de cada item de menu */
 #sidebar ul li {
     display: flex;
     align-items: center;
     padding: 10px;
     cursor: pointer;
 }
-#sidebar ul li a{
+
+/* Links dos itens de menu */
+#sidebar ul li a {
     text-decoration: none;
     display: flex;
 }
- 
+
+/* Imagem dos ícones de cada item */
 #sidebar ul li img {
     width: 40px;
     height: 40px;
     margin-top: 10px;
 }
- 
+
+/* Texto dos itens de menu, oculto por padrão */
 #sidebar ul li span {
     display: none;
     font-size: 16px;
     color: #333;
     text-align: center;
-    text-decoration: none;
     margin-top: 20px;
+    margin-left: 10px;
 }
- 
-#sidebar.active ul li span{
+
+/* Exibe o texto dos itens de menu quando a barra lateral está ativa */
+#sidebar.active ul li span {
     display: inline;
-    text-decoration: none;
     text-align: center;
 }
 
- 
+
+
 #sidebar.active #logo {
     display: block;
 }
- 
+
 #sidebar.active #entrar {
     display: block;
 }
-.banner{
-    width: 95vw;
-    background: url();
-    background-color: black;
-    height: 2000px;
+
+.banner {
+    width: 95.7vw;
+    height: 90vh;
     position: absolute;
     right: 0;
-    top: 85px;
+    top: 0;
     z-index: -1;
 }
+.banner img{
+    width: 100%;
+    height: 80vh;
+    background-position: center bottom;
+    background-size: cover;
+    filter: brightness(0.3);
+    z-index: -1;
+    
+}
+#p1{
+    color: #fff;
+    font-size: 50px;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    height: 200px;
+    width: 800px;
+
+}
+#p2{
+    font-size: 30px;
+    top: 180px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    left: 200px;
+    position: absolute;
+    height: 200px;
+    width: 800px;
+    color: #fff;
+}
+.atributions{
+    color: #fff;
+    position: absolute;
+    top: 250px;
+    left: 200px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    height: 100px;
+    width: 800px;
+    display: flex;
+}
+.att1,.att3{
+    width: 250px;
+    height: 100px;
+    display: flex;
+}
+.att2{
+    width: 150px;
+    height: 100px;
+    display: flex;
+}
+.atributions p{
+    font-size: 10px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    width: 100%;
+}
+
+.atributions img{
+    width: 25px;
+    height: 25px;
+    z-index: 999;
+    filter: brightness(1);
+}
+
