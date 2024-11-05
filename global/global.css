@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* Estilos para o ícone de menu de 3 barras */
 .material-symbols-outlined {
     font-variation-settings:
@@ -45,6 +50,7 @@ header {
     margin-top: 70px;            /* Distância do topo */
     overflow: hidden;            /* Oculta conteúdo excedente */
     background-color: #fff;
+    z-index: 1;
 }
  
 /* Expande a barra lateral ao ativar */
@@ -178,3 +184,72 @@ header {
     display: block;
 }
  
+.footer {
+    background-color: rgba(220, 143, 0, 0.909); /* Laranja */
+    color: #ffffff; /* Branco */
+    padding: 40px 0;
+    width: 100%;
+    z-index: -1;
+}
+ 
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+ 
+.footer-section {
+    flex: 1;
+    margin: 15px;
+}
+ 
+.footer-section h2.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+ 
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+ 
+.footer-section p{
+    color: #ffffff;
+    margin-top: 20px;
+    padding-right: 50px;
+}
+ 
+.footer-section a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 24px;
+}
+ 
+.footer-section a:hover {
+    color: #333;
+}
+ 
+.footer-section .social a {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #ffffff;
+}
+ 
+.footer-section .social a:hover {
+    color: #333;
+}
+ 
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #333;
+    color: #ffffff;
+}

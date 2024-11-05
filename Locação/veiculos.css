@@ -121,6 +121,9 @@ font-size: 0.8em ;
 color: rgb(2, 168, 2);
 
 }
+.footer{
+    margin-top: 100px;
+}
 
 #desconto {
     text-decoration: line-through;
