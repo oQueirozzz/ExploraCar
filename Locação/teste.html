@@ -62,7 +62,10 @@
         <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
         Fiat
     </button>
-    
+    <button class="brand-button" onclick="addCards(5, 'Honda', this)">
+        <img src="./img/img Logos/Honda Logo.png" alt="Honda Logo">
+        Honda
+    </button>
 </div>
         <div id="card-container"></div>
 
@@ -234,43 +237,84 @@
                 }
             ],
             'Fiat': [{
-                    title: '',
+                    title: 'Fiat Uno Way',
                     img: './img/img Carros/img Fiat/Fiat Uno.png',
-                    desc: '',
-                    descontPrice: 'de R$ ,00 por',
-                    price: 'R$ ,00',
+                    desc: 'O Fiat Uno Way é a versão aventureira do Uno, com suspensão elevada e design robusto. Compacto, econômico e confortável, é ideal para quem busca versatilidade e baixo custo de manutenção.',
+                    descontPrice: 'de R$ 700,00 por',
+                    price: 'R$ 500,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: '',
+                    title: 'Fiat Palio',
                     img: './img/img Carros/img Fiat/Fiat Palio.png',
-                    desc: '',
-                    descontPrice: 'de R$ ,00 por',
-                    price: 'R$ ,00',
+                    desc: 'O Fiat Palio é um carro compacto, robusto e econômico, ideal para o uso urbano. Lançado em 1996, oferece versatilidade, baixo custo de manutenção e opções hatch e sedan (Palio Siena). É uma escolha prática e acessível para quem busca confiabilidade no dia a dia.',
+                    descontPrice: 'de R$ 750,00 por',
+                    price: 'R$ 550,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: '',
+                    title: 'Fiat Argo',
                     img: './img/img Carros/img Fiat/Fiat Argo.png',
-                    desc: '',
-                    descontPrice: 'de R$ ,00 por',
-                    price: '',
-                    diaria: 'R$ ,00 '
-                },
-                {
-                    title: '',
-                    img: './img/img Carros/img Fiat/Fiat Toro.png',
-                    desc: '',
-                    descontPrice: 'de R$ ,00 por ',
-                    price: 'R$ ,00 ',
+                    desc: 'O Fiat Argo é um hatch compacto moderno, com design arrojado, bom desempenho e interior espaçoso. Lançado em 2017, oferece tecnologia avançada, motorização eficiente e itens como sistema multimídia e direção elétrica, sendo uma opção econômica e prática para o dia a dia.',
+                    descontPrice: 'de R$ 1.000,00 por ',
+                    price: 'R$ 750,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: '',
+                    title: 'Fia Toro',
+                    img: './img/img Carros/img Fiat/Fiat Toro.png',
+                    desc: 'A Fiat Toro é uma picape média robusta e moderna, ideal para trabalho e lazer. Com motorização 1.8 e 2.0, oferece conforto, tecnologia e capacidade para diversos terrenos.',
+                    descontPrice: 'de R$ 1.500,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Fiat Siena',
                     img: './img/img Carros/img Fiat/Fiat Siena.png',
-                    desc: '',
-                    descontPrice: 'de R$ ,00 por ',
-                    price: 'R$  ,00 ',
+                    desc: 'O Fiat Siena é um sedan compacto, confortável e econômico. Lançado em 1997, oferece bom espaço interno e é ideal para quem busca um carro acessível e confiável para o dia a dia.',
+                    descontPrice: 'de R$ 900,00 por ',
+                    price: 'R$  650,00 ',
+                    diaria: 'R$ '
+                }
+            ],
+            'Honda': [{
+                    title: 'Honda Civic',
+                    img: './img/img Carros/img Honda/Honda Civic.png',
+                    desc: 'O Honda Civic é um sedan médio confiável, com design moderno e bom desempenho. Oferece motorização 1.5 turbo e 2.0, tecnologia avançada e recursos de segurança, sendo uma opção confortável e durável.',
+                    descontPrice: 'de R$ 1.500,00 por',
+                    price: 'R$ 1.100,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Honda HR-V',
+                    img: './img/img Carros/img Honda/Honda HR-V.png',
+                    desc: 'O Honda HR-V é um SUV compacto, elegante e confortável, com motorização 1.8. Oferece bom desempenho, tecnologia avançada e amplo espaço interno, sendo ideal para quem busca um carro prático e versátil.',
+                    descontPrice: 'de R$ 1.600,00 por',
+                    price: 'R$ 1.200,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Honda Fit',
+                    img: './img/img Carros/img Honda/Honda Fit.png',
+                    desc: 'O Honda Fit é um hatch compacto, econômico e versátil, com motorização 1.5. Oferece bom desempenho, amplo espaço interno e praticidade para o uso diário.',
+                    descontPrice: 'de R$ 1.100,00 por',
+                    price: 'R$ 800,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Honda City',
+                    img: './img/img Carros/img Honda/Honda City.png',
+                    desc: 'O Honda City é um sedan compacto, econômico e confortável, com motorização 1.5. Oferece bom desempenho, tecnologia e é ideal para o uso diário.',
+                    descontPrice: 'de R$ 1.300,00 por',
+                    price: 'R$ 1.000,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Honda CR-V',
+                    img: './img/img Carros/img Honda/Honda CR-V.png',
+                    desc: 'O Honda CR-V é um SUV médio, confortável e confiável, com motorização 2.0 ou 1.5 turbo. Oferece bom desempenho, interior espaçoso e tecnologia, sendo ideal para quem busca versatilidade e segurança.',
+                    descontPrice: 'de R$ 2.200,00 por',
+                    price: 'R$ 1.600,00',
                     diaria: 'R$ '
                 }
             ]
