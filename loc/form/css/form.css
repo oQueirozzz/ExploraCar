@@ -8,12 +8,14 @@
     /* Define o preenchimento interno do container */
     padding: 20px;
     /* Adiciona uma borda ao redor do container */
-    border: 1px solid #ddd;
+    border: 1px solid rgba(220, 143, 0, 0.909);
     /* Define cantos arredondados para o container */
     border-radius: 5px;
     /* Define a fonte padrão para o formulário */
     font-family: Arial, sans-serif;
-    margin-top: 150px;
+    align-items: center;
+    margin-top: 70px;
+    flex-direction: column; /* Organiza os elementos verticalmente */
 }
 
 /* Define o estilo para os títulos das seções */
@@ -44,6 +46,7 @@ label {
     margin-bottom: 5px;
     /* Define o peso da fonte como negrito */
     font-weight: bold;
+    
 }
 
 /* Define o estilo para o asterisco dos campos obrigatórios */
@@ -58,7 +61,7 @@ input[type="email"],
 input[type="password"],
 input[type="date"] {
     /* Define a largura total do campo */
-    width: 200px;
+    width: 250px;
     /* Define o preenchimento interno do campo */
     padding: 7px;
     /* Define uma margem abaixo do campo para espaçamento */
@@ -67,13 +70,14 @@ input[type="date"] {
     border: 1px solid #ccc;
     /* Define cantos arredondados para o campo */
     border-radius: 4px;
+    
 }
 
 
 /* Define o estilo para o campo de seleção */
 select {
     /* Define a largura total do campo */
-    width: 250px;
+    width: 265px;
     /* Define o preenchimento interno do campo */
     padding: 7px;
     /* Define uma margem abaixo do campo para espaçamento */
@@ -113,9 +117,10 @@ select {
     /* Define o tamanho da fonte do botão */
     font-size: 16px;
     /* Define uma margem superior para espaçamento */
-    margin-top: 20px;
+    margin-top: 24px;
     /*Define uma margem ao lado direito do botão*/
-    margin-right: 40px;
+    margin-right: 18px;
+    margin-left: 16px;
 
 }
 
@@ -144,17 +149,20 @@ select {
     color: rgb(0, 131, 0);
     /* Define uma margem superior para espaçamento */
     margin-top: 10px;
+    margin-left: 30px;
 }
 
 .two-columns {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+
 }
 
 .two-columns div {
     flex: 2; /* Faz com que os divs ocupem espaço igual */
     margin-right: 15px; /* Espaçamento entre os campos */
+    margin-left: 30px;
 }
 
 .two-columns div:last-child {
