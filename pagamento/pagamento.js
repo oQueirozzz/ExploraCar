@@ -59,11 +59,11 @@ function numberAutoFormat() {
     }
 };
 
-/*  CHANGE THE FORMAT DATE  */
+/*  Escolha a data */
 date.addEventListener('input', function(e) {
     this.value = dateAutoFormat();
     
-    // show error if is not a valid date
+    // mostra erro quando a data for inválida
     let alert3 = document.getElementById('alert-3');
     showError(alert3, isNotDate(this));
 
@@ -74,7 +74,7 @@ date.addEventListener('input', function(e) {
 
 function isNotDate(element) {
     let actualDate = new Date();
-    let month = actualDate.getMonth() + 1; // start january 0 we need to add + 1
+    let month = actualDate.getMonth() + 1; // 0-11 -> 1-12
     let year = Number(actualDate.getFullYear().toString().substr(-2)); // 2022 -> 22
     let dateNumber = element.value.match(/\d{2,4}/g);
     let monthNumber = Number(dateNumber[0]);
@@ -89,22 +89,22 @@ function isNotDate(element) {
 
 function dateAutoFormat() {
     let dateValue = date.value;
-    // if white space -> change to ''. If is not a number between 0-9 -> change to ''
+    // se for espaço em branco, muda para vazio. Se for diferente de um número entre 0-9, muda para vazio
     let v = dateValue.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
 
-    // min of 2 digits and max of 4
+    // minimo de 2 digitos e maximo de 4
     let matches = v.match(/\d{2,4}/g);
     let match = matches && matches[0] || '';
     let parts = [];
 
     for (i = 0; i < match.length; i += 2) {
-        // after 4 digits add a new element to the Array
+        // depois de 2 digitos adicionar um novo elemento no Array
         // e.g. "4510023" -> [4510, 023]
         parts.push(match.substring(i, i + 2));
     }
 
     if (parts.length) {
-        // add a white space after 4 digits
+        // adiciona um espaço depois de 4 digitos
         return parts.join('/');
     } else {
         return dateValue;
