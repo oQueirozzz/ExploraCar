@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie sua Conta</title>
+    <link rel="stylesheet" href="form.css">
+    <script src="form.js"></script>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Crie sua Conta</h2>
+
+        <!-- Seção: Dados pessoais -->
+        <h3>Dados pessoais</h3>
+
+        <div class="form-group two-columns">
+            <div>
+                <label for="nome">Nome do locatário <span class="required">*</span></label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div>
+                <label for="sobrenome">Sobrenome <span class="required">*</span></label>
+                <input type="text" id="sobrenome" name="sobrenome" required>
+            </div>
+        </div>
+
+        <div class="form-group two-columns">
+            <!-- País de Residência (menu suspenso) -->
+            <label for="pais">
+                País de Residência <span class="required">*</span>
+            </label>
+            <select id="pais" name="pais" required>
+                <option value="Brasil">Brasil</option>
+                <option value="Portugal">Portugal</option>
+                <option value="EUA">EUA</option>
+            </select>
+
+
+            <!-- CPF -->
+            <label for="cpf">
+                CPF <span class="required">*</span>
+            </label>
+            <input type="text" id="cpf" name="cpf" required>
+        </div>
+
+        <div class="form-group two-columns">
+            <!-- Data de Nascimento -->
+            <label for="dataNascimento">
+                Data de Nascimento <span class="required">*</span>
+            </label>
+            <input type="text" id="dataNascimento" name="dataNascimento" required>
+
+            <!-- Celular -->
+            <label for="celular">
+                Celular <span class="required">*</span>
+            </label>
+            <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
+        </div>
+        <!-- Seção: Dados de acesso à Rentcars -->
+        <h3>Dados de acesso à Rentcars</h3>
+
+
+        <div class="form-group two-columns">
+            <!-- E-mail -->
+            <label for="email">
+                E-mail <span class="required">*</span>
+            </label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Confirmar E-mail -->
+            <label for="confirmEmail">
+                Confirme seu E-mail <span class="required">*</span>
+            </label>
+            <input type="email" id="confirmEmail" name="confirmEmail" required>
+        </div>
+
+
+        <div class="form-group two-columns">
+            <!-- Criar uma Senha de Acesso -->
+            <label for="senha">
+                Crie uma Senha de Acesso <span class="required">*</span>
+            </label>
+            <input type="password" id="senha" name="senha" required>
+
+            <!-- Confirmar Senha de Acesso -->
+            <label for="confirmSenha">
+                Confirme sua Senha de Acesso <span class="required">*</span>
+            </label>
+            <input type="password" id="confirmSenha" name="confirmSenha" required>
+        </div>
+
+        <!-- Política de Privacidade -->
+        <div class="form-footer">
+            <label>
+                <input type="checkbox" name="politicaPrivacidade" required>
+                Ao gerar uma reserva você concorda com a <a href="politicas.php">Política de Privacidade</a> da ExploraCar
+            </label>
+        </div>
+
+        <!-- Ofertas e promoções -->
+        <div class="form-footer">
+            <label>
+                <input type="checkbox" name="ofertas">
+                Aceito receber todas as ofertas e promoções da ExploraCar
+            </label>
+        </div>
+
+
+        <div class="form-group two-columns">
+            <!-- Botão de envio -->
+            <button type="submit" class="submit-btn">Criar Conta</button>
+
+            <!-- Notas de rodapé -->
+            <div class="footer-notes">
+                ✔ Rápido e fácil reservar<br>
+                ✔ Descontos de até 30%<br>
+                ✔ Acesso a ofertas exclusivas
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

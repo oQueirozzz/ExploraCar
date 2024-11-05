@@ -1,0 +1,162 @@
+
+/* Define o estilo básico para o container do formulário */
+.form-container {
+    /* Define a largura máxima do container */
+    max-width: 700px;
+    /* Centraliza o container horizontalmente */
+    margin: 0 auto;
+    /* Define o preenchimento interno do container */
+    padding: 20px;
+    /* Adiciona uma borda ao redor do container */
+    border: 1px solid #ddd;
+    /* Define cantos arredondados para o container */
+    border-radius: 5px;
+    /* Define a fonte padrão para o formulário */
+    font-family: Arial, sans-serif;
+    margin-top: 150px;
+}
+
+/* Define o estilo para os títulos das seções */
+.form-container h2 {
+    /* Alinha o texto à esquerda */
+    text-align: center;
+    /* Define a cor do texto */
+    color: #333;
+    /* Define uma margem abaixo do título para espaçamento */
+    margin-bottom: 15px;
+}
+
+.form-container h3 {
+    /* Alinha o texto à esquerda */
+    text-align: left;
+    /* Define a cor do texto */
+    color: #333;
+    /* Define uma margem abaixo do título para espaçamento */
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+/* Define o estilo para os rótulos dos campos */
+label {
+    /* Define o rótulo como um bloco para ocupar a largura total */
+    display: block;
+    /* Define uma margem abaixo do rótulo para espaçamento */
+    margin-bottom: 5px;
+    /* Define o peso da fonte como negrito */
+    font-weight: bold;
+}
+
+/* Define o estilo para o asterisco dos campos obrigatórios */
+label .required {
+    /* Define a cor do asterisco como vermelho */
+    color: red;
+}
+
+/* Define o estilo para os campos de entrada de texto */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    /* Define a largura total do campo */
+    width: 200px;
+    /* Define o preenchimento interno do campo */
+    padding: 7px;
+    /* Define uma margem abaixo do campo para espaçamento */
+    margin-bottom: 15px;
+    /* Define uma borda ao redor do campo */
+    border: 1px solid #ccc;
+    /* Define cantos arredondados para o campo */
+    border-radius: 4px;
+}
+
+
+/* Define o estilo para o campo de seleção */
+select {
+    /* Define a largura total do campo */
+    width: 250px;
+    /* Define o preenchimento interno do campo */
+    padding: 7px;
+    /* Define uma margem abaixo do campo para espaçamento */
+    margin-bottom: 15px;
+    /* Define uma borda ao redor do campo */
+    border: 1px solid #ccc;
+    /* Define cantos arredondados para o campo */
+    border-radius: 4px;
+}
+
+/* Define o estilo para os botões de rádio */
+.radio-group {
+    /* Define o layout como flexível para organizar os botões em linha */
+    display: flex;
+    /* Define um espaço entre os botões */
+    gap: 15px;
+    /* Define uma margem abaixo do grupo de botões para espaçamento */
+    margin-bottom: 15px;
+}
+
+/* Define o estilo para o botão de envio */
+.submit-btn {
+    /* Define a largura total do botão */
+    width: 430px;
+    /* Define o preenchimento interno do botão */
+    padding: 10px;
+    /* Define a cor de fundo do botão */
+    background-color: #28a745;
+    /* Define a cor do texto do botão */
+    color: #fff;
+    /* Remove qualquer borda ao redor do botão */
+    border: none;
+    /* Define cantos arredondados para o botão */
+    border-radius: 4px;
+    /* Define o cursor para "pointer" para indicar que é clicável */
+    cursor: pointer;
+    /* Define o tamanho da fonte do botão */
+    font-size: 16px;
+    /* Define uma margem superior para espaçamento */
+    margin-top: 20px;
+    /*Define uma margem ao lado direito do botão*/
+    margin-right: 40px;
+
+}
+
+/* Define o estilo para o botão de envio ao passar o mouse */
+.submit-btn:hover {
+    /* Altera a cor de fundo para um tom mais escuro ao passar o mouse */
+    background-color: #218838;
+}
+
+/* Define o estilo para o texto e caixas de seleção na área do rodapé */
+.form-footer {
+    /* Define uma margem superior para espaçamento com o restante do formulário */
+    margin-top: 10px;
+    /* Define o tamanho da fonte para o texto do rodapé */
+    font-size: 14px;
+}
+
+/* Remove o negrito dos rótulos na área do rodapé */
+.form-footer label {
+    font-weight: normal;
+}
+
+/* Define o estilo para as notas no rodapé */
+.footer-notes {
+    /* Define a cor do texto como verde */
+    color: rgb(0, 131, 0);
+    /* Define uma margem superior para espaçamento */
+    margin-top: 10px;
+}
+
+.two-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.two-columns div {
+    flex: 2; /* Faz com que os divs ocupem espaço igual */
+    margin-right: 15px; /* Espaçamento entre os campos */
+}
+
+.two-columns div:last-child {
+    margin-right: 15px; /* Remove o espaçamento do último campo */
+}
