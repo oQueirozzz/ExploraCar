@@ -92,12 +92,14 @@
 
                 <div class="card__number">0000&nbsp;0000&nbsp;0000&nbsp;0000</div>
                 <div class="card__name">
-                    <h3>Card Holder</h3>
-                    <p id="card-name"></p>
+                    <h3>Proprietário do cartão</h3>
+                    <p id="card-name">
+                        
+                    </p>
                 </div>
 
                 <div class="card__expiry">
-                    <h3>Valid Thru</h3>
+                    <h3>Válido até</h3>
                     <p>
                         <span id="month">MM</span>/<span id="year">YY</span>
                     </p>
@@ -105,25 +107,25 @@
             </div>
 
             <form class="form">
-                <h2>Payment Details</h2>
+                <h2>Detalhes do Cartão</h2>
 
                 <div class="form__name form__detail">
-                    <label for="name">Cardholder Name</label>
+                    <label for="name">Nome</label>
                     <ion-icon name="person-outline" role="img" class="md hydrated"
                         aria-label="person outline"></ion-icon>
-                    <input type="text" placeholder="Mrs Kate Smith" id="name" maxlength="24">
+                    <input type="text" placeholder="Nome do cartão" id="name" maxlength="24">
                     <div class="alert" id="alert-1">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M11.3163 9.00362C11.8593 10.0175 11.1335 11.25 9.99343 11.25H2.00657C0.866539 11.25 0.140732 10.0175 0.683711 9.00362L4.67714 1.54691C5.24618 0.484362 6.75381 0.484362 7.32286 1.54691L11.3163 9.00362ZM5.06238 4.49805C5.02858 3.95721 5.4581 3.5 6 3.5C6.5419 3.5 6.97142 3.95721 6.93762 4.49805L6.79678 6.75146C6.77049 7.17221 6.42157 7.5 6 7.5C5.57843 7.5 5.22951 7.17221 5.20322 6.75146L5.06238 4.49805ZM6 8C5.44772 8 5 8.44772 5 9C5 9.55229 5.44772 10 6 10C6.55228 10 7 9.55229 7 9C7 8.44772 6.55228 8 6 8Z"
                                 fill="#FF6A96"></path>
                         </svg>
-                        Full name required
+                        Nome inválido
                     </div>
                 </div>
 
                 <div class="form__number form__detail">
-                    <label for="number">Card Number</label>
+                    <label for="number">Número do cartão</label>
                     <ion-icon name="card-outline" role="img" class="md hydrated" aria-label="card outline"></ion-icon>
                     <input type="text" placeholder="0000 0000 0000 0000" id="number"
                         onkeypress="return isNumeric(event)">
@@ -133,32 +135,30 @@
                                 d="M11.3163 9.00362C11.8593 10.0175 11.1335 11.25 9.99343 11.25H2.00657C0.866539 11.25 0.140732 10.0175 0.683711 9.00362L4.67714 1.54691C5.24618 0.484362 6.75381 0.484362 7.32286 1.54691L11.3163 9.00362ZM5.06238 4.49805C5.02858 3.95721 5.4581 3.5 6 3.5C6.5419 3.5 6.97142 3.95721 6.93762 4.49805L6.79678 6.75146C6.77049 7.17221 6.42157 7.5 6 7.5C5.57843 7.5 5.22951 7.17221 5.20322 6.75146L5.06238 4.49805ZM6 8C5.44772 8 5 8.44772 5 9C5 9.55229 5.44772 10 6 10C6.55228 10 7 9.55229 7 9C7 8.44772 6.55228 8 6 8Z"
                                 fill="#FF6A96"></path>
                         </svg>
-                        Invalid card number
+                        Número do cartão inválido
                     </div>
                 </div>
 
                 <div class="form__expiry form__detail">
-                    <label for="date">Exp Date</label>
+                    <label for="date">Data de Vencimento</label>
                     <ion-icon name="calendar-outline" role="img" class="md hydrated"
                         aria-label="calendar outline"></ion-icon>
-                    <input type="text" placeholder="MM/YY" id="date" onkeypress="return isNumeric(event)">
+                    <input type="text" placeholder="M/A" id="date" onkeypress="return isNumeric(event)">
                     <div class="alert" id="alert-3">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M11.3163 9.00362C11.8593 10.0175 11.1335 11.25 9.99343 11.25H2.00657C0.866539 11.25 0.140732 10.0175 0.683711 9.00362L4.67714 1.54691C5.24618 0.484362 6.75381 0.484362 7.32286 1.54691L11.3163 9.00362ZM5.06238 4.49805C5.02858 3.95721 5.4581 3.5 6 3.5C6.5419 3.5 6.97142 3.95721 6.93762 4.49805L6.79678 6.75146C6.77049 7.17221 6.42157 7.5 6 7.5C5.57843 7.5 5.22951 7.17221 5.20322 6.75146L5.06238 4.49805ZM6 8C5.44772 8 5 8.44772 5 9C5 9.55229 5.44772 10 6 10C6.55228 10 7 9.55229 7 9C7 8.44772 6.55228 8 6 8Z"
                                 fill="#FF6A96"></path>
                         </svg>
-                        Invalid date
+                        Data inválida
                     </div>
                 </div>
 
                 <div class="form__cvv form__detail">
-                    <label for="cvv">CVV
-                        <ion-icon name="information-circle" class="info md hydrated" role="img"
-                            aria-label="information circle"></ion-icon></label>
+                    <label for="cvv">CVV </label>
                     <ion-icon name="lock-closed-outline" role="img" class="md hydrated"
                         aria-label="lock closed outline"></ion-icon>
-                    <input type="password" placeholder="0000" id="cvv" maxlength="4"
+                    <input type="password" placeholder="000" id="cvv" maxlength="3"
                         onkeypress="return isNumeric(event)">
                     <div class="alert" id="alert-4">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,18 +166,40 @@
                                 d="M11.3163 9.00362C11.8593 10.0175 11.1335 11.25 9.99343 11.25H2.00657C0.866539 11.25 0.140732 10.0175 0.683711 9.00362L4.67714 1.54691C5.24618 0.484362 6.75381 0.484362 7.32286 1.54691L11.3163 9.00362ZM5.06238 4.49805C5.02858 3.95721 5.4581 3.5 6 3.5C6.5419 3.5 6.97142 3.95721 6.93762 4.49805L6.79678 6.75146C6.77049 7.17221 6.42157 7.5 6 7.5C5.57843 7.5 5.22951 7.17221 5.20322 6.75146L5.06238 4.49805ZM6 8C5.44772 8 5 8.44772 5 9C5 9.55229 5.44772 10 6 10C6.55228 10 7 9.55229 7 9C7 8.44772 6.55228 8 6 8Z"
                                 fill="#FF6A96"></path>
                         </svg>
-                        Invalid CVV
+                        CVV invalido
                     </div>
                 </div>
 
-                <button type="submit" class="form__btn">Confirm</button>
+                <button type="submit" class="form__btn">Confirmar</button>
 
             </form>
+
         </div>
-        <a href="https://dribbble.com/myacode" class="dribbble" target="_blank"><ion-icon name="logo-dribbble"
-                role="img" class="md hydrated" aria-label="logo dribbble"></ion-icon></a>
-    </div>
-    <script src="main.js"></script>
+
+
+    <div class="cart-container">
+        <div class="cart-header">
+            <h2>Meu Carrinho</h2>
+        </div>
+        <div class="cart-item">
+            <h3>Virilha nova <span class="price">R$1.000.000.000</span></h3>
+            <p>Virilha 100% nova para idosos que são totalmente quebrados fisicalmente</p>
+        </div>
+        <div class="cart-item promo-code">
+            <h3>Cupom <span class="price">−R$200.000.000</span></h3>
+            <p>EXPLORACAR</p>
+        </div>
+        <div class="total">Total (R$) <span>R$800.000.000</span></div>
+        <div class="promo-input">
+            <input type="text" placeholder="Cupom de Desconto">
+            <button>Verificar</button>
+        </div>
+    </div>   
+ </div>
+</body>
+</html>
+
+    <script src="pagamento.js"></script>
 
 </body>
 
