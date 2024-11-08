@@ -91,39 +91,363 @@ header {
 }
  
 /* Botão 'Entrar' */
-.entrar {
-    margin: 15px 50px 0px 0px;
-    width: 100px;
-    border: solid black 1px;
+/* .entrar {
+    margin: 15px 0px 0px 0px;
+    width: 130px;
     border-radius: 5px;
+    display: flex;
     height: 50px;
     background-color: #fff;
+    border: 2px solid #000000;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
     color: #333;
+    justify-content: space-between;
+} */
+.dropdown{
+    background-color: transparent;
+    height: 100px;
+    display: flex;
+    margin-right: 30px;
+    justify-content: space-around;
+    left: 20px;
 }
- 
-/* Cor de fundo e texto ao passar o mouse */
-.entrar:hover {
-    background-color: #e2d9d9d8;
-    color: white;
+.dropdown button{
+    background-color: transparent;
+    cursor: pointer;
+    color: #000000;
+    /* width: 75px; */
+        width: 150px;
+        height: 50px;
+        background-color: white;
+        margin: 20px;
+        position: relative;
+        overflow: hidden;
+        font-size: 16px;
+        letter-spacing: 1.2px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
 }
- 
-/* Imagem dentro do botão 'Entrar' */
-.entrar img {
-    width: 30%;
-    height: 50%;
-    padding-top: 13px;
+.dropdown button:hover{
+    background-color: #e4e4e4;
+    color: #000000;
 }
- 
-/* Botão dentro do elemento 'Entrar' */
-.entrar button {
+/* linha de cima */
+.dropdown button:before, .dropdown button:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #ff7b00;
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
+    
+  }
+  .dropdown button:before {
+    right: 0;
+    top: 0;
+  }
+  .dropdown button:after {
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    position: absolute;
+  }
+  .dropdown button span:before, .dropdown button span:after {
+    content: "";
+    position: absolute;
+    background-color: #ff7b00;
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
+  }
+  .dropdown button:before {
+    right: 0;
+    top: 0;
+    transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
+  }
+  .dropdown button:after {
+    left: 0;
+    bottom: 0;
+  }
+  .dropdown button:hover:before, .dropdown button:hover:after {
+    width: 100%;
+  }
+  .dropdown button:hover span:before, .dropdown button:hover span:after {
+    height: 100%;
+  } 
+  .dropdown button span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  
+  .dropdown button span:before, .dropdown button span:after {
+    content: "";
+    position: absolute;
+    background-color: #3300ec;
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
+  }
+  
+  .dropdown button span:before {
+    right: 0;
+    top: 0;
+    transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
+  }
+  
+  .dropdown button span:after {
+    left: 0;
+    bottom: 0;
+  }
+  
+  .dropdown button p {
+    padding: 0;
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .dropdown button p:before, .dropdown button p:after {
+    position: absolute;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+    z-index: 1;
+    left: 0;
+  }
+  
+  .dropdown button p:before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .dropdown button p:after {
+    top: 150%;
+    color: #d400ff;
+  }
+  
+  .dropdown button:hover:before, .dropdown button:hover:after {
+    width: 100%;
+  }
+  
+  .dropdown button:hover span {
+    z-index: 1;
+  }
+  
+  .dropdown button:hover span:before, .dropdown button:hover span:after {
+    height: 100%;
+  }
+  
+
+  
+  .dropdown button:hover p:after {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    background-color: rgba(255, 255, 255, 0.767);
+    color: black  ;
+  }
+  
+
+  
+  @keyframes start {
+    from {
+      top: -50%;
+    }
+  }
+
+
+  
+  button.btn.btn-secondary.dropdown-toggle {
     background-color: transparent;
     border: none;
-    height: 10%;
-    width: 10%;
-    font-size: 15px;
-    transform: translateY(-8px);
+    padding: 0;
+  }
+  
+  .dropdown-toogle{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  button.btn.btn-secondary.dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.767);
+    color: black  ;
+  }
+  
+  button.btn.btn-secondary.dropdown-toggle:active {
+    background-color: rgba(255, 255, 255, 0.767);
+    color: black  ;
+  }
+  
+  .dropdown button:active {
+    outline: none;
+    border: none;
+    background-color: #fff;
+  }
+  
+  .dropdown button:focus {
+    outline: 0;
+    background-color: transparent;
+  }
+/* .dropdown button:hover{
+    background-color: #e4e4e4;
+    color: #000000;
+} */
+.dropdown img{
+    width: 40px;
+    height: 40px;
+    margin-top: 0px;
 }
- 
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 9rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  display: flex;
+}
+.dropdown-item {
+  display: flex;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  clear: both;
+  font-weight: 300;
+  text-align: inherit;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--bs-dropdown-item-border-radius, 0);
+
+}
+
+.register-section, .login-section {
+  padding: 20px;
+  width: 50%;
+}
+
+
+/*Estilo lado esquerdo*/
+.register-section {
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+}
+
+.register-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.register-button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.register-button:hover {
+  background-color: #e0e0e0;
+}
+
+.register-section ul {
+  list-style-type: none;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.register-section ul li {
+  margin-bottom: 10px;
+}
+
+.login-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+input[type="email"], input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  height: 25px;
+}
+
+.esqueci {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #218838;
+}
+.container-login {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #a1a1a1;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 500px;
+  width: 500px;
+}
+
+
 /* Estilos para a borda lateral da barra */
 #sidebar {
     border-right: 3px solid #b9b1b1;
@@ -186,8 +510,8 @@ header {
 }
  
 .footer {
-    background-color: rgba(220, 143, 0, 0.909); /* Laranja */
-    color: #ffffff; /* Branco */
+    background-color: rgba(233, 151, 0, 0.904); /* Laranja */
+    color: #000000; /* Branco */
     padding: 40px 0;
     width: 100%;
     z-index: -1;
@@ -203,8 +527,13 @@ header {
  
 .footer-section {
     flex: 1;
-    margin: 15px;
+  margin: 0 20px 20px 20px;
+    height: 28vh;
 }
+.footer-section h2 {
+    margin-bottom: 20px;
+}
+
  
 .footer-section h2.logo {
     font-size: 28px;
@@ -221,20 +550,23 @@ header {
 }
  
 .footer-section p{
-    color: #ffffff;
+    color: #000000;
     margin-top: 20px;
     padding-right: 50px;
 }
  
 .footer-section a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 14px;
     line-height: 24px;
 }
  
 .footer-section a:hover {
     color: #333;
+}
+.footer-section .social {
+    margin-top: 20px 0px 0px 40px;
 }
  
 .footer-section .social a {
@@ -251,6 +583,104 @@ header {
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    background-color: #333;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
 }
+
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+ .icons{
+   display: inline-flex;
+   margin-top: 20px;
+ }
+ .icons a{
+   margin: 0 25px;
+   text-decoration: none;
+   color: #fff;
+   display: block;
+   position: relative;
+ }
+ .icons a .layer{
+   width: 55px;
+   height: 55px;
+   transition: transform 0.3s;
+ }
+ .icons a:hover .layer{
+   transform: rotate(-35deg) skew(20deg);
+ }
+ .icons a .layer span{
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   border: 1px solid #fff;
+   border-radius: 5px;
+   transition: all 0.3s;
+ }
+ .icons a .layer span.fab{
+   font-size: 30px;
+   line-height: 55px;
+   text-align: center;
+ }
+ .icons a:hover .layer span:nth-child(1){
+   opacity: 0.2;
+ }
+ .icons a:hover .layer span:nth-child(2){
+   opacity: 0.4;
+   transform: translate(5px, -5px);
+ }
+ .icons a:hover .layer span:nth-child(3){
+   opacity: 0.6;
+   transform: translate(10px, -10px);
+ }
+ .icons a:hover .layer span:nth-child(4){
+   opacity: 0.8;
+   transform: translate(15px, -15px);
+ }
+ .icons a:hover .layer span:nth-child(5){
+   opacity: 1;
+   transform: translate(20px, -20px);
+ }
+ .icons a:nth-child(1) .layer span,
+ .icons a:nth-child(1) .text{
+   color: #ffffff;
+   border-color: #000000;
+ }
+ .icons a:nth-child(2) .layer span,
+ .icons a:nth-child(2) .text{
+   color: #ffffff;
+   border-color: #000000;
+ }
+ .icons a:nth-child(3) .layer span,
+ .icons a:nth-child(3) .text{
+   color: #ffffff;
+   border-color: #363636;
+ }
+ .icons a:hover:nth-child(1) .layer span{
+   box-shadow: -1px 1px 3px #5d5d5e;
+ }
+ .icons a:hover:nth-child(2) .layer span{
+   box-shadow: -1px 1px 3px #5d5d5e;
+ }
+ .icons a:hover:nth-child(3) .layer span{
+   box-shadow: -1px 1px 3px #5d5d5e;
+ }
+ .icons a .text{
+   position: absolute;
+   left: 50%;
+   bottom: -5px;
+   opacity: 0;
+   font-weight: 500;
+   transform: translateX(-50%);
+   transition: bottom 0.3s ease, opacity 0.3s ease;
+ }
+ .icons a:hover .text{
+   bottom: -35px;
+   opacity: 1;
+ }
+
+ .fab .fa-facebook-f{
+  background: url(img/face.png);
+ }
+ 
