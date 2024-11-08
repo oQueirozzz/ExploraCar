@@ -20,10 +20,10 @@ $(function () {
    const dropdowns = document.querySelectorAll(".dropdown");
    dropdowns.forEach((dropdown) => {
     dropdown.addEventListener("click", (e) => {
-     e.stopPropagation();
-     dropdowns.forEach((c) => c.classList.remove("is-active"));
-     dropdown.classList.add("is-active");
-    });
+    //  e.stopPropagation();
+    //  dropdowns.forEach((c) => c.classList.remove("is-active"));
+    //  dropdown.classList.add("is-active");
+    // });
    });
    
    $(".search-bar input")
@@ -35,7 +35,7 @@ $(function () {
     });
    
    $(document).click(function (e) {
-    var container = $(".status-button");
+    var container = $("");
     var dd = $(".dropdown");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
      dd.removeClass("is-active");
@@ -76,7 +76,3 @@ $(function () {
    toggleButton.addEventListener('click', () => {
      document.body.classList.toggle('light-mode');
    });
- 
- 
- 
- 
