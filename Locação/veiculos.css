@@ -25,7 +25,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 100px; /* Tamanho maior */
+    width: 80px; /* Tamanho maior */
     height: 60px; /* Tamanho maior */
     border-color: black;
     border-radius: 10px;
@@ -38,8 +38,8 @@ body {
 
 }
 .brand-button img {
-    width: 60px; /* Tamanho maior */
-    height: 60px; /* Tamanho maior */
+    width: 55px; /* Tamanho maior */
+    height: 55px; /* Tamanho maior */
     margin-right: 15px;
     transition: filter 0.2s; /* Adicionada transição de filtro */;
 }
