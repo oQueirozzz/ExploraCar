@@ -1,4 +1,33 @@
+/* Estilos para a aba de informações */
+.info-tab {
+  display: none; /* Inicialmente escondido */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  border: 1px solid #ff9100;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  padding: 20px;
+  overflow: hidden;
+}
 
+.info-content {
+  position: relative;
+  text-align: center;
+  display: flex;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
 .buttons {
     display: flex;
     justify-content: space-around;
@@ -9,9 +38,9 @@
   .buttons button {
     width: 150px;
     height: 50px;
-    background-color: white;
+    background-color: rgb(255, 115, 0);
     margin: 20px;
-    color: #568fa6;
+    color: #000000;
     position: relative;
     overflow: hidden;
     font-size: 14px;
@@ -27,12 +56,17 @@
     border-radius: 3px;
   }
   
+  .buttons button:hover {
+    background-color: #e08906e3;
+    color: #ffffff;
+  }
+  
   .buttons button:before, .buttons button:after {
     content: "";
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #44d8a4;
+    background-color: #000000; /*cor da linha de cima e baixo*/
     transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
   }
   
@@ -63,7 +97,7 @@
     position: absolute;
     width: 2px;
     height: 0;
-    background-color: #44d8a4;
+    background-color: #000000; /*cor da linha dos lados*/
     transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
   }
   
@@ -80,11 +114,12 @@
   
   .buttons button p {
     padding: 0;
-    margin: 0;
-    transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+    margin-left: 30px;
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
     position: absolute;
     width: 100%;
     height: 100%;
+    color: #000000;
   }
   
   .buttons button p:before, .buttons button p:after {
@@ -103,7 +138,7 @@
   
   .buttons button p:after {
     top: 150%;
-    color: #44d8a4;
+    color: #000000;
   }
   
   .buttons button:hover:before, .buttons button:hover:after {
@@ -126,7 +161,7 @@
   }
   
   .buttons button.start {
-    background-color: #44d8a4;
+    background-color: #ffae00;
     box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
   }
@@ -167,4 +202,9 @@
   
   .buttons button:focus {
     outline: 0;
+  }
+  .btn img{
+    width: 30px;
+    height: 30px;
+    margin-right: 100px;
   }

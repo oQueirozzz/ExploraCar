@@ -1,66 +1,90 @@
+:root {
+    --primary-color: #44d8a4;
+    --secondary-color: #ff7b00;
+    --hover-bg-color: #e4e4e4;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Estilos para o ícone de menu de 3 barras */
 .material-symbols-outlined {
     font-variation-settings:
-        'FILL' 100,    /* Preenchimento completo do ícone */
-        'wght' 1000,   /* Peso máximo para maior visibilidade */
-        'GRAD' 100,    /* Gradiente para realce */
-        'opsz' 100;    /* Tamanho otimizado do ícone */
+        'FILL' 100,
+        /* Preenchimento completo do ícone */
+        'wght' 1000,
+        /* Peso máximo para maior visibilidade */
+        'GRAD' 100,
+        /* Gradiente para realce */
+        'opsz' 100;
+    /* Tamanho otimizado do ícone */
 }
- 
+
 /* Define o cabeçalho como fixo no topo da página ao rolar */
 header {
     position: sticky;
     top: 0;
     z-index: 10;
 }
- 
+
 /* Configuração do botão do menu lateral (3 barras) */
 #menu-toggle {
-    font-size: 24px;            /* Tamanho da fonte do ícone */
-    padding: 10px;              /* Espaçamento interno */
-    cursor: pointer;            /* Indica interatividade */
+    font-size: 24px;
+    /* Tamanho da fonte do ícone */
+    padding: 10px;
+    /* Espaçamento interno */
+    cursor: pointer;
+    /* Indica interatividade */
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 10;                /* Garante que o ícone fica sobre outros elementos */
-    border-radius: 10px;        /* Bordas arredondadas */
+    z-index: 10;
+    /* Garante que o ícone fica sobre outros elementos */
+    border-radius: 10px;
+    /* Bordas arredondadas */
 }
- 
+
 /* Cor de fundo do botão ao passar o mouse */
 #menu-toggle:hover {
     background-color: #ccc;
 }
- 
+
 /* Estilos para a barra lateral */
 #sidebar {
-    width: 80px;                 /* Largura padrão */
-    height: 100vh;               /* Altura total da janela */
-    position: fixed;             /* Fixa no lado esquerdo da tela */
+    width: 80px;
+    /* Largura padrão */
+    height: 100vh;
+    /* Altura total da janela */
+    position: fixed;
+    /* Fixa no lado esquerdo da tela */
     left: 0;
     top: 0;
-    transition: width 0.3s;      /* Animação ao expandir/recolher */
+    transition: width 0.3s;
+    /* Animação ao expandir/recolher */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;            /* Distância do topo */
-    overflow: hidden;            /* Oculta conteúdo excedente */
+    margin-top: 70px;
+    /* Distância do topo */
+    overflow: hidden;
+    /* Oculta conteúdo excedente */
     background-color: #fff;
     z-index: 1;
 }
- 
+
 /* Expande a barra lateral ao ativar */
 #sidebar.active {
-    width: 200px;               /* Largura expandida */
-    height: 90vh;               /* Altura ajustada */
+    width: 200px;
+    /* Largura expandida */
+    height: 90vh;
+    /* Altura ajustada */
     margin-top: 70px;
     background-color: #fff;
 }
- 
+
 /* Configurações do cabeçalho */
 .cabecalho {
     background-color: #fff;
@@ -68,16 +92,18 @@ header {
     width: 100%;
     z-index: 1;
     display: flex;
-    border-bottom: 3px solid #b9b1b1; /* Borda inferior */
+    border-bottom: 3px solid #b9b1b1;
+    /* Borda inferior */
     justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 20;
 
-    transition: top 0.3s; /* Suaviza a animação de rolagem */
+    transition: top 0.3s;
+    /* Suaviza a animação de rolagem */
 }
- 
+
 /* Logotipo com imagem de fundo */
 .logo {
     width: 150px;
@@ -87,9 +113,9 @@ header {
     background-repeat: no-repeat;
     position: relative;
     margin-left: 90px;
-    margin-top: 12px;
+    margin-top: 20px;
 }
- 
+
 /* Botão 'Entrar' */
 /* .entrar {
     margin: 15px 0px 0px 0px;
@@ -105,83 +131,96 @@ header {
     color: #333;
     justify-content: space-between;
 } */
-.dropdown{
-    background-color: transparent;
-    height: 100px;
+.dropdown button span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+.dropdown button p {
+    padding: 0;
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.buttons {
     display: flex;
-    margin-right: 30px;
     justify-content: space-around;
+    top: 20px;
     left: 20px;
 }
-.dropdown button{
-    background-color: transparent;
+#principal-button{
+    margin: 20px;
+    margin-right: 30px;
+    display: flex;
+    width: 160px;
+}
+.buttons button {
+    height: 50px;
+    background-color: rgb(255, 115, 0);
+    color: #000000;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
     cursor: pointer;
-    color: #000000;
-    /* width: 75px; */
-        width: 150px;
-        height: 50px;
-        background-color: white;
-        margin: 20px;
-        position: relative;
-        overflow: hidden;
-        font-size: 16px;
-        letter-spacing: 1.2px;
-        font-weight: 500;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 3px;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
 }
-.dropdown button:hover{
-    background-color: #e4e4e4;
-    color: #000000;
+/* Linhas superior e inferior do botão */
+.buttons button::before,
+.buttons button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    /* Cor das linhas */
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
 }
-/* linha de cima */
-.dropdown button:before, .dropdown button:after {
+/* Quando o botão for hover, as linhas se expandem para os lados */
+.buttons button:hover::before,
+.buttons button:hover::after {
+    width: 100%;
+}
+.buttons button:hover {
+    background-color: #e08906e3;
+    color: #ffffff;
+}
+
+.buttons button:before,
+.buttons button:after {
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
-    background-color: #ff7b00;
+    height: 3px;
+    background-color: #000000;
+    /*cor da linha de cima e baixo*/
     transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
-    
-  }
-  .dropdown button:before {
-    right: 0;
-    top: 0;
-  }
-  .dropdown button:after {
-    left: 0;
-    bottom: 0;
-    align-items: center;
-    position: absolute;
-  }
-  .dropdown button span:before, .dropdown button span:after {
-    content: "";
-    position: absolute;
-    background-color: #ff7b00;
-    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
-  }
-  .dropdown button:before {
+}
+
+.buttons button:before {
     right: 0;
     top: 0;
     transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
-  }
-  .dropdown button:after {
+}
+.buttons button:after {
     left: 0;
     bottom: 0;
-  }
-  .dropdown button:hover:before, .dropdown button:hover:after {
-    width: 100%;
-  }
-  .dropdown button:hover span:before, .dropdown button:hover span:after {
-    height: 100%;
-  } 
-  .dropdown button span {
+}
+
+.buttons button span {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -190,270 +229,207 @@ header {
     margin: 0;
     padding: 0;
     z-index: 1;
-  }
-  
-  .dropdown button span:before, .dropdown button span:after {
+}
+.buttons button span:before,
+.buttons button span:after {
     content: "";
     position: absolute;
-    background-color: #3300ec;
+    width: 2px;
+    height: 0;
+    background-color: #000000;
+    /*cor da linha dos lados*/
     transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
-  }
-  
-  .dropdown button span:before {
+}
+.buttons button span:before {
     right: 0;
     top: 0;
     transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
-  }
-  
-  .dropdown button span:after {
+}
+.buttons button span:after {
     left: 0;
     bottom: 0;
-  }
-  
-  .dropdown button p {
+}
+.buttons button p {
     padding: 0;
-    margin: 0;
-    transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+    margin-left: 30px;
+    transition: all 0.3s cubic-bezier(0.35, 0.1, 0.25, 1);
     position: absolute;
     width: 100%;
     height: 100%;
-  }
-  
-  .dropdown button p:before, .dropdown button p:after {
+    color: #000000;
+}
+.buttons button p:before,
+.buttons button p:after {
     position: absolute;
     width: 100%;
     transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
     z-index: 1;
     left: 0;
-  }
-  
-  .dropdown button p:before {
+}
+.buttons button p:before {
+    content: attr(data-title);
     top: 50%;
     transform: translateY(-50%);
-  }
-  
-  .dropdown button p:after {
-    top: 150%;
-    color: #d400ff;
-  }
-  
-  .dropdown button:hover:before, .dropdown button:hover:after {
-    width: 100%;
-  }
-  
-  .dropdown button:hover span {
+}
+.buttons button:hover span {
     z-index: 1;
-  }
-  
-  .dropdown button:hover span:before, .dropdown button:hover span:after {
+}
+.buttons button:hover span:before,
+.buttons button:hover span:after {
     height: 100%;
-  }
-  
-
-  
-  .dropdown button:hover p:after {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-    background-color: rgba(255, 255, 255, 0.767);
-    color: black  ;
-  }
-  
-
-  
-  @keyframes start {
-    from {
-      top: -50%;
-    }
-  }
-
-
-  
-  button.btn.btn-secondary.dropdown-toggle {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-  }
-  
-  .dropdown-toogle{
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: white;
-    font-size: 20px;
-  }
-  
-  button.btn.btn-secondary.dropdown-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.767);
-    color: black  ;
-  }
-  
-  button.btn.btn-secondary.dropdown-toggle:active {
-    background-color: rgba(255, 255, 255, 0.767);
-    color: black  ;
-  }
-  
-  .dropdown button:active {
+}
+.buttons button.start:hover:before,
+.buttons button.start:hover:after {
+    display: none;
+}
+.buttons button.start:hover span {
+    display: none;
+}
+.buttons button:active {
     outline: none;
     border: none;
-    background-color: #fff;
-  }
-  
-  .dropdown button:focus {
+}
+.buttons button:focus {
     outline: 0;
-    background-color: transparent;
-  }
-/* .dropdown button:hover{
-    background-color: #e4e4e4;
-    color: #000000;
-} */
-.dropdown img{
-    width: 40px;
-    height: 40px;
-    margin-top: 0px;
 }
-.dropdown .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  min-width: 9rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
-  display: flex;
+.btn img {
+    width: 30px;
+    height: 30px;
+    margin-right: 50px;
 }
-.dropdown-item {
-  display: flex;
-  width: 100%;
-  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
-  clear: both;
-  font-weight: 300;
-  text-align: inherit;
-  text-decoration: none;
-  background-color: transparent;
-  border: 0;
-  border-radius: var(--bs-dropdown-item-border-radius, 0);
-
+.seta {
+    width: 10px;
+    height: 10px;
+    background: url(img/seta.png);
+    background-size: cover;
+    object-fit: cover;
+    margin-left: 40px;
 }
-
-.register-section, .login-section {
-  padding: 20px;
-  width: 50%;
+/* Estilos para a aba de informações */
+.info-tab {
+    display: none;
+    /* Inicialmente escondido */
+    position: fixed;
+    top: 10%;
+    right: 30px;
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ff9100;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 20px;
+    overflow: hidden;
 }
-
-
+.info-content {
+    position: relative;
+    display: flex;
+}
+.close-btn {
+    position: absolute;
+    right: -8px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.register-section,
+.login-section {
+    padding: 20px;
+    padding-right: 40px;
+    width: 50%;
+}
+.login-section {
+    padding-left: 40px;
+}
 /*Estilo lado esquerdo*/
 .register-section {
-  background-color: #ffffff;
-  border-right: 1px solid #ddd;
+    background-color: #ffffff;
+    border-right: 2px solid #ccc;
 }
-
 .register-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+    font-size: 1.4rem;
+    margin-bottom: 20px;    
 }
 
-.register-button {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #333;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-bottom: 20px;
+.btn{
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 20px;
+    width: 200px;
+    height: 100%;
+    margin: auto;
 }
-
-.register-button:hover {
-  background-color: #e0e0e0;
+ol, ul{
+    padding: 0;
 }
-
 .register-section ul {
-  list-style-type: none;
-  font-size: 0.9rem;
-  color: #333;
+    list-style-type: none;
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 30px;
+    align-items: center;
 }
-
 .register-section ul li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 .login-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  color: #333;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #333;
 }
 
-input[type="email"], input[type="password"] {
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
-  height: 25px;
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    height: 25px;
 }
 
 .esqueci {
-  font-size: 0.9rem;
-  color: #007bff;
-  text-decoration: none;
-  margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
 }
 
-.forgot-password:hover {
-  text-decoration: underline;
+.esqueci:hover {
+    text-decoration: underline;
 }
 
 .login-button {
-  background-color: #28a745;
-  color: #fff;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #ff8800;
+    color: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 200px;
 }
 
-.login-button:hover {
-  background-color: #218838;
-}
-.container-login {
-  display: flex;
-  background-color: #ffffff;
-  border: 1px solid #a1a1a1;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: 500px;
-  width: 500px;
-}
-
-
+/* .login-button:hover {
+    background: var;
+} */
 /* Estilos para a borda lateral da barra */
 #sidebar {
     border-right: 3px solid #b9b1b1;
     transform: translateY(12px);
 }
- 
+
 /* Configuração dos itens de menu da barra lateral */
 #sidebar ul {
     list-style: none;
@@ -461,7 +437,7 @@ input[type="email"], input[type="password"] {
     margin: 0;
     width: 100%;
 }
- 
+
 /* Estilo de cada item de menu */
 #sidebar ul li {
     display: flex;
@@ -469,20 +445,20 @@ input[type="email"], input[type="password"] {
     padding: 10px;
     cursor: pointer;
 }
- 
+
 /* Links dos itens de menu */
 #sidebar ul li a {
     text-decoration: none;
     display: flex;
 }
- 
+
 /* Imagem dos ícones de cada item */
 #sidebar ul li img {
     width: 40px;
     height: 40px;
     margin-top: 10px;
 }
- 
+
 /* Texto dos itens de menu, oculto por padrão */
 #sidebar ul li span {
     display: none;
@@ -492,93 +468,103 @@ input[type="email"], input[type="password"] {
     margin-top: 20px;
     margin-left: 10px;
 }
- 
+
 /* Exibe o texto dos itens de menu quando a barra lateral está ativa */
 #sidebar.active ul li span {
     display: inline;
     text-align: center;
 }
- 
- 
- 
+
+
+
 #sidebar.active #logo {
     display: block;
 }
- 
+
 #sidebar.active #entrar {
     display: block;
 }
- 
+
 .footer {
-    background-color: rgba(233, 151, 0, 0.904); /* Laranja */
-    color: #000000; /* Branco */
+    background-color: var(--secondary-color);
+    /* Laranja */
+    color: #ffffff;
+    /* Branco */
     padding: 40px 0;
     width: 100%;
     z-index: -1;
 }
- 
-.footer-content {
+
+.footer-content {   
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: auto;
+    transform: translateX(120px);
 }
- 
+
 .footer-section {
     flex: 1;
-  margin: 0 20px 20px 20px;
+    margin: 0 20px 20px 20px;
     height: 28vh;
+    width: 30vw;
 }
+.footer-section.about{
+    width: 300px;
+}
+
 .footer-section h2 {
     margin-bottom: 20px;
 }
 
- 
+
 .footer-section h2.logo {
     font-size: 28px;
     font-weight: bold;
 }
- 
+
 .footer-section h3 {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
 .footer-section ul {
     list-style: none;
     padding: 0;
 }
- 
-.footer-section p{
-    color: #000000;
+
+.footer-section p {
+    color: #ffffff;
     margin-top: 20px;
     padding-right: 50px;
 }
- 
+
 .footer-section a {
     text-decoration: none;
-    color: #000000;
+    color: #ffffff;
     font-size: 14px;
     line-height: 24px;
 }
- 
+
 .footer-section a:hover {
     color: #333;
 }
+
 .footer-section .social {
-    margin-top: 20px 0px 0px 40px;
+    margin: 20px 0px 0px 80px;
 }
- 
+
 .footer-section .social a {
     font-size: 20px;
     margin-right: 10px;
     color: #ffffff;
 }
- 
+
 .footer-section .social a:hover {
     color: #333;
 }
- 
+
 .footer-bottom {
     text-align: center;
     padding: 10px;
@@ -587,100 +573,139 @@ input[type="email"], input[type="password"] {
     color: #000000;
 }
 
- @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
- .icons{
-   display: inline-flex;
-   margin-top: 20px;
- }
- .icons a{
-   margin: 0 25px;
-   text-decoration: none;
-   color: #fff;
-   display: block;
-   position: relative;
- }
- .icons a .layer{
-   width: 55px;
-   height: 55px;
-   transition: transform 0.3s;
- }
- .icons a:hover .layer{
-   transform: rotate(-35deg) skew(20deg);
- }
- .icons a .layer span{
-   position: absolute;
-   top: 0;
-   left: 0;
-   height: 100%;
-   width: 100%;
-   border: 1px solid #fff;
-   border-radius: 5px;
-   transition: all 0.3s;
- }
- .icons a .layer span.fab{
-   font-size: 30px;
-   line-height: 55px;
-   text-align: center;
- }
- .icons a:hover .layer span:nth-child(1){
-   opacity: 0.2;
- }
- .icons a:hover .layer span:nth-child(2){
-   opacity: 0.4;
-   transform: translate(5px, -5px);
- }
- .icons a:hover .layer span:nth-child(3){
-   opacity: 0.6;
-   transform: translate(10px, -10px);
- }
- .icons a:hover .layer span:nth-child(4){
-   opacity: 0.8;
-   transform: translate(15px, -15px);
- }
- .icons a:hover .layer span:nth-child(5){
-   opacity: 1;
-   transform: translate(20px, -20px);
- }
- .icons a:nth-child(1) .layer span,
- .icons a:nth-child(1) .text{
-   color: #ffffff;
-   border-color: #000000;
- }
- .icons a:nth-child(2) .layer span,
- .icons a:nth-child(2) .text{
-   color: #ffffff;
-   border-color: #000000;
- }
- .icons a:nth-child(3) .layer span,
- .icons a:nth-child(3) .text{
-   color: #ffffff;
-   border-color: #363636;
- }
- .icons a:hover:nth-child(1) .layer span{
-   box-shadow: -1px 1px 3px #5d5d5e;
- }
- .icons a:hover:nth-child(2) .layer span{
-   box-shadow: -1px 1px 3px #5d5d5e;
- }
- .icons a:hover:nth-child(3) .layer span{
-   box-shadow: -1px 1px 3px #5d5d5e;
- }
- .icons a .text{
-   position: absolute;
-   left: 50%;
-   bottom: -5px;
-   opacity: 0;
-   font-weight: 500;
-   transform: translateX(-50%);
-   transition: bottom 0.3s ease, opacity 0.3s ease;
- }
- .icons a:hover .text{
-   bottom: -35px;
-   opacity: 1;
- }
+.icons {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-right: 20px;
+}
 
- .fab .fa-facebook-f{
-  background: url(img/face.png);
- }
- 
+.icons a {
+    margin-right: 60px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    position: relative;
+}
+
+.icons a .layer {
+    width: 55px;
+    height: 55px;
+    transition: transform 0.3s;
+}
+
+.icons a:hover .layer {
+    transform: rotate(-35deg) skew(20deg);
+}
+
+.icons a .layer span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.icons a .layer span.fab {
+    font-size: 30px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.icons a:hover .layer span:nth-child(1) {
+    opacity: 0.2;
+}
+
+.icons a:hover .layer span:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px, -5px);
+}
+
+.icons a:hover .layer span:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px, -10px);
+}
+
+.icons a:hover .layer span:nth-child(4) {
+    opacity: 0.8;
+    transform: translate(15px, -15px);
+}
+
+.icons a:hover .layer span:nth-child(5) {
+    opacity: 1;
+    transform: translate(20px, -20px);
+}
+
+.icons a:nth-child(1) .layer span,
+.icons a:nth-child(1) .text {
+    color: #ffffff;
+    border: none;
+}
+.icons a:nth-child(1) .layer span:hover,
+.icons a:nth-child(1) .text:hover {
+    border: solid #ffffff 1px;
+}
+
+.icons a:nth-child(2) .layer span,
+.icons a:nth-child(2) .text {
+    color: #ffffff;
+    border: none;
+}
+.icons a:nth-child(2) .layer span:hover,
+.icons a:nth-child(2) .text:hover {
+    border: solid #ffffff 1px;
+}
+
+.icons a:nth-child(3) .layer span,
+.icons a:nth-child(3) .text {
+    color: #ffffff;
+    border: none;
+}
+.icons a:nth-child(3) .layer span:hover,
+.icons a:nth-child(3) .text:hover {
+    border: solid #ffffff 1px;
+}
+
+
+
+.icons a:hover:nth-child(1) .layer span {
+    box-shadow: -1px 1px 3px #ffffff;
+}
+
+.icons a:hover:nth-child(2) .layer span {
+    box-shadow: -1px 1px 3px #ffffff;
+}
+
+.icons a:hover:nth-child(3) .layer span {
+    box-shadow: -1px 1px 3px #ffffff;
+}
+
+.icons a .text {
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    opacity: 0;
+    font-weight: 500;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+}
+
+.icons a:hover .text {
+    bottom: -35px;
+    opacity: 1;
+}
+.layer img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    padding: 3px;
+}
+#logo-insta{
+    width: 80px;
+    height: 80px;
+    transform: translate(-10px, -12px);
+}

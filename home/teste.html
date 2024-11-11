@@ -27,18 +27,24 @@
             <!-- <div class="buttons"> -->
             <!-- <button class="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p> -->
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><span></span>
-                    <p data-start="good luck!" data-text="start!" data-title="new game"></p>
-                    <img src="img/file.png" alt="">
-                    Entrar
-                </button>
-                <!-- </button> -->
-                <div class="container-login dropdown-menu">
-                    <div class="dropdown-item">
+                <div class="buttons">
+                    <div class="dropdown">
+                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                            <img src="img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                            <div class="seta"></div>
+                           <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                        </button>
+                    </div>
+                    
+                    <!-- Aba de informações que será exibida no meio da página -->
+                    <div id="info-tab" class="info-tab">
+                        <div class="info-content">
+                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                         <div class="register-section">
                             <h2>Cadastre-se</h2>
-                            <button class="register-button btn" onclick="window.location.href='form.html'">Criar Nova
+                            <button class="btn" onclick="window.location.href='form.html'"><span></span>Criar Nova
                                 Conta</button>
                             <ul>
                                 <li>✅ Rápido e fácil reservar</li>
@@ -52,18 +58,19 @@
                             <form action="#" method="post">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" required>
-
+                                
                                 <label for="senha">Senha</label>
                                 <input type="password" id="password" name="password" required>
-
+                                
                                 <a href="#" class="esqueci">Esqueci minha senha</a>
-
-                                <button type="submit" class="login-button">Entrar</button>
+                                
+                                <button type="submit" class="login-button"><span></span>Entrar</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- <a href="#"><button>Entrar</button></a> -->
             <!-- </div> -->
             <!-- </div> -->
@@ -146,11 +153,12 @@
                     <div class="icons">
                       <a href="#">
                         <div class="layer">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span class="fab fa-facebook-f"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span class="fab fa-facebook-f"></span>
+                            <img src="img/face.png" alt="">
                         </div>
                 <div class="text">
                 Facebook</div>
@@ -161,7 +169,8 @@
                           <span></span>
                           <span></span>
                           <span></span>
-                          <span class="fab fa-twitter"></span>
+                          <span class="fab fa-instagram"></span>
+                          <img id="logo-insta" src="img/logoInsta.webp" alt="">
                         </div>
                 <div class="text">
                 Instagram</div>
@@ -173,6 +182,7 @@
                           <span></span>
                           <span></span>
                           <span class="fab fa-linkedin-in"></span>
+                          <img  src="img/logoLInkedin.jpg" alt="">
                         </div>
                 <div class="text">
                 Linkedin</div>
@@ -193,6 +203,12 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="../global/global.js"></script>
+    <script>
+        function toggleInfoTab() {
+            const infoTab = document.getElementById('info-tab');
+            infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
     <script type="text/javascript">
         /**
          * Cookie configuration for track user
