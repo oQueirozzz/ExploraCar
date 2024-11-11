@@ -16,3 +16,7 @@ $(function () {
      $(this).addClass("is-active");
     });
    });
+   function toggleInfoTab() {
+    const infoTab = document.getElementById('info-tab');
+    infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
+   }

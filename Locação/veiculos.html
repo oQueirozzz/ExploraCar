@@ -18,18 +18,68 @@
             <div id="menu-toggle" onclick="toggleMenu()">
                 <i class="material-symbols-outlined ">menu</i>
             </div>
- 
-            <div class="logo"></div>
-            <div class="entrar">
-                <img src="img/file.png" alt="">
-                <a href="#"><button>Entrar</button></a>
+
+            <a href="index.html">
+                <div class="logo"></div>
+            </a>
+            <!-- <div class="entrar"> -->
+            <!-- <div class="buttons"> -->
+            <!-- <button class="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p> -->
+
+                <div class="buttons">
+                    <div class="dropdown">
+                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                            <div class="seta"></div>
+                           <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                        </button>
+                    </div>
+                    
+                    <!-- Aba de informações que será exibida no meio da página -->
+                    <div id="info-tab" class="info-tab">
+                        <div class="info-content">
+                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
+                        <div class="register-section">
+                            <h2>Cadastre-se</h2>
+                            <button class="btn" onclick="window.location.href='../form/form.html'"><span></span>Criar Nova
+                                Conta</button>
+                            <ul>
+                                <li>✅ Rápido e fácil reservar</li>
+                                <li>✅ Descontos de até 30%</li>
+                                <li>✅ Acesso a ofertas exclusivas</li>
+                                <li>✅ Ganhe cashback</li>
+                            </ul>
+                        </div>
+                        <div class="login-section">
+                            <h2>Acesse sua Conta</h2>
+                            <form action="#" method="post">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                                
+                                <label for="senha">Senha</label>
+                                <input type="password" id="password" name="password" required>
+                                
+                                <a href="#" class="esqueci">Esqueci minha senha</a>
+                                
+                                <button type="submit" class="login-button"><span></span>Entrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- <a href="#"><button>Entrar</button></a> -->
+            <!-- </div> -->
+            <!-- </div> -->
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="#"><img src="img/carroICON.jpg" alt="veiculos" id="transparent"> <span>Carros</span></a>
+                <li><a href="../Locação/veiculos.html"><img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+                        <span>Carros</span></a>
                 </li>
-                <li><a href="#"><img src="img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
+                <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
                 <li><img src="icons/beach.png" alt="Praia"> <span>Pacotes</span></li>
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
@@ -40,7 +90,7 @@
                 <hr>
             </ul>
         </nav>
- </header>
+    </header>
  <div class="button-container">
     <button class="brand-button" onclick="addCards(5, 'Toyota', this)">
         <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
@@ -663,46 +713,50 @@
         }
     </script>
      <!-- Footer -->
-     <footer class="footer">
-        <div class="footer-content">
-            <!-- Logo e slogan -->
+     <footer>
+        <div class="footer-container">
+            <!-- Logo e Slogan -->
             <div class="footer-section about">
-                <h2 class="logo">ExploraCar</h2>
+                <h2>ExploraCar</h2>
                 <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
             </div>
- 
-            <!-- Links rápidos -->
+            
+            <!-- Links Rápidos -->
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Carros Disponíveis</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Termos e Condições</a></li>
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="sobre.php">Sobre Nós</a></li>
+                    <li><a href="carros.php">Carros Disponíveis</a></li>
+                    <li><a href="contato.php">Contato</a></li>
+                    <li><a href="termos.php">Termos e Condições</a></li>
                 </ul>
             </div>
- 
+            
             <!-- Contato -->
-            <div class="footer-section contact">
+            <div class="footer-section contato">
                 <h3>Contato</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123, Cidade, Estado</p>
-                <p><i class="fas fa-phone-alt"></i> (11) 1234-5678</p>
-                <p><i class="fas fa-envelope"></i> contato@carrent.com</p>
+                <p>Rua Boa Vista, 825, São Caetano, SP</p>
+                <p>Email: contato@exploracar.com</p>
+                <p>Telefone: (11) 1234-5678</p>
             </div>
- 
-            <!-- Redes sociais -->
-            <div class="footer-section social">
+            
+            <!-- Redes Sociais -->
+            <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><img src="../global/img/face.png" width="30px" height="30px" alt="Facebook"></a>
+                <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
+                <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
         </div>
- 
-        <!-- Copyright -->
+        
         <div class="footer-bottom">
-            &copy; 2024 CarRent | Todos os direitos reservados.
+            <p>&copy; <?php echo date("Y"); ?> ExploraCar | Todos os direitos reservados.</p>
+            <ul>
+                <li><a href="termos.php">Termos de uso</a></li>
+                <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
+                <li><a href="lgpd.php">LGPD</a></li>
+            </ul>
         </div>
     </footer>
     <script src="../global/global.js"></script>
