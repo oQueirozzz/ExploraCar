@@ -4,7 +4,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ff9900c5 20%, rgb(255, 123, 0) 80%);
+    background: linear-gradient(to bottom, #ff9900a9 20%, rgb(255, 123, 0) 80%);
 }
 
 .form-container {
@@ -62,9 +62,62 @@ input[type="email"] {
     margin-top: 30px;
 }
 
-.texto-rodape{
-    text-align: center;
-    margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+
+/* Estilos da mensagem */
+#mensagem {
+    border-radius: 8px; /* Borda mais arredondada */
+    background-color: #f4f4f9;
+    color: #333;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left; /* Alinha o texto à esquerda para um layout mais agradável */
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: none;
+    transition: all 0.3s ease-in-out; /* Transição suave */
+}
+
+/* Mensagem de sucesso */
+.mensagem-sucesso {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.mensagem-sucesso:before {
+    content: '✔️'; /* Ícone de sucesso */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mensagem-sucesso p {
+    margin: 0;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.mensagem-erro:before {
+    content: '❌'; /* Ícone de erro */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Transições e animações */
+#mensagem {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+#mensagem.show {
+    opacity: 1;
+    transform: translateY(0);
 }

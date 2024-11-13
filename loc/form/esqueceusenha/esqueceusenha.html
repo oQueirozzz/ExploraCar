@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Senha</title>
     <link rel="stylesheet" href="esqueceu.css">
+
 </head>
 
 <body>
@@ -14,33 +15,49 @@
             <h2>Esqueceu sua senha?</h2>
             <div class="inp-email">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Ex: seuemail@gmail.com" required>
+                <input type="email" name="email" id="email" placeholder="Ex: seuemail@gmail.com">
             </div>
             <button type="submit" class="submit-btn">Enviar</button>
 
-            <div class="texto-rodape">
-                <p>Enviaremos um link para redefinir sua senha.</p>
-            </div>
+
+            <!-- Div para exibir mensagens -->
+            <div id="mensagem"></div>
         </form>
     </div>
 
     <script>
-        window.onload = function () {
-            const form = document.querySelector('#formCadastro');
-            const email = document.getElementById('email');
+window.onload = function () {
+    const form = document.querySelector('#formCadastro');
+    const email = document.getElementById('email');
+    const mensagemDiv = document.getElementById('mensagem');
 
-            form.onsubmit = function (event) {
-                event.preventDefault();
+    form.onsubmit = function (event) {
+        event.preventDefault();
 
-                if (!email.value) {
-                    alert('Por favor, insira seu e-mail.');
-                    return;
-                }
+        // Limpar qualquer mensagem anterior
+        mensagemDiv.style.display = 'none';
+        mensagemDiv.classList.remove('mensagem-sucesso', 'mensagem-erro');
+        mensagemDiv.classList.remove('show');
+        
+        if (!email.value) {
+            // Exibe a mensagem de erro
+            mensagemDiv.textContent = 'Por favor, insira um e-mail válido.';
+            mensagemDiv.classList.add('mensagem-erro');
+            mensagemDiv.classList.add('show');
+            mensagemDiv.style.display = 'block';
+            return;
+        }
 
-                alert('Instruções para redefinir a senha foram enviadas para o e-mail: ' + email.value);
-                form.reset();
-            };
-        };
+        // Exibe a mensagem de sucesso
+        mensagemDiv.textContent = 'Instruções para redefinir a senha foram enviadas para o e-mail: ' + email.value;
+        mensagemDiv.classList.add('mensagem-sucesso');
+        mensagemDiv.classList.add('show');
+        mensagemDiv.style.display = 'block';
+
+        form.reset();
+    };
+};
+
     </script>
 </body>
 
