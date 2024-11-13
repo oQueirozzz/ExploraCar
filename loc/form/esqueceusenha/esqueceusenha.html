@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Senha</title>
+    <link rel="stylesheet" href="esqueceu.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="formCadastro" action="">
+            <h2>Esqueceu sua senha?</h2>
+            <div class="inp-email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Ex: seuemail@gmail.com" required>
+            </div>
+            <button type="submit" class="submit-btn">Enviar</button>
+
+            <div class="texto-rodape">
+                <p>Enviaremos um link para redefinir sua senha.</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const form = document.querySelector('#formCadastro');
+            const email = document.getElementById('email');
+
+            form.onsubmit = function (event) {
+                event.preventDefault();
+
+                if (!email.value) {
+                    alert('Por favor, insira seu e-mail.');
+                    return;
+                }
+
+                alert('Instruções para redefinir a senha foram enviadas para o e-mail: ' + email.value);
+                form.reset();
+            };
+        };
+    </script>
+</body>
+
+</html>
