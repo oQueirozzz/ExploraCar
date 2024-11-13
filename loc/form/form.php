@@ -1,0 +1,175 @@
+ 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie sua Conta</title>
+    <link rel="stylesheet" href="./css/form.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Crie sua Conta</h2>
+
+        <form id="formCadastro" method="POST" action="login.php">
+            <!-- Seção: Dados pessoais -->
+            <h3>Dados pessoais</h3>
+            
+
+            <div class="form-group two-columns">
+                <div>
+                    <label for="nome">Nome do locatário <span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                </div>
+                <div>
+                    <label for="sobrenome">Sobrenome <span class="required">*</span></label>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                </div>
+            </div>
+
+            <div class="form-group two-columns">
+                <div>
+                    <label for="pais">País de Residência <span class="required">*</span></label>
+                    <select id="pais" name="pais" required>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="EUA">EUA</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="cpf">CPF <span class="required">*</span></label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                </div>
+            </div>
+
+            <div class="form-group two-columns">
+                <div>
+                    <!-- Data de Nascimento -->
+                    <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
+                    <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA" required >
+                </div>
+
+                <div>
+                    <!-- Celular -->
+                    <label for="celular">Celular <span class="required">*</span></label>
+                    <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
+                </div>
+            </div>
+
+            <!-- Seção: Dados de acesso à Rentcars -->
+            <h3>Dados de acesso à Rentcars</h3>
+
+            <div class="form-group two-columns">
+                <div>
+                    <!-- E-mail -->
+                    <label for="email">E-mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                </div>
+
+                <div>
+                    <!-- Confirmar E-mail -->
+                    <label for="confirmEmail">Confirme seu E-mail <span class="required">*</span></label>
+                    <input type="email" id="confirmEmail" name="confirmEmail" placeholder="seuemail@gmail.com" required>
+                </div>
+            </div>
+
+            <div class="form-group two-columns">
+                <div>
+                    <!-- Criar uma Senha de Acesso -->
+                    <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
+                    <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
+                </div>
+
+                <div>
+                    <!-- Confirmar Senha de Acesso -->
+                    <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
+                    <input type="password" id="confirmSenha" name="confirmSenha" placeholder="Confirme sua senha" required>
+                </div>
+            </div>
+
+            <!-- Política de Privacidade -->
+            <div class="form-footer">
+                <label>
+                    <input type="checkbox" name="politicaPrivacidade" required>
+                    Ao gerar uma reserva você concorda com a <a href="../politicas/politicas.html">Política de Privacidade</a> da
+                    ExploraCar
+                </label>
+            </div>
+
+            <!-- Ofertas e promoções -->
+            <div class="form-footer">
+                <label>
+                    <input type="checkbox" name="ofertas">
+                    Aceito receber todas as ofertas e promoções da ExploraCar
+                </label>
+            </div>
+
+            <div class="form-group two-columns">
+                <!-- Botão de envio -->
+                <input type="submit" class="submit-btn" value="Criar Conta"></input>
+
+                <!-- Notas de rodapé -->
+                <div class="footer-notes">
+                    ✔ Rápido e fácil reservar<br>
+                    ✔ Descontos de até 30%<br>
+                    ✔ Acesso a ofertas exclusivas
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const form = document.querySelector('#formCadastro'); // Corrigido para selecionar o form pelo ID
+            const password = document.getElementById('senha');
+            const confirmPassword = document.getElementById('confirmSenha');
+
+            form.onsubmit = function (event) {
+                event.preventDefault();
+
+                if (!password.value || !confirmPassword.value) {
+                    alert('Por favor, preencha os dois campos de senha.');
+                    return;
+                }
+
+                if (password.value !== confirmPassword.value) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+
+                alert('Login efetuado com sucesso!');
+                form.submit();
+                window.location.href = '../index.html';
+            };
+
+            const telefone = document.querySelector('#celular'); // Corrigido para o ID "celular"
+            if (telefone) {
+                telefone.addEventListener('keyup', () => {
+                    let valor = telefone.value.replace(/\D+/g, '').slice(0, 11);
+                    valor = valor.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+                    telefone.value = valor;
+                });
+            }
+
+            const cpf = document.querySelector('#cpf'); // Máscara para o CPF
+            if (cpf) {
+                cpf.addEventListener('input', () => {
+                    let valor = cpf.value.replace(/\D+/g, '').slice(0, 11);
+                    valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                    cpf.value = valor;
+                });
+            }
+        };
+
+        
+
+    </script>
+
+   
+</body>
+
+</html>
