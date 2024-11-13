@@ -1,0 +1,123 @@
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ff9900a9 20%, rgb(255, 123, 0) 80%);
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.534);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.404);
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    margin-top: 70px;
+    flex-direction: column;
+    background-color: #ffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.submit-btn {
+    width: 430px;
+    padding: 10px 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 24px;
+    margin-right: 18px;
+    margin-left: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #ff8800;
+}
+
+input[type="email"] {
+    width: 350px;
+    padding: 7px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.inp-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+/* Estilos da mensagem */
+#mensagem {
+    border-radius: 8px; /* Borda mais arredondada */
+    background-color: #f4f4f9;
+    color: #333;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left; /* Alinha o texto à esquerda para um layout mais agradável */
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: none;
+    transition: all 0.3s ease-in-out; /* Transição suave */
+}
+
+/* Mensagem de sucesso */
+.mensagem-sucesso {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.mensagem-sucesso:before {
+    content: '✔️'; /* Ícone de sucesso */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mensagem-sucesso p {
+    margin: 0;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.mensagem-erro:before {
+    content: '❌'; /* Ícone de erro */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Transições e animações */
+#mensagem {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+#mensagem.show {
+    opacity: 1;
+    transform: translateY(0);
+}
