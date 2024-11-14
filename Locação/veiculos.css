@@ -125,6 +125,16 @@ body {
     background-color: darkorange;
 }
 
+/* Estilos para os cards de Black Friday */ 
+.card.black-friday { 
+    background-color: rgb(41, 41, 41); 
+    color: white; 
+}
+
+.card.black-friday .card-price p {
+    color: #fff;
+}
+
 #diaria{
 font-size: 0.8em ;
 color: rgb(2, 168, 2);
@@ -161,3 +171,4 @@ color: rgb(2, 168, 2);
     opacity: 50%;
     margin-top: 25px;
 }
+
