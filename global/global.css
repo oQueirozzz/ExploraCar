@@ -488,6 +488,8 @@ footer {
     color: #FFFFFF;
     font-family: Arial, sans-serif;
     padding: 40px 0px;
+    transform: translateY(50px);
+    margin-top: 40px;
 }
 
 .footer-container {

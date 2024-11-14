@@ -15,6 +15,7 @@
     position: relative;
     width: 100%;
     max-width: 600px;
+    height: 250px;
     margin: auto;
     overflow: hidden;
 }
@@ -31,11 +32,13 @@
 .carousel-item img {
     width: 100%;
     display: block;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
 }
 
 .carousel-control {
     position: absolute;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -67,13 +70,20 @@
 .indicator {
     height: 2px;
     width: 50px;
-    background-color: #bbb; /* Cor padrão dos indicadores */
+    background-color: #ffffff; /* Cor padrão dos indicadores */
     margin: 0 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .indicator.active {
     background-color: #ff5722; /* Cor do indicador ativo */
+}
+#imagem2{
+    height: 100%;
+}
+#imagem3{
+    mix-blend-mode: color-burn;
 }
 
     </style>
@@ -85,15 +95,15 @@
                 <img src="img/banner1.webp" alt="Imagem 1">
             </div>
             <div class="carousel-item">
-                <img src="img/banner2.png" alt="Imagem 2">
+                <img id="imagem2" src="img/banner2.png" alt="Imagem 2">
             </div>
             <div class="carousel-item">
-                <img src="img/banner3.webp" alt="Imagem 3">
+                <img id="imagem3" src="img/banner3.webp" alt="Imagem 3">
             </div>on>
 
         </div>
         <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-control next" onclick="nextSlide()">&#10095;</butt
+        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
         <!-- Indicadores -->
         <div class="carousel-indicators">
             <span class="indicator" onclick="goToSlide(0)"></span>

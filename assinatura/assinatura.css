@@ -6,6 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: #000;
 }
 
 html,
@@ -20,7 +21,7 @@ body {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
   line-height: 1.2;
-  background-color: #ffffff;
+  background: linear-gradient(to right, #ffe6d0, #e27900);
   color: #000000;
 }
 
@@ -60,15 +61,17 @@ ul {
   grid-template-rows: auto auto auto 1fr;
   align-items: start;
   gap: 0em;
-  color: #000000;
-  background-color: #daa000;
+  color: #ffffff;
+  background-color: #303030;
   border: 1px solid #eceff133;
   border-radius: 15px;
 }
-.card:hover{
-    background-color: #ce7602;
+.card p{
+  color: #ffffff;
 }
-
+.card li{
+  color: #ffffff;
+}
 .card__bullets {
   line-height: 1.4;
 }
@@ -78,35 +81,31 @@ ul {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' title='check' fill='%23dddddd'%3E%3Cpath d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z' /%3E%3C/svg%3E");
   transform: translatey(0.25ch);
   margin-right: 1ch;
+  color: #ffffff;
 }
 
 .card__heading {
   font-size: 1.05em;
   font-weight: 600;
+  color: #ffffff;
 }
 
 .card__price {
   font-size: 1.75em;
   font-weight: 700;
   margin-top: 10px;
+  color: #ffffff;
 }
 
 .flow > * + * {
   margin-top: var(--flow-space, 1.25em);
 }
-
-.click {
-  display: block;
-  align-self: end;
-  margin: 1em 0 0.5em 0;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background-color: #0d0d0d;
-  padding: 0.7em;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
+.buttons a{
+  width: 100%;
+  color: #ffffff;
+}
+.buttons button{
+  width: 100%;
 }
 
 .overlay {
