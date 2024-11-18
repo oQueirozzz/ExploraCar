@@ -9,7 +9,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+    font-size: "Poppins", sans-serif;
+}
 /* Estilos para o ícone de menu de 3 barras */
 .material-symbols-outlined {
     font-variation-settings:
@@ -588,4 +590,6 @@ footer {
 .footer-bottom ul li a:hover {
     color: var(--secondary-color)
 }
-
+#correction{
+    transform: translateY(-10px);
+}

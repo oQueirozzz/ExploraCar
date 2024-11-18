@@ -1,4 +1,92 @@
- 
+<?php
+session_start();
+
+// Desativar exibição de erros para evitar mensagens de aviso no navegador
+error_reporting(0);
+ini_set('display_errors', 0);
+
+// Função para verificar se o CPF já existe no arquivo
+function verificarCpfExistente($cpf, $caminhoArquivo) {
+    if (file_exists($caminhoArquivo)) {
+        $arquivo = fopen($caminhoArquivo, "r");
+        if ($arquivo) {
+            while (($linha = fgets($arquivo)) !== false) {
+                $dados = explode(",", trim($linha));
+                if (count($dados) >= 2 && $dados[0] === $cpf) {
+                    fclose($arquivo);
+                    return true;
+                }
+            }
+            fclose($arquivo);
+        }
+    }
+    return false;
+}
+
+$erro = '';
+
+// Caminho do diretório e arquivo
+$diretorio = 'usuarios';
+$caminhoArquivo = "$diretorio/usuarios.txt";
+
+// Cria o diretório "usuarios" caso ele não exista
+if (!is_dir($diretorio)) {
+    mkdir($diretorio, 0755, true);
+}
+
+// Cria o arquivo caso ele não exista
+if (!file_exists($caminhoArquivo)) {
+    $arquivo = fopen($caminhoArquivo, "w");
+    fclose($arquivo);
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Captura os dados enviados pelo formulário
+    $nome = trim($_POST['nome']);
+    $sobrenome = trim($_POST['sobrenome']);
+    $pais = trim($_POST['pais']);
+    $cpf = trim($_POST['cpf']);
+    $dataNascimento = trim($_POST['dataNascimento']);
+    $celular = trim($_POST['celular']);
+    $email = trim($_POST['email']);
+    $confirmEmail = trim($_POST['confirmEmail']);
+    $senha = trim($_POST['senha']);
+    $confirmaSenha = trim($_POST['confirmaSenha']);
+
+    // Validação dos campos obrigatórios
+    if (
+        empty($nome) || empty($sobrenome) || empty($pais) || empty($cpf) ||
+        empty($dataNascimento) || empty($celular) || empty($email) ||
+        empty($confirmEmail) || empty($senha) || empty($confirmaSenha)
+    ) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif ($senha !== $confirmaSenha) {
+        $erro = "As senhas não correspondem.";
+    } elseif ($email !== $confirmEmail) {
+        $erro = "Os e-mails não correspondem.";
+    } elseif (verificarCpfExistente($cpf, $caminhoArquivo)) {
+        $erro = "CPF já cadastrado. Tente fazer login.";
+    } else {
+        // Formata os dados em uma linha para salvar no arquivo
+        $linha = "$cpf,$nome,$sobrenome,$email,$pais,$dataNascimento,$celular,$senha" . PHP_EOL;
+
+        // Salva os dados no arquivo "usuarios.txt"
+        if (file_put_contents($caminhoArquivo, $linha, FILE_APPEND | LOCK_EX)) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['nome'] = $nome;
+            $_SESSION['email'] = $email;
+
+            // Redireciona para a página de login
+            header("Location: login.php");
+            exit;
+        } else {
+            $erro = "Não foi possível salvar os dados. Verifique as permissões do arquivo.";
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,8 +101,13 @@
 
     <div class="form-container">
         <h2>Crie sua Conta</h2>
+       
+           <!-- Exibe erros caso existam -->
+           <?php if (!empty($erro)) : ?>
+            <div class="error"><?php echo $erro; ?></div>
+        <?php endif; ?>
 
-        <form id="formCadastro" method="POST" action="login.php">
+        <form id="formCadastro" method="POST" action="">
             <!-- Seção: Dados pessoais -->
             <h3>Dados pessoais</h3>
             
@@ -122,7 +215,7 @@
         </form>
     </div>
 
-    <script>
+    <!-- <script>
         window.onload = function () {
             const form = document.querySelector('#formCadastro'); // Corrigido para selecionar o form pelo ID
             const password = document.getElementById('senha');
@@ -167,7 +260,7 @@
 
         
 
-    </script>
+    </script> -->
 
    
 </body>

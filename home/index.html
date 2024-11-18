@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
-
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 
@@ -27,24 +29,25 @@
             <!-- <div class="buttons"> -->
             <!-- <button class="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p> -->
 
-                <div class="buttons">
-                    <div class="dropdown">
-                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
-                            <div class="seta"></div>
-                           <!-- <img id="seta" src="img/seta.png" alt=""> -->
-                        </button>
-                    </div>
-                    
-                    <!-- Aba de informações que será exibida no meio da página -->
-                    <div id="info-tab" class="info-tab">
-                        <div class="info-content">
-                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
+            <div class="buttons">
+                <div class="dropdown">
+                    <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                        <img src="../global/img/file.png" alt="">
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                        <div class="seta"></div>
+                        <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                    </button>
+                </div>
+
+                <!-- Aba de informações que será exibida no meio da página -->
+                <div id="info-tab" class="info-tab">
+                    <div class="info-content">
+                        <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                         <div class="register-section">
                             <h2>Cadastre-se</h2>
-                            <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar Nova
+                            <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar
+                                Nova
                                 Conta</button>
                             <ul>
                                 <li>✅ Rápido e fácil reservar</li>
@@ -58,30 +61,32 @@
                             <form action="#" method="post">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" required>
-                                
+
                                 <label for="senha">Senha</label>
                                 <input type="password" id="password" name="password" required>
-                                
+
                                 <a href="#" class="esqueci">Esqueci minha senha</a>
-                                
+
                                 <button type="submit" class="login-button"><span></span>Entrar</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- <a href="#"><button>Entrar</button></a> -->
             <!-- </div> -->
             <!-- </div> -->
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="../Locação/veiculos.html"><img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+                <li><a href="../Locação/veiculos.html"><img src="../global/img/carroICON.jpg" alt="veiculos"
+                            id="transparent">
                         <span>Carros</span></a>
                 </li>
                 <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <li><a href="../assinatura/assinatura.html"><img src="../global/img/assinatura.png" alt="Pacotes"> <span>Pacotes de assinaturas</span></a></li>
+                <li><a href="../assinatura/assinatura.html"><img src="../global/img/assinatura.png" alt="Pacotes">
+                        <span>Pacotes de assinaturas</span></a></li>
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
                 <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
@@ -126,7 +131,7 @@
                     <div class="carousel-item">
                         <img src="img/banner3.webp" alt="Imagem 3">
                     </div>on>
-        
+
                 </div>
                 <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
                 <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
@@ -143,73 +148,190 @@
             <div class="text-content">
                 <h1>ExploraCar, os melhores preços estão aqui</h1>
                 <p>Atendimento de qualidade e a melhor experiência em aluguel de carros com a ExploraCar</p>
-            </div> 
+            </div>
             <div class="buttons">
-                    <a href="../Locação/veiculos.html">
-                        <button>
-                            <span></span>
-                            Quero alugar agora!
-                        </button>
-                    </a>
-                </div>
+                <a id="button-home" href="../Locação/veiculos.html">
+                    <button>
+                        <span></span>
+                        Quero alugar agora!
+                    </button>
+                </a>
+            </div>
         </section>
 
         <aside>
             <a href="../Locação/">
                 <div class="propaganda">
-                
+
                 </div>
             </a>
         </aside>
+
+        <div class="tittle-touch">
+            <h1>Aluguel de carros por todo o Brasil</h1>
+            <p>confira todas nossas locadoras espalhada por mais de 15 estados do Brasil</p>
+        </div>
+        <div class="container-touch">
+            <div class="options">
+                <div class="option active" style="--optionBackground:url(img/cristo-redentor-rio.jpg);">
+                    <div class="content-container">
+                        <div class="content-img">
+                            <ul>
+                                <li>São Paulo</li>
+                                <li>Rio de Janeiro</li>
+                                <li>Espirito Santo</li>
+                                <li>Minas Gerais</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="label">
+                        <div class="info">
+                            <div class="main">Sudeste</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(img/Destinos-de-Inverno-Sul-do-Brasil.jpg);">
+                    <div class="content-container">
+                        <div class="content-img">
+                            <ul>
+                                <li>Paraná</li>
+                                <li>Santa Catarina</li>
+                                <li>Rio Grande do Sul</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="label">
+                        <div class="info">
+                            <div class="main">Sul</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(img/nordeeeetee.jpg);">
+                    <div class="content-container">
+                        <div class="content-img">
+                            <ul>
+                                <li>Pernambuco</li>
+                                <li>Paraíba</li>
+                                <li>Rio Grande do Norte</li>
+                                <li>Alagoas</li>
+                                <li>Ceará</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="label">
+                        <div class="info">
+                            <div class="main">Nordeste</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(img/norteee.webp);">
+                    <div class="content-container">
+                        <div class="content-img">
+                            <ul>
+                                <li>Piauí</li>
+                                <li>Amazonas</li>
+                                <li>Roraima</li>
+                                <li>Amapá</li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="label">
+                        <div class="info">
+                            <div class="main">Norte</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(img/centroOeste.jpg);">
+                    <div class="content-container">
+                        <div class="content-img">
+                            <ul>
+                                <li>Mato Grosso</li>
+                                <li>Goiás</li>
+                                <li>Mato Grosso do Sul</li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="label">
+                        <div class="info">
+                            <div class="main">Centro-Oeste</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://codepen.io/z-/pen/a8e37caf2a04602ea5815e5acedab458.js"></script>
+        <script src="teste05.js"></script>
+        <script>
+            $(".option").click(function () {
+                $(".option").removeClass("active");
+                $(this).addClass("active");
+
+            });
+
+        </script>
     </main>
 
     <footer>
-    <div class="footer-container">
-        <!-- Logo e Slogan -->
-        <div class="footer-section about">
-            <h2>ExploraCar</h2>
-            <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
+        <div class="footer-container">
+            <!-- Logo e Slogan -->
+            <div class="footer-section about">
+                <h2>ExploraCar</h2>
+                <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
+            </div>
+
+            <!-- Links Rápidos -->
+            <div class="footer-section links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="sobre.php">Sobre Nós</a></li>
+                    <li><a href="carros.php">Carros Disponíveis</a></li>
+                    <li><a href="contato.php">Contato</a></li>
+                    <li><a href="termos.php">Termos e Condições</a></li>
+                </ul>
+            </div>
+
+            <!-- Contato -->
+            <div class="footer-section contato">
+                <h3>Contato</h3>
+                <p>Rua Boa Vista, 825, São Caetano, SP</p>
+                <p>Email: contato@exploracar.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+            </div>
+
+            <!-- Redes Sociais -->
+            <div class="footer-section redes-sociais">
+                <h3>Nos Siga</h3>
+                <a id="correction" href="#"><img src="../global/img/face.png" width="30px" height="30px"
+                        alt="Facebook"></a>
+                <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
+                <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
+            </div>
         </div>
-        
-        <!-- Links Rápidos -->
-        <div class="footer-section links">
-            <h3>Links Rápidos</h3>
+
+        <div class="footer-bottom">
+            <p>&copy;
+                ExploraCar | Todos os direitos reservados.</p>
             <ul>
-                <li><a href="index.php">Início</a></li>
-                <li><a href="sobre.php">Sobre Nós</a></li>
-                <li><a href="carros.php">Carros Disponíveis</a></li>
-                <li><a href="contato.php">Contato</a></li>
-                <li><a href="termos.php">Termos e Condições</a></li>
+                <li><a href="termos.php">Termos de uso</a></li>
+                <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
+                <li><a href="lgpd.php">LGPD</a></li>
             </ul>
         </div>
-        
-        <!-- Contato -->
-        <div class="footer-section contato">
-            <h3>Contato</h3>
-            <p>Rua Boa Vista, 825, São Caetano, SP</p>
-            <p>Email: contato@exploracar.com</p>
-            <p>Telefone: (11) 1234-5678</p>
-        </div>
-        
-        <!-- Redes Sociais -->
-        <div class="footer-section redes-sociais">
-            <h3>Nos Siga</h3>
-            <a href="#"><img src="../global/img/face.png" width="30px" height="30px" alt="Facebook"></a>
-            <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
-            <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy;
-             ExploraCar | Todos os direitos reservados.</p>
-        <ul>
-            <li><a href="termos.php">Termos de uso</a></li>
-            <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
-            <li><a href="lgpd.php">LGPD</a></li>
-        </ul>
-    </div>
-</footer>
+    </footer>
 
 
 
@@ -223,44 +345,44 @@
             infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-   <script>
-    let currentIndex = 0;
+    <script>
+        let currentIndex = 0;
 
-function showSlide(index) {
-const slides = document.querySelectorAll('.carousel-item');
-const indicators = document.querySelectorAll('.indicator');
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
 
-// Corrige o índice se estiver fora dos limites
-if (index >= slides.length) currentIndex = 0;
-if (index < 0) currentIndex = slides.length - 1;
+            // Corrige o índice se estiver fora dos limites
+            if (index >= slides.length) currentIndex = 0;
+            if (index < 0) currentIndex = slides.length - 1;
 
-const offset = -currentIndex * 100;
-document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
 
-// Remover a classe 'active' de todos os indicadores e aplicar apenas ao atual
-indicators.forEach((indicator, i) => {
-    if (i === currentIndex) {
-        indicator.classList.add('active');
-    } else {
-        indicator.classList.remove('active');
-    }
-});
-}
+            // Remover a classe 'active' de todos os indicadores e aplicar apenas ao atual
+            indicators.forEach((indicator, i) => {
+                if (i === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
 
-function nextSlide() {
-currentIndex++;
-showSlide(currentIndex);
-}
+        function nextSlide() {
+            currentIndex++;
+            showSlide(currentIndex);
+        }
 
-function prevSlide() {
-currentIndex--;
-showSlide(currentIndex);
-}
+        function prevSlide() {
+            currentIndex--;
+            showSlide(currentIndex);
+        }
 
-function goToSlide(index) {
-currentIndex = index;
-showSlide(currentIndex);
-}
+        function goToSlide(index) {
+            currentIndex = index;
+            showSlide(currentIndex);
+        }
 
     </script>
 </body>
