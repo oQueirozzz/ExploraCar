@@ -1,3 +1,11 @@
+body {
+    background-image: url(../img/viagem-de-carro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    height: 91.9vh;
+}
+
 
 /* Define o estilo básico para o container do formulário */
 .form-container {
@@ -10,12 +18,14 @@
     /* Adiciona uma borda ao redor do container */
     border: 1px solid rgba(0, 0, 0, 0.534);
     /* Define cantos arredondados para o container */
-    border-radius: 5px;
+    border-radius: 10px;
     /* Define a fonte padrão para o formulário */
     font-family: Arial, sans-serif;
     align-items: center;
     margin-top: 70px;
     flex-direction: column; /* Organiza os elementos verticalmente */
+    backdrop-filter: blur(10px);
+
 }
 
 /* Define o estilo para os títulos das seções */
@@ -105,7 +115,7 @@ select {
     /* Define o preenchimento interno do botão */
     padding: 10px;
     /* Define a cor de fundo do botão */
-    background-color: #28a745;
+    background-color: #ff9900;
     /* Define a cor do texto do botão */
     color: #fff;
     /* Remove qualquer borda ao redor do botão */
@@ -127,7 +137,7 @@ select {
 /* Define o estilo para o botão de envio ao passar o mouse */
 .submit-btn:hover {
     /* Altera a cor de fundo para um tom mais escuro ao passar o mouse */
-    background-color: #218838;
+    background-color: #dd7906;
 }
 
 /* Define o estilo para o texto e caixas de seleção na área do rodapé */
@@ -146,7 +156,7 @@ select {
 /* Define o estilo para as notas no rodapé */
 .footer-notes {
     /* Define a cor do texto como verde */
-    color: rgb(0, 131, 0);
+    color: #dd7906;
     /* Define uma margem superior para espaçamento */
     margin-top: 10px;
     margin-left: 30px;

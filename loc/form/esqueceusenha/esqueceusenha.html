@@ -26,39 +26,45 @@
     </div>
 
     <script>
-window.onload = function () {
-    const form = document.querySelector('#formCadastro');
-    const email = document.getElementById('email');
-    const mensagemDiv = document.getElementById('mensagem');
-
-    form.onsubmit = function (event) {
-        event.preventDefault();
-
-        // Limpar qualquer mensagem anterior
-        mensagemDiv.style.display = 'none';
-        mensagemDiv.classList.remove('mensagem-sucesso', 'mensagem-erro');
-        mensagemDiv.classList.remove('show');
+        window.onload = function () {
+            const form = document.querySelector('#formCadastro');
+            const email = document.getElementById('email');
+            const mensagemDiv = document.getElementById('mensagem');
         
-        if (!email.value) {
-            // Exibe a mensagem de erro
-            mensagemDiv.textContent = 'Por favor, insira um e-mail válido.';
-            mensagemDiv.classList.add('mensagem-erro');
-            mensagemDiv.classList.add('show');
-            mensagemDiv.style.display = 'block';
-            return;
-        }
-
-        // Exibe a mensagem de sucesso
-        mensagemDiv.textContent = 'Instruções para redefinir a senha foram enviadas para o e-mail: ' + email.value;
-        mensagemDiv.classList.add('mensagem-sucesso');
-        mensagemDiv.classList.add('show');
-        mensagemDiv.style.display = 'block';
-
-        form.reset();
-    };
-};
-
-    </script>
+            form.onsubmit = function (event) {
+                event.preventDefault();
+        
+                // Limpar qualquer mensagem anterior
+                mensagemDiv.style.display = 'none';
+                mensagemDiv.classList.remove('mensagem-sucesso', 'mensagem-erro');
+                mensagemDiv.classList.remove('show');
+        
+                if (!email.value) {
+                    // Exibe a mensagem de erro
+                    mensagemDiv.textContent = 'Por favor, insira um e-mail válido.';
+                    mensagemDiv.classList.add('mensagem-erro');
+                    mensagemDiv.classList.add('show');
+                    mensagemDiv.style.display = 'block';
+                    return;
+                }
+        
+                // Exibe a mensagem de sucesso
+                mensagemDiv.textContent = 'Instruções para redefinir a senha foram enviadas para o e-mail: ' + email.value;
+                mensagemDiv.classList.add('mensagem-sucesso');
+                mensagemDiv.classList.add('show');
+                mensagemDiv.style.display = 'block';
+        
+                // Abrir uma nova página em uma nova aba
+                setTimeout(function () {
+                    window.open('novasenha.html', '_parent');
+                }, 1000); // Espera 1 segundos antes de abrir a nova página
+        
+                form.reset();
+            };
+        };
+        </script>
+        
+        
 </body>
 
 </html>
