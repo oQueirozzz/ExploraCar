@@ -92,64 +92,65 @@
         </nav>
     </header>
  <div class="button-container">
-    <button class="brand-button" onclick="addCards(5, 'Toyota', this)">
+    <button class="brand-button" onclick="addCards(10, 'Toyota', this)">
         <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
         Toyota
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Ford', this)">
+    <button class="brand-button" onclick="addCards(10, 'Ford', this)">
         <img src="./img/img Logos/Ford Logo.png" alt="Ford Logo">
         Ford
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Chevrolet', this)">
+    <button class="brand-button" onclick="addCards(10, 'Chevrolet', this)">
         <img src="./img/img Logos/Chevrolet Logo.png" alt="Chevrolet Logo">
         Chevrolet
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Volkswagen', this)">
+    <button class="brand-button" onclick="addCards(10, 'Volkswagen', this)">
         <img src="./img/img Logos/Volkswagen Logo.png" alt="Volkswagen Logo">
         Volkswagen
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Fiat', this)">
+    <button class="brand-button" onclick="addCards(10, 'Fiat', this)">
         <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
         Fiat
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Honda', this)">
+    <button class="brand-button" onclick="addCards(10, 'Honda', this)">
         <img src="./img/img Logos/Honda Logo.png" alt="Honda Logo">
         Honda
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Hyundai', this)">
+    <button class="brand-button" onclick="addCards(10, 'Hyundai', this)">
         <img src="./img/img Logos/Hyundai Logo.png" alt="Hyundai Logo">
         Hyundai
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Renault', this)">
+    <button class="brand-button" onclick="addCards(10, 'Renault', this)">
         <img src="./img/img Logos/Renault Logo.png" alt="Renault Logo">
         Renault
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Nissan', this)">
+    <button class="brand-button" onclick="addCards(10, 'Nissan', this)">
         <img src="./img/img Logos/Nissan Logo.png" alt="Nissan Logo">
         Nissan
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Peugeot', this)">
+    <button class="brand-button" onclick="addCards(10, 'Peugeot', this)">
         <img src="./img/img Logos/Peugeot Logo.png" alt="Peugeot Logo">
         Peugeot
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Citroën', this)">
+    <button class="brand-button" onclick="addCards(10, 'Citroën', this)">
         <img src="./img/img Logos/Citroën Logo.png" alt="Citroën Logo">
         Citroën
     </button>
-    <button class="brand-button" onclick="addCards(5, 'Audi', this)">
-        <img src="./img/img Logos/Audi Logo.png" alt="Audi Logo">
-        Audi
+    <button class="brand-button" onclick="addCards(10, 'BlackFriday', this)">
+        <img src="./img/img Logos/Black Friday Logo.png" alt="Audi Logo">
+        Black Friday
     </button>
 </div>
-        <div id="card-container"></div>
+        <div id="card-container">
 
+        </div>
     <script>
         // Esse aqui é um array que monta os cards dos carros com titulo, imagem, descrição e preço...
         const vehicles = {
             'Toyota': [{
                     title: 'Toyota Corolla',
                     img: './img/img Carros/img Toyota/Corolla.png',
-                    desc: 'O Toyota Corolla é um sedã compacto conhecido por sua confiabilidade e eficiência. Com design elegante e interior confortável, oferece tecnologia avançada e recursos de segurança. É uma escolha popular pela durabilidade e baixo custo de manutenção.',
+                    desc: 'O Toyota Corolla é um sedã renomado pela confiabilidade, conforto e eficiência. Com design moderno e opções de motorização híbrida e a gasolina, oferece uma condução suave, baixo consumo de combustível e uma cabine bem equipada. Ideal para quem busca um carro familiar ou de uso diário com segurança e sofisticação.',
                     descontPrice: 'de R$ 1.750,00 por ',
                     price: 'R$ 1.050,00',
                     diaria: 'R$ '
@@ -157,7 +158,7 @@
                 {
                     title: 'Toyota Yaris Hatch',
                     img: './img/img Carros/img Toyota/Yaris Hatch.png',
-                    desc: 'O Toyota Yaris Hatch é um hatchback compacto com design moderno e interior confortável. Oferece tecnologia avançada e recursos de segurança, além de ser eficiente em combustível e ágil na condução, ideal para o uso urbano.',
+                    desc: 'Compacto e ágil, o Toyota Yaris Hatch combina um design esportivo com um motor eficiente. Oferece ótimo desempenho urbano, boa conectividade e um interior funcional. É a escolha perfeita para quem precisa de um carro prático e econômico para o dia a dia.',
                     descontPrice: 'de R$ 1.260,00 por ',
                     price: 'R$ 840,00',
                     diaria: 'R$ '
@@ -165,7 +166,7 @@
                 {
                     title: 'Toyota Yaris Sedã',
                     img: './img/img Carros/img Toyota/Yaris Sedã.png',
-                    desc: 'O Toyota Yaris Sedã é um sedã compacto com design elegante e interior espaçoso. Oferece tecnologia avançada e recursos de segurança, além de ser eficiente em combustível, ideal para o uso diário.',
+                    desc: 'O Yaris Sedã traz o conforto e a eficiência do hatch em um formato mais espaçoso. Com bom desempenho e baixo consumo de combustível, é uma opção acessível e confortável para quem busca um sedã compacto com tecnologias de segurança e conectividade.',
                     descontPrice: 'de R$ 1.260,00 por ',
                     price: 'R$ 840,00 ',
                     diaria: ''
@@ -173,7 +174,7 @@
                 {
                     title: 'Toyota Corolla Cross',
                     img: './img/img Carros/img Toyota/Corolla Cross.png',
-                    desc: 'O Toyota Corolla Cross é um SUV compacto que une a confiabilidade do Corolla à versatilidade de um crossover. Com design moderno e interior espaçoso, oferece tecnologia avançada e conforto, ideal para quem busca um veículo prático e estiloso.',
+                    desc: 'O Corolla Cross é o SUV da linha Corolla, oferecendo design sofisticado, motorização híbrida e a gasolina, além de um interior espaçoso e moderno. Com tração integral disponível, é ideal para quem busca um SUV versátil e eficiente para uso urbano e aventuras leves.',
                     descontPrice: 'de R$ 2.100,00 por ',
                     price: 'R$ 1.400,00 ',
                     diaria: 'R$ '
@@ -181,11 +182,51 @@
                 {
                     title: 'Toyota SW4',
                     img: './img/img Carros/img Toyota/SW4.png',
-                    desc: 'O Toyota SW4 é uma SUV robusta e versátil, ideal para uso urbano e off-road. Com design imponente e interior espaçoso, oferece tecnologia e segurança, sendo conhecida pela durabilidade e desempenho em terrenos desafiadores. É uma excelente opção para famílias e aventureiros.',
+                    desc: 'O Toyota SW4 é um SUV robusto, com tração 4x4 e excelente desempenho off-road. Baseado na Hilux, é perfeito para quem precisa de um veículo para terrenos difíceis, com conforto, espaço e recursos de tecnologia avançada para toda a família.',
                     descontPrice: 'de R$ 4.900,00 por ',
                     price: 'R$ 2.800,00 ',
                     diaria: 'R$ ' 
-                }
+                },
+                {
+                    title: 'Toyota Hilux',
+                    img: './img/img Carros/img Toyota/Toyota Hilux.png',
+                    desc: 'A Toyota Hilux é uma picape robusta e versátil, conhecida pela sua durabilidade e desempenho em terrenos difíceis. Ideal para trabalho pesado e aventuras off-road, oferece conforto na cabine e recursos tecnológicos modernos.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Toyota Camry',
+                    img: './img/img Carros/img Toyota/Toyota Camry.png',
+                    desc: 'O Toyota Camry é um sedã médio de luxo, com design elegante e interior confortável. Famoso pela eficiência de combustível, oferece uma condução suave e recursos avançados, sendo ideal para quem busca um carro refinado e econômico.',
+                    descontPrice: 'de R$ 2.200,00 por ',
+                    price: 'R$ 1.600,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Toyota Prius',
+                    img: './img/img Carros/img Toyota/Toyota Prius.png',
+                    desc: 'O Toyota Prius é um híbrido eficiente e sustentável, com design aerodinâmico e motor que combina gasolina e eletricidade. Oferece excelente economia de combustível e baixo impacto ambiental, ideal para quem busca um veículo ecológico e econômico.',
+                    descontPrice: 'de R$ 1.600,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Toyota RAV4',
+                    img: './img/img Carros/img Toyota/Toyota RAV4.png',
+                    desc: 'O Toyota RAV4 é um SUV compacto, versátil e confortável, com bom desempenho tanto na cidade quanto em viagens. Disponível em versão híbrida, é econômico e oferece recursos de segurança e conectividade para o dia a dia.',
+                    descontPrice: 'de R$ 2.000,00 por ',
+                    price: 'R$ 1.400,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Toyota Land Cruiser',
+                    img: './img/img Carros/img Toyota/Toyota Land Cruiser.png',
+                    desc: 'O Toyota Land Cruiser é um SUV robusto e poderoso, projetado para enfrentar os terrenos mais difíceis. Com interior luxuoso e excelente desempenho off-road, é perfeito para aventuras e expedições exigentes.',
+                    descontPrice: 'de R$ 4.500,00 por ',
+                    price: 'R$ 3.000,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Ford': [{
                     title: 'Ford Bronco Sport',
@@ -226,11 +267,51 @@
                     descontPrice: 'de R$ 1.050,00 por ',
                     price: 'R$ 630,00 ',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Ford Focus',
+                    img: './img/img Carros/img Ford/Ford Focus.png',
+                    desc: 'O Ford Focus é um hatchback compacto, ágil e econômico. Com boa performance e tecnologia avançada, é ideal para o uso diário, oferecendo também versões mais esportivas para quem busca uma condução mais dinâmica.',
+                    descontPrice: 'de R$ 1.500,00 por ',
+                    price: 'R$ 1.100,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Ford Mustang',
+                    img: './img/img Carros/img Ford/Ford Mustang.png',
+                    desc: 'O Ford Mustang é um clássico dos carros esportivos, com design imponente e motores potentes. Oferece uma experiência de direção emocionante, combinando estilo e performance para quem busca adrenalina e um visual marcante.',
+                    descontPrice: 'de R$ 4.000,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Ford Ranger',
+                    img: './img/img Carros/img Ford/Ford Ranger.png',
+                    desc: 'A Ford Ranger é uma picape robusta e versátil, com ótima capacidade de carga e desempenho off-road. Confortável e bem equipada, é ideal tanto para trabalho pesado quanto para o uso diário e aventuras.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Ford Edge',
+                    img: './img/img Carros/img Ford/Ford Edge.png',
+                    desc: 'O Ford Edge é um SUV médio, com design sofisticado e boa performance. Oferece conforto, espaço e tecnologias avançadas, sendo uma opção equilibrada para quem busca um SUV moderno e confortável.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Ford Explorer',
+                    img: './img/img Carros/img Ford/Ford Explorer.png',
+                    desc: 'O Ford Explorer é um SUV grande, ideal para famílias ou viagens longas. Com interior espaçoso, motorização potente e tração integral, é perfeito tanto para a cidade quanto para terrenos desafiadores.',
+                    descontPrice: 'de R$ 3.500,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Chevrolet': [{
                     title: 'Chevrolet Onix',
-                    img: './img/img Carros/img Chevrolet/Onix.avif',
+                    img: './img/img Carros/img Chevrolet/Onix.png',
                     desc: 'O Chevrolet Onix é um hatchback compacto popular no Brasil, conhecido por seu design moderno, eficiência de combustível e tecnologia avançada. Com um interior espaçoso e várias opções de versões, ele atende diferentes perfis de consumidores, unindo economia e conforto.',
                     descontPrice: 'de R$ 1.260,00 por ',
                     price: 'R$ 700,00 ',
@@ -238,7 +319,7 @@
                 },
                 {
                     title: 'Chevrolet Tracker Lt',
-                    img: './img/img Carros/img Chevrolet/TrackerLt.avif',
+                    img: './img/img Carros/img Chevrolet/TrackerLt.png',
                     desc: 'O Chevrolet Tracker LT é um SUV compacto com design moderno e interior espaçoso. Destaca-se pela tecnologia avançada, como tela touchscreen e conectividade, além de oferecer boa segurança. É uma opção prática e econômica para o dia a dia.',
                     descontPrice: 'de R$ 1.960,00 por ',
                     price: 'R$ 1.260,00 ',
@@ -246,7 +327,7 @@
                 },
                 {
                     title: 'Chevrolet Tracker Premier',
-                    img: './img/img Carros/img Chevrolet/TrackerPremier.avif',
+                    img: './img/img Carros/img Chevrolet/TrackerPremier.png',
                     desc: 'O Chevrolet Tracker Premier é a versão topo de linha do SUV compacto, com design sofisticado e interior bem equipado. Destaca-se pela tecnologia avançada e um motor eficiente, proporcionando uma condução ágil e estilosa.',
                     descontPrice: 'de R$ 2.100,00 por ',
                     price: 'R$ 1.400,00',
@@ -254,7 +335,7 @@
                 },
                 {
                     title: 'Chevrolet Montana Premier',
-                    img: './img/img Carros/img Chevrolet/MontanaPremier.avif',
+                    img: './img/img Carros/img Chevrolet/MontanaPremier.png',
                     desc: 'O Chevrolet Montana Premier é uma picape compacta que une robustez e versatilidade. Com design moderno e interior espaçoso, conta com tecnologia avançada e recursos de segurança. Seu motor eficiente oferece desempenho ágil, ideal para uso urbano e atividades mais exigentes.',
                     descontPrice: 'de R$ 1.750,00 por ',
                     price: 'R$ 1.050,00 ',
@@ -262,12 +343,52 @@
                 },
                 {
                     title: 'Chevrolet Onix Plus Premier',
-                    img: './img/img Carros/img Chevrolet/OnixPlusPremier.avif',
+                    img: './img/img Carros/img Chevrolet/OnixPlusPremier.png',
                     desc: 'O Chevrolet Onix Plus Premier é a versão topo de linha do sedã compacto, com design moderno e interior espaçoso. Oferece tecnologia avançada e recursos de segurança, além de um motor eficiente para uma condução confortável e prática.',
                     descontPrice: 'de R$ 1.400,00 por ',
                     price: 'R$  840,00 ',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Chevrolet Prisma',
+                    img: './img/img Carros/img Chevrolet/Chevrolet Prisma.png',
+                    desc: 'O Chevrolet Prisma é um sedã compacto com ótimo custo-benefício, destacando-se pelo conforto, bom desempenho e economia de combustível. Seu design sóbrio e interior espaçoso tornam-no uma opção popular para famílias pequenas e motoristas urbanos.',
+                    descontPrice: 'de R$ 1.300,00 por ',
+                    price: 'R$ 900,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Chevrolet Spin',
+                    img: './img/img Carros/img Chevrolet/Chevrolet Spin.png',
+                    desc: 'O Chevrolet Spin é um monovolume espaçoso, ideal para famílias maiores. Com capacidade para até sete passageiros, oferece conforto, versatilidade e boa relação custo-benefício, tornando-o uma excelente opção para quem precisa de mais espaço sem abrir mão de economia.',
+                    descontPrice: 'de R$ 1.800,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Chevrolet Equinox',
+                    img: './img/img Carros/img Chevrolet/Chevrolet Equinox.png',
+                    desc: 'O Chevrolet Equinox é um SUV de porte médio, que combina sofisticação, conforto e desempenho. Equipado com tecnologias avançadas e motorizações potentes, é ideal para quem busca um veículo para longas viagens ou aventuras, com muito espaço e recursos de segurança.',
+                    descontPrice: 'de R$ 3.000,00 por ',
+                    price: 'R$ 2.000,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Chevrolet Camaro',
+                    img: './img/img Carros/img Chevrolet/Chevrolet Camaro.png',
+                    desc: 'O Chevrolet Camaro é um ícone dos carros esportivos, com design agressivo e desempenho excepcional. Disponível em versões conversível e cupê, o Camaro oferece uma experiência de direção emocionante, com motorizações potentes e visual impactante.',
+                    descontPrice: 'de R$ 5.000,00 por ',
+                    price: 'R$ 3.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Chevrolet S10',
+                    img: './img/img Carros/img Chevrolet/Chevrolet S10.png',
+                    desc: 'A Chevrolet S10 é uma picape robusta, com boa capacidade de carga e desempenho off-road. Ideal para quem precisa de um veículo de trabalho ou aventura, a S10 também oferece conforto e tecnologias avançadas no interior, tornando-a uma opção versátil.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Volkswagen': [{
                     title: 'Volkswagen Gol',
@@ -308,11 +429,51 @@
                     descontPrice: 'de R$ 1.540,00 por ',
                     price: 'R$  1.050,00 ',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Volkswagen Saveiro',
+                    img: './img/img Carros/img Volkswagen/Volkswagen Saveiro.png',
+                    desc: 'A Volkswagen Saveiro é uma picape compacta, ideal para quem precisa de um veículo de carga leve e versátil. Com design moderno e boa capacidade de carga, a Saveiro é perfeita para uso urbano e pequenas tarefas profissionais.',
+                    descontPrice: 'de R$ 1.700,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Volkswagen Tiguan',
+                    img: './img/img Carros/img Volkswagen/Volkswagen Tiguan.png',
+                    desc: 'O Volkswagen Tiguan é um SUV médio de alta performance, com design sofisticado e motorizações potentes. Ideal para quem busca um SUV confortável e capaz, o Tiguan oferece ótima dirigibilidade e um interior espaçoso com recursos tecnológicos de ponta.',
+                    descontPrice: 'de R$ 3.000,00 por ',
+                    price: 'R$ 2.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Volkswagen Passat',
+                    img: './img/img Carros/img Volkswagen/Volkswagen Passat.png',
+                    desc: 'O Passat é um sedã grande e luxuoso, oferecendo um alto nível de conforto, tecnologias avançadas e desempenho superior. Com um design sóbrio e interior refinado, o Passat é perfeito para quem busca um carro sofisticado, ideal para longas viagens ou uso executivo.',
+                    descontPrice: 'de R$ 3.500,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Volkswagen Nivus',
+                    img: './img/img Carros/img Volkswagen/Volkswagen Nivus.png',
+                    desc: 'O Volkswagen Nivus é um SUV compacto com design inovador e estilo esportivo. Com motorizações eficientes e uma boa lista de equipamentos, é uma opção para quem busca um carro moderno, com boa conectividade e eficiência de combustível.',
+                    descontPrice: 'de R$ 1.900,00 por ',
+                    price: 'R$ 1.400,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Volkswagen Arteon',
+                    img: './img/img Carros/img Volkswagen/Volkswagen Arteon.png',
+                    desc: 'O Arteon é um sedã de luxo com design impressionante e performance esportiva. Com motorizações potentes e uma cabine luxuosa, o Arteon oferece uma experiência de condução refinada, sendo uma excelente opção para quem busca elegância e desempenho em um único pacote.',
+                    descontPrice: 'de R$ 4.500,00 por ',
+                    price: 'R$ 3.000,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Fiat': [{
                     title: 'Fiat Uno Way',
-                    img: './img/img Carros/img Fiat/Fiat-Uno.png',
+                    img: './img/img Carros/img Fiat/Fiat Uno.png',
                     desc: 'O Fiat Uno Way é a versão aventureira do Uno, com suspensão elevada e design robusto. Compacto, econômico e confortável, é ideal para quem busca versatilidade e baixo custo de manutenção.',
                     descontPrice: 'de R$ 700,00 por',
                     price: 'R$ 500,00',
@@ -335,7 +496,7 @@
                     diaria: 'R$ '
                 },
                 {
-                    title: 'Fia Toro',
+                    title: 'Fiat Toro',
                     img: './img/img Carros/img Fiat/Fiat Toro.png',
                     desc: 'A Fiat Toro é uma picape média robusta e moderna, ideal para trabalho e lazer. Com motorização 1.8 e 2.0, oferece conforto, tecnologia e capacidade para diversos terrenos.',
                     descontPrice: 'de R$ 1.500,00 por ',
@@ -349,7 +510,47 @@
                     descontPrice: 'de R$ 900,00 por ',
                     price: 'R$  650,00 ',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Fiat Cronos',
+                    img: './img/img Carros/img Fiat/Fiat Cronos.png',
+                    desc: 'O Fiat Cronos é um sedã compacto que se destaca pelo seu espaço interno, conforto e bom custo-benefício. Com design elegante e uma condução suave, é ideal para quem busca um carro familiar e econômico.',
+                    descontPrice: 'de R$ 1.800,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Fiat Mobi',
+                    img: './img/img Carros/img Fiat/Fiat Mobi.png',
+                    desc: 'O Fiat Mobi é um carro compacto e acessível, perfeito para quem precisa de um veículo ágil e econômico para o tráfego urbano. Com design moderno e baixo custo de manutenção, é uma excelente opção para quem busca praticidade.',
+                    descontPrice: 'de R$ 1.000,00 por ',
+                    price: 'R$ 700,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Fiat 500',
+                    img: './img/img Carros/img Fiat/Fiat 500.png',
+                    desc: 'O Fiat 500 é um hatchback pequeno, charmoso e cheio de estilo. Ideal para quem procura um carro compacto e moderno, com um toque de sofisticação e design icônico, é perfeito para a cidade e para quem busca um veículo diferenciado.',
+                    descontPrice: 'de R$ 2.000,00 por ',
+                    price: 'R$ 1.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Fiat Ducato',
+                    img: './img/img Carros/img Fiat/Fiat Ducato.png',
+                    desc: 'O Fiat Ducato é uma van de grande porte, ideal para transporte de mercadorias e passageiros. Com excelente capacidade de carga e robustez, é um dos modelos preferidos para empresas que necessitam de um veículo utilitário de grande porte.',
+                    descontPrice: 'de R$ 3.500,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Fiat Panda',
+                    img: './img/img Carros/img Fiat/Fiat Panda.png',
+                    desc: 'O Fiat Panda é um compacto que oferece grande praticidade, baixo consumo e um design simples e funcional. Ideal para quem precisa de um carro econômico e robusto, o Panda é perfeito para quem busca um veículo sem complicação.',
+                    descontPrice: 'de R$ 1.200,00 por ',
+                    price: 'R$ 800,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Honda': [{
                     title: 'Honda Civic',
@@ -390,7 +591,47 @@
                     descontPrice: 'de R$ 2.200,00 por',
                     price: 'R$ 1.600,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Honda Accord',
+                    img: './img/img Carros/img Honda/Honda Accord.png',
+                    desc: 'O Honda Accord é um sedã grande, de luxo, que combina desempenho, conforto e elegância. Com motorizações potentes e um interior sofisticado, o Accord é perfeito para quem busca um carro executivo com um alto nível de sofisticação e tecnologia.',
+                    descontPrice: 'de R$ 3.500,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Honda WR-V',
+                    img: './img/img Carros/img Honda/Honda WR-V.png',
+                    desc: 'O Honda WR-V é um crossover compacto, baseado no Fit, que oferece mais altura do solo e um design mais robusto. Ideal para quem quer um carro com a versatilidade de um SUV, mas com a economia de um hatchback.',
+                    descontPrice: 'de R$ 2.000,00 por ',
+                    price: 'R$ 1.400,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Honda Pilot',
+                    img: './img/img Carros/img Honda/Honda Pilot.png',
+                    desc: 'O Honda Pilot é um SUV grande, com capacidade para até 8 passageiros, projetado para quem precisa de muito espaço e conforto. Equipado com motorização potente e tecnologias de segurança, é ideal para viagens longas e para famílias grandes.',
+                    descontPrice: 'de R$ 4.000,00 por ',
+                    price: 'R$ 3.000,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Honda Civic Type R',
+                    img: './img/img Carros/img Honda/Honda Civic Type R.png',
+                    desc: 'O Civic Type R é a versão esportiva e de alto desempenho do Honda Civic. Com motor turboalimentado e suspensão esportiva, o Type R é voltado para entusiastas de carros e oferece uma experiência de condução extremamente dinâmica e empolgante.',
+                    descontPrice: 'de R$ 5.500,00 por ',
+                    price: 'R$ 4.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Honda HR-V Hybrid',
+                    img: './img/img Carros/img Honda/Honda HR-V Hybrid.png',
+                    desc: 'O Honda HR-V Hybrid é a versão híbrida do popular SUV HR-V. Combinando a praticidade do HR-V com a economia de combustível e a eficiência de um motor híbrido, é ideal para quem busca um SUV com baixo impacto ambiental e custos operacionais reduzidos.',
+                    descontPrice: 'de R$ 3.000,00 por ',
+                    price: 'R$ 2.200,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Hyundai': [{
                     title: 'Hyundai HB20',
@@ -431,7 +672,47 @@
                     descontPrice: 'de R$ 1.400,00 por',
                     price: 'R$ 1.100,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Hyundai Kona',
+                    img: './img/img Carros/img Hyundai/Hyundai Kona.png',
+                    desc: 'O Hyundai Kona é um SUV compacto com estilo inovador e uma experiência de condução dinâmica. Disponível com opções de motorização híbrida e a gasolina, é uma excelente escolha para quem busca um SUV moderno, econômico e versátil.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.700,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Hyundai i30',
+                    img: './img/img Carros/img Hyundai/Hyundai i30.png',
+                    desc: 'O Hyundai i30 é um hatchback de médio porte com bom desempenho e interior espaçoso. Com recursos de conectividade e segurança, é ideal para quem procura um carro versátil, confortável e com ótimo custo-benefício no segmento de hatches.',
+                    descontPrice: 'de R$ 1.800,00 por ',
+                    price: 'R$ 1.300,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Hyundai Veloster',
+                    img: './img/img Carros/img Hyundai/Hyundai Veloster.png',
+                    desc: 'O Hyundai Veloster é um hatchback esportivo com design único e estilo marcante. Seu motor potente e características de desempenho fazem dele uma opção empolgante para quem busca um carro com apelo esportivo e originalidade.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Hyundai Azera',
+                    img: './img/img Carros/img Hyundai/Hyundai Azera.png',
+                    desc: 'O Hyundai Azera é um sedã grande de luxo, com design sofisticado, excelente acabamento e recursos avançados de conforto. Ideal para quem busca um carro executivo, com performance robusta e tecnologias de assistência ao motorista.',
+                    descontPrice: 'de R$ 3.500,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Hyundai Nexo',
+                    img: './img/img Carros/img Hyundai/Hyundai Nexo.png',
+                    desc: 'O Hyundai Nexo é um SUV inovador e o modelo mais avançado da marca no Brasil, sendo movido a hidrogênio. O Nexo oferece zero emissão de gases poluentes, alto desempenho e uma excelente autonomia, sendo uma opção para quem busca um veículo eco-friendly e futurista.',
+                    descontPrice: 'de R$ 5.000,00 por ',
+                    price: 'R$ 3.500,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
             'Renault': [{
                     title: 'Renault Kwid',
@@ -472,7 +753,47 @@
                     descontPrice: 'de R$ 800,00 por',
                     price: 'R$ 600,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Renault Clio',
+                    img: './img/img Carros/img Renault/Renault Clio.png',
+                    desc: 'Compacto e ágil, o Clio é um dos carros mais vendidos da Renault, oferecendo um excelente equilíbrio entre economia de combustível, design moderno e tecnologias de segurança. É ideal para quem busca um carro para o uso diário em ambientes urbanos.',
+                    descontPrice: 'de R$ 800,00 por',
+                    price: 'R$ 650,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Renault Talisman',
+                    img: './img/img Carros/img Renault/Renault Talisman.png',
+                    desc: 'O Talisman é um sedan de luxo da Renault, que oferece um nível superior de conforto e tecnologias avançadas. Seu design refinado, interior espaçoso e motorizações eficientes fazem dele uma opção sofisticada para quem valoriza conforto e desempenho.',
+                    descontPrice: 'de R$ 2.000,00 por',
+                    price: 'R$ 1.600,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Renault Koleos',
+                    img: './img/img Carros/img Renault/Renault Koleos.png',
+                    desc: 'O Koleos é um SUV médio que se destaca pelo design sofisticado, amplo espaço interno e recursos tecnológicos de última geração. É uma opção para quem busca um carro mais imponente e confortável, com bom desempenho em viagens e uso diário.',
+                    descontPrice: 'de R$ 1.800,00 por',
+                    price: 'R$ 1.500,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Renault Fluence',
+                    img: './img/img Carros/img Renault/Renault Fluence.png',
+                    desc: 'O Fluence é um sedan médio que oferece um excelente nível de conforto, desempenho e tecnologias de conectividade. Seu design elegante e motor eficiente fazem dele uma boa opção para quem precisa de um carro familiar, mas com toque de sofisticação.',
+                    descontPrice: 'de R$ 1.400,00 por',
+                    price: 'R$ 1.100,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Renault Zoe',
+                    img: './img/img Carros/img Renault/Renault Zoe.png',
+                    desc: 'O Zoe é um carro 100% elétrico, pequeno e ideal para o ambiente urbano. Com design futurista e autonomia de bateria interessante para o uso diário, é uma das opções mais acessíveis no segmento de carros elétricos, principalmente na Europa.',
+                    descontPrice: 'de R$ 1.600,00 por',
+                    price: 'R$ 1.200,00',
+                    diaria: 'R$ '
+                },
             ],
             'Nissan': [{
                     title: 'Nissan Versa',
@@ -513,7 +834,47 @@
                     descontPrice: 'de R$ 2.000,00 por',
                     price: 'R$ 1.500,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Nissan March',
+                    img: './img/img Carros/img Nissan/Nissan March.png',
+                    desc: 'O Nissan March é um hatch compacto, ideal para quem busca um carro econômico e ágil para o dia a dia. Com design moderno e ótimo consumo de combustível, é perfeito para quem precisa de praticidade para se locomover nas cidades.',
+                    descontPrice: 'de R$ 800,00 por',
+                    price: 'R$ 600,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Nissan Pathfinder',
+                    img: './img/img Carros/img Nissan/Nissan Pathfinder.png',
+                    desc: 'O Nissan Pathfinder é um SUV grande, robusto e confortável, perfeito para viagens em família ou aventura. Com 7 lugares, amplo espaço interno e tecnologia avançada, oferece uma condução estável e segura em diversos tipos de terreno.',
+                    descontPrice: 'de R$ 2.500,00 por',
+                    price: 'R$ 2.000,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Nissan X-Trail',
+                    img: './img/img Carros/img Nissan/Nissan X-Trail.png',
+                    desc: 'O Nissan X-Trail é um SUV médio, com ótimo desempenho tanto na cidade quanto em estradas mais desafiadoras. Oferece um interior confortável, recursos de segurança de ponta e um excelente custo-benefício para quem busca um veículo versátil.',
+                    descontPrice: 'de R$ 1.800,00 por',
+                    price: 'R$ 1.400,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Nissan Altima',
+                    img: './img/img Carros/img Nissan/Nissan Altima.png',
+                    desc: 'O Nissan Altima é um sedã de luxo com design sofisticado, tecnologia avançada e um desempenho excepcional. Ideal para quem busca conforto, estilo e uma condução suave em longas distâncias, é uma excelente opção para executivos e viagens.',
+                    descontPrice: 'de R$ 2.300,00 por',
+                    price: 'R$ 1.800,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Nissan Skyline GT-R',
+                    img: './img/img Carros/img Nissan/Nissan Skyline GT-R.png',
+                    desc: 'O Nissan Skyline GT-R é um ícone dos carros esportivos, oferecendo desempenho de ponta, potência impressionante e uma experiência de direção única. Com um design agressivo e recursos de alta performance, é a escolha ideal para os amantes de velocidade e exclusividade.',
+                    descontPrice: 'de R$ 6.000,00 por',
+                    price: 'R$ 5.000,00',
+                    diaria: 'R$ '
+                },
             ],
             'Peugeot': [{
                     title: 'Peugeot 208',
@@ -554,7 +915,47 @@
                     descontPrice: 'de R$ 1.500,00 por',
                     price: 'R$ 1.100,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Peugeot 5008',
+                    img: './img/img Carros/img Peugeot/Peugeot 5008.png',
+                    desc: 'O Peugeot 5008 é um SUV de 7 lugares, projetado para famílias grandes. Oferece conforto, segurança e tecnologia, com um design moderno e versatilidade para longas viagens ou passeios com a família.',
+                    descontPrice: 'de R$ 4.000,00 por',
+                    price: 'R$ 2.800,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Peugeot 308',
+                    img: './img/img Carros/img Peugeot/Peugeot 308.png',
+                    desc: 'O Peugeot 308 é um hatch médio que impressiona pelo equilíbrio entre desempenho e conforto. Com um interior refinado e recursos tecnológicos, é uma excelente opção para quem busca um carro com bom custo-benefício e uma condução prazerosa.',
+                    descontPrice: 'de R$ 1.800,00 por',
+                    price: 'R$ 1.200,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Peugeot 508',
+                    img: './img/img Carros/img Peugeot/Peugeot 508.png',
+                    desc: 'O Peugeot 508 é um sedã premium com design refinado, tecnologia de ponta e desempenho superior. Oferece um interior luxuoso, ideal para quem procura um veículo de alto nível, com conforto e recursos avançados.',
+                    descontPrice: 'de R$ 3.800,00 por',
+                    price: 'R$ 2.500,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Peugeot RCZ',
+                    img: './img/img Carros/img Peugeot/Peugeot RCZ.png',
+                    desc: 'O Peugeot RCZ é um coupé esportivo que chama a atenção pelo seu design arrojado e performance empolgante. Com motores potentes e uma experiência de direção envolvente, é a escolha para os entusiastas de carros esportivos.',
+                    descontPrice: 'de R$ 4.500,00 por',
+                    price: 'R$ 3.000,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Peugeot 106',
+                    img: './img/img Carros/img Peugeot/Peugeot 106.png',
+                    desc: 'O Peugeot 106 é um hatch compacto clássico, conhecido pela sua economia e facilidade de manobra, perfeito para quem busca um carro simples, ágil e acessível para o dia a dia nas cidades.',
+                    descontPrice: 'de R$ 900,00 por',
+                    price: 'R$ 600,00',
+                    diaria: 'R$ '
+                },
             ],
             'Citroën': [{
                     title: 'Citroën C3',
@@ -595,50 +996,132 @@
                     descontPrice: 'de R$ 2.000,00 por',
                     price: 'R$ 1.400,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Citroën C3 Aircross',
+                    img: './img/img Carros/img Citroen/Citroën C3 Aircross.png',
+                    desc: 'SUV compacto, com design robusto e uma proposta mais aventureira. Destaca-se pelo bom aproveitamento de espaço interno e pela sua versatilidade, com características que o tornam ideal para famílias pequenas ou como carro urbano.',
+                    descontPrice: 'de R$ 1.600,00 por ',
+                    price: 'R$ 1.200,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Citroën Jumpy',
+                    img: './img/img Carros/img Citroen/Citroën Jumpy.png',
+                    desc: 'Furgão de médio porte, focado no uso comercial, com boa capacidade de carga e versatilidade. A Jumpy é bastante apreciada por empresas que necessitam de um veículo robusto para transporte de mercadorias e passageiros.',
+                    descontPrice: 'de R$ 2.000,00 por ',
+                    price: 'R$ 1.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Citroën DS3',
+                    img: './img/img Carros/img Citroen/Citroën DS3.png',
+                    desc: 'Hatch compacto esportivo da linha DS, que é uma sub-marca premium da Citroën. Com design sofisticado e uma condução dinâmica, o DS3 se destaca pela personalização e pela experiência de direção mais esportiva.',
+                    descontPrice: 'de R$ 2.000,00 por ',
+                    price: 'R$ 1.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Citroën DS7 Crossback',
+                    img: './img/img Carros/img Citroen/Citroën DS7 Crossback.png',
+                    desc: 'SUV de luxo que combina conforto, tecnologia e um visual elegante. Parte da linha DS, é voltado para quem busca um veículo com um toque premium, oferecendo recursos avançados como o sistema de condução autônoma e uma experiência de interior refinada.',
+                    descontPrice: 'de R$ 3.000,00 por ',
+                    price: 'R$ 2.500,00 ',
+                    diaria: 'R$ ' 
+                },
+                {
+                    title: 'Citroën Grand C4 Picasso',
+                    img: './img/img Carros/img Citroen/Citroën Grand C4 Picasso.png',
+                    desc: 'Monovolume de sete lugares que oferece muito espaço e conforto, ideal para famílias grandes. Com um design elegante e recursos como a tecnologia Grip Control para melhorar a tração, é um carro focado na praticidade e conforto em viagens longas.',
+                    descontPrice: 'de R$ 2.500,00 por ',
+                    price: 'R$ 1.800,00 ',
+                    diaria: 'R$ ' 
+                },
             ],
-            'Audi': [{
-                    title: 'Audi A3',
-                    img: './img/img Carros/img Audi/Audi A3.png',
-                    desc: 'O Audi A3 é um carro compacto e elegante, disponível em versões hatch e sedã. Oferece desempenho ágil, design sofisticado e tecnologias avançadas, sendo ideal para quem busca um veículo de luxo acessível e com excelente custo-benefício.',
-                    descontPrice: 'de R$ 1.600,00 por',
-                    price: 'R$ 1.200,00',
+            'BlackFriday': [{
+                    title: 'Audi A8',
+                    img: './img/img Carros/img Black Friday/Audi A8.png',
+                    desc: 'O Audi A8 é um sedã de luxo de grande porte, que oferece um alto nível de conforto, desempenho e tecnologia. Equipado com recursos de última geração e uma motorização potente, é perfeito para quem deseja um carro de luxo com foco em sofisticação.',
+                    descontPrice: 'de R$ 4.200,00 por',
+                    price: 'R$ 2.400,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: 'Audi A4',
-                    img: './img/img Carros/img Audi/Audi A4.png',
-                    desc: 'O Audi A4 é um sedã médio de luxo, conhecido pelo conforto e desempenho excepcionais. Com um design refinado e recursos de conectividade de ponta, ele oferece uma experiência de condução suave e segura, sendo uma excelente opção para quem valoriza sofisticação e inovação.',
-                    descontPrice: 'de R$ 2.000,00 por',
-                    price: 'R$ 1.500,00',
+                    title: 'Volvo C40 Recharge',
+                    img: './img/img Carros/img Black Friday/Volvo C40 Recharge.png',
+                    desc: 'O C40 Recharge é um SUV elétrico de luxo, com design arrojado e excelente autonomia. Oferece uma condução silenciosa e sustentável, sem abrir mão da performance e sofisticação.',
+                    descontPrice: 'de R$ 4.200,00 por',
+                    price: 'R$ 2.400,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: 'Audi Q5',
-                    img: './img/img Carros/img Audi/Audi Q5.png',
-                    desc: 'O Audi Q5 é um SUV de luxo, que combina alto desempenho, conforto e tecnologias avançadas. Com um interior espaçoso e recursos modernos de segurança, é perfeito para quem busca um veículo versátil para o dia a dia e viagens longas.',
-                    descontPrice: 'de R$ 2.800,00 por',
-                    price: 'R$ 2.000,00',
+                    title: 'Audi RS7',
+                    img: './img/img Carros/img Black Friday/Audi RS7.png',
+                    desc: 'O Audi RS7 é um sedã esportivo de alto desempenho, com motor potente e design agressivo. Oferece uma experiência de direção emocionante, com tecnologias avançadas e um visual imbatível.',
+                    descontPrice: 'de R$ 5.500,00 por',
+                    price: 'R$ 3.050,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: 'Audi Q3',
-                    img: './img/img Carros/img Audi/Audi Q3.webp',
-                    desc: 'O Audi Q3 é um SUV compacto premium, que oferece design sofisticado, bom desempenho e uma experiência de condução confortável. Ideal para quem procura um veículo de luxo mais compacto, com excelente manobrabilidade e estilo.',
-                    descontPrice: 'de R$ 2.500,00 por',
-                    price: 'R$ 1.800,00',
+                    title: 'Lexus LC',
+                    img: './img/img Carros/img Black Friday/Lexus LC.png',
+                    desc: 'O Lexus LC é um coupé de luxo, com motor potente e design impressionante. Seu desempenho e estética sofisticada fazem dele uma escolha ideal para quem deseja uma experiência de condução emocionante e estilosa.',
+                    descontPrice: 'de R$ 5.500,00 por',
+                    price: 'R$ 3.050,00',
                     diaria: 'R$ '
                 },
                 {
-                    title: 'Audi Q7',
-                    img: './img/img Carros/img Audi/Audi Q7.png',
-                    desc: 'O Audi Q7 é um SUV grande de luxo, com capacidade para até sete ocupantes. Oferece amplo espaço, desempenho robusto e recursos tecnológicos de última geração, sendo uma escolha perfeita para famílias que buscam conforto, estilo e potência em um único veículo.',
-                    descontPrice: 'de R$ 3.500,00 por',
-                    price: 'R$ 2.500,00',
+                    title: 'BMW i8',
+                    img: './img/img Carros/img Black Friday/BMW i8.png',
+                    desc: 'O BMW i8 é um supercarro híbrido de luxo, com design futurista e desempenho impressionante. Com sua motorização híbrida e tecnologias inovadoras, é uma escolha ideal para quem busca um carro esportivo de alto desempenho e com foco em sustentabilidade.',
+                    descontPrice: 'de R$ 5.500,00 por',
+                    price: 'R$ 3.050,00',
                     diaria: 'R$ '
-                }
+                },
+                {
+                    title: 'Mercedes-Benz AMG GT',
+                    img: './img/img Carros/img Black Friday/Mercedes-Benz AMG GT.png',
+                    desc: 'O AMG GT é um supercarro esportivo da Mercedes-Benz, projetado para proporcionar uma experiência de condução única. Com motor potente e design arrojado, é a escolha perfeita para quem busca performance e emoção ao volante.',
+                    descontPrice: 'de R$ 7.000,00 por',
+                    price: 'R$ 3.800,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'BMW X6',
+                    img: './img/img Carros/img Black Friday/BMW X6.png',
+                    desc: 'O BMW X6 é um SUV de luxo de design arrojado e performance excepcional. Com seu perfil esportivo e potente motorização, oferece uma experiência de condução emocionante, sem abrir mão do conforto e da tecnologia.',
+                    descontPrice: 'de R$ 3.600,00 por',
+                    price: 'R$ 2.100,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Volvo V90',
+                    img: './img/img Carros/img Black Friday/Volvo V90.png',
+                    desc: 'O V90 é um station wagon de luxo de grande porte, com excelente capacidade de carga e um interior luxuoso. Oferece desempenho refinado, tecnologia de ponta e um design elegante e prático.',
+                    descontPrice: 'de R$ 3.800,00 por',
+                    price: 'R$ 2.200,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Lexus LX',
+                    img: './img/img Carros/img Black Friday/Lexus LX.png',
+                    desc: 'O Lexus LX é um SUV de luxo de grande porte, com capacidade para enfrentar qualquer terreno sem abrir mão do conforto. Com motorização potente e um interior luxuoso, é perfeito para quem busca um veículo imponente e versátil.',
+                    descontPrice: 'de R$ 5.500,00 por',
+                    price: 'R$ 3.050,00',
+                    diaria: 'R$ '
+                },
+                {
+                    title: 'Mercedes-Benz S-Class',
+                    img: './img/img Carros/img Black Friday/Mercedes-Benz S-Class.png',
+                    desc: 'O S-Class é o ápice do luxo da Mercedes-Benz, oferecendo uma experiência de condução impecável. Com motorização potente, tecnologia de ponta e um interior de altíssimo nível, é um dos sedãs mais luxuosos do mundo.',
+                    descontPrice: 'de R$ 5.000,00 por',
+                    price: 'R$ 2.800,00',
+                    diaria: 'R$ '
+                },
+                
             ]
         };
+
 
         // Atualiza a variável diaria com base no price
         for (const brand in vehicles) {
@@ -654,11 +1137,25 @@
         let cardsGenerated = {
             'Toyota': false,
             'Ford': false,
-            'Chevrolet': false
+            'Chevrolet': false,
+            'Volkswagen': false,
+            'Fiat': false,
+            'Honda': false,
+            'Hyundai': false,
+            'Renault': false,
+            'Nisan': false,
+            'Peugeot': false,
+            'Citroën': false,
+            'BlackFriday': false,
+            
         };
 
         function addCards(number, type, button) {
             removeAllCards(); // Remove todos os cards antes de adicionar novos
+
+            // Esconde a seção none-wallet
+            document.querySelector('.none-wallet').style.display = 'none';
+
             if (!cardsGenerated[type]) {
                 const cardContainer = document.getElementById('card-container');
                 for (let i = 0; i < number; i++) {
@@ -666,6 +1163,12 @@
                     const newCard = document.createElement('div');
                     newCard.className = 'card';
                     newCard.dataset.type = type;
+
+                    // Adiciona a classe black-friday se for do tipo BlackFriday
+                    if (type === 'BlackFriday') {
+                        newCard.classList.add('black-friday');
+                    }
+
                     newCard.innerHTML = `
                         <img src="${vehicle.img}" alt="Imagem do carro ${type} ${i+1}">
                         <div class="card-info">
@@ -676,7 +1179,7 @@
                             <p id="desconto">${vehicle.descontPrice}</p>
                             <p>${vehicle.price}</p>
                             <p id="diaria">${vehicle.diaria} por dia</p>
-                            <button>Reservar</button>
+                            <button onclick="reserveVehicle(${i}, '${type}')">Reservar</button>
                         </div>
                     `;
                     cardContainer.appendChild(newCard);
@@ -684,6 +1187,12 @@
                 cardsGenerated[type] = true;
             }
             setActiveButton(button); // Define o botão como ativo
+        }
+
+        function reserveVehicle(index, type) {
+            const vehicle = vehicles[type][index];
+            localStorage.setItem('selectedVehicle', JSON.stringify(vehicle));
+            window.location.href = 'detalhes.html';
         }
 
         function removeAllCards() {
@@ -712,6 +1221,12 @@
             });
         }
     </script>
+    <section class="none-wallet">
+        <h3>Nenhuma marca selecionada</h3>
+        <p>Por favor selecione um dos botões acima para continuar.</p>
+        <img src="./img/CarroPretoBranco.png">
+    </section>
+
      <!-- Footer -->
      <footer>
         <div class="footer-container">

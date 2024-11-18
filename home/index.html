@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Lateral Expansível</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet"
@@ -46,7 +44,7 @@
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                         <div class="register-section">
                             <h2>Cadastre-se</h2>
-                            <button class="btn" onclick="window.location.href='../form/form.html'"><span></span>Criar Nova
+                            <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar Nova
                                 Conta</button>
                             <ul>
                                 <li>✅ Rápido e fácil reservar</li>
@@ -83,7 +81,7 @@
                         <span>Carros</span></a>
                 </li>
                 <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <li><img src="icons/beach.png" alt="Praia"> <span>Pacotes</span></li>
+                <li><a href="../assinatura/assinatura.html"><img src="../global/img/assinatura.png" alt="Pacotes"> <span>Pacotes de assinaturas</span></a></li>
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
                 <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
@@ -96,7 +94,7 @@
     </header>
     <main>
         <section>
-            <div class="banner">
+            <!-- <div class="banner">
                 <img src="img/DALL·E 2024-11-01 14.59.27 - A realistic, low-saturation banner image for a car rental website, featuring a modern, sleek car on a scenic open road with mountains and clear skies .webp"
                     alt="">
                 <p id="p1">Pesquise. Compare. Alugue.</p>
@@ -116,8 +114,53 @@
                     </div>
                 </div>
 
+            </div> -->
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/banner1 (1).webp" alt="Imagem 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/ban4.png" alt="Imagem 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/banner3.webp" alt="Imagem 3">
+                    </div>on>
+        
+                </div>
+                <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="goToSlide(0)"></span>
+                    <span class="indicator" onclick="goToSlide(1)"></span>
+                    <span class="indicator" onclick="goToSlide(2)"></span>
+                </div>
             </div>
         </section>
+
+        <section>
+            <div class="text-content">
+                <h1>ExploraCar, os melhores preços estão aqui</h1>
+                <p>Atendimento de qualidade e a melhor experiência em aluguel de carros com a ExploraCar</p>
+            </div> 
+            <div class="buttons">
+                    <a href="../Locação/veiculos.html">
+                        <button>
+                            <span></span>
+                            Quero alugar agora!
+                        </button>
+                    </a>
+                </div>
+        </section>
+
+        <aside>
+            <a href="../Locação/">
+                <div class="propaganda">
+                
+                </div>
+            </a>
+        </aside>
     </main>
 
     <footer>
@@ -158,7 +201,8 @@
     </div>
     
     <div class="footer-bottom">
-        <p>&copy; <?php echo date("Y"); ?> ExploraCar | Todos os direitos reservados.</p>
+        <p>&copy;
+             ExploraCar | Todos os direitos reservados.</p>
         <ul>
             <li><a href="termos.php">Termos de uso</a></li>
             <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
@@ -179,15 +223,45 @@
             infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-    <script type="text/javascript">
-        /**
-         * Cookie configuration for track user
-         */
+   <script>
+    let currentIndex = 0;
 
-        var base_url = '/pt-br/';
-        var cdn_endpoint = '//static.rentcars.com/';
-        var isMobile = false;
-        var curDate = '2024-11-05 16:34:31';
+function showSlide(index) {
+const slides = document.querySelectorAll('.carousel-item');
+const indicators = document.querySelectorAll('.indicator');
+
+// Corrige o índice se estiver fora dos limites
+if (index >= slides.length) currentIndex = 0;
+if (index < 0) currentIndex = slides.length - 1;
+
+const offset = -currentIndex * 100;
+document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+
+// Remover a classe 'active' de todos os indicadores e aplicar apenas ao atual
+indicators.forEach((indicator, i) => {
+    if (i === currentIndex) {
+        indicator.classList.add('active');
+    } else {
+        indicator.classList.remove('active');
+    }
+});
+}
+
+function nextSlide() {
+currentIndex++;
+showSlide(currentIndex);
+}
+
+function prevSlide() {
+currentIndex--;
+showSlide(currentIndex);
+}
+
+function goToSlide(index) {
+currentIndex = index;
+showSlide(currentIndex);
+}
+
     </script>
 </body>
 
