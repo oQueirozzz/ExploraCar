@@ -1,0 +1,136 @@
+body {
+    font-family: "Poppins", sans-serif ;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.faq {
+    margin: 20px 0;
+}
+.faq-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    max-width: 100%; /* Garante que o contêiner respeite o espaço */
+    word-wrap: break-word; /* Garante a quebra de palavras longas */
+    overflow-wrap: break-word; /* Garante compatibilidade em navegadores antigos */
+}
+
+.faq-item h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: black;
+    display: flex;
+    justify-content: space-between; /* Distribui o texto e o ícone */
+    align-items: center;
+    line-height: 1.5; /* Define um bom espaçamento entre linhas */
+    white-space: normal; /* Permite quebras de linha dentro do texto */
+    word-break: break-word; /* Quebra palavras muito longas */
+    overflow-wrap: anywhere; /* Força a quebra de palavras muito grandes */
+}
+
+.faq-item p {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+    margin-right: 40px;
+}
+.icon {
+    font-size: 1em;
+    color: black;
+    margin-left: 10px;
+}
+
+.miniContainer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.question-container h2{
+    text-align: center;
+    color: black;
+    font-family: "Poppins", sans-serif ;
+}
+
+.question-container label {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+textarea {
+    font-family: "Poppins", sans-serif ;    
+    height: 250px;   
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: none;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: orange;
+}
+
+.submit-button {
+    background-color: #28a745;
+
+    color: #ffffff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centralizar o iframe */
+iframe {
+    display: block; /* Faz o iframe se comportar como um bloco */
+    margin: 20px auto; /* Centraliza horizontalmente e adiciona espaçamento vertical */
+    border: 3px solid #007BFF; /* Adiciona uma borda azul */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave para destacar */
+    width: 80%; /* Responsividade - ocupa 80% da largura do container */
+    max-width: 800px; /* Limita a largura máxima */
+    height: 450px; /* Altura fixa */
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    iframe {
+        width: 100%;
+        height: 300px;
+    }
+}
