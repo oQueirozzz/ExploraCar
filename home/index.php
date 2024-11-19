@@ -1,3 +1,59 @@
+<?php
+session_start();
+ 
+// Desativar exibição de erros
+error_reporting(0);
+ini_set('display_errors', 0);
+ 
+$erro = '';
+$mensagem = '';
+$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+ 
+// Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
+if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
+    $mostrarFormulario = 'esqueceuSenha';
+}
+ 
+// Função para verificar login
+function verificarLogin($email, $senha) {
+    $arquivo = fopen("../loc/form/usuarios/usuarios.txt", "r");
+    if ($handle = fopen($arquivo, 'r')) {
+        while (($linha = fgets($handle)) !== false) {
+            list($emailArquivo, $senhaArquivo, $nome) = explode(",", trim($linha));
+            $dados = explode(",", trim($linha));
+            if (count($dados) >= 2 && $dados[0] === $email && $dados[1] === $senha) {
+                fclose($arquivo);
+                // Adiciona o nome do usuário à sessão
+                $_SESSION['nome'] = $dados[2];
+                return true;
+            }
+        }
+        fclose($arquivo);
+    }
+    return false;
+}
+ 
+// Processa o login
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
+ 
+    if (empty($email) || empty($senha)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif (verificarLogin($email, $senha)) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['email'] = $email;
+        header("Location: index.php");
+        exit;
+    } else {
+        $erro = "Email ou senha incorretos.";
+    }
+}
+
+echo $mensagem;
+echo $erro;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,9 +96,11 @@
                     </button>
                 </div>
 
+               
                 <!-- Aba de informações que será exibida no meio da página -->
                 <div id="info-tab" class="info-tab">
                     <div class="info-content">
+                    <?php if ($mostrarFormulario === 'login'): ?>
                         <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                         <div class="register-section">
                             <h2>Cadastre-se</h2>
@@ -58,18 +116,20 @@
                         </div>
                         <div class="login-section">
                             <h2>Acesse sua Conta</h2>
-                            <form action="#" method="post">
+                            <form action="" method="post">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email" value="login"  required>
 
                                 <label for="senha">Senha</label>
                                 <input type="password" id="password" name="password" required>
 
-                                <a href="#" class="esqueci">Esqueci minha senha</a>
+                                <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
 
                                 <button type="submit" class="login-button"><span></span>Entrar</button>
                             </form>
+                            <?php if ($erro): ?><p class="erro"><?php echo $erro; ?></p><?php endif; ?>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -160,7 +220,7 @@
         </section>
 
         <aside>
-            <a href="../Locação/">
+            <a href="../Locação/veiculos.html">
                 <div class="propaganda">
 
                 </div>
@@ -169,7 +229,7 @@
 
         <div class="tittle-touch">
             <h1>Aluguel de carros por todo o Brasil</h1>
-            <p>confira todas nossas locadoras espalhada por mais de 15 estados do Brasil</p>
+            <p>confira todas as regiões do Brasil que possuem nossas locadoras de carros</p>
         </div>
         <div class="container-touch">
             <div class="options">

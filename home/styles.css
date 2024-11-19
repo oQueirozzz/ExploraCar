@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif ;
 }
 
 
@@ -159,7 +159,7 @@ body {
     line-height: 1.8;
 }
 .buttons a{
-    width: 12%;
+    width: 230px;
     margin-bottom: 80px;
 }
 .buttons button{
@@ -280,7 +280,7 @@ body #user-button .u-icons a[href="https://twitter.com/zed_dash"]:before {
     position: absolute;
     top: -1.5rem;
     left: 50%;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     white-space: pre;
     transform: translateX(-50%);
     opacity: 0;
@@ -420,7 +420,6 @@ body #user-button:focus-within .u-icons {
     align-items: center;
     overflow: hidden;
     margin-top: 60px;
-    font-family: "Roboto", sans-serif;
     transition: 0.25s;
 }
 
@@ -652,7 +651,7 @@ body .options .option .label .info .sub {
     color: white;
     font-size: 1.3rem;
     display: grid;
-    gap: 2.8rem;
+    gap: 1.7rem;
     padding: 20px;
     
 }
@@ -661,6 +660,6 @@ body .options .option .label .info .sub {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 57%;
+    width: 61%;
     margin-top: 100px;
 }

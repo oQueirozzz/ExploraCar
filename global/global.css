@@ -399,7 +399,8 @@ input[type="password"] {
 }
 
 .esqueci {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    width: 100px;
     color: #007bff;
     text-decoration: none;
     margin-bottom: 20px;
@@ -488,7 +489,7 @@ input[type="password"] {
 footer {
     background-color: var(--secondary-color);
     color: #FFFFFF;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     padding: 40px 0px;
     transform: translateY(50px);
     margin-top: 40px;

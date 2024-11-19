@@ -49,21 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dataNascimento = trim($_POST['dataNascimento']);
     $celular = trim($_POST['celular']);
     $email = trim($_POST['email']);
-    $confirmEmail = trim($_POST['confirmEmail']);
     $senha = trim($_POST['senha']);
     $confirmaSenha = trim($_POST['confirmaSenha']);
 
     // Validação dos campos obrigatórios
     if (
         empty($nome) || empty($sobrenome) || empty($pais) || empty($cpf) ||
-        empty($dataNascimento) || empty($celular) || empty($email) ||
-        empty($confirmEmail) || empty($senha) || empty($confirmaSenha)
+        empty($dataNascimento) || empty($celular) || empty($email) || empty($senha) || empty($confirmaSenha)
     ) {
         $erro = "Por favor, preencha todos os campos.";
     } elseif ($senha !== $confirmaSenha) {
         $erro = "As senhas não correspondem.";
-    } elseif ($email !== $confirmEmail) {
-        $erro = "Os e-mails não correspondem.";
     } elseif (verificarCpfExistente($cpf, $caminhoArquivo)) {
         $erro = "CPF já cadastrado. Tente fazer login.";
     } else {
@@ -77,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['email'] = $email;
 
             // Redireciona para a página de login
-            header("Location: login.php");
+            header("Location: ../home/index.php");
             exit;
         } else {
             $erro = "Não foi possível salvar os dados. Verifique as permissões do arquivo.";
@@ -143,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div>
                     <!-- Data de Nascimento -->
                     <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
-                    <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA" required >
+                    <input type="text" id="birthdate" name="dataNascimento" placeholder="DD/MM/AAAA" required >
                 </div>
 
                 <div>
@@ -154,7 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
             <!-- Seção: Dados de acesso à Rentcars -->
-            <h3>Dados de acesso à Rentcars</h3>
 
             <div class="form-group two-columns">
                 <div>
@@ -162,25 +157,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="email">E-mail <span class="required">*</span></label>
                     <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
                 </div>
-
-                <div>
-                    <!-- Confirmar E-mail -->
-                    <label for="confirmEmail">Confirme seu E-mail <span class="required">*</span></label>
-                    <input type="email" id="confirmEmail" name="confirmEmail" placeholder="seuemail@gmail.com" required>
-                </div>
-            </div>
-
-            <div class="form-group two-columns">
+                
                 <div>
                     <!-- Criar uma Senha de Acesso -->
                     <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
                     <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
                 </div>
 
+            </div>
+
+            <div class="form-group two-columns">
+               
+
                 <div>
                     <!-- Confirmar Senha de Acesso -->
                     <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
-                    <input type="password" id="confirmSenha" name="confirmSenha" placeholder="Confirme sua senha" required>
+                    <input type="password" id="confirmSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
                 </div>
             </div>
 
@@ -215,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </form>
     </div>
 
-    <!-- <script>
+    <script>
         window.onload = function () {
             const form = document.querySelector('#formCadastro'); // Corrigido para selecionar o form pelo ID
             const password = document.getElementById('senha');
@@ -256,11 +248,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     cpf.value = valor;
                 });
             }
-        };
+        }; 
 
+        document.getElementById("cnh").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    value = value.replace(/(\d{3})(\d)/, "$1 $2"); // Adiciona o primeiro espaço
+    value = value.replace(/(\d{3}) (\d{3})(\d)/, "$1 $2 $3"); // Adiciona o segundo espaço
+    value = value.replace(/(\d{3}) (\d{3}) (\d{3})(\d)/, "$1 $2 $3 $4"); // Adiciona o último espaço
+    e.target.value = value;
+});
+
+
+document.getElementById("birthdate").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    value = value.replace(/(\d{2})(\d)/, "$1/$2"); // Adiciona a primeira barra
+    value = value.replace(/(\d{2})\/(\d{2})(\d)/, "$1/$2/$3"); // Adiciona a segunda barra
+    value = value.substring(0, 10); // Limita o tamanho máximo a 10 caracteres
+    e.target.value = value;
+});
         
 
-    </script> -->
+    </script>
 
    
 </body>
