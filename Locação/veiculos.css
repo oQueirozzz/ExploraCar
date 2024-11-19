@@ -1,11 +1,12 @@
 body {
-    font-family: "Oswald", sans-serif;
+    
     background-color: #f0f0f0;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
     justify-content: flex-start; /* Alinha o conteúdo no topo */
+    font-family: "Poppins", sans-serif ;
 }
 .button-container {
     flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
@@ -33,8 +34,8 @@ body {
     color: black;
     font-size: 22px; /* Tamanho de fonte maior */
     transition: background-color 0.3s, transform 0.2s, color 0.2s; /* Adicionada transição de cor */
-    font-family: "Oswald", sans-serif;
     width: 100%;
+    font-family: "Poppins", sans-serif ;
 
 }
 .brand-button img {
@@ -97,6 +98,7 @@ body {
 .card-info p {
     font-size: large;
     margin-top: 5px;
+    font-family: "Poppins", sans-serif ;
 }
 
 .card-price {
@@ -108,6 +110,7 @@ body {
     margin: 0;
     font-size: 1.3em;
     color: #333;
+    font-family: "Poppins", sans-serif ;
 }
 .card button {
     margin-top: 10px;
