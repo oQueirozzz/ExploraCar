@@ -51,6 +51,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
     $confirmaSenha = trim($_POST['confirmaSenha']);
+    
+
+    // Remove espacos em branco
+    $nome = preg_replace('/^\s+|\s+$/m', '', $nome);
+    $sobrenome = preg_replace('/^\s+|\s+$/m', '', $sobrenome);
+    $pais = preg_replace('/^\s+|\s+$/m', '', $pais);
+    $cpf = preg_replace('/^\s+|\s+$/m', '', $cpf);
+    $dataNascimento = preg_replace('/^\s+|\s+$/m', '', $dataNascimento);
+    $celular = preg_replace('/^\s+|\s+$/m', '', $celular);
+    $email = preg_replace('/^\s+|\s+$/m', '', $email);
+    $senha = preg_replace('/^\s+|\s+$/m', '', $senha);
+    $confirmaSenha = preg_replace('/^\s+|\s+$/m', '', $confirmaSenha);
+
+    echo $nome;
+    echo $sobrenome;
+    echo $pais;
+    echo $cpf;
+    echo $dataNascimento;
+    echo $celular;
+    echo $email;
+    echo $senha;
+    echo $confirmaSenha;
 
     // Validação dos campos obrigatórios
     if (
@@ -73,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['email'] = $email;
 
             // Redireciona para a página de login
-            header("Location: ../home/index.php");
+            header("Location: ../../home/index.php");
             exit;
         } else {
             $erro = "Não foi possível salvar os dados. Verifique as permissões do arquivo.";
@@ -228,7 +250,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 alert('Login efetuado com sucesso!');
                 form.submit();
-                window.location.href = '../index.html';
             };
 
             const telefone = document.querySelector('#celular'); // Corrigido para o ID "celular"

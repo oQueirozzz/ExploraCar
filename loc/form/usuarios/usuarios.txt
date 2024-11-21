@@ -1,3 +1,1 @@
-132.121.212-12,Renan,Queiroz,renan.rodrigues25@senaisp.edu.br,Brasil,21/12/3243,(21) 34243-4543,11
-
-384.287.474-39,gustavo,grelhus,gustavo.santos@senaisp.edu.br,Brasil,22/43/2121,(23) 23231-5443,123
+245.354.342-34,Renan,Queiroz,renan.rodrigues25@senaisp.edu.br,Brasil,3243213424,2342323423,11

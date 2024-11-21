@@ -17,21 +17,49 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
 // Função para verificar login
 function verificarLogin($email, $senha)
 {
-    $arquivo = fopen("../loc/form/usuarios/usuarios.txt", "r");
-    if ($handle = fopen($arquivo, 'r')) {
-        while (($linha = fgets($handle)) !== false) {
-            list($emailArquivo, $senhaArquivo, $nome) = explode(",", trim($linha));
-            $dados = explode(",", trim($linha));
-            if (count($dados) >= 2 && $dados[0] === $email && $dados[1] === $senha) {
-                fclose($arquivo);
-                // Adiciona o nome do usuário à sessão
-                $_SESSION['nome'] = $dados[2];
-                return true;
-            }
-        }
-        fclose($arquivo);
+    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo
+
+    if (!file_exists($arquivo)) {
+        echo "Erro: Arquivo de usuários não encontrado.<br>";
+        return false; 
     }
-    return false;
+
+    $handle = fopen($arquivo, 'r'); // Abre o arquivo
+    if (!$handle) {
+        echo "Erro: Não foi possível abrir o arquivo.<br>";
+        return false;
+    }
+
+    // Lê linha por linha
+    while (($linha = fgets($handle)) !== false) {
+        echo "Lendo linha: $linha<br>"; // Debug
+
+        // Remove espaços e quebras de linha
+        $dados = explode(",", trim($linha));
+
+        // Verifica se o número de campos está correto
+        if (count($dados) < 8) {
+            echo "Erro: Linha com dados incompletos.<br>";
+            continue;
+        }
+
+        list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
+
+        // Exibe os dados para debug
+        echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
+
+        // Verifica o email e a senha
+        if ($email === $emailArquivo && $senha === $senhaArquivo) {
+            fclose($handle);
+
+            // Salva o nome completo na sessão
+            $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+            return true;
+        }
+    }
+
+    fclose($handle); // Fecha o arquivo
+    return false; // Se não encontrou o usuário
 }
 
 // Processa o login
@@ -39,18 +67,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
 
+    // Debug dos valores recebidos
+    var_dump($email, $senha);
+
     if (empty($email) || empty($senha)) {
         $erro = "Por favor, preencha todos os campos.";
     } elseif (verificarLogin($email, $senha)) {
         $_SESSION['loggedin'] = true;
-        $_SESSION['email'] = $email;
-        header("Location: index.php");
+        header("Location: index.php"); // Redireciona para a página inicial
         exit;
     } else {
         $erro = "Email ou senha incorretos.";
     }
 }
 
+if (trim($email) === trim($emailArquivo) && trim($senha) === trim($senhaArquivo)) {
+    fclose($handle);
+    $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+    return true;
+}
 echo $mensagem;
 echo $erro;
 ?>
@@ -83,38 +118,66 @@ echo $erro;
             <a href="index.php">
                 <div class="logo"></div>
             </a>
-            <!-- <div class="entrar"> -->
-            <!-- <div class="buttons"> -->
-            <!-- <button class="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p> -->
 
-            <div class="buttons">
-                <div class="dropdown">
-                    <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                        <img src="../global/img/file.png" alt="">
-                        <span></span>
-                        <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
-                        <div class="seta"></div>
-                        <!-- <img id="seta" src="img/seta.png" alt=""> -->
-                    </button>
-                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                        <img src="../global/img/file.png" alt="">
-                        <span></span>
-                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                        <div class="seta"></div>
-                    </button>
-                </div>
-
-                <div id="help-tab" class="help-tab">
-                    <div class="help-content">
-                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
-                        <div class="buttons">
-                            <a href="">
-                                <button>
+                    <div class="buttons">
+                        <div class="dropdown">
+                            <?php if (isset($_SESSION['nome'])): ?>
+                                <!-- Botão com o nome do usuário logado -->
+                                <button id="principal-button" class="btn"  onclick="toggleLogoutTab()">
+                                    <img src="../global/img/file.png" alt="">
                                     <span></span>
-                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
+                                    <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
+                                    <div class="seta"></div>
                                 </button>
-                            </a>
+
+                                <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                            <div class="seta"></div>
+                        </button>
+
+                                
+
+
+                                <?php else: ?>
+                                    <!-- Botão padrão "ENTRAR" -->
+                                
+                                    <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                                        <img src="../global/img/file.png" alt="">
+                                        <span></span>
+                                        <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                                        <div class="seta"></div>
+                                        <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                                    </button>
+                                    </a>
+                        <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                            <div class="seta"></div>
+                        </button>
+                        <?php endif; ?>
+                    </div>
+
+                    <div id="logout-tab" class="logout-tab">
+                        <div class="logout-content">
+                            <div class="buttons"><a href="logout.php"><button>Sair</button"></a></div>
+                            <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
                         </div>
+                    </div>
+                    
+                    <div id="help-tab" class="help-tab">
+                        <div class="help-content">
+                            <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
+                            <div class="buttons">
+                                <a href="../loc/duvidasfrequentes/duvidas.php">
+                                    <button>
+                                        <span></span>
+                                        <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
+                                    </button>
+                                </a>
+                            </div>
                             <div class="container-contact">
                                 <div class="header-contact">
                                     <span>Canais de atendimento</span>
@@ -135,43 +198,43 @@ echo $erro;
                                 </div>
                                 <div class="schedule">
                                     <div class="schedule-header">Horarios de atendimento</div>
-                                    <table class="schedule-table">
-                                        <tr>
-                                            <td>Segunda-feira</td>
-                                            <td>07:00 - 23:59</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Terça-feira</td>
-                                            <td>07:00 - 23:59</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quarta-feira</td>
-                                            <td>00:00 - 23:59</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quinta-feira</td>
-                                            <td>00:00 - 23:59</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sexta-feira</td>
-                                            <td>00:00 - 23:59</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sábado</td>
-                                            <td>00:00 - 19:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Domingo</td>
-                                            <td>10:00 - 19:00</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                <table class="schedule-table">
+                                    <tr>
+                                        <td>Segunda-feira</td>
+                                        <td>07:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Terça-feira</td>
+                                        <td>07:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quarta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quinta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sexta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sábado</td>
+                                        <td>00:00 - 19:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Domingo</td>
+                                        <td>10:00 - 19:00</td>
+                                    </tr>
+                                </table>
                             </div>
-
+                        </div>
                         
-
-
-
+                        
+                        
+                        
+                        
                     </div>
                 </div>
 
@@ -183,9 +246,9 @@ echo $erro;
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar
-                                    Nova
-                                    Conta</button>
+                                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
+                                Nova
+                                Conta</button>
                                 <ul>
                                     <li>✅ Rápido e fácil reservar</li>
                                     <li>✅ Descontos de até 30%</li>
@@ -196,17 +259,20 @@ echo $erro;
                             <div class="login-section">
                                 <h2>Acesse sua Conta</h2>
                                 <form action="" method="post">
+                                    <input type="hidden" name="acao" value="login"> <!-- Ação para diferenciar o login -->
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" value="login" required>
+                                    <input type="email" id="email" name="email" required>
 
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="password" required>
 
                                     <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
 
-                                    <button type="submit" class="login-button"><span></span>Entrar</button>
+                                    <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
-                                <?php if ($erro): ?><p class="erro"><?php echo $erro; ?></p><?php endif; ?>
+                                <?php if (!empty($erro)): ?>
+        <p class="erro"><?= htmlspecialchars($erro) ?></p>
+    <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -519,6 +585,10 @@ echo $erro;
         function toggleHelpTab() {
             const helpTab = document.getElementById('help-tab');
             helpTab.style.display = helpTab.style.display === 'block' ? 'none' : 'block';
+        }
+        function toggleLogoutTab() {
+            const logoutTab = document.getElementById('logout-tab');
+            logoutTab.style.display = logoutTab.style.display === 'block' ? 'none' : 'block';
         }
     </script>
     <script>

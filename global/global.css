@@ -114,7 +114,7 @@ header {
 .logo {
     width: 200px;
     height: 80px;
-    background: url(img/logo.png);
+    bac
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -314,7 +314,7 @@ header {
     object-fit: cover;
     margin-left: 40px;
 }
-.help-tab{
+.logout-tab, .help-tab{
     display: none;
     /* Inicialmente escondido */
     position: fixed;
@@ -330,15 +330,13 @@ header {
     padding: 10px;
     overflow: hidden;
 }
-
-/* Estilos para a aba de informações */
-.info-tab {
+.info-tab{
     display: none;
     /* Inicialmente escondido */
     position: fixed;
     top: 10%;
     right: 220px;
-    width: 60%;
+    width: 80%;
     max-width: 600px;
     background-color: white;
     border: 1px solid #ff9100;
@@ -348,25 +346,26 @@ header {
     padding: 20px;
     overflow: hidden;
 }
-.help-content{
+
+.help-content, .logout-content{
     position: relative;
 }
-.help-content .buttons button{
+.help-content .buttons button, .logout-content .buttons button{
     width: 100%;
     font-size: 14px;
     letter-spacing: 1;
     margin-top: 30px;
 }
-.help-content a{
+.help-content a, .logout-content a{
     margin: 0;
     padding: 0;
     width: 45%;
 }
-.help-content p{
+.help-content p, .logout-content p{
     margin-right: 20px;
     
 }
-.help-content .close-btn{
+.help-content .close-btn, .logout-content .close-btn{
     right: 0;
 }
 .container-contact {
@@ -385,6 +384,7 @@ header {
 }
 .contact-info {
     font-size: 12px ;
+    padding: 5px;
 }
 .contact-info i {
      width: 20px;

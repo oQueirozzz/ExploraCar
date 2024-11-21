@@ -70,18 +70,5 @@ $(function () {
    $(".pop-up .close").click(function () {
     $(".pop-up").removeClass("visible");
    });
-   
-   const toggleButton = document.querySelector('.dark-light');
-   
-   toggleButton.addEventListener('click', () => {
-     document.body.classList.toggle('light-mode');
-   });
-
-   $(function () {  
-    $(".menu-link").click(function () {
-     $(".menu-link").removeClass("is-active");
-     $(this).addClass("is-active");
-    });
-   });
 
   
