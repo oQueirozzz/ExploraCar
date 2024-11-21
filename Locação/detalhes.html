@@ -14,27 +14,30 @@
      tem menu de contexto
     <style>
         .detail-container {
-            display: flex;
-            align-items: flex-start;
-            padding: 20px;
-            justify-content: center;
-            margin-top: 220px;
+            display: flex; /* Alinha os itens em uma linha */
+            align-items: flex-start; /* Alinha os itens no topo */
+            padding: 20px; /* Adiciona espaçamento interno */
+            justify-content: center; /* Centraliza os itens horizontalmente */
+            margin-top: 220px; /* Adiciona espaçamento superior */
+            position: relative; /* Posicionamento relativo para o contêiner */
         }
         .detail-container img {
-            width: 600px;
-            height: auto;
-            margin-right: 40px;
+            width: 600px; /* Define a largura da imagem */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-right: 40px; /* Adiciona espaçamento à direita da imagem */ 
         }
         .detail-info {
-            width: 600px;
-            border: 2px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            margin-left: 100px;
+            width: 600px; /* Define a largura da div de informações */
+            border: 2px solid #ccc; /* Adiciona borda cinza */
+            padding: 20px; /* Adiciona espaçamento interno */
+            border-radius: 10px; /* Arredonda os cantos */
+            background-color: #f9f9f9; /* Define a cor de fundo */
+            margin-left: 100px; /* Adiciona espaçamento à esquerda */
+            position: relative; /* Posicionamento relativo para a div de informações */
+            height: 250px;
         }
         .detail-info h2 {
-            margin: 0 0 10px 0;
+            margin: 0 0 10px 0; /* Remove margem superior e inferior, adiciona margem inferior */ 
         }
         .detail-info p {
             margin: 5px 0;
@@ -46,8 +49,37 @@
             display: block;
         }
         .detail-container i{
-color: black;
+          color: black;
         }
+        .card-price {
+   font-family:"Poppins", sans-serif;
+   position: relative;
+   bottom: 150px;
+   text-align: right;
+   font-family: Arial, Helvetica, sans-serif;
+}
+.card-price p {
+    margin: 0;
+    font-size: 1.3em;
+    color: #333;
+    font-family: "Poppins", sans-serif ;
+}
+
+.reservar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(220, 143, 0, 0.909);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+
+.reservar:hover {
+    background-color: darkorange;
+}
     </style>
 </head>
 <body>
@@ -131,6 +163,7 @@ color: black;
             </nav>
         </header>
     </header>
+    
     <div class="detail-container">
         <img id="vehicle-img" src="" alt="Imagem do Veículo">
         <div class="detail-info">
@@ -142,7 +175,12 @@ color: black;
             <p> <i class="fas fa-gas-pump"></i> Política de combustivel: <span id="vehicle-combustivel"></span></p>
             <p> <i class="fas fa-car"></i> <span id="vehicle-quilometragem"></span></p>
             <p> <i class="fas fa-shield-alt"></i><span id="vehicle-seguro"></span></p>
-            <!-- Adicione mais detalhes conforme necessário -->
+                <div class="card-price"> <span id="border2"></span>
+                    <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
+                    <p id="vehicle-price"><span id="price"></span></p>
+                    <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
+                    <button class="reservar" onclick class="card-price button">Reservar</button>
+                </div>
         </div>
     </div>
 
@@ -160,8 +198,23 @@ color: black;
                 document.getElementById('vehicle-combustivel').textContent = vehicle.combustivel;
                 document.getElementById('vehicle-quilometragem').textContent = vehicle.quilometragem;
                 document.getElementById('vehicle-seguro').textContent = vehicle.seguro;
+                document.getElementById('descontPrice').textContent = vehicle.descontPrice;
+                document.getElementById('price').textContent = vehicle.price;
+                document.getElementById('diaria').textContent = vehicle.diaria;
             }
         });
+
+        function reservar() {
+            const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));
+            if (vehicle) {
+                const reservationDetails = {
+                    descontPrice: vehicle.descontPrice,
+                    price: vehicle.price,
+                    diaria: vehicle.diaria
+                };
+                localStorage.setItem('reservationDetails', JSON.stringify(reservationDetails));
+            }
+        }
     </script>
     <script src="../global/global.js"></script>
     <footer>
