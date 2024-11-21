@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Circular com Pré-visualizações</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .carousel {
+      width: 90%;
+      max-width: 800px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item {
+      min-width: 33.33%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 20px;
+      opacity: 0.5;
+      transform: scale(0.9);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .carousel-item.active {
+      opacity: 1;
+      transform: scale(1.8);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-item h2 {
+      margin: 10px 0 5px;
+      font-size: 1.2em;
+      color: #006400;
+    }
+
+    .carousel-item p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-buttons button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel-track">
+      <!-- 10 Itens -->
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Black Friday/BMW X6.png" alt="Slide 1">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Toyota/Toyota Hilux.png" alt="Slide 2">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Hyundai/Hyundai i30.png" alt="Slide 3">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Ford/Ford Mustang.png" alt="Slide 4">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Chevrolet/Chevrolet Camaro.png" alt="Slide 5">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Toyota/Corolla.png" alt="Slide 6">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Fiat/Fiat Toro.png" alt="Slide 7">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Volkswagen/Volkswagen Saveiro.png" alt="Slide 8">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Black Friday/Audi RS7.png" alt="Slide 9">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+      <div class="carousel-item">
+        <img src="../Locação/img/img Carros/img Black Friday/Mercedes-Benz S-Class.png" alt="Slide 10">
+        <h2>Grupo TG - SUV Blindado</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </div>
+    </div>
+    <div class="carousel-buttons">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+  </div>
+
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      // Remover classes
+      slides.forEach((s) => s.classList.remove('active'));
+
+      // Atualiza
+      slides[currentIndex].classList.add('active');
+
+      // Define as pré-visualizações
+      const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      const nextIndex = (currentIndex + 1) % totalSlides;
+
+      slides.forEach((slide, index) => {
+        slide.style.opacity = '0.5';
+        slide.style.transform = 'scale(0.9)';
+
+        if (index === prevIndex || index === nextIndex || index === currentIndex) {
+          slide.style.opacity = '1';
+          slide.style.transform = 'scale(1)';
+        }
+
+        // Ajusta pré-visualização circular
+        if (currentIndex === 0 && index === totalSlides - 1) {
+          slide.style.opacity = '0.5';
+          slide.style.transform = 'scale(0.9)';
+        }
+        if (currentIndex === totalSlides - 1 && index === 0) {
+          slide.style.opacity = '0.5';
+          slide.style.transform = 'scale(0.9)';
+        }
+      });
+
+      // Ajusta a posição do container
+      track.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+    }
+
+    function goToNext() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function goToPrev() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    prevButton.addEventListener('click', goToPrev);
+    nextButton.addEventListener('click', goToNext);
+
+    // Atualizar pela primeira vez
+    updateCarousel();
+  </script>
+</body>
+</html>

@@ -1,21 +1,22 @@
 <?php
 session_start();
- 
+
 // Desativar exibição de erros
 error_reporting(0);
 ini_set('display_errors', 0);
- 
+
 $erro = '';
 $mensagem = '';
 $mostrarFormulario = 'login'; // Variável para alternar entre os formulários
- 
+
 // Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
 if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
     $mostrarFormulario = 'esqueceuSenha';
 }
- 
+
 // Função para verificar login
-function verificarLogin($email, $senha) {
+function verificarLogin($email, $senha)
+{
     $arquivo = fopen("../loc/form/usuarios/usuarios.txt", "r");
     if ($handle = fopen($arquivo, 'r')) {
         while (($linha = fgets($handle)) !== false) {
@@ -32,12 +33,12 @@ function verificarLogin($email, $senha) {
     }
     return false;
 }
- 
+
 // Processa o login
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
- 
+
     if (empty($email) || empty($senha)) {
         $erro = "Por favor, preencha todos os campos.";
     } elseif (verificarLogin($email, $senha)) {
@@ -68,6 +69,7 @@ echo $erro;
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 
@@ -78,7 +80,7 @@ echo $erro;
                 <i class="material-symbols-outlined ">menu</i>
             </div>
 
-            <a href="index.html">
+            <a href="index.php">
                 <div class="logo"></div>
             </a>
             <!-- <div class="entrar"> -->
@@ -94,41 +96,118 @@ echo $erro;
                         <div class="seta"></div>
                         <!-- <img id="seta" src="img/seta.png" alt=""> -->
                     </button>
+                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                        <img src="../global/img/file.png" alt="">
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                        <div class="seta"></div>
+                    </button>
                 </div>
 
-               
+                <div id="help-tab" class="help-tab">
+                    <div class="help-content">
+                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="">
+                                <button>
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
+                                </button>
+                            </a>
+                        </div>
+                            <div class="container-contact">
+                                <div class="header-contact">
+                                    <span>Canais de atendimento</span>
+                                </div>
+                                <div class="contact-info">
+                                    <div>
+                                        <i class="fas fa-phone"></i> Principais Capitais
+                                        <div><strong>4003 7368</strong></div>
+                                    </div>
+                                    <!-- <div>
+                                        <i class="fas fa-phone"></i> Demais Localidades
+                                        <div><strong>0800 604 7368</strong></div>
+                                    </div> -->
+                                    <div>
+                                        <i class="fas fa-phone"></i> Ligações Internacionais
+                                        <div><strong>+55 (41) 4042 1479</strong></div>
+                                    </div>
+                                </div>
+                                <div class="schedule">
+                                    <div class="schedule-header">Horarios de atendimento</div>
+                                    <table class="schedule-table">
+                                        <tr>
+                                            <td>Segunda-feira</td>
+                                            <td>07:00 - 23:59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Terça-feira</td>
+                                            <td>07:00 - 23:59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quarta-feira</td>
+                                            <td>00:00 - 23:59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quinta-feira</td>
+                                            <td>00:00 - 23:59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sexta-feira</td>
+                                            <td>00:00 - 23:59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sábado</td>
+                                            <td>00:00 - 19:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Domingo</td>
+                                            <td>10:00 - 19:00</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        
+
+
+
+                    </div>
+                </div>
+
+
                 <!-- Aba de informações que será exibida no meio da página -->
                 <div id="info-tab" class="info-tab">
                     <div class="info-content">
-                    <?php if ($mostrarFormulario === 'login'): ?>
-                        <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
-                        <div class="register-section">
-                            <h2>Cadastre-se</h2>
-                            <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar
-                                Nova
-                                Conta</button>
-                            <ul>
-                                <li>✅ Rápido e fácil reservar</li>
-                                <li>✅ Descontos de até 30%</li>
-                                <li>✅ Acesso a ofertas exclusivas</li>
-                                <li>✅ Ganhe cashback</li>
-                            </ul>
-                        </div>
-                        <div class="login-section">
-                            <h2>Acesse sua Conta</h2>
-                            <form action="" method="post">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" value="login"  required>
+                        <?php if ($mostrarFormulario === 'login'): ?>
+                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
+                            <div class="register-section">
+                                <h2>Cadastre-se</h2>
+                                <button class="btn" onclick="window.location.href='../form/form.php'"><span></span>Criar
+                                    Nova
+                                    Conta</button>
+                                <ul>
+                                    <li>✅ Rápido e fácil reservar</li>
+                                    <li>✅ Descontos de até 30%</li>
+                                    <li>✅ Acesso a ofertas exclusivas</li>
+                                    <li>✅ Ganhe cashback</li>
+                                </ul>
+                            </div>
+                            <div class="login-section">
+                                <h2>Acesse sua Conta</h2>
+                                <form action="" method="post">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" value="login" required>
 
-                                <label for="senha">Senha</label>
-                                <input type="password" id="password" name="password" required>
+                                    <label for="senha">Senha</label>
+                                    <input type="password" id="password" name="password" required>
 
-                                <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
 
-                                <button type="submit" class="login-button"><span></span>Entrar</button>
-                            </form>
-                            <?php if ($erro): ?><p class="erro"><?php echo $erro; ?></p><?php endif; ?>
-                        </div>
+                                    <button type="submit" class="login-button"><span></span>Entrar</button>
+                                </form>
+                                <?php if ($erro): ?><p class="erro"><?php echo $erro; ?></p><?php endif; ?>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -210,7 +289,7 @@ echo $erro;
                 <p>Atendimento de qualidade e a melhor experiência em aluguel de carros com a ExploraCar</p>
             </div>
             <div class="buttons">
-                <a id="button-home" href="../Locação/veiculos.html">
+                <a href="../Locação/veiculos.html">
                     <button>
                         <span></span>
                         Quero alugar agora!
@@ -226,6 +305,33 @@ echo $erro;
                 </div>
             </a>
         </aside>
+
+
+        <div class="container-vantagens">
+            <h1>Vantagens de alugar com a ExploraCar</h1>
+            <div class="advantages">
+                <div class="advantage">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h2>Melhor preço: até 30% OFF</h2>
+                    <p>Encontrou uma tarifa menor depois de ter reservado com a Rentcars? Nós reembolsamos a diferença!</p>
+                </div>
+                <div class="advantage">
+                    <i class="fas fa-credit-card"></i>
+                    <h2>Reservas com até 10% de cashback</h2>
+                    <p>Alugue um carro parcelando em até 12x no cartão de crédito, via PIX ou boleto. Ainda ganhe Cashback de até 10%!</p>
+                </div>
+                <div class="advantage">
+                    <i class="fas fa-globe"></i>
+                    <h2>Compare os melhores preços de mais de 160 países</h2>
+                    <p>Esqueça pagamento em dólar ou outra moeda: para reservas internacionais feitas no Brasil, pague em reais e economize o IOF de 4,38%.</p>
+                </div>
+                <div class="advantage">
+                    <i class="fas fa-car"></i>
+                    <h2>Aluguel de carro conveniente e fácil</h2>
+                    <p>Compare preços de mais de 300 locadoras pelo mundo em um só lugar, tenha o melhor atendimento e desfrute de promoções exclusivas!</p>
+                </div>
+            </div>
+        </div>
 
         <div class="tittle-touch">
             <h1>Aluguel de carros por todo o Brasil</h1>
@@ -331,16 +437,21 @@ echo $erro;
                 </div>
             </div>
         </div>
+
+
+
+
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://codepen.io/z-/pen/a8e37caf2a04602ea5815e5acedab458.js"></script>
         <script src="teste05.js"></script>
         <script>
-            $(".option").click(function () {
+            $(".option").click(function() {
                 $(".option").removeClass("active");
                 $(this).addClass("active");
 
             });
-
         </script>
     </main>
 
@@ -404,6 +515,11 @@ echo $erro;
             const infoTab = document.getElementById('info-tab');
             infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
         }
+
+        function toggleHelpTab() {
+            const helpTab = document.getElementById('help-tab');
+            helpTab.style.display = helpTab.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
     <script>
         let currentIndex = 0;
@@ -443,7 +559,6 @@ echo $erro;
             currentIndex = index;
             showSlide(currentIndex);
         }
-
     </script>
 </body>
 

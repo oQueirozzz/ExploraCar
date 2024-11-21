@@ -104,6 +104,8 @@ body {
     top: 50%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    border-radius: 50%;
+    font-size: 24px;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -114,14 +116,10 @@ body {
 
 .carousel-control.prev {
     left: 10px;
-    background-color: transparent;
-    color: #000;
 }
 
 .carousel-control.next {
     right: 10px;
-    background-color: transparent;
-    color: #000;
 }
 /* Estilo dos Indicadores */
 .carousel-indicators {
@@ -161,7 +159,11 @@ body {
 .buttons a{
     width: 230px;
     margin-bottom: 80px;
+    display: block;
+    margin-left: 43vw;
+
 }
+
 .buttons button{
     width: 100%;
 }
@@ -422,26 +424,6 @@ body #user-button:focus-within .u-icons {
     margin-top: 60px;
     transition: 0.25s;
 }
-
-body.dark {
-    background: #232223;
-    color: white;
-}
-
-@media (prefers-color-scheme: dark) {
-    body:not(.light) {
-        background: #232223;
-        color: white;
-    }
-}
-
-body .credit {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: inherit;
-}
-
 body .options {
     display: flex;
     flex-direction: row;
@@ -662,4 +644,35 @@ body .options .option .label .info .sub {
     flex-direction: column;
     width: 61%;
     margin-top: 100px;
+}
+.container-vantagens {
+    color: #000000;
+    text-align: center;
+    padding: 50px;
+}
+.container-vantages h1 {
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+.advantages {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.advantage {
+    width: 20%;
+    padding: 20px;
+}
+.advantage i {
+    font-size: 3em;
+    color: orange;
+    margin-bottom: 20px;
+}
+.advantage h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.advantage p {
+    font-size: 0.9em;
+    margin-bottom: 20px;
 }
