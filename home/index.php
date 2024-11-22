@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 // Desativar exibição de erros
 error_reporting(0);
 ini_set('display_errors', 0);
@@ -21,7 +22,7 @@ function verificarLogin($email, $senha)
 
     if (!file_exists($arquivo)) {
         echo "Erro: Arquivo de usuários não encontrado.<br>";
-        return false; 
+        return false;
     }
 
     $handle = fopen($arquivo, 'r'); // Abre o arquivo
@@ -53,13 +54,21 @@ function verificarLogin($email, $senha)
             fclose($handle);
 
             // Salva o nome completo na sessão
-            $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+            $_SESSION['nome'] = $nome;
             return true;
         }
     }
 
     fclose($handle); // Fecha o arquivo
     return false; // Se não encontrou o usuário
+
+    if ($email === $emailArquivo && $senha === $senhaArquivo) {
+        fclose($handle);
+
+        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        echo "Usuário logado: " . $_SESSION['nome']; // Debug
+        return true;
+    }
 }
 
 // Processa o login
@@ -81,15 +90,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-if (trim($email) === trim($emailArquivo) && trim($senha) === trim($senhaArquivo)) {
-    fclose($handle);
-    $_SESSION['nome'] = $nome . ' ' . $sobrenome;
-    return true;
-}
+
 echo $mensagem;
 echo $erro;
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -107,7 +111,6 @@ echo $erro;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-
 <body>
     <header>
         <div class="cabecalho">
@@ -119,85 +122,88 @@ echo $erro;
                 <div class="logo"></div>
             </a>
 
-                    <div class="buttons">
-                        <div class="dropdown">
-                            <?php if (isset($_SESSION['nome'])): ?>
-                                <!-- Botão com o nome do usuário logado -->
-                                <button id="principal-button" class="btn"  onclick="toggleLogoutTab()">
-                                    <img src="../global/img/file.png" alt="">
+        
+
+            <div class="buttons">
+                <div class="dropdown">
+                    <?php if (isset($_SESSION['nome'])): ?>
+                        <!-- Botão com o nome do usuário logado -->
+                        <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
+                            <div class="seta"></div>
+                        </button>
+
+                        <!-- <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                            <div class="seta"></div>
+                        </button> -->
+
+
+
+
+                    <?php else: ?>
+                        <!-- Botão padrão "ENTRAR" -->
+
+                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                            <div class="seta"></div>
+                            <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                        </button>
+                        </a>
+                    <?php endif; ?>
+                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                        <img src="../global/img/file.png" alt="">
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                        <div class="seta"></div>
+                    </button>
+                </div>
+
+                <div id="logout-tab" class="logout-tab">
+                    <div class="logout-content">
+                        <div class="buttons"><a href="logout.php"><button>Sair</button"></a></div>
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                        
+                    </div>
+                </div>
+
+                <div id="help-tab" class="help-tab">
+                    <div class="help-content">
+                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="../loc/duvidasfrequentes/duvidas.php">
+                                <button>
                                     <span></span>
-                                    <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
-                                    <div class="seta"></div>
+                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
                                 </button>
-
-                                <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                            <div class="seta"></div>
-                        </button>
-
-                                
-
-
-                                <?php else: ?>
-                                    <!-- Botão padrão "ENTRAR" -->
-                                
-                                    <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                                        <img src="../global/img/file.png" alt="">
-                                        <span></span>
-                                        <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
-                                        <div class="seta"></div>
-                                        <!-- <img id="seta" src="img/seta.png" alt=""> -->
-                                    </button>
-                                    </a>
-                        <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                            <div class="seta"></div>
-                        </button>
-                        <?php endif; ?>
-                    </div>
-
-                    <div id="logout-tab" class="logout-tab">
-                        <div class="logout-content">
-                            <div class="buttons"><a href="logout.php"><button>Sair</button"></a></div>
-                            <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                            </a>
                         </div>
-                    </div>
-                    
-                    <div id="help-tab" class="help-tab">
-                        <div class="help-content">
-                            <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
-                            <div class="buttons">
-                                <a href="../loc/duvidasfrequentes/duvidas.php">
-                                    <button>
-                                        <span></span>
-                                        <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
-                                    </button>
-                                </a>
+                        <div class="container-contact">
+                            <div class="header-contact">
+                                <span>Canais de atendimento</span>
                             </div>
-                            <div class="container-contact">
-                                <div class="header-contact">
-                                    <span>Canais de atendimento</span>
+                            <div class="contact-info">
+                                <div>
+                                    <i class="fas fa-phone"></i> Principais Capitais
+                                    <div><strong>4003 7368</strong></div>
                                 </div>
-                                <div class="contact-info">
-                                    <div>
-                                        <i class="fas fa-phone"></i> Principais Capitais
-                                        <div><strong>4003 7368</strong></div>
-                                    </div>
-                                    <!-- <div>
+                                <!-- <div>
                                         <i class="fas fa-phone"></i> Demais Localidades
                                         <div><strong>0800 604 7368</strong></div>
                                     </div> -->
-                                    <div>
-                                        <i class="fas fa-phone"></i> Ligações Internacionais
-                                        <div><strong>+55 (41) 4042 1479</strong></div>
-                                    </div>
+                                <div>
+                                    <i class="fas fa-phone"></i> Ligações Internacionais
+                                    <div><strong>+55 (41) 4042 1479</strong></div>
                                 </div>
-                                <div class="schedule">
-                                    <div class="schedule-header">Horarios de atendimento</div>
+                            </div>
+                            <div class="schedule">
+                                <div class="schedule-header">Horarios de atendimento</div>
                                 <table class="schedule-table">
                                     <tr>
                                         <td>Segunda-feira</td>
@@ -230,11 +236,11 @@ echo $erro;
                                 </table>
                             </div>
                         </div>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                     </div>
                 </div>
 
@@ -247,8 +253,8 @@ echo $erro;
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
                                 <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
-                                Nova
-                                Conta</button>
+                                    Nova
+                                    Conta</button>
                                 <ul>
                                     <li>✅ Rápido e fácil reservar</li>
                                     <li>✅ Descontos de até 30%</li>
@@ -264,15 +270,15 @@ echo $erro;
                                     <input type="email" id="email" name="email" required>
 
                                     <label for="senha">Senha</label>
-                                    <input type="password" id="password" name="password" required>
+                                    <input type="password" id="password" name="senha" required>
 
                                     <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
                                 <?php if (!empty($erro)): ?>
-        <p class="erro"><?= htmlspecialchars($erro) ?></p>
-    <?php endif; ?>
+                                    <p class="erro"><?= htmlspecialchars($erro) ?></p>
+                                <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -295,9 +301,6 @@ echo $erro;
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
                 <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
-                <hr>
-                <li><img src="icons/briefcase.png" alt="Business"> <span>KAYAK for Business</span></li>
-                <li><img src="icons/heart.png" alt="Trips"> <span>Trips</span></li>
                 <hr>
             </ul>
         </nav>
@@ -331,10 +334,10 @@ echo $erro;
                         <img src="img/banner1 (1).webp" alt="Imagem 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/ban4.png" alt="Imagem 2">
+                        <img src="img/drive.png" alt="Imagem 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/banner3.webp" alt="Imagem 3">
+                        <img src="img/banner7.png" alt="Imagem 3">
                     </div>on>
 
                 </div>
@@ -586,6 +589,7 @@ echo $erro;
             const helpTab = document.getElementById('help-tab');
             helpTab.style.display = helpTab.style.display === 'block' ? 'none' : 'block';
         }
+
         function toggleLogoutTab() {
             const logoutTab = document.getElementById('logout-tab');
             logoutTab.style.display = logoutTab.style.display === 'block' ? 'none' : 'block';
