@@ -1,39 +1,58 @@
 body {
-    background-image: url(../img/viagem-de-carro.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom center;
-    height: 91.9vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #161616;
 }
 
 
 /* Define o estilo básico para o container do formulário */
 .form-container {
     /* Define a largura máxima do container */
-    max-width: 700px;
-    /* Centraliza o container horizontalmente */
-    margin: 0 auto;
+    max-width: 1000px;
     /* Define o preenchimento interno do container */
-    padding: 20px;
-    /* Adiciona uma borda ao redor do container */
-    border: 1px solid rgba(0, 0, 0, 0.534);
+    padding: 10px;
     /* Define cantos arredondados para o container */
     border-radius: 10px;
     /* Define a fonte padrão para o formulário */
     font-family: Arial, sans-serif;
-    align-items: center;
-    margin-top: 70px;
-    flex-direction: column; /* Organiza os elementos verticalmente */
-    backdrop-filter: blur(10px);
-
+    margin-top: 30px;
+    flex-direction: column;
+    /* Organiza os elementos verticalmente */
+    backdrop-filter: blur(15px);
+    height: 90vh;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
 }
+form{
+    padding-left: 60px;
+}
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/viagem-de-carro.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Ou contain */
+    background-position: center;
+    filter: brightness(0.4);
+    /* O filtro será aplicado apenas ao ::before */
+    z-index: -1;
+    /* Coloca o pseudo-elemento atrás do conteúdo */
+}
+
+
 
 /* Define o estilo para os títulos das seções */
 .form-container h2 {
     /* Alinha o texto à esquerda */
     text-align: center;
     /* Define a cor do texto */
-    color: #333;
+    color: #ffffff;
     /* Define uma margem abaixo do título para espaçamento */
     margin-bottom: 15px;
 }
@@ -42,10 +61,10 @@ body {
     /* Alinha o texto à esquerda */
     text-align: left;
     /* Define a cor do texto */
-    color: #333;
+    color: #ffffff;
     /* Define uma margem abaixo do título para espaçamento */
     margin-bottom: 25px;
-    margin-top: 25px;
+    margin-left: 30px;
 }
 
 /* Define o estilo para os rótulos dos campos */
@@ -56,7 +75,8 @@ label {
     margin-bottom: 5px;
     /* Define o peso da fonte como negrito */
     font-weight: bold;
-    
+    color: #ffffff;
+
 }
 
 /* Define o estilo para o asterisco dos campos obrigatórios */
@@ -80,14 +100,14 @@ input[type="date"] {
     border: 1px solid #ccc;
     /* Define cantos arredondados para o campo */
     border-radius: 4px;
-    
+
 }
 
 
 /* Define o estilo para o campo de seleção */
 select {
     /* Define a largura total do campo */
-    width: 265px;
+    width: 250px;
     /* Define o preenchimento interno do campo */
     padding: 7px;
     /* Define uma margem abaixo do campo para espaçamento */
@@ -108,36 +128,10 @@ select {
     margin-bottom: 15px;
 }
 
-/* Define o estilo para o botão de envio */
-.submit-btn {
-    /* Define a largura total do botão */
-    width: 430px;
-    /* Define o preenchimento interno do botão */
-    padding: 10px;
-    /* Define a cor de fundo do botão */
-    background-color: #ff9900;
-    /* Define a cor do texto do botão */
-    color: #fff;
-    /* Remove qualquer borda ao redor do botão */
-    border: none;
-    /* Define cantos arredondados para o botão */
-    border-radius: 4px;
-    /* Define o cursor para "pointer" para indicar que é clicável */
-    cursor: pointer;
-    /* Define o tamanho da fonte do botão */
-    font-size: 16px;
-    /* Define uma margem superior para espaçamento */
-    margin-top: 24px;
-    /*Define uma margem ao lado direito do botão*/
-    margin-right: 18px;
-    margin-left: 16px;
-
-}
-
-/* Define o estilo para o botão de envio ao passar o mouse */
-.submit-btn:hover {
-    /* Altera a cor de fundo para um tom mais escuro ao passar o mouse */
-    background-color: #dd7906;
+#cadastrar-button {
+    margin-top: 20px;
+    width: 350px;
+    height: 55px;
 }
 
 /* Define o estilo para o texto e caixas de seleção na área do rodapé */
@@ -156,7 +150,7 @@ select {
 /* Define o estilo para as notas no rodapé */
 .footer-notes {
     /* Define a cor do texto como verde */
-    color: #dd7906;
+    color: #e76a03;
     /* Define uma margem superior para espaçamento */
     margin-top: 10px;
     margin-left: 30px;
@@ -170,18 +164,28 @@ select {
 }
 
 .two-columns div {
-    flex: 2; /* Faz com que os divs ocupem espaço igual */
-    margin-right: 15px; /* Espaçamento entre os campos */
-    margin-left: 30px;
+    flex: 2;
+    /* Faz com que os divs ocupem espaço igual */
+    margin-right: 15px;
 }
 
 .two-columns div:last-child {
-    margin-right: 15px; /* Remove o espaçamento do último campo */
+    margin-right: 15px;
+    /* Remove o espaçamento do último campo */
 }
 
-.esqueceu-senha{
+.esqueceu-senha {
     margin-left: 30px;
     margin-right: 30px;
     text-align: center;
     margin-top: 35px;
 }
+.error-message {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    margin-left: 0px;
+    width: 270px;
+    display: none; /* Inicialmente oculto */
+}
+
+

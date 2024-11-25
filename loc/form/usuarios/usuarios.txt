@@ -1,3 +1,5 @@
 245.354.342-34,Renan,Queiroz,renan.rodrigues25@senaisp.edu.br,Brasil,3243213424,2342323423,11
 324.243.265-67,Renan,Queiroz,renan.rodrigues25@senaisp.edu.br,Brasil,3243213424,2342323423,11
 234.243.234-24,gabriel,palmieri,palmieri@gmail.com,Brasil,3423423423432,(34) 43242-3423,24
+342.424.123-12,Renan,Queiroz,renanqsrodrigues@gmail.com,Brasil,23132123232132,(21) 32321-3231,7766
+324.324.324-33,vinicius,santana,vinicius@gmail.com,Brasil,212121212121212,(21) 32321-3231,456
