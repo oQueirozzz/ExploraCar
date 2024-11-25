@@ -1,0 +1,88 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        header {
+            background-color: #d87314;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        section {
+            padding: 40px;
+        }
+        h2 {
+            color: #d87314;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .section-content div {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .banner {
+            position: relative; /* Define o contêiner como relativo para permitir o posicionamento absoluto do texto */
+            width: 100%;
+            height: 600px;
+            overflow: hidden; /* Impede que elementos excedam o contêiner */
+            background: url('./img/banner.jpg') no-repeat center center;
+        }
+        
+        
+        .text-title {
+            position: absolute; /* Coloca o texto sobre a imagem */
+    
+             
+            color: rgb(0, 0, 0); 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 3.7rem;
+            font-weight: 50;
+            text-align: center;
+            font-family: 'TT Hoves Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .title-conheca{
+            text-align: center;
+            color: black;
+            font-family: 'TT Hoves Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 2.2rem;
+        }
+
+        .text-conheca{
+            text-align: center;
+            color: black;
+            font-family: Roboto;
+            
+        }
+        
+        .icons img{
+            width: 100px;
+            height: 100px;
+        }

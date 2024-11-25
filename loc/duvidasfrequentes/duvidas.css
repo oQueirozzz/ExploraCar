@@ -94,7 +94,7 @@ textarea:focus {
 }
 
 .submit-button {
-    background-color: #28a745;
+    background-color: orange;
 
     color: #ffffff;
     padding: 12px;
@@ -119,7 +119,7 @@ form{
 /* Centralizar o iframe */
 iframe {
     display: block; /* Faz o iframe se comportar como um bloco */
-    margin: 20px auto; /* Centraliza horizontalmente e adiciona espaçamento vertical */
+    margin: auto; /* Centraliza horizontalmente e adiciona espaçamento vertical */
     border: 3px solid #007BFF; /* Adiciona uma borda azul */
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave para destacar */
@@ -133,4 +133,87 @@ iframe {
         width: 100%;
         height: 300px;
     }
+}
+
+.cont {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Estilização da seção de contato */
+.contact-info {
+    text-align: center;
+    width: 500px;
+    margin-left: 15%;
+}
+
+.cont-tm h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    font-family: "Poppins", sans-serif;
+margin: auto;
+width: 500px;
+text-align: center;
+margin-bottom: 20px;
+}
+
+.info-item {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+}
+
+.info-item .icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: black;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.cont-mapa{
+    flex-direction: row;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 800px;
+    margin-top: 20px;
+    margin-left: 550px;
+    margin-bottom: 25px;
+}
+
+
+
+.two-column{
+    flex-direction: row;
+    display: flex;
+    padding: 15px;
+    margin-left: 40px;
+    margin-right: 15px;
+    justify-content: space-between;
+    width: 410px;
+}
+
+#two2{
+    margin-left: 65px;
+    width: 420px;
+}
+
+#local{
+    margin-right: 65px;
+}
+.map{
+    padding: 20px 0px;
 }
