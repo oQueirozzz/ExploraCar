@@ -112,14 +112,45 @@
         </div>
     </div>
 
-    <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d913.7161618365983!2d-46.557862029711565!3d-23.64501788526892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1732042109592!5m2!1spt-BR!2sbr" 
-        width="600" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div class="cont-mapa">
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d913.7161618365983!2d-46.557862029711565!3d-23.64501788526892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1732042109592!5m2!1spt-BR!2sbr"
+                width="50"
+                height="10"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="cont-tm">
+            <!-- Informações de Contato -->
+
+            <h2>Entre em Contato Conosco</h2>
+            <div class="contact-info">
+                <div class="two-column">
+                    <div class="info-item" id="local">
+                        <i class="fas fa-map-marker-alt icon"></i> <br>
+                        <p><strong>Local:</strong> <br> Rua Boa Vista, 180, São Caetano, SP</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock icon"></i> <br>
+                        <p><strong>Horários de Atendimento:</strong> <br> 08:00 am - 17:00 pm</p>
+                    </div>
+                </div>
+                <div class="two-column" id="two2">
+                    <div class="info-item">
+                        <i class="fas fa-phone icon"></i> <br>
+                        <p><strong>Ligue:</strong> <br>+55 (11) 9933-4587</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope icon"></i> <br>
+                        <p><strong>Escreva:</strong> <br> contatoexploracar@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
