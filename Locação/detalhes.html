@@ -168,6 +168,26 @@ font-size: 14px;
 margin-bottom: 20px;
 }
 
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(220, 143, 0, 0.909);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: darkorange;
+}
+
     </style>
 </head>
 <body>
@@ -255,6 +275,7 @@ margin-bottom: 20px;
     <div class="detail-container">
         <img id="vehicle-img" src="" alt="Imagem do Veículo">
         <div class="detail-info">
+            
             <h2 id="vehicle-title"></h2> <span id="border"></span>
             <p> <i class="fas fa-car-side"></i> Número de portas: <span id="vehicle-doors"></span></p> 
             <p> <i class="fas fa-car-battery"></i> Nome do motor: <span id="vehicle-engine"></span></p>
@@ -319,6 +340,8 @@ margin-bottom: 20px;
     </div>
 
     <script>
+
+        
         // esse aqui faz aparecer as informaçoes dos cards.
         document.addEventListener('DOMContentLoaded', function () {
             const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));
