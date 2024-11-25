@@ -25,22 +25,24 @@
             width: 600px; /* Define a largura da imagem */
             height: auto; /* Mantém a proporção da imagem */
             margin-right: 40px; /* Adiciona espaçamento à direita da imagem */ 
+            object-fit: cover;
+            max-height: 300px;
         }
         .detail-info {
-            width: 600px; /* Define a largura da div de informações */
+            width: 700px; /* Define a largura da div de informações */
             border: 2px solid #ccc; /* Adiciona borda cinza */
             padding: 20px; /* Adiciona espaçamento interno */
             border-radius: 10px; /* Arredonda os cantos */
             background-color: #f9f9f9; /* Define a cor de fundo */
             margin-left: 100px; /* Adiciona espaçamento à esquerda */
             position: relative; /* Posicionamento relativo para a div de informações */
-            height: 250px;
+            height: 300px;
         }
         .detail-info h2 {
-            margin: 0 0 10px 0; /* Remove margem superior e inferior, adiciona margem inferior */ 
+            margin: 0 0 20px 0; /* Remove margem superior e inferior, adiciona margem inferior */ 
         }
         .detail-info p {
-            margin: 5px 0;
+            margin: 10px 0;
         }
         #border{
             width: 100%;
@@ -48,21 +50,39 @@
             height: 2px;
             display: block;
         }
+
+        #border2{
+            height: 200px;
+            background-color: #ccc;
+            width: 2px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 70px;
+            margin-top: -13px;
+        }
         .detail-container i{
           color: black;
         }
-        .card-price {
-   font-family:"Poppins", sans-serif;
-   position: relative;
-   bottom: 150px;
-   text-align: right;
-   font-family: Arial, Helvetica, sans-serif;
+        
+    .card-price {
+        font-family:"Poppins", sans-serif;
+        position: relative;
+        bottom: 150px;
+        text-align: right;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: -30px;
 }
 .card-price p {
     margin: 0;
     font-size: 1.3em;
     color: #333;
     font-family: "Poppins", sans-serif ;
+}
+
+#vehicle-descontPrice {
+    text-decoration: line-through; /* Adiciona um traço sobre o texto */
 }
 
 .reservar {
@@ -80,6 +100,74 @@
 .reservar:hover {
     background-color: darkorange;
 }
+
+.rental-policy, .location-pickup {
+    width: 700px; /* Define a largura dos novos cartões */
+    border: 2px solid #ccc; /* Adiciona borda cinza */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+    background-color: #f9f9f9; /* Define a cor de fundo */
+    margin-top: 20px; /* Adiciona espaçamento superior para separar os cartões */
+    margin-left: 970px;
+}
+
+.location-pickup{
+    text-align: center;
+    width: 400px;
+    margin-left: 1150px;
+}
+
+.deta {
+    margin-top: auto;
+}
+
+.titulo{
+   margin-top: 10px;
+}
+
+.info{
+    margin-top: 10px;
+}
+
+.container-performance {
+padding: 50px 300px ;
+background-color: #ff7b00;
+text-align:center;
+margin-top: 40px;
+}
+
+.title {
+font-size: 36px;
+font-weight: bold;
+margin-bottom: 50px;
+}
+
+.features {
+display: flex;
+justify-content: space-around;
+margin-bottom: 50px;
+}
+
+.feature {
+width: 20%;
+}
+
+.feature i {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+.feature h3 {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.feature p {
+font-size: 14px;
+margin-bottom: 20px;
+}
+
     </style>
 </head>
 <body>
@@ -175,13 +263,59 @@
             <p> <i class="fas fa-gas-pump"></i> Política de combustivel: <span id="vehicle-combustivel"></span></p>
             <p> <i class="fas fa-car"></i> <span id="vehicle-quilometragem"></span></p>
             <p> <i class="fas fa-shield-alt"></i><span id="vehicle-seguro"></span></p>
-                <div class="card-price"> <span id="border2"></span>
-                    <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
-                    <p id="vehicle-price"><span id="price"></span></p>
-                    <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <button class="reservar" onclick class="card-price button">Reservar</button>
-                </div>
+            <div class="card-price"> <span id="border2"></span>
+                <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
+                <p id="vehicle-price"><span id="price"></span></p>
+                <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
+                <button class="reservar" onclick class="card-price button">Reservar</button>
+            </div>
         </div>
+    </div>
+    <div class="deta">
+        <div class="rental-policy">
+            <h3 class="titulo">Política de Aluguel</h3>
+            <h4 class="titulo">Política de cancelamento e no show</h4>
+            <p >cancelamento grátis até o momento da retirada</p>
+            <h4 class="titulo">Sobretaxa por idade</h4>
+            <p >Pode ser aplicada a motoristas com menos de 25 e mais de 70 anos de idade.</p>
+            <h4 class="titulo">Oque inclui?</h4>
+            <p >Os itens abaixo estão incluídos no preço total do aluguel do carro.</p>
+            <h4 class="titulo">Proteção básica contra danos por colisão</h4>
+            <p >O preço do seu aluguel inclui proteção básica contra danos por colisão, que cobre danos à carroceria ou roubo do veículo alugado. A restrição de responsabilidade em caso de danos por colisão não inclui danos ou perdas de pneus, para-brisas, janelas ou chassi. A locadora de carros pode determinar a aplicação de uma franquia.</p>
+        </div>
+        <div class="location-pickup">
+            <h3 class="titulo">Locais de retirada e devolução</h3>
+            <h4 class="titulo">Retirada e devolução</h4>
+            <p class="info"> <i class="fas fa-calendar-alt"></i> ter., 10 de dez., - ter., 17 de dez., 12h00</p>
+            <p class="info"> <i class="fas fa-map-marker-alt"></i> Rua Boa Vista, 825, São Caetano, SP</p>
+            <p class="info"> <i class="fas fa-clock"></i> Horário de funcionamento das 7h30 - 18h00</p>
+        </div>
+    </div>
+
+    <div class="container-performance">
+        <div class="title">PERFORMANCE</div>      
+        <div class="features">          
+            <div class="feature">               
+                <i class="fas fa-shield-alt"></i>               
+                <h3>SEGURANÇA</h3>               
+                <p>7 airbags, sensores de estacionamento dianteiro e traseiro e TSS<sup>4</sup> (Toyota Safety...</p>          
+            </div>            
+            <div class="feature">              
+                <i class="fas fa-microchip"></i>               
+                <h3>TECNOLOGIA</h3>              
+                <p>Ar-condicionado digital automático, central multimídia de 9" com conexão Android Auto® e...</p>        
+            </div>            
+            <div class="feature">                
+                <i class="fas fa-tachometer-alt"></i>                
+                <h3>PERFORMANCE</h3>               
+                <p>Motor de 2.0 L Dual VVT-iE 16 V DOHC Flex com potência de 175 cv (E) / 167 cv (G)<sup>5</sup> e 21,3 Kgf.m de...</p>          
+            </div>            
+            <div class="feature">               
+                <i class="fas fa-car-side"></i>               
+                <h3>DESIGN</h3>               
+                <p>Rodas de liga leve 16" e retrovisores externos elétricos na cor do carro com pisca integrado...</p>           
+            </div>        
+        </div>    
     </div>
 
     <script>

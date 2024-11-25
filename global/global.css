@@ -114,14 +114,45 @@ header {
 .logo {
     width: 200px;
     height: 80px;
-    bac
+    background: url(img/logoOFC.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     margin-left: 90px;
 
 }
+.barra-pesquisa {
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
 
+
+  .barra-pesquisa input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem 0 0 0.8rem;
+    font-size: 16px;
+    height: 50px;
+  }
+
+  .barra-pesquisa button {
+    padding: 10px;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 0 0.8rem 0.8rem 0px;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  .barra-pesquisa button:hover {
+    background-color: var(--secondary-color);
+  }
 /* Botão 'Entrar' */
 /* .entrar {
     margin: 15px 0px 0px 0px;
@@ -158,6 +189,8 @@ header {
 .buttons {
     width: 390px;
     margin-right: 8px;
+    list-style: none;
+    color: #000;
 }
 .dropdown{
     display: flex;
@@ -314,12 +347,28 @@ header {
     object-fit: cover;
     margin-left: 40px;
 }
-.logout-tab, .help-tab{
+.help-tab{
     display: none;
     /* Inicialmente escondido */
     position: fixed;
     top: 10%;
     right: 15px;
+    width: 80%;
+    max-width: 200px;
+    background-color: white;
+    border: 1px solid #ff9100;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 10px;
+    overflow: hidden;
+}
+.logout-tab{
+    display: none;
+    /* Inicialmente escondido */
+    position: fixed;
+    top: 10%;
+    right: 220px;
     width: 80%;
     max-width: 200px;
     background-color: white;
@@ -346,10 +395,19 @@ header {
     padding: 20px;
     overflow: hidden;
 }
+#duvidas-button{
+    width: 180px;
+}
 
 .help-content, .logout-content{
     position: relative;
 }
+#logout-button{
+    width: 180px;
+    list-style: none;
+    color: #000;
+}
+#logout-button 
 .help-content .buttons button, .logout-content .buttons button{
     width: 100%;
     font-size: 14px;
@@ -488,6 +546,7 @@ input[type="password"] {
     color: #007bff;
     text-decoration: none;
     margin-bottom: 20px;
+    margin-left: 0px;
 }
 
 .esqueci:hover {
@@ -504,6 +563,12 @@ input[type="password"] {
     cursor: pointer;
     width: 200px;
 }
+.erro {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
 
 /* .login-button:hover {
     background: var;

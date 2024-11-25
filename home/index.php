@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 // Desativar exibição de erros
 error_reporting(0);
 ini_set('display_errors', 0);
@@ -21,7 +22,7 @@ function verificarLogin($email, $senha)
 
     if (!file_exists($arquivo)) {
         echo "Erro: Arquivo de usuários não encontrado.<br>";
-        return false; 
+        return false;
     }
 
     $handle = fopen($arquivo, 'r'); // Abre o arquivo
@@ -32,34 +33,42 @@ function verificarLogin($email, $senha)
 
     // Lê linha por linha
     while (($linha = fgets($handle)) !== false) {
-        echo "Lendo linha: $linha<br>"; // Debug
+        // echo "Lendo linha: $linha<br>"; // Debug
 
         // Remove espaços e quebras de linha
         $dados = explode(",", trim($linha));
 
         // Verifica se o número de campos está correto
         if (count($dados) < 8) {
-            echo "Erro: Linha com dados incompletos.<br>";
+            // echo "Erro: Linha com dados incompletos.<br>";
             continue;
         }
 
         list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
 
         // Exibe os dados para debug
-        echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
+        // echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
 
         // Verifica o email e a senha
         if ($email === $emailArquivo && $senha === $senhaArquivo) {
             fclose($handle);
 
             // Salva o nome completo na sessão
-            $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+            $_SESSION['nome'] = $nome;
             return true;
         }
     }
 
     fclose($handle); // Fecha o arquivo
     return false; // Se não encontrou o usuário
+
+    if ($email === $emailArquivo && $senha === $senhaArquivo) {
+        fclose($handle);
+
+        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        echo "Usuário logado: " . $_SESSION['nome']; // Debug
+        return true;
+    }
 }
 
 // Processa o login
@@ -68,35 +77,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     $senha = trim($_POST['senha']);
 
     // Debug dos valores recebidos
-    var_dump($email, $senha);
+    // var_dump($email, $senha);
 
     if (empty($email) || empty($senha)) {
         $erro = "Por favor, preencha todos os campos.";
-    } elseif (verificarLogin($email, $senha)) {
-        $_SESSION['loggedin'] = true;
-        header("Location: index.php"); // Redireciona para a página inicial
-        exit;
-    } else {
+    } elseif (!verificarLogin($email, $senha)) {
         $erro = "Email ou senha incorretos.";
     }
 }
 
-if (trim($email) === trim($emailArquivo) && trim($senha) === trim($senhaArquivo)) {
-    fclose($handle);
-    $_SESSION['nome'] = $nome . ' ' . $sobrenome;
-    return true;
-}
-echo $mensagem;
-echo $erro;
-?>
 
+// echo $mensagem;
+// echo $erro;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Lateral Expansível</title>
+    <title>ExploraCar</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet"
@@ -106,7 +106,6 @@ echo $erro;
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
 
 <body>
     <header>
@@ -119,85 +118,101 @@ echo $erro;
                 <div class="logo"></div>
             </a>
 
-                    <div class="buttons">
-                        <div class="dropdown">
-                            <?php if (isset($_SESSION['nome'])): ?>
-                                <!-- Botão com o nome do usuário logado -->
-                                <button id="principal-button" class="btn"  onclick="toggleLogoutTab()">
-                                    <img src="../global/img/file.png" alt="">
+            <form action="buscar.php" method="GET" class="barra-pesquisa">
+                <input type="text" name="query" placeholder="Digite aqui..." required>
+                <button type="submit">Pesquisar</button>
+            </form>
+
+
+
+            <div class="buttons">
+                <div class="dropdown">
+                    <?php if (isset($_SESSION['nome'])): ?>
+                        <!-- Botão com o nome do usuário logado -->
+                        <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
+                            <div class="seta"></div>
+                        </button>
+
+                        <!-- <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                            <div class="seta"></div>
+                        </button> -->
+
+
+
+
+                    <?php else: ?>
+                        <!-- Botão padrão "ENTRAR" -->
+
+                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
+                            <div class="seta"></div>
+                            <!-- <img id="seta" src="img/seta.png" alt=""> -->
+                        </button>
+                        </a>
+                    <?php endif; ?>
+                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                        <img src="../global/img/help.png" alt="">
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                        <div class="seta"></div>
+                    </button>
+                </div>
+
+                <div id="logout-tab" class="logout-tab">
+                    <div class="logout-content">
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="logout.php">
+                                <button id="logout-button">
                                     <span></span>
-                                    <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
-                                    <div class="seta"></div>
-                                </button>
-
-                                <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                            <div class="seta"></div>
-                        </button>
-
-                                
-
-
-                                <?php else: ?>
-                                    <!-- Botão padrão "ENTRAR" -->
-                                
-                                    <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                                        <img src="../global/img/file.png" alt="">
-                                        <span></span>
-                                        <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
-                                        <div class="seta"></div>
-                                        <!-- <img id="seta" src="img/seta.png" alt=""> -->
-                                    </button>
-                                    </a>
-                        <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                            <div class="seta"></div>
-                        </button>
-                        <?php endif; ?>
-                    </div>
-
-                    <div id="logout-tab" class="logout-tab">
-                        <div class="logout-content">
-                            <div class="buttons"><a href="logout.php"><button>Sair</button"></a></div>
-                            <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
+                                </button">
+                            </a>
                         </div>
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+
                     </div>
-                    
-                    <div id="help-tab" class="help-tab">
-                        <div class="help-content">
-                            <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
-                            <div class="buttons">
-                                <a href="../loc/duvidasfrequentes/duvidas.php">
-                                    <button>
-                                        <span></span>
-                                        <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
-                                    </button>
-                                </a>
+                </div>
+
+                <div id="help-tab" class="help-tab">
+                    <div class="help-content">
+                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="../loc/duvidasfrequentes/duvidas.php">
+                                <button id="duvidas-button">
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="container-contact">
+                            <div class="header-contact">
+                                <span>Canais de atendimento</span>
                             </div>
-                            <div class="container-contact">
-                                <div class="header-contact">
-                                    <span>Canais de atendimento</span>
+                            <div class="contact-info">
+                                <div>
+                                    <i class="fas fa-phone"></i> Principais Capitais
+                                    <div><strong>4003 7368</strong></div>
                                 </div>
-                                <div class="contact-info">
-                                    <div>
-                                        <i class="fas fa-phone"></i> Principais Capitais
-                                        <div><strong>4003 7368</strong></div>
-                                    </div>
-                                    <!-- <div>
+                                <!-- <div>
                                         <i class="fas fa-phone"></i> Demais Localidades
                                         <div><strong>0800 604 7368</strong></div>
                                     </div> -->
-                                    <div>
-                                        <i class="fas fa-phone"></i> Ligações Internacionais
-                                        <div><strong>+55 (41) 4042 1479</strong></div>
-                                    </div>
+                                <div>
+                                    <i class="fas fa-phone"></i> Ligações Internacionais
+                                    <div><strong>+55 (41) 4042 1479</strong></div>
                                 </div>
-                                <div class="schedule">
-                                    <div class="schedule-header">Horarios de atendimento</div>
+                            </div>
+                            <div class="schedule">
+                                <div class="schedule-header">Horarios de atendimento</div>
                                 <table class="schedule-table">
                                     <tr>
                                         <td>Segunda-feira</td>
@@ -230,11 +245,11 @@ echo $erro;
                                 </table>
                             </div>
                         </div>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                     </div>
                 </div>
 
@@ -247,8 +262,8 @@ echo $erro;
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
                                 <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
-                                Nova
-                                Conta</button>
+                                    Nova
+                                    Conta</button>
                                 <ul>
                                     <li>✅ Rápido e fácil reservar</li>
                                     <li>✅ Descontos de até 30%</li>
@@ -264,24 +279,21 @@ echo $erro;
                                     <input type="email" id="email" name="email" required>
 
                                     <label for="senha">Senha</label>
-                                    <input type="password" id="password" name="password" required>
+                                    <input type="password" id="password" name="senha" required>
 
                                     <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
                                 <?php if (!empty($erro)): ?>
-        <p class="erro"><?= htmlspecialchars($erro) ?></p>
-    <?php endif; ?>
+                                    <p class="erro"><?= htmlspecialchars($erro) ?></p>
+                                <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
 
-            <!-- <a href="#"><button>Entrar</button></a> -->
-            <!-- </div> -->
-            <!-- </div> -->
         </div>
         <nav id="sidebar">
             <ul class="menu">
@@ -296,45 +308,22 @@ echo $erro;
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
                 <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
                 <hr>
-                <li><img src="icons/briefcase.png" alt="Business"> <span>KAYAK for Business</span></li>
-                <li><img src="icons/heart.png" alt="Trips"> <span>Trips</span></li>
-                <hr>
             </ul>
         </nav>
     </header>
     <main>
         <section>
-            <!-- <div class="banner">
-                <img src="img/DALL·E 2024-11-01 14.59.27 - A realistic, low-saturation banner image for a car rental website, featuring a modern, sleek car on a scenic open road with mountains and clear skies .webp"
-                    alt="">
-                <p id="p1">Pesquise. Compare. Alugue.</p>
-                <p id="p2"> Aluguel de carros com os melhores preços</p>
-                <div class="atributions">
-                    <div class="att1">
-                        <img src="img/fileCheck.png" alt="check">
-                        <p>Cancelamento grátis na maioria das reservas</p>
-                    </div>
-                    <div class="att2">
-                        <img src="img/fileCheck.png" alt="check">
-                        <p>Melhor preço garantido</p>
-                    </div>
-                    <div class="att3">
-                        <img src="img/fileCheck.png" alt="check">
-                        <p>Pague em reais sem IOF</p>
-                    </div>
-                </div>
 
-            </div> -->
             <div class="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="img/banner1 (1).webp" alt="Imagem 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/ban4.png" alt="Imagem 2">
+                        <img src="img/drive.png" alt="Imagem 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/banner3.webp" alt="Imagem 3">
+                        <img src="img/banner7.png" alt="Imagem 3">
                     </div>on>
 
                 </div>
@@ -354,14 +343,153 @@ echo $erro;
                 <h1>ExploraCar, os melhores preços estão aqui</h1>
                 <p>Atendimento de qualidade e a melhor experiência em aluguel de carros com a ExploraCar</p>
             </div>
-            <div class="buttons">
+        </section>
+
+        <section>
+            <div class="container-destaques">
+                <!-- Carousel 1 -->
+                <div class="carousel-cars" data-carousel="1" id="carousel1">
+                    <h1>Para toda sua família</h1>
+                    <div class="carousel-track">
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Chevrolet/Chevrolet Spin.png" alt="Slide 1">
+                            <h2>Chevrolet Spin</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Fiat/Fiat Ducato.png" alt="Slide 2">
+                            <h2>Fiat Ducato</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Nissan/Nissan Frontier.png" alt="Slide 3">
+                            <h2> Nissan Frontier</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Volkswagen Saveiro.png"
+                                alt="Slide 4">
+                            <h2>Volkswagen Saveiro</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Ford/Ford Explorer.png" alt="Slide 5">
+                            <h2>Ford Explorer</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Citroen/Citroën Berlingo.png" alt="Slide 6">
+                            <h2>Citroen Berlingo</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
+                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
+                                impedit totam deleniti in.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="anterior">&#10094;</button>
+                        <button class="proximo">&#10095;</button>
+                    </div>
+                </div>
+
+                <!-- Carousel 2 -->
+                <div class="carousel-cars" data-carousel="2" id="carousel2">
+                    <h1>Linha Black Friday</h1>
+                    <div class="carousel-track">
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Audi RS7.png" alt="Slide 1">
+                            <h2>Audi RS7</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Audi A8.png" alt="Slide 2">
+                            <h2>Audi A8</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LX.png" alt="Slide 3">
+                            <h2>Lexus LX</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LC.png" alt="Slide 4">
+                            <h2>Lexus LC</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Volvo V90.png" alt="Slide 5">
+                            <h2> Volvo V90</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/BMW X6.png" alt="Slide 6">
+                            <h2> BMW X6</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="anterior">&#10094;</button>
+                        <button class="proximo">&#10095;</button>
+                    </div>
+                </div>
+
+                <!-- Carousel 3 -->
+                <div class="carousel-cars" data-carousel="3" id="carousel3">
+                    <h1>Para quem busca conforto</h1>
+                    <div class="carousel-track">
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Jetta.png" alt="Slide 1">
+                            <h2> Volkswagen Jetta</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Toyota/Corolla.png" alt="Slide 2">
+                            <h2> Toyota Corolla</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Hyundai/Hyundai i30.png" alt="Slide 3">
+                            <h2> Hyundai i30</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda HR-V.png" alt="Slide 4">
+                            <h2> Honda HR-V</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda Civic.png" alt="Slide 5">
+                            <h2> Honda Civic</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                        <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Nissan/Nissan Sentra.png" alt="Slide 6">
+                            <h2> Nissan Sentra</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
+                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="anterior">&#10094;</button>
+                        <button class="proximo">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="buttons">
+            <div class="button-central">
                 <a href="../Locação/veiculos.html">
                     <button>
                         <span></span>
-                        Quero alugar agora!
+                        Confira todas as opções!
                     </button>
                 </a>
             </div>
+        </div>
         </section>
 
         <aside>
@@ -379,22 +507,22 @@ echo $erro;
                 <div class="advantage">
                     <i class="fas fa-dollar-sign"></i>
                     <h2>Melhor preço: até 30% OFF</h2>
-                    <p>Encontrou uma tarifa menor depois de ter reservado com a Rentcars? Nós reembolsamos a diferença!</p>
+                    <p>Encontrou uma tarifa menor depois de ter reservado com a ExploraCar? Nós reembolsamos a diferença!</p>
                 </div>
                 <div class="advantage">
                     <i class="fas fa-credit-card"></i>
-                    <h2>Reservas com até 10% de cashback</h2>
-                    <p>Alugue um carro parcelando em até 12x no cartão de crédito, via PIX ou boleto. Ainda ganhe Cashback de até 10%!</p>
+                    <h2>Reserve com sua preferência de pagamento</h2>
+                    <p>Alugue um carro parcelando em até 12x no cartão de crédito, via PIX ou boleto!</p>
                 </div>
                 <div class="advantage">
                     <i class="fas fa-globe"></i>
-                    <h2>Compare os melhores preços de mais de 160 países</h2>
+                    <h2>Compare os melhores preços do continente</h2>
                     <p>Esqueça pagamento em dólar ou outra moeda: para reservas internacionais feitas no Brasil, pague em reais e economize o IOF de 4,38%.</p>
                 </div>
                 <div class="advantage">
                     <i class="fas fa-car"></i>
                     <h2>Aluguel de carro conveniente e fácil</h2>
-                    <p>Compare preços de mais de 300 locadoras pelo mundo em um só lugar, tenha o melhor atendimento e desfrute de promoções exclusivas!</p>
+                    <p>Compare preços de mais de 100 locadoras pelo Brasil em um só lugar, tenha o melhor atendimento e desfrute de promoções exclusivas!</p>
                 </div>
             </div>
         </div>
@@ -509,9 +637,9 @@ echo $erro;
 
 
 
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://codepen.io/z-/pen/a8e37caf2a04602ea5815e5acedab458.js"></script>
-        <script src="teste05.js"></script>
         <script>
             $(".option").click(function() {
                 $(".option").removeClass("active");
@@ -569,67 +697,8 @@ echo $erro;
             </ul>
         </div>
     </footer>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
     <script src="../global/global.js"></script>
-    <script>
-        function toggleInfoTab() {
-            const infoTab = document.getElementById('info-tab');
-            infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function toggleHelpTab() {
-            const helpTab = document.getElementById('help-tab');
-            helpTab.style.display = helpTab.style.display === 'block' ? 'none' : 'block';
-        }
-        function toggleLogoutTab() {
-            const logoutTab = document.getElementById('logout-tab');
-            logoutTab.style.display = logoutTab.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
-    <script>
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('.indicator');
-
-            // Corrige o índice se estiver fora dos limites
-            if (index >= slides.length) currentIndex = 0;
-            if (index < 0) currentIndex = slides.length - 1;
-
-            const offset = -currentIndex * 100;
-            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
-
-            // Remover a classe 'active' de todos os indicadores e aplicar apenas ao atual
-            indicators.forEach((indicator, i) => {
-                if (i === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentIndex++;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex--;
-            showSlide(currentIndex);
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            showSlide(currentIndex);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

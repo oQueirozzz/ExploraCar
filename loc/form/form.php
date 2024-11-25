@@ -112,121 +112,108 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crie sua Conta</title>
+    <link rel="stylesheet" href="../../global/global.css">
     <link rel="stylesheet" href="./css/form.css">
 </head>
 
 <body>
 
     <div class="form-container">
-        <h2>Crie sua Conta</h2>
-       
-           <!-- Exibe erros caso existam -->
-           <?php if (!empty($erro)) : ?>
-            <div class="error"><?php echo $erro; ?></div>
-        <?php endif; ?>
 
-        <form id="formCadastro" method="POST" action="">
-            <!-- Seção: Dados pessoais -->
-            <h3>Dados pessoais</h3>
+            <h2>Crie sua Conta</h2>
+               <!-- Exibe erros caso existam -->
+               <?php if (!empty($erro)) : ?>
+                <div class="error"><?php echo $erro; ?></div>
+            <?php endif; ?>
+            <form id="formCadastro" method="POST" action="">
+                <!-- Seção: Dados pessoais -->
+                <h3>Dados pessoais</h3>
             
-
-            <div class="form-group two-columns">
-                <div>
-                    <label for="nome">Nome do locatário <span class="required">*</span></label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                <div class="form-group two-columns">
+                    <div>
+                        <label for="nome">Nome do locatário <span class="required">*</span></label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div>
+                        <label for="sobrenome">Sobrenome <span class="required">*</span></label>
+                        <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                    </div>
                 </div>
-                <div>
-                    <label for="sobrenome">Sobrenome <span class="required">*</span></label>
-                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                <div class="form-group two-columns">
+                    <div>
+                        <label for="pais">País de Residência <span class="required">*</span></label>
+                        <select id="pais" name="pais" required>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="EUA">EUA</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="cpf">CPF <span class="required">*</span></label>
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group two-columns">
-                <div>
-                    <label for="pais">País de Residência <span class="required">*</span></label>
-                    <select id="pais" name="pais" required>
-                        <option value="Brasil">Brasil</option>
-                        <option value="Portugal">Portugal</option>
-                        <option value="EUA">EUA</option>
-                    </select>
+                <div class="form-group two-columns">
+                    <div>
+                        <!-- Data de Nascimento -->
+                        <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
+                        <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/AAAA" required >
+                        <div id="birthdateError" class="error-message" style="display:none;">Por favor, insira uma data de nascimento válida.</div>
+                    </div>
+                    <div>
+                        <!-- Celular -->
+                        <label for="celular">Celular <span class="required">*</span></label>
+                        <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="cpf">CPF <span class="required">*</span></label>
-                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                <!-- Seção: Dados de acesso à Rentcars -->
+                <div class="form-group two-columns">
+                    <div>
+                        <!-- E-mail -->
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                    </div>
+            
+                    <div>
+                        <!-- Criar uma Senha de Acesso -->
+                        <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
+                        <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group two-columns">
-                <div>
-                    <!-- Data de Nascimento -->
-                    <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
-                    <input type="text" id="birthdate" name="dataNascimento" placeholder="DD/MM/AAAA" required >
+                <div class="form-group two-columns">
+            
+                    <div>
+                        <!-- Confirmar Senha de Acesso -->
+                        <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
+                        <input type="password" id="confirmSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
+                    </div>
                 </div>
-
-                <div>
-                    <!-- Celular -->
-                    <label for="celular">Celular <span class="required">*</span></label>
-                    <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
+                <!-- Política de Privacidade -->
+                <div class="form-footer">
+                    <label>
+                        <input type="checkbox" name="politicaPrivacidade" required>
+                        Ao gerar uma reserva você concorda com a <a href="../politicas/politicas.html">Política de Privacidade</a> da
+                        ExploraCar
+                    </label>
                 </div>
-            </div>
-
-            <!-- Seção: Dados de acesso à Rentcars -->
-
-            <div class="form-group two-columns">
-                <div>
-                    <!-- E-mail -->
-                    <label for="email">E-mail <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                <!-- Ofertas e promoções -->
+                <div class="form-footer">
+                    <label>
+                        <input type="checkbox" name="ofertas">
+                        Aceito receber todas as ofertas e promoções da ExploraCar
+                    </label>
                 </div>
-                
-                <div>
-                    <!-- Criar uma Senha de Acesso -->
-                    <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
-                    <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
+                <div class="form-group two-columns">
+                    <!-- Botão de envio -->
+                    <div class="buttons"><button type="submit" id="cadastrar-button" class="login-button"><span></span>Criar Conta</button></div>
+                    <!-- Notas de rodapé -->
+                    <div class="footer-notes">
+                        ✔ Rápido e fácil reservar<br>
+                        ✔ Descontos de até 30%<br>
+                        ✔ Acesso a ofertas exclusivas
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="form-group two-columns">
-               
-
-                <div>
-                    <!-- Confirmar Senha de Acesso -->
-                    <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
-                    <input type="password" id="confirmSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
-                </div>
-            </div>
-
-            <!-- Política de Privacidade -->
-            <div class="form-footer">
-                <label>
-                    <input type="checkbox" name="politicaPrivacidade" required>
-                    Ao gerar uma reserva você concorda com a <a href="../politicas/politicas.html">Política de Privacidade</a> da
-                    ExploraCar
-                </label>
-            </div>
-
-            <!-- Ofertas e promoções -->
-            <div class="form-footer">
-                <label>
-                    <input type="checkbox" name="ofertas">
-                    Aceito receber todas as ofertas e promoções da ExploraCar
-                </label>
-            </div>
-
-            <div class="form-group two-columns">
-                <!-- Botão de envio -->
-                <input type="submit" class="submit-btn" value="Criar Conta"></input>
-
-                <!-- Notas de rodapé -->
-                <div class="footer-notes">
-                    ✔ Rápido e fácil reservar<br>
-                    ✔ Descontos de até 30%<br>
-                    ✔ Acesso a ofertas exclusivas
-                </div>
-            </div>
-        </form>
+            </form>
     </div>
 
     <script>
@@ -271,22 +258,81 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }; 
 
-        document.getElementById("cnh").addEventListener("input", function (e) {
-    let value = e.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-    value = value.replace(/(\d{3})(\d)/, "$1 $2"); // Adiciona o primeiro espaço
-    value = value.replace(/(\d{3}) (\d{3})(\d)/, "$1 $2 $3"); // Adiciona o segundo espaço
-    value = value.replace(/(\d{3}) (\d{3}) (\d{3})(\d)/, "$1 $2 $3 $4"); // Adiciona o último espaço
-    e.target.value = value;
-});
+        window.onload = function () {
+    const birthdate = document.querySelector('#birthdate');
+    const birthdateError = document.querySelector('#birthdateError');
 
+    // Máscara de entrada
+    birthdate.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
 
-document.getElementById("birthdate").addEventListener("input", function (e) {
-    let value = e.target.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-    value = value.replace(/(\d{2})(\d)/, "$1/$2"); // Adiciona a primeira barra
-    value = value.replace(/(\d{2})\/(\d{2})(\d)/, "$1/$2/$3"); // Adiciona a segunda barra
-    value = value.substring(0, 10); // Limita o tamanho máximo a 10 caracteres
-    e.target.value = value;
-});
+        if (value.length > 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2);
+        }
+        if (value.length > 5) {
+            value = value.substring(0, 5) + '/' + value.substring(5);
+        }
+        value = value.substring(0, 10);
+        e.target.value = value;
+    });
+
+    // Validação de data quando o campo perde o foco (blur)
+    birthdate.addEventListener('blur', function () {
+        const dateValue = birthdate.value;
+        if (!isValidDate(dateValue)) {
+            birthdateError.style.display = 'block'; // Exibe a mensagem de erro
+        } else {
+            birthdateError.style.display = 'none'; // Esconde a mensagem de erro
+        }
+    });
+
+    // Função para validar datas
+    function isValidDate(dateString) {
+        const dateParts = dateString.split('/');
+        if (dateParts.length !== 3) return false;
+
+        const day = parseInt(dateParts[0], 10);
+        const month = parseInt(dateParts[1], 10) - 1; // Meses no JS vão de 0 a 11
+        const year = parseInt(dateParts[2], 10);
+
+        if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
+
+        const date = new Date(year, month, day);
+
+        // Verifica se a data é válida
+        if (
+            date.getFullYear() !== year ||
+            date.getMonth() !== month ||
+            date.getDate() !== day
+        ) {
+            return false;
+        }
+
+        // Limita a data para garantir que está dentro de um intervalo plausível
+        const today = new Date();
+        const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate()); // Até 120 anos atrás
+        const maxDate = today;
+
+        return date >= minDate && date <= maxDate;
+    }
+
+    // Validação no envio do formulário
+    const form = document.querySelector('#formCadastro');
+    form.onsubmit = function (event) {
+        const dateValue = birthdate.value;
+
+        if (!isValidDate(dateValue)) {
+            birthdateError.style.display = 'block'; // Exibe o erro
+            event.preventDefault(); // Impede o envio do formulário
+            return false;
+        }
+
+        // Se a data for válida, o formulário será enviado
+        birthdateError.style.display = 'none'; // Garante que a mensagem de erro seja escondida
+        alert('Formulário enviado com sucesso!');
+    };
+};
+
         
 
     </script>
