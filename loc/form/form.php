@@ -189,6 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
                 <!-- Política de Privacidade -->
+                <div class="form-footer-cont">
                 <div class="form-footer">
                     <label>
                         <input type="checkbox" name="politicaPrivacidade" required>
@@ -197,11 +198,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </label>
                 </div>
                 <!-- Ofertas e promoções -->
-                <div class="form-footer">
-                    <label>
-                        <input type="checkbox" name="ofertas">
-                        Aceito receber todas as ofertas e promoções da ExploraCar
-                    </label>
+                    <div class="form-footer">
+                        <label>
+                            <input type="checkbox" name="ofertas">
+                            Aceito receber todas as ofertas e promoções da ExploraCar
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group two-columns">
                     <!-- Botão de envio -->

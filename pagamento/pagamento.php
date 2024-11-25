@@ -1,12 +1,12 @@
 <?php
-session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../loc/form/form.php");
-    exit;
-}
+// session_start();
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: ../loc/form/form.php");
+//     exit;
+// }
 ?>
 <!DOCTYPE html>
-<html lang="en" class="hydrated">
+<html lang="pt-br" class="hydrated">
 <head>
     <meta charset="UTF-8">
     <style data-styles="">
@@ -19,6 +19,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="pagamento.css">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
@@ -177,29 +178,44 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     </div>
                 </div>
 
-                <button type="submit" class="form__btn">Confirmar</button>
+                <div class="buttons">
+                    <form action="processar_pagamento.php" method="POST">
+                        <input type="hidden" name="valor" value="<?php echo htmlspecialchars($valor); ?>">
+                        <a href=""><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button></a>
+                           
+                        </form>
+                </div>
 
             </form>
 
         </div>
 
-
+        <?php
+$valor = isset($_GET['valor']) ? $_GET['valor'] : '0.00';
+?>
     <div class="cart-container">
         <div class="cart-header">
             <h2>Meu Carrinho</h2>
         </div>
         <div class="cart-item">
-            <h3>Virilha nova <span class="price">R$1.000.000.000</span></h3>
-            <p>Virilha 100% nova para idosos que são totalmente quebrados fisicalmente</p>
+            <h3>Virilha nova <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($valor); ?></span></span></h3>
+            <p>Virilha 100% nova para idosos que são totalmente quebrados fisicamente</p>
         </div>
-        <div class="cart-item promo-code">
-            <h3>Cupom <span class="price">−R$200.000.000</span></h3>
-            <p>EXPLORACAR</p>
+
+        <!-- Onde o desconto será exibido -->
+        <div id="desconto" class="cart-item promo-code" style="display: none;">
+            <h3>Cupom <span class="price">−R$ <span id="valor-desconto"></span></span></h3>
+            <p id="cupom-aplicado"></p>
         </div>
-        <div class="total">Total (R$) <span>R$800.000.000</span></div>
+        <!-- Total -->
+        <div class="total">
+            Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($valor); ?></span></span>
+        </div>
+
+        <!-- Entrada para cupom -->
         <div class="promo-input">
-            <input type="text" placeholder="Cupom de Desconto">
-            <button>Verificar</button>
+            <input type="text" id="input-cupom" placeholder="Cupom de Desconto">
+            <button id="btn-verificar">Verificar</button>
         </div>
     </div>   
  </div>
@@ -207,6 +223,39 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 </html>
 
     <script src="pagamento.js"></script>
+    <script>
+    // Lista de cupons válidos e seus descontos
+    const cupons = {
+            "EXPLORACAR": 10.00,
+            "DESCONTO50": 50.00
+        };
+
+        // Função para verificar e aplicar o cupom
+        document.getElementById('btn-verificar').addEventListener('click', () => {
+            const cupomInput = document.getElementById('input-cupom').value.toUpperCase(); // Converte o cupom para maiúsculas
+            const descontoCard = document.getElementById('desconto'); // Card do desconto
+            const precoItem = parseFloat(document.getElementById('preco-item').innerText); // Preço do item
+            const totalValor = document.getElementById('total-valor'); // Total atualizado
+
+            // Verifica se o cupom é válido
+            if (cupons[cupomInput]) {
+                const desconto = cupons[cupomInput]; // Obtém o valor do desconto
+
+                // Atualiza o card de desconto
+                descontoCard.style.display = 'block';
+                document.getElementById('valor-desconto').innerText = desconto.toFixed(2);
+                document.getElementById('cupom-aplicado').innerText = cupomInput;
+
+                // Atualiza o valor total
+                const novoTotal = Math.max(precoItem - desconto, 0);
+                totalValor.innerText = novoTotal.toFixed(2);
+            } else {
+                alert('Cupom inválido!'); // Mensagem de erro se o cupom for inválido
+            }
+        });
+    
+</script>
+
 
 </body>
 

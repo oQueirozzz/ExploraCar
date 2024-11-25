@@ -1,13 +1,7 @@
 :root {
-  --primary-light: #8e8aff;
-  --primary: #655dff;
-  --primary-dark: #4f46f8;
-  --secondary: #17c9ff;
   --alert: #ff6a96;
   --greyLight-1: #e0ecf7;
   --greyLight-2: #c8dbf0;
-  --greyDark-1: #92acc4;
-  --greyDark-2: #5a768f;
 }
 
 *,
@@ -55,7 +49,6 @@ html {
   top: 0.5rem;
   left: 4rem;
 }
-
 .payment__shadow-dots {
   position: absolute;
   top: 0.5rem;
@@ -76,7 +69,7 @@ html {
   padding: 0 2rem;
   align-items: center;
   color: #ffffff;
-  background: rgba(230, 150, 0, 0.89);
+  background: rgb(255, 115, 0);
   box-shadow: -0.4rem 0.4rem 1.2rem rgba(241, 157, 1, 0.87);
   border: 0.2px solid #ffffff;
   z-index: 200;
@@ -150,6 +143,15 @@ html {
   font-family: "Inter", sans-serif;
   color: #000;
 }
+input[type="email"], input[type="password"]{
+  /* height: 40px; */
+  width: 100%;
+  
+}
+#cvv{
+  height: 40px;
+  margin-bottom: 0px;
+}
 
 .form__detail {
   display: flex;
@@ -222,8 +224,9 @@ html {
   font-size: 2rem;
   top: 3.4rem;
   margin-left: 1rem;
-  color: var(--primary-light);
+  color: rgb(250, 112, 0);
   stroke: var(--primary);
+  margin-top: 3px;
 }
 
 .form label {
@@ -258,7 +261,9 @@ html {
 .form input:hover {
   border: 1px solid var(--primary-light);
 }
-
+#button-payment{
+  width: 65%;
+}
 .alert {
   font-family: "Inter", sans-serif;
   font-size: 1.2rem;
@@ -359,7 +364,7 @@ html {
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 0.8rem 0 0 0.8rem; 
-  background: rgba(241, 157, 1, 0.87);
+  background: rgb(255, 115, 0);
   color: #ffffff;
 }
 .promo-input input:hover {
@@ -385,4 +390,12 @@ html {
 
 .promo-input button:hover {
   background-color: #777;
+}
+#desconto {
+  margin: 10px 0;
+  background: #e7fbe7;
+  border: 1px solid #b3e6b3;
+  border-radius: 5px;
+  padding: 10px;
+  display: none;
 }

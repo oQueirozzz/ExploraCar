@@ -135,7 +135,7 @@ form.addEventListener('submit', function (e) {
     if(name.value === '' || number.value.length !== 19 || date.value.length !== 5 || isNotDate(date) === true || cvv.value.length < 3) {
         e.preventDefault();
     };
-
+    
     // 5. if any input is empty show the alert of that input
     let input = document.querySelectorAll('input');
     for( i = 0; i < input.length; i++) {

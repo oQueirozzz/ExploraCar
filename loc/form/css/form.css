@@ -16,11 +16,11 @@ body {
     border-radius: 10px;
     /* Define a fonte padrão para o formulário */
     font-family: Arial, sans-serif;
-    margin-top: 30px;
+    margin-top: 100px;
     flex-direction: column;
     /* Organiza os elementos verticalmente */
     backdrop-filter: blur(15px);
-    height: 90vh;
+    height: 80vh;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75);
     overflow: hidden;
 }
@@ -64,7 +64,6 @@ form{
     color: #ffffff;
     /* Define uma margem abaixo do título para espaçamento */
     margin-bottom: 25px;
-    margin-left: 30px;
 }
 
 /* Define o estilo para os rótulos dos campos */
@@ -140,6 +139,9 @@ select {
     margin-top: 10px;
     /* Define o tamanho da fonte para o texto do rodapé */
     font-size: 14px;
+}
+.form-footer-cont{
+    margin-top: 50px;
 }
 
 /* Remove o negrito dos rótulos na área do rodapé */

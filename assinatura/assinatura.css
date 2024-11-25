@@ -75,6 +75,7 @@ ul {
 }
 .card__bullets {
   line-height: 1.4;
+  margin-top: 20px;
 }
 
 .card__bullets li::before {
@@ -101,10 +102,11 @@ ul {
 .flow > * + * {
   margin-top: var(--flow-space, 1.25em);
 }
-.buttons a{
-  width: 100%;
-  color: #ffffff;
+#button-assina{
+  width: 470px;
+  display: block;
 }
+
 .buttons button{
   width: 100%;
 }
@@ -147,7 +149,3 @@ ul {
   transition: 400ms background ease;
   will-change: background;
 }x
-#month{
-    gap: 0.5em;
-    margin-bottom: 20px;
-}
