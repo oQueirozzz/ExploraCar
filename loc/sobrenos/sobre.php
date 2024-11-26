@@ -208,31 +208,61 @@
     </header>
 
     <div class="banner">
-        
+
         <h1 class="text-title">Sua Viagem Começa Aqui.</h1>
-        
+
     </div>
 
     <div class="conheca">
         <h2 class="title-conheca">Conheça a história da ExploraCar</h2>
-        <p class="text-conheca">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam reprehenderit, accusantium provident vitae quam voluptatem<br> molestias ipsa mollitia ab,
-            quae quisquam perspiciatis in. Molestiae aperiam beatae, minima voluptates velit eum.</p>
+        <p class="text-conheca">
+            A ExploraCar nasceu com o propósito de oferecer uma experiência de locação de veículos simples, confiável e inovadora. Fundada por um grupo de entusiastas de mobilidade, a empresa começou com uma frota pequena, mas focada em qualidade e segurança.
+            Com o tempo, a ExploraCar se destacou por investir em tecnologia, criando uma plataforma online fácil de usar e garantindo atendimento ágil e transparente. A empresa também adotou práticas sustentáveis, com carros híbridos e elétricos, comprometendo-se com o futuro e a redução de impacto ambiental.
+            Hoje, a ExploraCar é sinônimo de confiança e flexibilidade, oferecendo soluções personalizadas para viagens de negócios, lazer e necessidades do dia a dia, sempre com foco na satisfação do cliente e inovação constante</p>
     </div>
 
-    <div class="icons">
+    <div class="image">
+        <h1 class="title-image">Aluguel de carros por todo o Brasil</h1>
+        <img src="./img/viagem.webp" alt="viagem" class="img-viagem">
+    </div>
 
-        <div class="mission">
-            <img src="./img/alvo.png" alt="missão">
-        </div>
+    <section>
 
-        <div class="vision">
-            <img src="./img/lampada.png" alt="visão">
-        </div>
+        <video autoplay="on" class="bg_video" loop muted poster="imagens/poster.jpg">
+            <source src="./img/videoexploracar.mp4" type="video/mp4" autoplay muted loop>
+        </video>
+    </section>
 
-        <div class="values">
-            <img src="./img/valor.png" alt="valores">
+    <div class="sep-color">
+        <div class="icons">
+
+            <div class="mission">
+                <img src="./img/alvo.png" alt="missão">
+                <h2 class="title-icon">Missão</h2>
+                <p class="text-mvv">"Oferecer soluções de locação de veículos com qualidade, <br>
+                    facilidade e preços justos, garantindo segurança e conforto. <br>
+                    Nossa missão é ajudar as pessoas a explorarem o mundo <br>
+                    com liberdade e praticidade."</p>
+            </div>
+
+            <div class="vision">
+                <img src="./img/lampada.png" alt="visão">
+                <h2 class="title-icon">Visão</h2>
+                <p class="text-mvv">"Ser a principal referência em locação de veículos, <br>
+                    oferecendo inovação, qualidade e sustentabilidade. <br>
+                    Queremos facilitar o transporte, transformar jornadas em experiências <br>
+                    e ser a primeira escolha de quem busca liberdade e conveniência."</p>
+            </div>
+
+            <div class="values">
+                <img src="./img/valor.png" alt="valores" id="values">
+                <h2 class="title-icon" id="valores">Valores</h2>
+                <p class="text-mvv">
+                    Agimos com confiança, transparência e compromisso, priorizando a qualidade, segurança e inovação na nossa frota. Valorizamos a sustentabilidade e oferecemos atendimento ágil e personalizado, com soluções flexíveis para atender às necessidades dos nossos clientes.
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
