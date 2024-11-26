@@ -281,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../loc/form/esqueceusenha/esqueceusenha.php?acao=esqueceusenha" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>

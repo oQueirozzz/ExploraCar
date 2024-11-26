@@ -1,4 +1,54 @@
+<?php
+session_start();
+ 
+// Desativar exibição de erros
+error_reporting(0);
+ini_set('display_errors', 0);
+ 
+$erro = '';
+$mensagem = '';
+$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+ 
+// Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
+if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
+    $mostrarFormulario = 'esqueceuSenha';
+}
+ 
+// Função para verificar login
+function verificarLogin($cpf, $senha) {
+    $arquivo = fopen("loc/form/usuarios/usuarios.txt", "r");
+    if ($arquivo) {
+        while (($linha = fgets($arquivo)) !== false) {
+            $dados = explode(",", trim($linha));
+            if (count($dados) >= 2 && $dados[0] === $cpf && $dados[1] === $senha) {
+                fclose($arquivo);
+                // Adiciona o nome do usuário à sessão
+                $_SESSION['nome'] = $dados[2];
+                return true;
+            }
+        }
+        fclose($arquivo);
+    }
+    return false;
+}
 
+// Processa o login
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
+    $cpf = trim($_POST['cpf']);
+    $senha = trim($_POST['senha']);
+ 
+    if (empty($cpf) || empty($senha)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif (verificarLogin($cpf, $senha)) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['cpf'] = $cpf;
+        header("Location: home/index.php");
+        exit;
+    } else {
+        $erro = "CPF ou senha incorretos.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +62,7 @@
 
 <body>
     <div class="form-container">
-        <form id="formCadastro" action="novasenha.php" method="post">
+        <form id="formCadastro" action="">
             <h2>Esqueceu sua senha?</h2>
             <div class="inp-email">
                 <label for="email">Email</label>
@@ -57,7 +107,7 @@
         
                 // Abrir uma nova página em uma nova aba
                 setTimeout(function () {
-                    window.open('novasenha.php', '_parent');
+                    window.open('novasenha.html', '_parent');
                 }, 1000); // Espera 1 segundos antes de abrir a nova página
         
                 form.reset();

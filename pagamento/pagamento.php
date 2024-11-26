@@ -4,6 +4,15 @@
 //     header("Location: ../loc/form/form.php");
 //     exit;
 // }
+
+// Validação dos dados recebidos
+$id = isset($_POST['id']) ? $_POST['id'] : null;
+$nome = isset($_POST['nome']) ? $_POST['nome'] : null;
+$descricao = isset($_POST['descricao']) ? $_POST['descricao'] : null;
+$valor = isset($_POST['valor']) ? $_POST['valor'] : null;
+
+// Verifique se todos os dados foram enviados
+if ($id && $nome && $descricao && $valor):
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="hydrated">
@@ -189,17 +198,14 @@
             </form>
 
         </div>
-
-        <?php
-$valor = isset($_GET['valor']) ? $_GET['valor'] : '0.00';
-?>
     <div class="cart-container">
         <div class="cart-header">
             <h2>Meu Carrinho</h2>
+            <p style="display: none;"><strong>Pacote ID:</strong> <?php echo htmlspecialchars($id); ?></p>
         </div>
         <div class="cart-item">
-            <h3>Virilha nova <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($valor); ?></span></span></h3>
-            <p>Virilha 100% nova para idosos que são totalmente quebrados fisicamente</p>
+            <h3><?php echo htmlspecialchars($nome); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($valor); ?></span></span></h3>
+            <p> <?php echo htmlspecialchars($descricao); ?></p>
         </div>
 
         <!-- Onde o desconto será exibido -->
@@ -208,26 +214,32 @@ $valor = isset($_GET['valor']) ? $_GET['valor'] : '0.00';
             <p id="cupom-aplicado"></p>
         </div>
         <!-- Total -->
-        <div class="total">
-            Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($valor); ?></span></span>
-        </div>
-
-        <!-- Entrada para cupom -->
-        <div class="promo-input">
-            <input type="text" id="input-cupom" placeholder="Cupom de Desconto">
-            <button id="btn-verificar">Verificar</button>
+        <div class="container-descont">
+            <div class="total">
+                Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($valor); ?></span></span>
+            </div>
+            <!-- Entrada para cupom -->
+            <div class="promo-input">
+                <input type="text" id="input-cupom" placeholder="Cupom de Desconto">
+                <button id="btn-verificar">Verificar</button>
+            </div>
         </div>
     </div>   
  </div>
 </body>
 </html>
+<?php
+else:
+    echo "Erro: Informações incompletas.";
+endif;
+?>
 
     <script src="pagamento.js"></script>
     <script>
     // Lista de cupons válidos e seus descontos
     const cupons = {
             "EXPLORACAR": 10.00,
-            "DESCONTO50": 50.00
+            "DESCONTO15": 15.00
         };
 
         // Função para verificar e aplicar o cupom

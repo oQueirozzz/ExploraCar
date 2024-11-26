@@ -118,105 +118,106 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
 
-    <div class="form-container">
-
-            <h2>Crie sua Conta</h2>
-               <!-- Exibe erros caso existam -->
-               <?php if (!empty($erro)) : ?>
-                <div class="error"><?php echo $erro; ?></div>
-            <?php endif; ?>
-            <form id="formCadastro" method="POST" action="">
-                <!-- Seção: Dados pessoais -->
-                <h3>Dados pessoais</h3>
-            
-                <div class="form-group two-columns">
-                    <div>
-                        <label for="nome">Nome do locatário <span class="required">*</span></label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+    <main>
+        <div class="form-container">
+                <h2>Crie sua Conta</h2>
+                   <!-- Exibe erros caso existam -->
+                   <?php if (!empty($erro)) : ?>
+                    <div class="error"><?php echo $erro; ?></div>
+                <?php endif; ?>
+                <form id="formCadastro" method="POST" action="">
+                    <!-- Seção: Dados pessoais -->
+                    <h3>Dados pessoais</h3>
+        
+                    <div class="form-group two-columns">
+                        <div>
+                            <label for="nome">Nome do locatário <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div>
+                            <label for="sobrenome">Sobrenome <span class="required">*</span></label>
+                            <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                        </div>
                     </div>
-                    <div>
-                        <label for="sobrenome">Sobrenome <span class="required">*</span></label>
-                        <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
+                    <div class="form-group two-columns">
+                        <div>
+                            <label for="pais">País de Residência <span class="required">*</span></label>
+                            <select id="pais" name="pais" required>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="EUA">EUA</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cpf">CPF <span class="required">*</span></label>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group two-columns">
-                    <div>
-                        <label for="pais">País de Residência <span class="required">*</span></label>
-                        <select id="pais" name="pais" required>
-                            <option value="Brasil">Brasil</option>
-                            <option value="Portugal">Portugal</option>
-                            <option value="EUA">EUA</option>
-                        </select>
+                    <div class="form-group two-columns">
+                        <div>
+                            <!-- Data de Nascimento -->
+                            <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
+                            <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/AAAA" required >
+                            <div id="birthdateError" class="error-message" style="display:none;">Por favor, insira uma data de nascimento válida.</div>
+                        </div>
+                        <div>
+                            <!-- Celular -->
+                            <label for="celular">Celular <span class="required">*</span></label>
+                            <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
+                        </div>
                     </div>
-                    <div>
-                        <label for="cpf">CPF <span class="required">*</span></label>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                    <!-- Seção: Dados de acesso à Rentcars -->
+                    <div class="form-group two-columns">
+                        <div>
+                            <!-- E-mail -->
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
+                        </div>
+        
+                        <div>
+                            <!-- Criar uma Senha de Acesso -->
+                            <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
+                            <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group two-columns">
-                    <div>
-                        <!-- Data de Nascimento -->
-                        <label for="dataNascimento">Data de Nascimento <span class="required">*</span></label>
-                        <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/AAAA" required >
-                        <div id="birthdateError" class="error-message" style="display:none;">Por favor, insira uma data de nascimento válida.</div>
+                    <div class="form-group two-columns">
+        
+                        <div>
+                            <!-- Confirmar Senha de Acesso -->
+                            <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
+                            <input type="password" id="confirmSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
+                        </div>
                     </div>
-                    <div>
-                        <!-- Celular -->
-                        <label for="celular">Celular <span class="required">*</span></label>
-                        <input type="text" id="celular" name="celular" placeholder="Ex.: (11) 96123-4567" required>
-                    </div>
-                </div>
-                <!-- Seção: Dados de acesso à Rentcars -->
-                <div class="form-group two-columns">
-                    <div>
-                        <!-- E-mail -->
-                        <label for="email">E-mail <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="seuemail@gmail.com" required>
-                    </div>
-            
-                    <div>
-                        <!-- Criar uma Senha de Acesso -->
-                        <label for="senha">Crie uma Senha de Acesso <span class="required">*</span></label>
-                        <input type="password" id="senha" name="senha" placeholder="Crie sua senha" required>
-                    </div>
-                </div>
-                <div class="form-group two-columns">
-            
-                    <div>
-                        <!-- Confirmar Senha de Acesso -->
-                        <label for="confirmSenha">Confirme sua Senha de Acesso <span class="required">*</span></label>
-                        <input type="password" id="confirmSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
-                    </div>
-                </div>
-                <!-- Política de Privacidade -->
-                <div class="form-footer-cont">
-                <div class="form-footer">
-                    <label>
-                        <input type="checkbox" name="politicaPrivacidade" required>
-                        Ao gerar uma reserva você concorda com a <a href="../politicas/politicas.html">Política de Privacidade</a> da
-                        ExploraCar
-                    </label>
-                </div>
-                <!-- Ofertas e promoções -->
+                    <!-- Política de Privacidade -->
+                    <div class="form-footer-cont">
                     <div class="form-footer">
                         <label>
-                            <input type="checkbox" name="ofertas">
-                            Aceito receber todas as ofertas e promoções da ExploraCar
+                            <input type="checkbox" name="politicaPrivacidade" required>
+                            Ao gerar uma reserva você concorda com a <a href="../politicas/politicas.html">Política de Privacidade</a> da
+                            ExploraCar
                         </label>
                     </div>
-                </div>
-                <div class="form-group two-columns">
-                    <!-- Botão de envio -->
-                    <div class="buttons"><button type="submit" id="cadastrar-button" class="login-button"><span></span>Criar Conta</button></div>
-                    <!-- Notas de rodapé -->
-                    <div class="footer-notes">
-                        ✔ Rápido e fácil reservar<br>
-                        ✔ Descontos de até 30%<br>
-                        ✔ Acesso a ofertas exclusivas
+                    <!-- Ofertas e promoções -->
+                        <div class="form-footer">
+                            <label>
+                                <input type="checkbox" name="ofertas">
+                                Aceito receber todas as ofertas e promoções da ExploraCar
+                            </label>
+                        </div>
                     </div>
-                </div>
-            </form>
-    </div>
+                    <div class="form-group two-columns">
+                        <!-- Botão de envio -->
+                        <div class="buttons"><button type="submit" id="cadastrar-button" class="login-button"><span></span>Criar Conta</button></div>
+                        <!-- Notas de rodapé -->
+                        <div class="footer-notes">
+                            ✔ Rápido e fácil reservar<br>
+                            ✔ Descontos de até 30%<br>
+                            ✔ Acesso a ofertas exclusivas
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </main>
 
     <script>
         window.onload = function () {

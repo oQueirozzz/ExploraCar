@@ -399,3 +399,7 @@ input[type="email"], input[type="password"]{
   padding: 10px;
   display: none;
 }
+.container-descont{
+  position: absolute;
+  top: 52%;
+}

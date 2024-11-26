@@ -1,4 +1,36 @@
-<!DOCTYPE html>
+<php
+
+// Processa a recuperação de senha
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'esqueceu_senha') {
+    $identificacao = trim($_POST['identificacao']);
+ 
+    if (empty($identificacao)) {
+        $erro = "Por favor, insira o seu e-mail ou telefone.";
+        $mostrarFormulario = 'esqueceuSenha';
+    } else {
+        $arquivo = fopen("usuarios/usuarios.txt", "r"); // Caminho para o arquivo dentro da pasta 'dados'
+        $encontrado = false;
+        while (($linha = fgets($arquivo)) !== false) {
+            $dados = explode(",", trim($linha));
+            if (count($dados) >= 4 && $dados[3] === $identificacao) { // A quarta posição é o e-mail ou telefone
+                $_SESSION['cpf'] = $dados[0]; // Armazena o CPF do usuário para redefinir a senha
+                $encontrado = true;
+                break;
+            }
+        }
+        fclose($arquivo);
+ 
+        if ($encontrado) {
+            $mensagem = "Insira uma nova senha.";
+            $mostrarFormulario = 'novaSenha';
+        } else {
+            $erro = "E-mail ou telefone não encontrado.";
+            $mostrarFormulario = 'esqueceuSenha';
+        }
+    }
+}
+?>
+        <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
