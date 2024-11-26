@@ -26,7 +26,7 @@
             height: auto; /* Mantém a proporção da imagem */
             margin-right: 40px; /* Adiciona espaçamento à direita da imagem */ 
             object-fit: cover;
-            max-height: 300px;
+            max-height: 350px;
         }
         .detail-info {
             width: 700px; /* Define a largura da div de informações */
@@ -54,12 +54,12 @@
         #border2{
             height: 200px;
             background-color: #ccc;
-            width: 2px;
+            width: 1px;
             display: block;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            margin-left: 70px;
+            margin-left: 130px;
             margin-top: -13px;
         }
         .detail-container i{
@@ -168,6 +168,26 @@ font-size: 14px;
 margin-bottom: 20px;
 }
 
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(220, 143, 0, 0.909);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: darkorange;
+}
+
     </style>
 </head>
 <body>
@@ -255,6 +275,7 @@ margin-bottom: 20px;
     <div class="detail-container">
         <img id="vehicle-img" src="" alt="Imagem do Veículo">
         <div class="detail-info">
+            
             <h2 id="vehicle-title"></h2> <span id="border"></span>
             <p> <i class="fas fa-car-side"></i> Número de portas: <span id="vehicle-doors"></span></p> 
             <p> <i class="fas fa-car-battery"></i> Nome do motor: <span id="vehicle-engine"></span></p>
@@ -319,6 +340,8 @@ margin-bottom: 20px;
     </div>
 
     <script>
+
+        
         // esse aqui faz aparecer as informaçoes dos cards.
         document.addEventListener('DOMContentLoaded', function () {
             const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));

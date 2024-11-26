@@ -5,7 +5,7 @@ $termo = isset($_GET['query']) ? trim(strtolower($_GET['query'])) : '';  // conv
 // Definir as palavras-chave para cada página
 $redirecionamentos = [
     "duvidas" => ["duvidas", "fale conosco", "FAQ", "perguntas", "contato", "suporte", "ajuda"],
-    "carros" => ["carros", "veículos", "aluguel de carros", "alugar carro", "aluguel", "carro"],
+    "carros" => ["carros", "veículos", "aluguel de carros", "alugar carro", "aluguel", "carro", "kwid"],
     "assinatura" => ["assinatura", "assinaturas", "pacotes de assinaturas", "pacote de assinatura", "pacotes"]
 ];
 

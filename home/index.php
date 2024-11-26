@@ -303,10 +303,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                 </li>
                 <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
                 <li><a href="../assinatura/assinatura.html"><img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes de assinaturas</span></a></li>
+                        <span>Pacotes</span></a></li>
                 <hr>
-                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
-                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
+                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Blog</span></li>
+                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Suas reservas</span></li>
                 <hr>
             </ul>
         </nav>
