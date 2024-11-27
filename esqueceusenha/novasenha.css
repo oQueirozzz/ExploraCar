@@ -14,8 +14,8 @@ body {
 /* Contêiner do formulário */
 .form-container {
     width: 100%;
-    max-width: 400px;
-    height: 250px;
+    max-width: 600px;
+    height: 350px;
     background: #ffffff;
     padding: 30px;
     border-radius: 10px;
@@ -23,6 +23,10 @@ body {
     display: flex;
     flex-direction: column; /* Para organizar os elementos em coluna */
     align-items: center;    /* Centraliza horizontalmente os elementos */
+}
+.error-email{
+    color: red;
+    margin-top: 20px;
 }
 
 /* Título */

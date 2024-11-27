@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sobrenome = trim($_POST['sobrenome']);
     $pais = trim($_POST['pais']);
     $cpf = trim($_POST['cpf']);
-    $dataNascimento = trim($_POST['dataNascimento']);
+    $birthdate = trim($_POST['birthdate']);
     $celular = trim($_POST['celular']);
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
@@ -57,18 +57,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = preg_replace('/^\s+|\s+$/m', '', $nome);
     $sobrenome = preg_replace('/^\s+|\s+$/m', '', $sobrenome);
     $pais = preg_replace('/^\s+|\s+$/m', '', $pais);
-    $cpf = preg_replace('/^\s+|\s+$/m', '', $cpf);
-    $dataNascimento = preg_replace('/^\s+|\s+$/m', '', $dataNascimento);
-    $celular = preg_replace('/^\s+|\s+$/m', '', $celular);
+    $birthdate = preg_replace('/^\s+|\s+$/m', '', $birthdate);
     $email = preg_replace('/^\s+|\s+$/m', '', $email);
     $senha = preg_replace('/^\s+|\s+$/m', '', $senha);
     $confirmaSenha = preg_replace('/^\s+|\s+$/m', '', $confirmaSenha);
+    $cpf = preg_replace('/\D+/', '', $cpf); // Remove caracteres não numéricos
+$cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+
+$celular = preg_replace('/\D+/', '', $celular); // Remove caracteres não numéricos
+$celular = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $celular);
+
 
     echo $nome;
     echo $sobrenome;
     echo $pais;
     echo $cpf;
-    echo $dataNascimento;
+    echo $birthdate;
     echo $celular;
     echo $email;
     echo $senha;
@@ -77,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validação dos campos obrigatórios
     if (
         empty($nome) || empty($sobrenome) || empty($pais) || empty($cpf) ||
-        empty($dataNascimento) || empty($celular) || empty($email) || empty($senha) || empty($confirmaSenha)
+        empty($birthdate) || empty($celular) || empty($email) || empty($senha) || empty($confirmaSenha)
     ) {
         $erro = "Por favor, preencha todos os campos.";
     } elseif ($senha !== $confirmaSenha) {
@@ -86,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erro = "CPF já cadastrado. Tente fazer login.";
     } else {
         // Formata os dados em uma linha para salvar no arquivo
-        $linha = "$cpf,$nome,$sobrenome,$email,$pais,$dataNascimento,$celular,$senha" . PHP_EOL;
+        $linha = "$cpf,$nome,$sobrenome,$email,$pais,$birthdate,$celular,$senha" . PHP_EOL;
 
         // Salva os dados no arquivo "usuarios.txt"
         if (file_put_contents($caminhoArquivo, $linha, FILE_APPEND | LOCK_EX)) {
@@ -102,6 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 }
+
+
 ?>
 
 
@@ -220,76 +226,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </main>
 
     <script>
-        window.onload = function () {
-            const form = document.querySelector('#formCadastro'); // Corrigido para selecionar o form pelo ID
-            const password = document.getElementById('senha');
-            const confirmPassword = document.getElementById('confirmSenha');
-
-            form.onsubmit = function (event) {
-                event.preventDefault();
-
-                if (!password.value || !confirmPassword.value) {
-                    alert('Por favor, preencha os dois campos de senha.');
-                    return;
-                }
-
-                if (password.value !== confirmPassword.value) {
-                    alert('As senhas não coincidem.');
-                    return;
-                }
-
-                alert('Login efetuado com sucesso!');
-                form.submit();
-            };
-
-            const telefone = document.querySelector('#celular'); // Corrigido para o ID "celular"
-            if (telefone) {
-                telefone.addEventListener('keyup', () => {
-                    let valor = telefone.value.replace(/\D+/g, '').slice(0, 11);
-                    valor = valor.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
-                    telefone.value = valor;
-                });
-            }
-
-            const cpf = document.querySelector('#cpf'); // Máscara para o CPF
-            if (cpf) {
-                cpf.addEventListener('input', () => {
-                    let valor = cpf.value.replace(/\D+/g, '').slice(0, 11);
-                    valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-                    cpf.value = valor;
-                });
-            }
-        }; 
-
-        window.onload = function () {
+       window.onload = function () {
+    const form = document.querySelector('#formCadastro');
+    const password = document.getElementById('senha');
+    const confirmPassword = document.getElementById('confirmSenha');
+    const cpfField = document.getElementById('cpf');
+    const celularField = document.getElementById('celular');
     const birthdate = document.querySelector('#birthdate');
     const birthdateError = document.querySelector('#birthdateError');
 
-    // Máscara de entrada
+    // Máscara para CPF
+    cpfField.addEventListener('input', function () {
+        let value = cpfField.value.replace(/\D+/g, ''); // Remove caracteres não numéricos
+        if (value.length > 3) value = value.substring(0, 3) + '.' + value.substring(3);
+        if (value.length > 7) value = value.substring(0, 7) + '.' + value.substring(7);
+        if (value.length > 11) value = value.substring(0, 11) + '-' + value.substring(11);
+        cpfField.value = value.substring(0, 14); // Limita o tamanho
+    });
+
+    // Máscara para celular
+    celularField.addEventListener('input', function () {
+        let value = celularField.value.replace(/\D+/g, ''); // Remove caracteres não numéricos
+        if (value.length > 2) value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+        if (value.length > 9) value = value.substring(0, 9) + '-' + value.substring(9);
+        celularField.value = value.substring(0, 15); // Limita o tamanho
+    });
+
+    // Máscara para data de nascimento
     birthdate.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-
-        if (value.length > 2) {
-            value = value.substring(0, 2) + '/' + value.substring(2);
-        }
-        if (value.length > 5) {
-            value = value.substring(0, 5) + '/' + value.substring(5);
-        }
-        value = value.substring(0, 10);
-        e.target.value = value;
+        if (value.length > 2) value = value.substring(0, 2) + '/' + value.substring(2);
+        if (value.length > 5) value = value.substring(0, 5) + '/' + value.substring(5);
+        birthdate.value = value.substring(0, 10); // Limita o tamanho
     });
 
-    // Validação de data quando o campo perde o foco (blur)
-    birthdate.addEventListener('blur', function () {
-        const dateValue = birthdate.value;
-        if (!isValidDate(dateValue)) {
-            birthdateError.style.display = 'block'; // Exibe a mensagem de erro
-        } else {
-            birthdateError.style.display = 'none'; // Esconde a mensagem de erro
-        }
-    });
-
-    // Função para validar datas
+    // Validação de data de nascimento
     function isValidDate(dateString) {
         const dateParts = dateString.split('/');
         if (dateParts.length !== 3) return false;
@@ -301,40 +272,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
 
         const date = new Date(year, month, day);
-
-        // Verifica se a data é válida
-        if (
-            date.getFullYear() !== year ||
-            date.getMonth() !== month ||
-            date.getDate() !== day
-        ) {
-            return false;
-        }
-
-        // Limita a data para garantir que está dentro de um intervalo plausível
-        const today = new Date();
-        const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate()); // Até 120 anos atrás
-        const maxDate = today;
-
-        return date >= minDate && date <= maxDate;
+        return (
+            date.getFullYear() === year &&
+            date.getMonth() === month &&
+            date.getDate() === day
+        );
     }
 
-    // Validação no envio do formulário
-    const form = document.querySelector('#formCadastro');
+    // Evento no envio do formulário
     form.onsubmit = function (event) {
-        const dateValue = birthdate.value;
-
-        if (!isValidDate(dateValue)) {
-            birthdateError.style.display = 'block'; // Exibe o erro
-            event.preventDefault(); // Impede o envio do formulário
+        // Validação das senhas
+        if (!password.value || !confirmPassword.value || password.value !== confirmPassword.value) {
+            alert('As senhas não coincidem ou estão em branco.');
+            event.preventDefault();
             return false;
         }
 
-        // Se a data for válida, o formulário será enviado
-        birthdateError.style.display = 'none'; // Garante que a mensagem de erro seja escondida
+        // Validação da data de nascimento
+        if (!isValidDate(birthdate.value)) {
+            birthdateError.style.display = 'block'; // Exibe o erro
+            event.preventDefault();
+            return false;
+        }
+
+        // Garante que o CPF e celular estejam formatados
+        cpfField.value = cpfField.value.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        celularField.value = celularField.value.replace(/\D+/g, '').replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+
         alert('Formulário enviado com sucesso!');
     };
 };
+
 
         
 
