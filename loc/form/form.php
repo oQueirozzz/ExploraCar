@@ -117,7 +117,7 @@ $celular = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $celular);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crie sua Conta</title>
+    <title>Crie sua Conta - ExploraCar</title>
     <link rel="stylesheet" href="../../global/global.css">
     <link rel="stylesheet" href="./css/form.css">
 </head>

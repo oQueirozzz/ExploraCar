@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir Senha</title>
+    <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="novasenha.css">
 </head>
 
@@ -84,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                 <label for="confirmarSenha">Confirme Nova Senha</label>
                 <input type="password" name="confirmarSenha" id="confirmarSenha" placeholder="Confirme sua nova senha" required>
             </div>
-            <button type="submit" class="submit-btn">Enviar</button>
+            <div class="buttons"><button type="submit" class="submit-btn"><span></span>Enviar</button></div>
 
             <?php if (!empty($erro)): ?>
                 <div class="mensagem-erro"><?php echo htmlspecialchars($erro); ?></div>

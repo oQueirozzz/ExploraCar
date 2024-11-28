@@ -691,9 +691,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
             <p>&copy;
                 ExploraCar | Todos os direitos reservados.</p>
             <ul>
-                <li><a href="termos.php">Termos de uso</a></li>
-                <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
-                <li><a href="lgpd.php">LGPD</a></li>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="#">LGPD</a></li>
             </ul>
         </div>
     </footer>

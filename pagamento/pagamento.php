@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../loc/form/form.php");
-//     exit;
-// }
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../loc/form/form.php");
+    exit;
+}
 
 // Validação dos dados recebidos
 $id = isset($_POST['id']) ? $_POST['id'] : null;
@@ -37,7 +37,7 @@ if ($id && $nome && $descricao && $valor):
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap" rel="stylesheet">
 
 
-    <title>Document</title>
+    <title>Pagamento - ExploraCar</title>
     <style type="text/css" id="operaUserStyle"></style>
 </head>
 

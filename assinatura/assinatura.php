@@ -16,14 +16,14 @@ $pacotes = [
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="assinatura.css">
     <script src="assinatura.js"></script>
-    <title>Pacotes de Assinatura</title>
+    <title>Pacotes de Assinatura - ExploraCar</title>
 </head>
 <body>
 <main class="main flow">
