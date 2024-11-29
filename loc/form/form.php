@@ -62,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $senha = preg_replace('/^\s+|\s+$/m', '', $senha);
     $confirmaSenha = preg_replace('/^\s+|\s+$/m', '', $confirmaSenha);
     $cpf = preg_replace('/\D+/', '', $cpf); // Remove caracteres não numéricos
-$cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
+    $cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpf);
 
-$celular = preg_replace('/\D+/', '', $celular); // Remove caracteres não numéricos
-$celular = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $celular);
+    $celular = preg_replace('/\D+/', '', $celular); // Remove caracteres não numéricos
+    $celular = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $celular);
 
 
     echo $nome;
@@ -100,7 +100,6 @@ $celular = preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $celular);
 
             // Redireciona para a página de login
             header("Location: ../../home/index.php");
-            exit;
         } else {
             $erro = "Não foi possível salvar os dados. Verifique as permissões do arquivo.";
         }
