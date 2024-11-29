@@ -329,9 +329,11 @@ if (isset($_GET['page'])) {
                         <span>Carros</span>
                     </li>
                     <li>
-                        <input type="submit" name="page" value="sobre">
-                        <img src="../global/img/sobre.png" alt="Sobre">
-                        <span>sobre nós</span>
+                        <button type="submit">
+                            <input type="submit" name="page" value="sobre">
+                            <img src="../global/img/sobre.png" alt="Sobre">
+                            <span>sobre nós</span>
+                        </button>
                     </li>
                     <hr>
 

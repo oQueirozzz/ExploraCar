@@ -35,8 +35,10 @@ if ($id && $nome && $descricao && $valor) {
     ];
 
     // Redireciona para o loader
-    header("Location: loader.php");
-    exit();
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //     header("Location: ../pagamento/pagamento.php");
+    // }  
+     
 } else {
     echo "Dados inválidos.";
     exit();
@@ -151,7 +153,7 @@ if ($id && $nome && $descricao && $valor) {
                 </div>
             </div>
 
-            <form class="form">
+            <form class="form" action="../loader/loader.php" method="POST">
                 <h2>Detalhes do Cartão</h2>
 
                 <div class="form__name form__detail">
@@ -216,9 +218,9 @@ if ($id && $nome && $descricao && $valor) {
                 </div>
 
                 <div class="buttons">
-                    <form action="" method="POST">
+                    <form action="../loader/loader.php" method="POST">
                         <input type="hidden" name="valor" value="<?php echo htmlspecialchars($valor); ?>">
-                        <a href=""><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button></a>
+                        <input type="submit" style="display: none;"><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button>></input>
                            
                         </form>
                 </div>
