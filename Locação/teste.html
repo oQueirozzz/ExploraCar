@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrossel em Card</title>
+    <style>
+        .card {
+            width: 800px; /* Aumenta o tamanho do card */
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessário para posicionamento absoluto dos botões */
+        }
+        .carrossel-container {
+            overflow: hidden;
+            width: 100%;
+        }
+        .carrossel {
+            display: flex;
+            width: 300%; /* Três vezes a largura do card para três imagens */
+            transition: transform 0.5s ease;
+        }
+        .carrossel img {
+            width: 33.33%; /* Um terço da largura do carrossel */
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .prev-button {
+            left: 10px;
+        }
+        .next-button {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="carrossel-container">
+            <div class="carrossel">
+                <img src="../home/img/banner2.png" alt="Imagem 1">
+                <img src="../home/img/banner3.webp" alt="Imagem 2">
+                <img src="../home/img/banner4.png" alt="Imagem 3">
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button id="prev" class="prev-button">←</button>
+            <button id="next" class="next-button">→</button>
+        </div>
+    </div>
+
+    <script>
+        const carrossel = document.querySelector('.carrossel');
+        const images = document.querySelectorAll('.carrossel img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let idx = 0;
+
+        function showImage(index) {
+            carrossel.style.transform = `translateX(${-index * 100 / images.length}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            idx = idx <= 0 ? images.length - 1 : idx - 1;
+            showImage(idx);
+        });
+
+        nextButton.addEventListener('click', () => {
+            idx = idx >= images.length - 1 ? 0 : idx + 1;
+            showImage(idx);
+        });
+    </script>
+</body>
+</html>

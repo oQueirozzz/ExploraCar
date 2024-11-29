@@ -29,7 +29,7 @@
             max-height: 300px;
         }
         .detail-info {
-            width: 700px; /* Define a largura da div de informações */
+            width: 900px; /* Define a largura da div de informações */
             border: 2px solid #ccc; /* Adiciona borda cinza */
             padding: 20px; /* Adiciona espaçamento interno */
             border-radius: 10px; /* Arredonda os cantos */
@@ -102,17 +102,18 @@
 }
 
 .rental-policy, .location-pickup {
-    width: 700px; /* Define a largura dos novos cartões */
+    width: 900px; /* Define a largura dos novos cartões */
     border: 2px solid #ccc; /* Adiciona borda cinza */
     padding: 20px; /* Adiciona espaçamento interno */
     border-radius: 10px; /* Arredonda os cantos */
     background-color: #f9f9f9; /* Define a cor de fundo */
-    margin-top: 20px; /* Adiciona espaçamento superior para separar os cartões */
+    margin-top: -250px; /* Adiciona espaçamento superior para separar os cartões */
+    margin-left: 760px;
 }
 
 .location-pickup{
     text-align: center;
-    width: 700px;
+    width: 900px;
     font-size: 20px;
     margin-top: 30px;
 }
@@ -192,84 +193,61 @@ margin-bottom: 20px;
     background-color: darkorange;
 }
 
-/* .carousel {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-}
-
-.carousel-item img {
-    width: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-.carousel-control {
-    position: absolute;
-    top: 45%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border-radius: 50%;
-    font-size: 24px;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
-    width: 60px;
-    height: 60px;
-    margin: 0px 20px;
-}
-
-.carousel-control.prev {
-    left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
-}
-/* Estilo dos Indicadores */
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 10px;
-    right: 50px;
-    width: 100%;
-}
-.indicator {
-    height: 2px;
-    width: 50px;
-    background-color: #ffffff; /* Cor padrão dos indicadores */
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.indicator.active {
-    background-color: #ff5722; /* Cor do indicador ativo */
-} */
 .container-especification{
     width: 50%;
     
 }
 .parteBaixo{
-    justify-content: center;
-    align-items: center;
     gap: 50px;
     display: flex;
     height: 550px;
 }
+.card-carrosel {
+            width: 700px; /* Aumenta o tamanho do card */
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessário para posicionamento absoluto dos botões */
+            margin-left: 40px
+        }
+        .carrossel-container {
+            overflow: hidden;
+            width: 100%;
+        }
+        .carrossel {
+            display: flex;
+            width: 300%; /* Três vezes a largura do card para três imagens */
+            transition: transform 0.5s ease;
+        }
+        .carrossel img {
+            width: 33.33%; /* Um terço da largura do carrossel */
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .prev-button {
+            left: 10px;
+        }
+        .next-button {
+            right: 10px;
+        }
+
+
+        
     </style>
 </head>
 <body>
@@ -358,7 +336,6 @@ margin-bottom: 20px;
         <div class="detail-container">
             <img id="vehicle-img" src="" alt="Imagem do Veículo">
             <div class="detail-info">
-        
                 <h2 id="vehicle-title"></h2> <span id="border"></span>
                 <p> <i class="fas fa-car-side"></i> Número de portas: <span id="vehicle-doors"></span></p>
                 <p> <i class="fas fa-car-battery"></i> Nome do motor: <span id="vehicle-engine"></span></p>
@@ -371,14 +348,25 @@ margin-bottom: 20px;
                     <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
                     <p id="vehicle-price"><span id="price"></span></p>
                     <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <button class="reservar" onclick class="card-price button">Reservar</button>
+                    <button class="reservar"onclick class="card-price button">Reservar</button>
                 </div>
             </div>
         </div>
-        
-        <div class="parteBaixo">
+        <div class="parteBaixo"> 
             <div class="deta">
-            </div>
+                <div class="card-carrosel">
+                    <div class="carrossel-container">
+                        <div class="carrossel">
+                            <img src="../home/img/banner2.png" alt="Imagem 1">
+                            <img src="../home/img/banner3.webp" alt="Imagem 2">
+                            <img src="../home/img/banner4.png" alt="Imagem 3">
+                        </div>
+                    </div>
+                    <div class="nav-buttons">
+                        <button id="prev" class="prev-button">←</button>
+                        <button id="next" class="next-button">→</button>
+                    </div>
+                </div>
                 <div class="container-especification">
                     <div class="rental-policy">
                         <h3 class="titulo">Política de Aluguel</h3>
@@ -399,8 +387,8 @@ margin-bottom: 20px;
                         <p class="info"> <i class="fas fa-clock"></i> Horário de funcionamento das 7h30 - 18h00</p>
                     </div>
                 </div>
+            </div>
         </div>
-        
         <div class="container-performance">
             <div class="title">PERFORMANCE</div>
             <div class="features">
@@ -428,6 +416,7 @@ margin-bottom: 20px;
         </div>
     </main>
 
+
     <script>
 
         
@@ -449,7 +438,7 @@ margin-bottom: 20px;
                 document.getElementById('diaria').textContent = vehicle.diaria;
             }
         });
-
+        // esse aqui é responsável pelo botao de reservar e os preços.
         function reservar() {
             const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));
             if (vehicle) {
@@ -462,43 +451,30 @@ margin-bottom: 20px;
             }
         }
     </script>
-    <script>
-        function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    const indicators = document.querySelectorAll('.indicator');
 
-    // Corrige o índice se estiver fora dos limites
-    if (index >= slides.length) currentIndex = 0;
-    if (index < 0) currentIndex = slides.length - 1;
+<script>
+    // carrosel das imagens de banners
+    const carrossel = document.querySelector('.carrossel');
+    const images = document.querySelectorAll('.carrossel img');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let idx = 0;
 
-    const offset = -currentIndex * 100;
-    document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+    function showImage(index) {
+        carrossel.style.transform = `translateX(${-index * 100 / images.length}%)`;
+    }
 
-    // Remover a classe 'active' de todos os indicadores e aplicar apenas ao atual
-    indicators.forEach((indicator, i) => {
-        if (i === currentIndex) {
-            indicator.classList.add('active');
-        } else {
-            indicator.classList.remove('active');
-        }
+    prevButton.addEventListener('click', () => {
+        idx = idx <= 0 ? images.length - 1 : idx - 1;
+        showImage(idx);
     });
-}
 
-function nextSlide() {
-    currentIndex++;
-    showSlide(currentIndex);
-}
+    nextButton.addEventListener('click', () => {
+        idx = idx >= images.length - 1 ? 0 : idx + 1;
+        showImage(idx);
+    });
+</script>
 
-function prevSlide() {
-    currentIndex--;
-    showSlide(currentIndex);
-}
-
-function goToSlide(index) {
-    currentIndex = index;
-    showSlide(currentIndex);
-}
-    </script>
     <script src="../global/global.js"></script>
     <footer>
         <div class="footer-container">
