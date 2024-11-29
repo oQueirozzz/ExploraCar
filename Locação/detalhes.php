@@ -333,7 +333,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
                     <p id="vehicle-price"><span id="price"></span></p>
                     <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <button class="reservar"onclick class="card-price button">Reservar</button>
+                    <button class="reservar"onclick="window.location.href='pagamento.php'">Reservar</button>
                 </div>
             </div>
         </div>
