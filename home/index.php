@@ -86,15 +86,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-session_start();
-
 // Após validar o login
-$_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
+$_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
 $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 
 // echo $mensagem;
 // echo $erro;
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+
+    // Redireciona com base no valor do botão clicado
+    switch ($page) {
+        case 'carros':
+            header("Location: ../locacao/veiculos.html");
+            break;
+        case 'sobre':
+            header("Location: ../loc/sobrenos/sobre.php");
+            break;
+        case 'assinatura':
+            header("Location: ../assinatura/assinatura.php");
+            break;
+        default:
+            header("Location: index.php"); // Página padrão
+            break;
+    }
+    exit; // Sempre encerre o script após header()
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -180,7 +199,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                                 <button id="logout-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
-                                </button">
+                                    </button">
                             </a>
                         </div>
                         <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
@@ -303,16 +322,34 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="../Locação/veiculos.html"><img src="../global/img/carroICON.jpg" alt="veiculos"
-                            id="transparent">
-                        <span>Carros</span></a>
-                </li>
-                <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <hr>
-                <li><a href="../assinatura/assinatura.php"><img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span></a></li>
-                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Blog</span></li>
-                <hr>
+                <form action="" method="get">
+                    <li>
+                        <input type="submit" name="page" value="carros">
+                        <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+                        <span>Carros</span>
+                    </li>
+                    <li>
+                        <input type="submit" name="page" value="sobre">
+                        <img src="../global/img/sobre.png" alt="Sobre">
+                        <span>sobre nós</span>
+                    </li>
+                    <hr>
+
+
+                    <li>
+                        <input type="submit" name="page" value="assinatura">
+                        <img src="../global/img/assinatura.png" alt="Pacotes">
+                        <span>Pacotes</span>
+                    </li>
+                    <li>
+                        <input type="submit" name="page" value="blog">
+                        <img src="icons/flight.png" alt="Voos Diretos">
+                        <span>Blog</span>
+                        </input>
+                    </li>
+
+                    <hr>
+                </form>
             </ul>
         </nav>
     </header>

@@ -86,9 +86,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
+// Após validar o login
+$_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
+$_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+
 
 // echo $mensagem;
 // echo $erro;
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+
+    // Redireciona com base no valor do botão clicado
+    switch ($page) {
+        case 'carros':
+            header("Location: ../locacao/veiculos.html");
+            break;
+        case 'sobre':
+            header("Location: ../loc/sobrenos/sobre.php");
+            break;
+        case 'assinatura':
+            header("Location: ../assinatura/assinatura.php");
+            break;
+        default:
+            header("Location: index.php"); // Página padrão
+            break;
+    }
+    exit; // Sempre encerre o script após header()
+}
 ?>
 
 
@@ -117,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                 <div class="logo"></div>
             </a>
 
-            <form action="../../home/buscar.php" method="GET" class="barra-pesquisa">
+            <form action="buscar.php" method="GET" class="barra-pesquisa">
                 <input type="text" name="query" placeholder="Digite aqui..." required>
                 <button type="submit">Pesquisar</button>
             </form>
@@ -129,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                     <?php if (isset($_SESSION['nome'])): ?>
                         <!-- Botão com o nome do usuário logado -->
                         <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
-                            <img src="../../global/img/file.png" alt="">
+                            <img src="../global/img/file.png" alt="">
                             <span></span>
                             <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
                             <div class="seta"></div>
@@ -149,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         <!-- Botão padrão "ENTRAR" -->
 
                         <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                            <img src="../../global/img/file.png" alt="">
+                            <img src="../global/img/file.png" alt="">
                             <span></span>
                             <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
                             <div class="seta"></div>
@@ -158,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         </a>
                     <?php endif; ?>
                     <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                        <img src="../../global/img/help.png" alt="">
+                        <img src="../global/img/help.png" alt="">
                         <span></span>
                         <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
                         <div class="seta"></div>
@@ -173,7 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                                 <button id="logout-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
-                                </button">
+                                    </button">
                             </a>
                         </div>
                         <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
@@ -280,7 +305,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
@@ -296,17 +321,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="../../Locação/veiculos.html"><img src="../../global/img/carroICON.jpg" alt="veiculos"
-                            id="transparent">
-                        <span>Carros</span></a>
-                </li>
-                <li><a href="#"><img src="../../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <li><a href="../../assinatura/assinatura.php"><img src="../../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span></a></li>
-                <hr>
-                <li><img src="flight.png" alt="Voos Diretos"> <span>Blog</span></li>
-                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Suas reservas</span></li>
-                <hr>
+                <form action="" method="get">
+                    <li>
+                        <input type="submit" name="page" value="carros">
+                        <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+                        <span>Carros</span>
+                    </li>
+                    <li>
+                        <input type="submit" name="page" value="sobre">
+                        <img src="../global/img/sobre.png" alt="Sobre">
+                        <span>sobre nós</span>
+                    </li>
+                    <hr>
+
+
+                    <li>
+                        <input type="submit" name="page" value="assinatura">
+                        <img src="../global/img/assinatura.png" alt="Pacotes">
+                        <span>Pacotes</span>
+                    </li>
+                    <li>
+                        <input type="submit" name="page" value="blog">
+                        <img src="icons/flight.png" alt="Voos Diretos">
+                        <span>Blog</span>
+                        </input>
+                    </li>
+
+                    <hr>
+                </form>
             </ul>
         </nav>
     </header>
@@ -358,8 +400,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
             </div>
         </div>
     </main>
-    <script src="../../global/global.js"></script>
-
+    
     <footer>
         <div class="footer-container">
             <!-- Logo e Slogan -->
@@ -367,7 +408,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                 <h2>ExploraCar</h2>
                 <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
             </div>
-
+            
             <!-- Links Rápidos -->
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
@@ -392,7 +433,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
             <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
                 <a id="correction" href="#"><img src="../../global/img/face.png" width="30px" height="30px"
-                        alt="Facebook"></a>
+                alt="Facebook"></a>
                 <a href="#"><img src="../../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
                 <a href="#"><img src="../../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
@@ -401,13 +442,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
         <div class="footer-bottom">
             <p>&copy;
                 ExploraCar | Todos os direitos reservados.</p>
-            <ul>
-                <li><a href="#">Termos de uso</a></li>
-                <li><a href="../../loc/politicas/politicas.html">Política de Privacidade</a></li>
-                <li><a href="#">LGPD</a></li>
-            </ul>
-        </div>
-    </footer>
-</body>
-
-</html>
+                <ul>
+                    <li><a href="#">Termos de uso</a></li>
+                    <li><a href="../../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                    <li><a href="#">LGPD</a></li>
+                </ul>
+            </div>
+        </footer>
+        <script src="../../global/global.js"></script>
+    </body>
+    
+    </html>
