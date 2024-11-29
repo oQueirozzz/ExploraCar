@@ -38,6 +38,9 @@ if ($id && $nome && $descricao && $valor) {
     // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     header("Location: ../pagamento/pagamento.php");
     // }  
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        header("Location: ../pagamento/pagamento.php");
+    }  
      
 } else {
     echo "Dados inválidos.";
