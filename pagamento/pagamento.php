@@ -1,8 +1,11 @@
 <?php
 session_start();
 
+
+
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // header("Location: ../loc/form/form.php");
+    header("Location: ../loc/form/form.php");
+    
 }
 
 // Validação dos dados recebidos
@@ -188,7 +191,7 @@ if ($id && $nome && $descricao && $valor):
                 </div>
 
                 <div class="buttons">
-                    <form action="processar_pagamento.php" method="POST">
+                    <form action="" method="POST">
                         <input type="hidden" name="valor" value="<?php echo htmlspecialchars($valor); ?>">
                         <a href=""><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button></a>
                            

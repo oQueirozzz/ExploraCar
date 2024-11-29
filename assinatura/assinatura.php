@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pacotes = [
     [
         "id" => 1,
@@ -13,6 +14,9 @@ $pacotes = [
         "preco" => 49.99,
     ],
 ];
+
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: ../pagamento/pagamento.php");
 }  
@@ -62,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <li>Processo acelerado para retirada e devolução do veículo</li>
                 </ul>
                 <div class="buttons">
-                    <form action="" method="POST">
+                    <form action="../pagamento/pagamento.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $pacote['id']; ?>">
                         <input type="hidden" name="nome" value="<?php echo htmlspecialchars($pacote['nome']); ?>">
                         <input type="hidden" name="descricao" value="<?php echo htmlspecialchars($pacote['descricao']); ?>">
