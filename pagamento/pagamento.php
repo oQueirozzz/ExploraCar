@@ -16,6 +16,31 @@ $valor = isset($_POST['valor']) ? $_POST['valor'] : null;
 
 // Verifique se todos os dados foram enviados
 if ($id && $nome && $descricao && $valor):
+
+
+    // Receba os dados do POST
+$id = $_POST['id'] ?? null;
+$nome = $_POST['nome'] ?? null;
+$descricao = $_POST['descricao'] ?? null;
+$valor = $_POST['valor'] ?? null;
+
+// Valida os dados
+if ($id && $nome && $descricao && $valor) {
+    // Salva os dados na sessão
+    $_SESSION['pagamento'] = [
+        'id' => $id,
+        'nome' => $nome,
+        'descricao' => $descricao,
+        'valor' => $valor,
+    ];
+
+    // Redireciona para o loader
+    header("Location: loader.php");
+    exit();
+} else {
+    echo "Dados inválidos.";
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="hydrated">
