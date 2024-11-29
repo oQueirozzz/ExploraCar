@@ -302,7 +302,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         <span>Carros</span></a>
                 </li>
                 <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <li><a href="../assinatura/assinatura.html"><img src="../global/img/assinatura.png" alt="Pacotes">
+                <li><a href="../assinatura/assinatura.php"><img src="../global/img/assinatura.png" alt="Pacotes">
                         <span>Pacotes</span></a></li>
                 <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Blog</span></li>
@@ -353,40 +353,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                     <div class="carousel-track">
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Chevrolet/Chevrolet Spin.png" alt="Slide 1">
                             <h2>Chevrolet Spin</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>O Chevrolet Spin é um monovolume espaçoso, com capacidade para até sete pessoas, oferecendo conforto, versatilidade e bom custo-benefício, sendo ideal para famílias maiores.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Fiat/Fiat Ducato.png" alt="Slide 2">
                             <h2>Fiat Ducato</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>O Fiat Ducato é uma van de grande porte, ideal para transporte de mercadorias e passageiros. É um dos modelos preferidos para empresas que necessitam de um veículo utilitário de grande porte.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Nissan/Nissan Frontier.png" alt="Slide 3">
                             <h2> Nissan Frontier</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>A Nissan Frontier é uma picape robusta e versátil, ideal para trabalho e aventuras off-road. Oferece potência, conforto e tecnologias modernas, garantindo bom desempenho em qualquer terreno.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Volkswagen Saveiro.png"
                                 alt="Slide 4">
                             <h2>Volkswagen Saveiro</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>A Volkswagen Saveiro é uma picape compacta, ideal para quem precisa de um veículo de carga leve e versátil. A Saveiro é perfeita para uso urbano e pequenas tarefas profissionais.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Ford/Ford Explorer.png" alt="Slide 5">
                             <h2>Ford Explorer</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>O Ford Explorer é um SUV grande, ideal para famílias ou viagens longas. Com interior espaçoso, motorização potente e tração integral, é perfeito tanto para a cidade quanto para terrenos desafiadores.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Citroen/Citroën Berlingo.png" alt="Slide 6">
                             <h2>Citroen Berlingo</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatem aliquid, optio reiciendis
-                                incidunt maiores maxime laborum obcaecati, veniam magnam exercitationem repellat rem officiis! Iure officia
-                                impedit totam deleniti in.</p>
+                            <p>O Citroën Berlingo é um furgão prático e espaçoso, ideal para quem precisa de um veículo para transporte de carga ou viagens com a família. Ele combina funcionalidade com conforto, sendo uma ótima opção para o trabalho ou lazer.</p>
                         </div>
                     </div>
                     <div class="carousel-buttons">
@@ -401,33 +389,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                     <div class="carousel-track">
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Audi RS7.png" alt="Slide 1">
                             <h2>Audi RS7</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Audi RS7 é um sedã esportivo de alto desempenho, com motor potente, design agressivo e tecnologias avançadas, proporcionando uma direção emocionante.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Audi A8.png" alt="Slide 2">
                             <h2>Audi A8</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Audi A8 é um sedã de luxo de grande porte, que combina conforto, desempenho e tecnologia avançada, sendo ideal para quem busca sofisticação em um carro de luxo.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LX.png" alt="Slide 3">
                             <h2>Lexus LX</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Lexus LX é um SUV de luxo de grande porte, interior luxuoso e capacidade para enfrentar qualquer terreno com conforto, ideal para quem busca um veículo imponente e versátil.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LC.png" alt="Slide 4">
                             <h2>Lexus LC</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Lexus LC é um coupé de luxo com motor potente e design impressionante, oferecendo desempenho e estética sofisticada para uma experiência de condução emocionante e estilosa.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Volvo V90.png" alt="Slide 5">
                             <h2> Volvo V90</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O V90 é um station wagon de luxo, com grande capacidade de carga, interior luxuoso, desempenho refinado, tecnologia avançada e design elegante e prático.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/BMW X6.png" alt="Slide 6">
                             <h2> BMW X6</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O BMW X6 é um SUV de luxo com design arrojado, motorização potente e performance excepcional, oferecendo uma condução emocionante com conforto e tecnologia.</p>
                         </div>
                     </div>
                     <div class="carousel-buttons">
@@ -442,33 +424,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                     <div class="carousel-track">
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Jetta.png" alt="Slide 1">
                             <h2> Volkswagen Jetta</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Volkswagen Jetta é um sedã médio elegante, interior espaçoso e tecnologia avançada. Seus motores potentes proporcionam uma condução prazerosa, sendo ideal para viagens e uso diário.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Toyota/Corolla.png" alt="Slide 2">
                             <h2> Toyota Corolla</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Toyota Corolla é um sedã confiável e eficiente, com opções híbrida e a gasolina, oferecendo condução suave, baixo consumo e uma cabine equipada, ideal para uso diário ou familiar.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Hyundai/Hyundai i30.png" alt="Slide 3">
                             <h2> Hyundai i30</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Hyundai i30 é um hatchback de médio porte, com bom desempenho, interior espaçoso e recursos de conectividade e segurança, sendo ideal para quem busca versatilidade, conforto e ótimo custo-benefício.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda HR-V.png" alt="Slide 4">
                             <h2> Honda HR-V</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Honda HR-V é um SUV compacto, elegante e confortável. Tecnologia avançada e amplo espaço interno, sendo ideal para quem busca um carro prático e versátil.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda Civic.png" alt="Slide 5">
                             <h2> Honda Civic</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Honda Civic é um sedan médio confiável, com design moderno e bom desempenho. Oferece motorização 1.5 turbo e 2.0, tecnologia avançada e recursos de segurança, sendo uma opção confortável e durável.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Nissan/Nissan Sentra.png" alt="Slide 6">
                             <h2> Nissan Sentra</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque cumque consequatur veritatis debitis
-                                vel distinctio ipsum ea sint, pariatur atque, similique nisi fugit a velit molestiae quis ipsa! Error!</p>
+                            <p>O Nissan Sentra é um sedã médio que oferece conforto, design elegante e tecnologias de segurança, ideal para quem busca sofisticação e desempenho no dia a dia.</p>
                         </div>
                     </div>
                     <div class="carousel-buttons">

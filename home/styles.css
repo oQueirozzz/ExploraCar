@@ -123,6 +123,7 @@ body {
     width: 85%;
     height: 400px;
     margin-top: 70px;
+    font-size: 18px;
   }
 
   #carousel1 img,
@@ -141,6 +142,11 @@ body {
     width: 85%;
     text-align: center;
     margin: auto;
+    font-size: 12px;
+  }
+
+  #carousel2 p {
+    font-size: 18px;
   }
 
   #carousel2 {
