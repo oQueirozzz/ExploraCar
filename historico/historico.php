@@ -1,10 +1,24 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../loc/form/form.php");
-//     exit;
-// }
+session_start();
+
+// Verifica se os dados estão na sessão
+if (isset($_SESSION['pagamento'])) {
+    $dados = $_SESSION['pagamento'];
+
+    // Exibe os dados
+    echo "<h1>Histórico de Pagamento</h1>";
+    echo "<p>ID: {$dados['id']}</p>";
+    echo "<p>Nome: {$dados['nome']}</p>";
+    echo "<p>Descrição: {$dados['descricao']}</p>";
+    echo "<p>Valor: R$ {$dados['valor']}</p>";
+
+    // Limpa os dados da sessão
+    unset($_SESSION['pagamento']);
+} else {
+    echo "<p>Nenhuma informação de pagamento encontrada.</p>";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

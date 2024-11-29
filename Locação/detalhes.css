@@ -1,0 +1,254 @@
+         .detail-container {
+            display: flex; /* Alinha os itens em uma linha */
+            align-items: flex-start; /* Alinha os itens no topo */
+            padding: 20px; /* Adiciona espaçamento interno */
+            justify-content: center; /* Centraliza os itens horizontalmente */
+            margin-top: 220px; /* Adiciona espaçamento superior */
+            position: relative; /* Posicionamento relativo para o contêiner */
+        }
+        .detail-container img {
+            width: 500px; /* Define a largura da imagem */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-right: 40px; /* Adiciona espaçamento à direita da imagem */ 
+            object-fit: cover;
+            max-height: 300px;
+        }
+        .detail-info {
+            width: 900px; /* Define a largura da div de informações */
+            border: 2px solid #ccc; /* Adiciona borda cinza */
+            padding: 20px; /* Adiciona espaçamento interno */
+            border-radius: 10px; /* Arredonda os cantos */
+            background-color: #f9f9f9; /* Define a cor de fundo */
+            margin-left: 100px; /* Adiciona espaçamento à esquerda */
+            position: relative; /* Posicionamento relativo para a div de informações */
+            height: 300px;
+        }
+        .detail-info h2 {
+            margin: 0 0 20px 0; /* Remove margem superior e inferior, adiciona margem inferior */ 
+        }
+        .detail-info p {
+            margin: 10px 0;
+        }
+        #border{
+            width: 100%;
+            background-color: #ccc;
+            height: 2px;
+            display: block;
+        }
+
+        #border2{
+            height: 200px;
+            background-color: #ccc;
+            width: 1px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 130px;
+            margin-top: -13px;
+        }
+        .detail-container i{
+          color: black;
+        }
+        
+    .card-price {
+        font-family:"Poppins", sans-serif;
+        position: relative;
+        bottom: 150px;
+        text-align: right;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: -30px;
+}
+.card-price p {
+    margin: 0;
+    font-size: 1.3em;
+    color: #333;
+    font-family: "Poppins", sans-serif ;
+}
+
+#vehicle-descontPrice {
+    text-decoration: line-through; /* Adiciona um traço sobre o texto */
+}
+
+.reservar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(220, 143, 0, 0.909);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+
+.reservar:hover {
+    background-color: darkorange;
+}
+
+.rental-policy, .location-pickup {
+    width: 900px; /* Define a largura dos novos cartões */
+    border: 2px solid #ccc; /* Adiciona borda cinza */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+    background-color: #f9f9f9; /* Define a cor de fundo */
+    margin-top: -250px; /* Adiciona espaçamento superior para separar os cartões */
+    margin-left: 760px;
+}
+
+.location-pickup{
+    text-align: center;
+    width: 900px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.deta {
+    margin-top: auto;
+    width: 40%;
+    height: 400px;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+.titulo{
+   margin-top: 10px;
+}
+
+.info{
+    margin-top: 10px;
+}
+
+.container-performance {
+padding: 50px 300px ;
+background-color: #ccc;
+text-align:center;
+margin-top: 40px;
+}
+
+.title {
+font-size: 36px;
+font-weight: bold;
+margin-bottom: 50px;
+}
+
+.features {
+display: flex;
+justify-content: space-around;
+margin-bottom: 50px;
+}
+
+.feature {
+width: 20%;
+}
+
+.feature i {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+.feature h3 {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.feature p {
+font-size: 14px;
+margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(220, 143, 0, 0.909);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: darkorange;
+}
+
+.container-especification{
+    width: 50%;
+    
+}
+.parteBaixo{
+    gap: 50px;
+    display: flex;
+    height: 550px;
+}
+.card-carrosel {
+            width: 620px; /* Aumenta o tamanho do card */
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necessário para posicionamento absoluto dos botões */
+            margin-left: 75px
+        }
+        .carrossel-container {
+            overflow: hidden;
+            width: 100%;
+        }
+        .carrossel {
+            display: flex;
+            width: 300%; /* Três vezes a largura do card para três imagens */
+            transition: transform 0.5s ease;
+        }
+        .carrossel img {
+            width: 33.33%; /* Um terço da largura do carrossel */
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background-color: #f9f9f9; /* Tom mais claro para suavidade */
+            border: 1px solid #ddd; /* Borda discreta para definição */
+            border-radius: 50%; /* Botão circular */
+            padding: 12px; /* Aumenta um pouco o espaço */
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra mais suave e maior */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Animações para hover */
+        }
+        
+        .nav-buttons button:hover {
+            background-color: #e0e0e0; /* Muda o fundo ao passar o mouse */
+            transform: scale(1.1); /* Aumenta ligeiramente ao passar o mouse */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+        }
+        
+        .nav-buttons button:focus {
+            outline: none; /* Remove a borda padrão do navegador */
+            border: 2px solid #ff9100; /* Adiciona uma borda de foco para acessibilidade */
+        }
+        
+        .nav-buttons button:active {
+            transform: scale(1); /* Remove o aumento ao clicar */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra mais suave ao clicar */
+            background-color: #dcdcdc; /* Fundo ligeiramente mais escuro ao clicar */
+        }
+        
+        .prev-button {
+            left: 10px;
+        }
+        .next-button {
+            right: 10px;
+        }
+
+
