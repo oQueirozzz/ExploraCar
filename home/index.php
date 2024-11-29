@@ -324,12 +324,14 @@ if (isset($_GET['page'])) {
             <ul class="menu">
                 <form action="" method="get">
                     <li>
-                        <input type="submit" name="page" value="carros">
-                        <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
-                        <span>Carros</span>
+                        <button>
+                            <input type="submit" name="cars" value="carros">
+                            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+                            <span>Carros</span>
+                        </button>
                     </li>
                     <li>
-                        <button type="submit">
+                        <button type="submit" name="about" value="sobre">
                             <input type="submit" name="page" value="sobre">
                             <img src="../global/img/sobre.png" alt="Sobre">
                             <span>sobre nós</span>
@@ -339,12 +341,12 @@ if (isset($_GET['page'])) {
 
 
                     <li>
-                        <input type="submit" name="page" value="assinatura">
+                        <input type="submit" name="assignment" value="assinatura">
                         <img src="../global/img/assinatura.png" alt="Pacotes">
                         <span>Pacotes</span>
                     </li>
                     <li>
-                        <input type="submit" name="page" value="blog">
+                        <input type="submit" name="fly" value="blog">
                         <img src="icons/flight.png" alt="Voos Diretos">
                         <span>Blog</span>
                         </input>
@@ -682,10 +684,9 @@ if (isset($_GET['page'])) {
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="index.php">Início</a></li>
-                    <li><a href="sobre.php">Sobre Nós</a></li>
-                    <li><a href="carros.php">Carros Disponíveis</a></li>
-                    <li><a href="contato.php">Contato</a></li>
-                    <li><a href="termos.php">Termos e Condições</a></li>
+                    <li><a href="../loc/sobrenos/sobre.php">Sobre Nós</a></li>
+                    <li><a href="../Locação/veiculos.php">Carros Disponíveis</a></li>
+                    <li><a href="../loc/duvidasfrequentes/duvidas.php">Contato</a></li>
                 </ul>
             </div>
 
