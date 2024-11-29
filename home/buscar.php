@@ -20,7 +20,7 @@ foreach ($redirecionamentos as $pagina => $palavras_chave) {
                 header("Location: ../Locação/veiculos.html");
                 exit;
             case "assinatura":
-                header("Location: ../assinatura/assinatura.html");
+                header("Location: ../assinatura/assinatura.php");
                 exit;
         }
     }
