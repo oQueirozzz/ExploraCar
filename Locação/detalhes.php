@@ -86,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-session_start();
 
 // Após validar o login
 $_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
@@ -95,6 +94,8 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 // echo $mensagem;
 // echo $erro;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -333,7 +334,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
                     <p id="vehicle-price"><span id="price"></span></p>
                     <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <button class="reservar"onclick="window.location.href='pagamento.php'">Reservar</button>
+                    <form action="../pagamento/pagamento.php" method="post"><button type="submit" class="reservar"onclick="window.location.href='../pagamento/pagamento.php'">Reservar</button></form>
                 </div>
             </div>
         </div>
