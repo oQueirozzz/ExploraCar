@@ -86,6 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
+session_start();
+
+// Após validar o login
+$_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
+$_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+
 
 // echo $mensagem;
 // echo $erro;
@@ -302,11 +308,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         <span>Carros</span></a>
                 </li>
                 <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
+                <hr>
                 <li><a href="../assinatura/assinatura.php"><img src="../global/img/assinatura.png" alt="Pacotes">
                         <span>Pacotes</span></a></li>
-                <hr>
                 <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Blog</span></li>
-                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Suas reservas</span></li>
                 <hr>
             </ul>
         </nav>
