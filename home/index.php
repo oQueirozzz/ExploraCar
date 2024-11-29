@@ -357,7 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Fiat/Fiat Ducato.png" alt="Slide 2">
                             <h2>Fiat Ducato</h2>
-                            <p>O Fiat Ducato é uma van de grande porte, ideal para transporte de mercadorias e passageiros. Com excelente capacidade de carga e robustez, é um dos modelos preferidos para empresas que necessitam de um veículo utilitário de grande porte.</p>
+                            <p>O Fiat Ducato é uma van de grande porte, ideal para transporte de mercadorias e passageiros. É um dos modelos preferidos para empresas que necessitam de um veículo utilitário de grande porte.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Nissan/Nissan Frontier.png" alt="Slide 3">
                             <h2> Nissan Frontier</h2>
@@ -366,7 +366,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Volkswagen Saveiro.png"
                                 alt="Slide 4">
                             <h2>Volkswagen Saveiro</h2>
-                            <p>A Volkswagen Saveiro é uma picape compacta, ideal para quem precisa de um veículo de carga leve e versátil. Com design moderno e boa capacidade de carga, a Saveiro é perfeita para uso urbano e pequenas tarefas profissionais.</p>
+                            <p>A Volkswagen Saveiro é uma picape compacta, ideal para quem precisa de um veículo de carga leve e versátil. A Saveiro é perfeita para uso urbano e pequenas tarefas profissionais.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Ford/Ford Explorer.png" alt="Slide 5">
                             <h2>Ford Explorer</h2>
@@ -397,7 +397,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LX.png" alt="Slide 3">
                             <h2>Lexus LX</h2>
-                            <p>O Lexus LX é um SUV de luxo de grande porte, com motorização potente, interior luxuoso e capacidade para enfrentar qualquer terreno com conforto, ideal para quem busca um veículo imponente e versátil.</p>
+                            <p>O Lexus LX é um SUV de luxo de grande porte, interior luxuoso e capacidade para enfrentar qualquer terreno com conforto, ideal para quem busca um veículo imponente e versátil.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Black Friday/Lexus LC.png" alt="Slide 4">
                             <h2>Lexus LC</h2>
@@ -424,7 +424,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                     <div class="carousel-track">
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Volkswagen/Jetta.png" alt="Slide 1">
                             <h2> Volkswagen Jetta</h2>
-                            <p>O Volkswagen Jetta é um sedã médio elegante, com design sofisticado, interior espaçoso e tecnologia avançada. Seus motores potentes proporcionam uma condução prazerosa, sendo ideal para viagens e uso diário.</p>
+                            <p>O Volkswagen Jetta é um sedã médio elegante, interior espaçoso e tecnologia avançada. Seus motores potentes proporcionam uma condução prazerosa, sendo ideal para viagens e uso diário.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Toyota/Corolla.png" alt="Slide 2">
                             <h2> Toyota Corolla</h2>
@@ -436,7 +436,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda HR-V.png" alt="Slide 4">
                             <h2> Honda HR-V</h2>
-                            <p>O Honda HR-V é um SUV compacto, elegante e confortável, com motorização 1.8. Oferece bom desempenho, tecnologia avançada e amplo espaço interno, sendo ideal para quem busca um carro prático e versátil.</p>
+                            <p>O Honda HR-V é um SUV compacto, elegante e confortável. Tecnologia avançada e amplo espaço interno, sendo ideal para quem busca um carro prático e versátil.</p>
                         </div>
                         <div class="carousel-cars-item"><img src="../Locação/img/img Carros/img Honda/Honda Civic.png" alt="Slide 5">
                             <h2> Honda Civic</h2>

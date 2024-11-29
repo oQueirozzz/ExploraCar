@@ -119,8 +119,10 @@
 
 .deta {
     margin-top: auto;
-    width: 30%;
-    height: 600px;
+    width: 40%;
+    height: 400px;
+    margin-left: 60px;
+    margin-top: 50px;
 }
 
 .titulo{
@@ -190,7 +192,7 @@ margin-bottom: 20px;
     background-color: darkorange;
 }
 
-.carousel {
+/* .carousel {
     position: relative;
     width: 100%;
     height: 300px;
@@ -256,13 +258,17 @@ margin-bottom: 20px;
 
 .indicator.active {
     background-color: #ff5722; /* Cor do indicador ativo */
-}
+} */
 .container-especification{
     width: 50%;
     
 }
 .parteBaixo{
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
     display: flex;
+    height: 550px;
 }
     </style>
 </head>
@@ -348,101 +354,100 @@ margin-bottom: 20px;
         </header>
     </header>
     
-    <div class="detail-container">
-        <img id="vehicle-img" src="" alt="Imagem do Veículo">
-        <div class="detail-info">
-            
-            <h2 id="vehicle-title"></h2> <span id="border"></span>
-            <p> <i class="fas fa-car-side"></i> Número de portas: <span id="vehicle-doors"></span></p> 
-            <p> <i class="fas fa-car-battery"></i> Nome do motor: <span id="vehicle-engine"></span></p>
-            <p> <i class="fas fa-truck"></i> Câmbio: <span id="vehicle-cambio"></span></p>
-            <p> <i class="fas fa-thermometer-empty"></i> Ar Condicionado: <span id="vehicle-arcondicionado"></span></p>
-            <p> <i class="fas fa-gas-pump"></i> Política de combustivel: <span id="vehicle-combustivel"></span></p>
-            <p> <i class="fas fa-car"></i> <span id="vehicle-quilometragem"></span></p>
-            <p> <i class="fas fa-shield-alt"></i><span id="vehicle-seguro"></span></p>
-            <div class="card-price"> <span id="border2"></span>
-                <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
-                <p id="vehicle-price"><span id="price"></span></p>
-                <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                <button class="reservar" onclick class="card-price button">Reservar</button>
-            </div>
-        </div>
-    </div>
-
-    
-    <div class="parteBaixo">
-        <div class="deta">
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/banner1 (1).webp" alt="Imagem 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/drive.png" alt="Imagem 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/banner7.png" alt="Imagem 3">
-                    </div>on>
-                </div>
-                <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
-                <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <span class="indicator active" onclick="goToSlide(0)"></span>
-                    <span class="indicator" onclick="goToSlide(1)"></span>
-                    <span class="indicator" onclick="goToSlide(2)"></span>
-                </div>
-            </div>
-        </div>
-            <div class="container-especification">
-                <div class="rental-policy">
-                    <h3 class="titulo">Política de Aluguel</h3>
-                    <h4 class="titulo">Política de cancelamento e no show</h4>
-                    <p >cancelamento grátis até o momento da retirada</p>
-                    <h4 class="titulo">Sobretaxa por idade</h4>
-                    <p >Pode ser aplicada a motoristas com menos de 25 e mais de 70 anos de idade.</p>
-                    <h4 class="titulo">Oque inclui?</h4>
-                    <p >Os itens abaixo estão incluídos no preço total do aluguel do carro.</p>
-                    <h4 class="titulo">Proteção básica contra danos por colisão</h4>
-                    <p >O preço do seu aluguel inclui proteção básica contra danos por colisão, que cobre danos à carroceria ou roubo do veículo alugado. A restrição de responsabilidade em caso de danos por colisão não inclui danos ou perdas de pneus, para-brisas, janelas ou chassi. A locadora de carros pode determinar a aplicação de uma franquia.</p>
-                </div>
-                <div class="location-pickup">
-                    <h3 class="titulo">Locais de retirada e devolução</h3>
-                    <h4 class="titulo">Retirada e devolução</h4>
-                    <p class="info"> <i class="fas fa-calendar-alt"></i> ter., 10 de dez., - ter., 17 de dez., 12h00</p>
-                    <p class="info"> <i class="fas fa-map-marker-alt"></i> Rua Boa Vista, 825, São Caetano, SP</p>
-                    <p class="info"> <i class="fas fa-clock"></i> Horário de funcionamento das 7h30 - 18h00</p>
-                </div>
-            </div>
-    </div>
-
+    <main>
+        <div class="detail-container">
+            <img id="vehicle-img" src="" alt="Imagem do Veículo">
+            <div class="detail-info">
         
-
-    <div class="container-performance">
-        <div class="title">PERFORMANCE</div>      
-        <div class="features">          
-            <div class="feature">               
-                <i class="fas fa-shield-alt"></i>               
-                <h3>SEGURANÇA</h3>               
-                <p>7 airbags, sensores de estacionamento dianteiro e traseiro e TSS<sup>4</sup> (Toyota Safety...</p>          
-            </div>            
-            <div class="feature">              
-                <i class="fas fa-microchip"></i>               
-                <h3>TECNOLOGIA</h3>              
-                <p>Ar-condicionado digital automático, central multimídia de 9" com conexão Android Auto® e...</p>        
-            </div>            
-            <div class="feature">                
-                <i class="fas fa-tachometer-alt"></i>                
-                <h3>PERFORMANCE</h3>               
-                <p>Motor de 2.0 L Dual VVT-iE 16 V DOHC Flex com potência de 175 cv (E) / 167 cv (G)<sup>5</sup> e 21,3 Kgf.m de...</p>          
-            </div>            
-            <div class="feature">               
-                <i class="fas fa-car-side"></i>               
-                <h3>DESIGN</h3>               
-                <p>Rodas de liga leve 16" e retrovisores externos elétricos na cor do carro com pisca integrado...</p>           
-            </div>        
-        </div>    
-    </div>
+                <h2 id="vehicle-title"></h2> <span id="border"></span>
+                <p> <i class="fas fa-car-side"></i> Número de portas: <span id="vehicle-doors"></span></p>
+                <p> <i class="fas fa-car-battery"></i> Nome do motor: <span id="vehicle-engine"></span></p>
+                <p> <i class="fas fa-truck"></i> Câmbio: <span id="vehicle-cambio"></span></p>
+                <p> <i class="fas fa-thermometer-empty"></i> Ar Condicionado: <span id="vehicle-arcondicionado"></span></p>
+                <p> <i class="fas fa-gas-pump"></i> Política de combustivel: <span id="vehicle-combustivel"></span></p>
+                <p> <i class="fas fa-car"></i> <span id="vehicle-quilometragem"></span></p>
+                <p> <i class="fas fa-shield-alt"></i><span id="vehicle-seguro"></span></p>
+                <div class="card-price"> <span id="border2"></span>
+                    <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
+                    <p id="vehicle-price"><span id="price"></span></p>
+                    <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
+                    <button class="reservar" onclick class="card-price button">Reservar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="parteBaixo">
+            <div class="deta">
+                <!-- <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/banner1 (1).webp" alt="Imagem 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/drive.png" alt="Imagem 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/banner7.png" alt="Imagem 3">
+                        </div>on>
+                    </div>
+                    <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+                    <!-- Indicadores -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" onclick="goToSlide(0)"></span>
+                        <span class="indicator" onclick="goToSlide(1)"></span>
+                        <span class="indicator" onclick="goToSlide(2)"></span>
+                    </div>
+                </div> -->
+            </div>
+                <div class="container-especification">
+                    <div class="rental-policy">
+                        <h3 class="titulo">Política de Aluguel</h3>
+                        <h4 class="titulo">Política de cancelamento e no show</h4>
+                        <p >Cancelamento gratuito disponível até o momento da retirada.</p>
+                        <h4 class="titulo">Sobretaxa por idade</h4>
+                        <p >Pode ser aplicada a motoristas com menos de 25 e mais de 70 anos de idade.</p>
+                        <h4 class="titulo">Oque inclui?</h4>
+                        <p >Os itens abaixo estão incluídos no preço total do aluguel do carro.</p>
+                        <h4 class="titulo">Proteção básica contra danos por colisão</h4>
+                        <p >O preço do seu aluguel inclui proteção básica contra danos por colisão, que cobre danos à carroceria ou roubo do veículo alugado. A restrição de responsabilidade em caso de danos por colisão não inclui danos ou perdas de pneus, para-brisas, janelas ou chassi. A locadora de carros pode determinar a aplicação de uma franquia.</p>
+                    </div>
+                    <div class="location-pickup">
+                        <h3 class="titulo">Locais de retirada e devolução</h3>
+                        <h4 class="titulo">Retirada e devolução</h4>
+                        <p class="info"> <i class="fas fa-calendar-alt"></i> ter., 10 de dez., - ter., 17 de dez., 12h00</p>
+                        <p class="info"> <i class="fas fa-map-marker-alt"></i> Rua Boa Vista, 825, São Caetano, SP</p>
+                        <p class="info"> <i class="fas fa-clock"></i> Horário de funcionamento das 7h30 - 18h00</p>
+                    </div>
+                </div>
+        </div>
+        
+        <div class="container-performance">
+            <div class="title">PERFORMANCE</div>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>SEGURANÇA</h3>
+                    <p>7 airbags, sensores de estacionamento dianteiro e traseiro e TSS<sup>4</sup> (Toyota Safety...</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-microchip"></i>
+                    <h3>TECNOLOGIA</h3>
+                    <p>Ar-condicionado digital automático, central multimídia de 9" com conexão Android Auto® e...</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>PERFORMANCE</h3>
+                    <p>Motor de 2.0 L Dual VVT-iE 16 V DOHC Flex com potência de 175 cv (E) / 167 cv (G)<sup>5</sup> e 21,3 Kgf.m de...</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-car-side"></i>
+                    <h3>DESIGN</h3>
+                    <p>Rodas de liga leve 16" e retrovisores externos elétricos na cor do carro com pisca integrado...</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script>
 
