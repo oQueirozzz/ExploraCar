@@ -1,3 +1,97 @@
+<?php
+session_start();
+
+
+// Desativar exibição de erros
+error_reporting(0);
+ini_set('display_errors', 0);
+
+$erro = '';
+$mensagem = '';
+$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+
+// Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
+if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
+    $mostrarFormulario = 'esqueceuSenha';
+}
+
+// Função para verificar login
+function verificarLogin($email, $senha)
+{
+    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo
+
+    if (!file_exists($arquivo)) {
+        echo "Erro: Arquivo de usuários não encontrado.<br>";
+        return false;
+    }
+
+    $handle = fopen($arquivo, 'r'); // Abre o arquivo
+    if (!$handle) {
+        echo "Erro: Não foi possível abrir o arquivo.<br>";
+        return false;
+    }
+
+    // Lê linha por linha
+    while (($linha = fgets($handle)) !== false) {
+        // echo "Lendo linha: $linha<br>"; // Debug
+
+        // Remove espaços e quebras de linha
+        $dados = explode(",", trim($linha));
+
+        // Verifica se o número de campos está correto
+        if (count($dados) < 8) {
+            // echo "Erro: Linha com dados incompletos.<br>";
+            continue;
+        }
+
+        list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
+
+        // Exibe os dados para debug
+        // echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
+
+        // Verifica o email e a senha
+        if ($email === $emailArquivo && $senha === $senhaArquivo) {
+            fclose($handle);
+
+            // Salva o nome completo na sessão
+            $_SESSION['nome'] = $nome;
+            return true;
+        }
+    }
+
+    fclose($handle); // Fecha o arquivo
+    return false; // Se não encontrou o usuário
+
+    if ($email === $emailArquivo && $senha === $senhaArquivo) {
+        fclose($handle);
+
+        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        echo "Usuário logado: " . $_SESSION['nome']; // Debug
+        return true;
+    }
+}
+
+// Processa o login
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
+
+    // Debug dos valores recebidos
+    // var_dump($email, $senha);
+
+    if (empty($email) || empty($senha)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif (!verificarLogin($email, $senha)) {
+        $erro = "Email ou senha incorretos.";
+    }
+}
+
+
+// echo $mensagem;
+// echo $erro;
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,12 +102,12 @@
     <link rel="stylesheet" href="../../global/global.css">
     <link rel="stylesheet" href="sobre.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu">
-    <script src="../../global/global.js"></script>
+    
 
 </head>
 
 <body>
-    <header>
+<header>
         <div class="cabecalho">
             <div id="menu-toggle" onclick="toggleMenu()">
                 <i class="material-symbols-outlined ">menu</i>
@@ -22,6 +116,13 @@
             <a href="index.php">
                 <div class="logo"></div>
             </a>
+
+            <form action="../../home/buscar.php" method="GET" class="barra-pesquisa">
+                <input type="text" name="query" placeholder="Digite aqui..." required>
+                <button type="submit">Pesquisar</button>
+            </form>
+
+
 
             <div class="buttons">
                 <div class="dropdown">
@@ -34,12 +135,12 @@
                             <div class="seta"></div>
                         </button>
 
-                        <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../../global/img/file.png" alt="">
+                        <!-- <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
                             <span></span>
                             <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
                             <div class="seta"></div>
-                        </button>
+                        </button> -->
 
 
 
@@ -55,19 +156,28 @@
                             <!-- <img id="seta" src="img/seta.png" alt=""> -->
                         </button>
                         </a>
-                        <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                            <img src="../../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                            <div class="seta"></div>
-                        </button>
                     <?php endif; ?>
+                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                        <img src="../../global/img/help.png" alt="">
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                        <div class="seta"></div>
+                    </button>
                 </div>
 
                 <div id="logout-tab" class="logout-tab">
                     <div class="logout-content">
-                        <div class="buttons"><a href="logout.php"><button>Sair</button"></a></div>
                         <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="logout.php">
+                                <button id="logout-button">
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
+                                </button">
+                            </a>
+                        </div>
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+
                     </div>
                 </div>
 
@@ -76,7 +186,7 @@
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
                             <a href="../loc/duvidasfrequentes/duvidas.php">
-                                <button>
+                                <button id="duvidas-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
                                 </button>
@@ -168,9 +278,9 @@
                                     <input type="email" id="email" name="email" required>
 
                                     <label for="senha">Senha</label>
-                                    <input type="password" id="password" name="password" required>
+                                    <input type="password" id="password" name="senha" required>
 
-                                    <a href="../loc/form/esqueceusenha/esqueceusenha.html" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
@@ -183,85 +293,72 @@
                 </div>
             </div>
 
-            <!-- <a href="#"><button>Entrar</button></a> -->
-            <!-- </div> -->
-            <!-- </div> -->
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="../Locação/veiculos.html"><img src="../../global/img/carroICON.jpg" alt="veiculos"
+                <li><a href="../../Locação/veiculos.html"><img src="../../global/img/carroICON.jpg" alt="veiculos"
                             id="transparent">
                         <span>Carros</span></a>
                 </li>
                 <li><a href="#"><img src="../../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <li><a href="../assinatura/assinatura.html"><img src="../../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes de assinaturas</span></a></li>
+                <li><a href="../../assinatura/assinatura.php"><img src="../../global/img/assinatura.png" alt="Pacotes">
+                        <span>Pacotes</span></a></li>
                 <hr>
-                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Voos diretos</span></li>
-                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Melhor momento</span></li>
-                <hr>
-                <li><img src="icons/briefcase.png" alt="Business"> <span>KAYAK for Business</span></li>
-                <li><img src="icons/heart.png" alt="Trips"> <span>Trips</span></li>
+                <li><img src="flight.png" alt="Voos Diretos"> <span>Blog</span></li>
+                <li><img src="icons/clock.png" alt="Melhor Momento"> <span>Suas reservas</span></li>
                 <hr>
             </ul>
         </nav>
     </header>
 
-    <div class="banner">
-
-        <h1 class="text-title">Sua Viagem Começa Aqui</h1>
-
-    </div>
-
-    <div class="conheca">
-        <h2 class="title-conheca">Conheça a história da ExploraCar</h2>
-        <p class="text-conheca">
-            A ExploraCar nasceu com o propósito de oferecer uma experiência de locação de veículos simples, confiável e inovadora. Fundada por um grupo de entusiastas de mobilidade, a empresa começou com uma frota pequena, mas focada em qualidade e segurança.
-            Com o tempo, a ExploraCar se destacou por investir em tecnologia, criando uma plataforma online fácil de usar e garantindo atendimento ágil e transparente. A empresa também adotou práticas sustentáveis, com carros híbridos e elétricos, comprometendo-se com o futuro e a redução de impacto ambiental.
-            Hoje, a ExploraCar é sinônimo de confiança e flexibilidade, oferecendo soluções personalizadas para viagens de negócios, lazer e necessidades do dia a dia, sempre com foco na satisfação do cliente e inovação constante</p>
-    </div>
-
-    <div class="image">
-        <h1 class="title-image">A locadora que oferece a mobilidade e o cuidado que você precisa para ir aonde quiser.</h1>
-        <img src="./img/viagem.webp" alt="viagem" class="img-viagem">
-    </div>
-
-    <section>
-
-        <video autoplay="on" class="bg_video" loop muted poster="imagens/poster.jpg">
-            <source src="./img/videoexploracar.mp4" type="video/mp4" autoplay muted loop>
-        </video>
-    </section>
-
-    <div class="sep-color">
-        <div class="icons">
-
-            <div class="mission">
-                <img src="./img/alvo.png" alt="missão">
-                <h2 class="title-icon">Missão</h2>
-                <p class="text-mvv">"Oferecer soluções de locação de veículos com qualidade, <br>
-                    facilidade e preços justos, garantindo segurança e conforto. <br>
-                    Nossa missão é ajudar as pessoas a explorarem o mundo <br>
-                    com liberdade e praticidade."</p>
-            </div>
-
-            <div class="vision">
-                <img src="./img/lampada.png" alt="visão">
-                <h2 class="title-icon">Visão</h2>
-                <p class="text-mvv">"Ser a principal referência em locação de veículos, <br>
-                    oferecendo inovação, qualidade e sustentabilidade. <br>
-                    Queremos facilitar o transporte, transformar jornadas em experiências <br>
-                    e ser a primeira escolha de quem busca liberdade e conveniência."</p>
-            </div>
-
-            <div class="values">
-                <img src="./img/valor.png" alt="valores" id="values">
-                <h2 class="title-icon" id="valores">Valores</h2>
-                <p class="text-mvv">
-                    Agimos com confiança, transparência e compromisso, priorizando a qualidade, segurança e inovação na nossa frota. Valorizamos a sustentabilidade e oferecemos atendimento ágil e personalizado, com soluções flexíveis para atender às necessidades dos nossos clientes.
+    <main>
+        <div class="banner">
+            <h1 class="text-title">Sua Viagem Começa Aqui</h1>
+        </div>
+        <div class="conheca">
+            <h2 class="title-conheca">Conheça a história da ExploraCar</h2>
+            <p class="text-conheca">
+                A ExploraCar nasceu com o propósito de oferecer uma experiência de locação de veículos simples, confiável e inovadora. Fundada por um grupo de entusiastas de mobilidade, a empresa começou com uma frota pequena, mas focada em qualidade e segurança.
+                Com o tempo, a ExploraCar se destacou por investir em tecnologia, criando uma plataforma online fácil de usar e garantindo atendimento ágil e transparente. A empresa também adotou práticas sustentáveis, com carros híbridos e elétricos, comprometendo-se com o futuro e a redução de impacto ambiental.
+                Hoje, a ExploraCar é sinônimo de confiança e flexibilidade, oferecendo soluções personalizadas para viagens de negócios, lazer e necessidades do dia a dia, sempre com foco na satisfação do cliente e inovação constante.</p>
+        </div>
+        <div class="image">
+            <h1 class="title-image">A locadora que oferece a mobilidade e o cuidado que você precisa para ir aonde quiser.</h1>
+            <img src="./img/viagem.webp" alt="viagem" class="img-viagem">
+        </div>
+        <section>
+            <video autoplay="on" class="bg_video" loop muted poster="imagens/poster.jpg">
+                <source src="./img/videoexploracar.mp4" type="video/mp4" autoplay muted loop>
+            </video>
+        </section>
+        <div class="sep-color">
+            <div class="icons">
+                <div class="mission">
+                    <img src="./img/alvo.png" alt="missão">
+                    <h2 class="title-icon">Missão</h2>
+                    <p class="text-mvv">"Oferecer soluções de locação de veículos com qualidade, <br>
+                        facilidade e preços justos, garantindo segurança e conforto. <br>
+                        Nossa missão é ajudar as pessoas a explorarem o mundo <br>
+                        com liberdade e praticidade."</p>
+                </div>
+                <div class="vision">
+                    <img src="./img/lampada.png" alt="visão">
+                    <h2 class="title-icon">Visão</h2>
+                    <p class="text-mvv">"Ser a principal referência em locação de veículos, <br>
+                        oferecendo inovação, qualidade e sustentabilidade. <br>
+                        Queremos facilitar o transporte, transformar jornadas em experiências <br>
+                        e ser a primeira escolha de quem busca liberdade e conveniência."</p>
+                </div>
+                <div class="values">
+                    <img src="./img/valor.png" alt="valores" id="values">
+                    <h2 class="title-icon" id="valores">Valores</h2>
+                    <p class="text-mvv">
+                        Agimos com confiança, transparência e compromisso, priorizando a qualidade, segurança e inovação na nossa frota. Valorizamos a sustentabilidade e oferecemos atendimento ágil e personalizado, com soluções flexíveis para atender às necessidades dos nossos clientes.
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+    <script src="../../global/global.js"></script>
 
     <footer>
         <div class="footer-container">
@@ -275,11 +372,11 @@
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="index.php">Início</a></li>
-                    <li><a href="sobre.php">Sobre Nós</a></li>
-                    <li><a href="carros.php">Carros Disponíveis</a></li>
-                    <li><a href="contato.php">Contato</a></li>
-                    <li><a href="termos.php">Termos e Condições</a></li>
+                    <li><a href="../../home/index.php">Início</a></li>
+                    <li><a href="./sobre.php">Sobre Nós</a></li>
+                    <li><a href="../../Locação/veiculos.html">Carros Disponíveis</a></li>
+                    <li><a href="../duvidasfrequentes/duvidas.php">Contato</a></li>
+                    <li><a href="../politicas/politicas.html">Termos e Condições</a></li>
                 </ul>
             </div>
 
@@ -306,7 +403,7 @@
                 ExploraCar | Todos os direitos reservados.</p>
             <ul>
                 <li><a href="#">Termos de uso</a></li>
-                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="../../loc/politicas/politicas.html">Política de Privacidade</a></li>
                 <li><a href="#">LGPD</a></li>
             </ul>
         </div>

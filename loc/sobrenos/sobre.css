@@ -195,3 +195,17 @@ video {
     margin-left: 17%;
     margin-top: 40px;
 }
+
+.register-section ul li {
+    margin-bottom: 10px;
+    text-align: start;
+}
+
+.esqueci {
+    font-size: 0.8rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    text-align: start;
+}
