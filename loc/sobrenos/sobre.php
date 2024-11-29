@@ -209,7 +209,7 @@
 
     <div class="banner">
 
-        <h1 class="text-title">Sua Viagem Começa Aqui.</h1>
+        <h1 class="text-title">Sua Viagem Começa Aqui</h1>
 
     </div>
 
@@ -222,7 +222,7 @@
     </div>
 
     <div class="image">
-        <h1 class="title-image">Aluguel de carros por todo o Brasil</h1>
+        <h1 class="title-image">A locadora que oferece a mobilidade e o cuidado que você precisa para ir aonde quiser.</h1>
         <img src="./img/viagem.webp" alt="viagem" class="img-viagem">
     </div>
 
@@ -263,6 +263,54 @@
         </div>
     </div>
 
+    <footer>
+        <div class="footer-container">
+            <!-- Logo e Slogan -->
+            <div class="footer-section about">
+                <h2>ExploraCar</h2>
+                <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
+            </div>
+
+            <!-- Links Rápidos -->
+            <div class="footer-section links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="sobre.php">Sobre Nós</a></li>
+                    <li><a href="carros.php">Carros Disponíveis</a></li>
+                    <li><a href="contato.php">Contato</a></li>
+                    <li><a href="termos.php">Termos e Condições</a></li>
+                </ul>
+            </div>
+
+            <!-- Contato -->
+            <div class="footer-section contato">
+                <h3>Contato</h3>
+                <p>Rua Boa Vista, 825, São Caetano, SP</p>
+                <p>Email: contato@exploracar.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+            </div>
+
+            <!-- Redes Sociais -->
+            <div class="footer-section redes-sociais">
+                <h3>Nos Siga</h3>
+                <a id="correction" href="#"><img src="../../global/img/face.png" width="30px" height="30px"
+                        alt="Facebook"></a>
+                <a href="#"><img src="../../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
+                <a href="#"><img src="../../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy;
+                ExploraCar | Todos os direitos reservados.</p>
+            <ul>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="#">LGPD</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>
