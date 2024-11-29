@@ -20,3 +20,18 @@ $(function () {
     const infoTab = document.getElementById('info-tab');
     infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
    }
+
+function toggleInfoTab() {
+    const infoTab = document.getElementById('info-tab');
+    infoTab.style.display = infoTab.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleHelpTab() {
+    const helpTab = document.getElementById('help-tab');
+    helpTab.style.display = helpTab.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleLogoutTab() {
+    const logoutTab = document.getElementById('logout-tab');
+    logoutTab.style.display = logoutTab.style.display === 'block' ? 'none' : 'block';
+}

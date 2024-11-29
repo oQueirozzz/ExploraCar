@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../loc/form/form.php");
-//     exit;
-// }
+session_start();
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // header("Location: ../loc/form/form.php");
+}
 
 // Validação dos dados recebidos
 $id = isset($_POST['id']) ? $_POST['id'] : null;

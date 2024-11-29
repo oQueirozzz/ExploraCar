@@ -23,7 +23,7 @@
                 <i class="material-symbols-outlined ">menu</i>
             </div>
 
-            <a href="index.php">
+            <a href="../home/index.php">
                 <div class="logo"></div>
             </a>
 
@@ -222,18 +222,88 @@
     </header> 
 
     <main>
-    
-    <!-- <h1>Histórico de Transações</h1>
-    <div id="history">
-        <p><strong>Veículo:</strong> <span id="vehicle-title"></span></p>
-        <p><strong>Preço:</strong> <span id="vehicle-price"></span></p>
-        <p><strong>Data:</strong> <span id="vehicle-date"></span></p>
-    </div>
-    <button onclick="localStorage.removeItem('selectedVehicle'); location.reload();">
-        Limpar Histórico
-    </button> -->
+    <h1>Histórico de Carros Comprados</h1>
 
+        <div class="card-container">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Honda Civic 2022">
+                <div class="card-content">
+                    <h2>Honda Civic 2022</h2>
+                    <p>Data de Compra: <span>15/03/2023</span></p>
+                    <p>Preço: <span>R$ 120.000,00</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Toyota Corolla 2021">
+                <div class="card-content">
+                    <h2>Toyota Corolla 2021</h2>
+                    <p>Data de Compra: <span>20/07/2022</span></p>
+                    <p>Preço: <span>R$ 110.000,00</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Ford Focus 2020">
+                <div class="card-content">
+                    <h2>Ford Focus 2020</h2>
+                    <p>Data de Compra: <span>05/11/2021</span></p>
+                    <p>Preço: <span>R$ 85.000,00</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Chevrolet Cruze 2019">
+                <div class="card-content">
+                    <h2>Chevrolet Cruze 2019</h2>
+                    <p>Data de Compra: <span>10/02/2020</span></p>
+                    <p>Preço: <span>R$ 70.000,00</span></p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function addCards(number, type, button) {
+                removeAllCards(); // Remove todos os cards antes de adicionar novos
+                // Esconde a seção none-wallet
+                document.querySelector('.none-wallet').style.display = 'none';
+                if (!cardsGenerated[type]) {
+                    const cardContainer = document.getElementById('card-container');
+                    for (let i = 0; i < number; i++) {
+                        const vehicle = vehicles[type][i];
+                        const newCard = document.createElement('div');
+                        newCard.className = 'card';
+                        newCard.dataset.type = type;
+                        // Adiciona a classe black-friday se for do tipo BlackFriday
+                        if (type === 'BlackFriday') {
+                            newCard.classList.add('black-friday');
+                        }
+                        newCard.innerHTML = `
+                            <img src="${vehicle.img}" alt="Imagem do carro ${type} ${i+1}">
+                            <div class="card-info">
+                                <h2>${vehicle.title}</h2>
+                                <p>${vehicle.desc}</p>
+                            </div>
+                            <div class="card-price">
+                                <p id="desconto">${vehicle.descontPrice}</p>
+                                <p>${vehicle.price}</p>
+                                <p id="diaria">${vehicle.diaria} por dia</p>
+                                <button class="reservar" onclick="reserveVehicle(${i}, '${type}')">Reservar</button>
+                            </div>
+                        `;
+                        cardContainer.appendChild(newCard);
+                    }
+                    cardsGenerated[type] = true;
+                }
+                setActiveButton(button); // Define o botão como ativo
+            }
+    </script>
+
+        <section class="none-wallet">
+            <h3>Nenhuma marca selecionada</h3>
+            <p>Por favor selecione um dos botões acima para continuar.</p>
+            <img src="./img/CarroPretoBranco.png">
+        </section>
     </main>
+
+   
 
     <footer>
         <div class="footer-container">
