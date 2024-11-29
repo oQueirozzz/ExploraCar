@@ -100,20 +100,22 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reservas de carros - ExploraCar</title>
-        <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
-        <link rel="stylesheet" href="./detalhes.css">
-        <link rel="stylesheet" href="../global/global.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
-            <!-- Link para o Font Awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-     tem menu de contexto
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de carros - ExploraCar</title>
+    <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
+    <link rel="stylesheet" href="./detalhes.css">
+    <link rel="stylesheet" href="../global/global.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <!-- Link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    tem menu de contexto
+
 </head>
+
 <body>
     <header>
         <div class="cabecalho">
@@ -181,7 +183,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                                 <button id="logout-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
-                                </button">
+                                    </button">
                             </a>
                         </div>
                         <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
@@ -317,7 +319,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
             </ul>
         </nav>
     </header>
-    
+
     <main>
         <div class="detail-container">
             <img id="vehicle-img" src="" alt="Imagem do Veículo">
@@ -334,11 +336,11 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
                     <p id="vehicle-price"><span id="price"></span></p>
                     <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <form action="../pagamento/pagamento.php" method="post"><button type="submit" class="reservar"onclick="window.location.href='../pagamento/pagamento.php'">Reservar</button></form>
+                    <form action="../pagamento/pagamento.php" method="post"><button type="submit" class="reservar" onclick="window.location.href='../pagamento/pagamento.php'">Reservar</button></form>
                 </div>
             </div>
         </div>
-        <div class="parteBaixo"> 
+        <div class="parteBaixo">
             <div class="deta">
                 <div class="card-carrosel">
                     <div class="carrossel-container">
@@ -357,13 +359,13 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <div class="rental-policy">
                         <h3 class="titulo">Política de Aluguel</h3>
                         <h4 class="titulo">Política de cancelamento e no show</h4>
-                        <p >Cancelamento gratuito disponível até o momento da retirada.</p>
+                        <p>Cancelamento gratuito disponível até o momento da retirada.</p>
                         <h4 class="titulo">Sobretaxa por idade</h4>
-                        <p >Pode ser aplicada a motoristas com menos de 25 e mais de 70 anos de idade.</p>
+                        <p>Pode ser aplicada a motoristas com menos de 25 e mais de 70 anos de idade.</p>
                         <h4 class="titulo">Oque inclui?</h4>
-                        <p >Os itens abaixo estão incluídos no preço total do aluguel do carro.</p>
+                        <p>Os itens abaixo estão incluídos no preço total do aluguel do carro.</p>
                         <h4 class="titulo">Proteção básica contra danos por colisão</h4>
-                        <p >O preço do seu aluguel inclui proteção básica contra danos por colisão, que cobre danos à carroceria ou roubo do veículo alugado. A restrição de responsabilidade em caso de danos por colisão não inclui danos ou perdas de pneus, para-brisas, janelas ou chassi. A locadora de carros pode determinar a aplicação de uma franquia.</p>
+                        <p>O preço do seu aluguel inclui proteção básica contra danos por colisão, que cobre danos à carroceria ou roubo do veículo alugado. A restrição de responsabilidade em caso de danos por colisão não inclui danos ou perdas de pneus, para-brisas, janelas ou chassi. A locadora de carros pode determinar a aplicação de uma franquia.</p>
                     </div>
                     <div class="location-pickup">
                         <h3 class="titulo">Locais de retirada e devolução</h3>
@@ -404,10 +406,8 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 
     <script>
-
-        
         // esse aqui faz aparecer as informaçoes dos cards.
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));
             if (vehicle) {
                 document.getElementById('vehicle-img').src = vehicle.img;
@@ -438,34 +438,34 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
         }
     </script>
 
-<script>
-    // carrosel das imagens de banners
-    const carrossel = document.querySelector('.carrossel');
-    const images = document.querySelectorAll('.carrossel img');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    let idx = 0;
+    <script>
+        // carrosel das imagens de banners
+        const carrossel = document.querySelector('.carrossel');
+        const images = document.querySelectorAll('.carrossel img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let idx = 0;
 
-    function showImage(index) {
-        carrossel.style.transform = `translateX(${-index * 100 / images.length}%)`;
-    }
+        function showImage(index) {
+            carrossel.style.transform = `translateX(${-index * 100 / images.length}%)`;
+        }
 
-    prevButton.addEventListener('click', () => {
-        idx = idx <= 0 ? images.length - 1 : idx - 1;
-        showImage(idx);
-    });
+        prevButton.addEventListener('click', () => {
+            idx = idx <= 0 ? images.length - 1 : idx - 1;
+            showImage(idx);
+        });
 
-    nextButton.addEventListener('click', () => {
-        idx = idx >= images.length - 1 ? 0 : idx + 1;
-        showImage(idx);
-    });
-</script>
+        nextButton.addEventListener('click', () => {
+            idx = idx >= images.length - 1 ? 0 : idx + 1;
+            showImage(idx);
+        });
+    </script>
 
     <script src="../global/global.js"></script>
 
     <script>
 
-</script>
+    </script>
     <footer>
         <div class="footer-container">
             <!-- Logo e Slogan -->
@@ -473,7 +473,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 <h2>ExploraCar</h2>
                 <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
             </div>
-            
+
             <!-- Links Rápidos -->
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
@@ -485,7 +485,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <li><a href="termos.php">Termos e Condições</a></li>
                 </ul>
             </div>
-            
+
             <!-- Contato -->
             <div class="footer-section contato">
                 <h3>Contato</h3>
@@ -493,7 +493,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 <p>Email: contato@exploracar.com</p>
                 <p>Telefone: (11) 1234-5678</p>
             </div>
-            
+
             <!-- Redes Sociais -->
             <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
@@ -502,7 +502,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; <?php echo date("Y"); ?> ExploraCar | Todos os direitos reservados.</p>
             <ul>
@@ -513,4 +513,5 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
         </div>
     </footer>
 </body>
+
 </html>

@@ -3,15 +3,15 @@ session_start();
 $pacotes = [
     [
         "id" => 1,
-        "nome" => "Plano Pro",
-        "descricao" => "Pacote com alguns benefícios para o seu aluguel",
-        "preco" => 29.99,
+        "tittle" => "Plano Pro",
+        "desc" => "Pacote com alguns benefícios para o seu aluguel",
+        "price" => 29.99,
     ],
     [
         "id" => 2,
-        "nome" => "Plano Ultimate",
-        "descricao" => "Pacote com diverso benefícios para o seu aluguel",
-        "preco" => 49.99,
+        "tittle" => "Plano Ultimate",
+        "desc" => "Pacote com diverso benefícios para o seu aluguel",
+        "price" => 49.99,
     ],
 ];
 
@@ -56,8 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Pacotes Dinâmicos -->
             <?php foreach ($pacotes as $pacote): ?>
             <div class="cards__card card">
-                <h2 class="card__heading"><?php echo htmlspecialchars($pacote['nome']); ?></h2>
-                <p class="card__price">R$ <?php echo number_format($pacote['preco'], 2, ',', '.'); ?></p>
+                <h2 class="card__heading"><?php echo htmlspecialchars($pacote['tittle']); ?></h2>
+                <p class="card__price">R$ <?php echo number_format($pacote['price'], 2, ',', '.'); ?></p>
                 <p>por mês</p>
                 <ul role="list" class="card__bullets flow">
                     <li>Acesso a lista de carros com variedades de modelos</li>
@@ -68,9 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="buttons">
                     <form action="../pagamento/pagamento.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $pacote['id']; ?>">
-                        <input type="hidden" name="nome" value="<?php echo htmlspecialchars($pacote['nome']); ?>">
-                        <input type="hidden" name="descricao" value="<?php echo htmlspecialchars($pacote['descricao']); ?>">
-                        <input type="hidden" name="valor" value="<?php echo number_format($pacote['preco'], 2, '.', ''); ?>">
+                        <input type="hidden" name="tittle" value="<?php echo htmlspecialchars($pacote['tittle']); ?>">
+                        <input type="hidden" name="desc" value="<?php echo htmlspecialchars($pacote['desc']); ?>">
+                        <input type="hidden" name="valor" value="<?php echo number_format($pacote['price'], 2, '.', ''); ?>">
                         <button id="button-assina" type="submit"><span></span>Assinar</button>
                     </form>
                 </div>

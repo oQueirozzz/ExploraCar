@@ -38,9 +38,6 @@ if ($id && $nome && $descricao && $valor) {
     // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     header("Location: ../pagamento/pagamento.php");
     // }  
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        header("Location: ../pagamento/pagamento.php");
-    }  
      
 } else {
     echo "Dados inválidos.";
@@ -156,7 +153,7 @@ if ($id && $nome && $descricao && $valor) {
                 </div>
             </div>
 
-            <form class="form" action="../loader/loader.php" method="POST">
+            <form class="form" action="/loader/loader.php" method="POST">
                 <h2>Detalhes do Cartão</h2>
 
                 <div class="form__name form__detail">
