@@ -1,48 +1,74 @@
 <?php
-session_start();
+session_start(); // Inicia a sessão
 
-
-
+// Verifique se a sessão está com 'loggedin' definida corretamente
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../loc/form/form.php");
-    
+    // exit();
 }
 
-// Validação dos dados recebidos
-$id = isset($_POST['id']) ? $_POST['id'] : null;
-$nome = isset($_POST['nome']) ? $_POST['nome'] : null;
-$descricao = isset($_POST['descricao']) ? $_POST['descricao'] : null;
-$valor = isset($_POST['valor']) ? $_POST['valor'] : null;
 
-// Verifique se todos os dados foram enviados
-if ($id && $nome && $descricao && $valor):
+// // Validação dos dados recebidos
+// $id = isset($_POST['id']) ? $_POST['id'] : null;
+// $tittle = isset($_POST['tittle']) ? $_POST['tittle'] : null;
+// $desc = isset($_POST['desc']) ? $_POST['desc'] : null;
+// $price = isset($_POST['price']) ? $_POST['price'] : null;
+
+// // Verifique se todos os dados foram enviados
+// if ($id && $tittle && $desc && $price):
 
 
     // Receba os dados do POST
 $id = $_POST['id'] ?? null;
-$nome = $_POST['nome'] ?? null;
-$descricao = $_POST['descricao'] ?? null;
-$valor = $_POST['valor'] ?? null;
+$tittle = $_POST['tittle'] ?? null;
+$desc = $_POST['desc'] ?? null;
+$price = $_POST['price'] ?? null;
 
 // Valida os dados
-if ($id && $nome && $descricao && $valor) {
+if ($id && $tittle && $desc && $price) {
     // Salva os dados na sessão
     $_SESSION['pagamento'] = [
         'id' => $id,
-        'nome' => $nome,
-        'descricao' => $descricao,
-        'valor' => $valor,
+        'tittle' => $tittle,
+        'desc' => $desc,
+        'price' => $price,
     ];
+
+
+    //estava dando conflito e redundãncia
+
+    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //     $dados = $_POST['pacote'];
+    
+    //     // Valide o pacote antes de redirecionar
+    //     if (!empty($pacote)) {
+    //         // Redirecione para a página final com o pacote
+    //         header("Location: checkout.php?pacote=" . urlencode($pacote));
+    //         exit(); // Certifique-se de usar `exit()` após o header
+       
+    
+    
+    // Exibir os dados na página de pagamento (ou redirecionar para checkout)
+    //    echo "<h1>Resumo do Pacote</h1>";
+    //    echo "<p>ID: " . htmlspecialchars($id) . "</p>";
+    //    echo "<p>Título: " . htmlspecialchars($tittle) . "</p>";
+    //    echo "<p>Descrição: " . htmlspecialchars($desc) . "</p>";
+    //    echo "<p>Valor: R$ " . number_format((float)$price, 2, ',', '.') . "</p>";
+  
+  
+    } else {
+      // Erro caso os dados estejam incompletos
+       echo "Erro: Dados do pacote não foram enviados corretamente.";
+   }
 
     // Redireciona para o loader
     // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     header("Location: ../pagamento/pagamento.php");
     // }  
-     
-} else {
-    echo "Dados inválidos.";
-    exit();
-}
+//       else {
+//     echo "Dados inválidos.";
+//     // exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="hydrated">
@@ -216,16 +242,16 @@ if ($id && $nome && $descricao && $valor) {
                         CVV invalido
                     </div>
                 </div>
-
+                
                 <div class="buttons">
                     <form action="../loader/loader.php" method="POST">
-                        <input type="hidden" name="valor" value="<?php echo htmlspecialchars($valor); ?>">
+                        <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
                         <input type="submit" style="display: none;"><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button>></input>
-                           
-                        </form>
+                        
+                    </form>
                 </div>
-
             </form>
+
 
         </div>
     <div class="cart-container">
@@ -234,8 +260,8 @@ if ($id && $nome && $descricao && $valor) {
             <p style="display: none;"><strong>Pacote ID:</strong> <?php echo htmlspecialchars($id); ?></p>
         </div>
         <div class="cart-item">
-            <h3><?php echo htmlspecialchars($nome); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($valor); ?></span></span></h3>
-            <p> <?php echo htmlspecialchars($descricao); ?></p>
+            <h3><?php echo htmlspecialchars($tittle); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($price); ?></span></span></h3>
+            <p> <?php echo htmlspecialchars($desc); ?></p>
         </div>
 
         <!-- Onde o desconto será exibido -->
@@ -246,7 +272,7 @@ if ($id && $nome && $descricao && $valor) {
         <!-- Total -->
         <div class="container-descont">
             <div class="total">
-                Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($valor); ?></span></span>
+                Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($price); ?></span></span>
             </div>
             <!-- Entrada para cupom -->
             <div class="promo-input">
@@ -259,9 +285,9 @@ if ($id && $nome && $descricao && $valor) {
 </body>
 </html>
 <?php
-else:
-    echo "Erro: Informações incompletas.";
-endif;
+// else:
+//     echo "Erro: Informações incompletas.";
+// endif;
 ?>
 
     <script src="pagamento.js"></script>

@@ -55,6 +55,8 @@ function verificarLogin($email, $senha)
 
             // Salva o nome completo na sessão
             $_SESSION['nome'] = $nome;
+            $_SESSION['loggedin'] = true;  // Define que o usuário está logado
+            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
             return true;
         }
     }
@@ -65,7 +67,7 @@ function verificarLogin($email, $senha)
     if ($email === $emailArquivo && $senha === $senhaArquivo) {
         fclose($handle);
 
-        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        $_SESSION['nome'] = $nome ;
         echo "Usuário logado: " . $_SESSION['nome']; // Debug
         return true;
     }
@@ -87,8 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
 }
 
 // Após validar o login
-$_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
-$_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+// $_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
+// $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 
 // echo $mensagem;
