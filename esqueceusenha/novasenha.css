@@ -7,16 +7,13 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #ffc881, #ffb74b);
-    color: #333;
+    background-color: #161616;
 }
 
 /* Contêiner do formulário */
 .form-container {
     width: 100%;
-    max-width: 600px;
     height: 350px;
-    background: #ffffff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
@@ -24,6 +21,21 @@ body {
     flex-direction: column; /* Para organizar os elementos em coluna */
     align-items: center;    /* Centraliza horizontalmente os elementos */
 }
+
+.form-container img{
+    width: 30%;
+    height: 32%;
+    z-index: -1;
+    filter: brightness(0.7);
+    position: absolute;
+    border-radius: 20px;
+}
+
+.form-container form{
+    padding-top: 15px;
+    max-width: 400px;
+}
+
 .error-email{
     color: red;
     margin-top: 20px;
@@ -32,7 +44,7 @@ body {
 /* Título */
 h2 {
     text-align: center;
-    color: black;
+    color: rgb(255, 255, 255);
     margin-bottom: 20px;
 }
 
@@ -41,19 +53,21 @@ label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
-    color: #555;
+    color: #ffffff;
+    margin-left: 30px;
 }
 
-/* Campos de entrada */
 input[type="password"] {
-    width: 100%; /* Usa 100% da largura disponível no contêiner */
-max-width: 200px;
+    width: 330px;
+    max-width: 400px;
+    height: 30px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.3s ease;
-    text-align: center; /* Opcional: Alinha o texto centralizado dentro do input */
+    text-align: center;
+    margin-left: 30px;
 }
 
 input[type="password"]:focus {
@@ -63,10 +77,13 @@ input[type="password"]:focus {
 
 /* Botão de envio */
 .submit-btn {
-    width: 100%; /* Usa a largura total do contêiner */
-    max-width: 200px;
+    /* width: 100%; */
+    width: 330px;
+    /* max-width: 200px; */
     margin: auto;
     padding: 12px;
+    margin-left: 30px;
+    margin-top: 20px;
     background-color: #ff9100;
     color: white;
     font-size: 16px;

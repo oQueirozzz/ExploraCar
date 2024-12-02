@@ -1,6 +1,6 @@
 body{
     background-color: #f4f4f4;
-    font-family: ;
+    font-family:"Poppins", sans-serif;
 }      
       
       .detail-container {
@@ -61,7 +61,6 @@ body{
         position: relative;
         bottom: 150px;
         text-align: right;
-        font-family: Arial, Helvetica, sans-serif;
         margin-top: -30px;
 }
 .card-price p {
@@ -198,7 +197,7 @@ margin-bottom: 20px;
             width: 650px; /* Aumenta o tamanho do card */
             margin: auto;
             border: 1px solid #ccc;
-            border-radius: 10px;
+            border-radius: 50% 70px 50% 70px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative; /* Necessário para posicionamento absoluto dos botões */

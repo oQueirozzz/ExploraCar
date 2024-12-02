@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
 
 <body>
     <div class="form-container">
+        <img src="./img/shutterstock_1158115840-1.jpg" alt="">
         <form id="formCadastro" action="" method="post">
             <input type="hidden" name="acao" value="novaSenha">
             <h2>Redefinir Senha</h2>
