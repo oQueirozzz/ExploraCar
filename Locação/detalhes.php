@@ -359,9 +359,9 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 <div class="card-carrosel">
                     <div class="carrossel-container">
                         <div class="carrossel">
-                            <img src="../home/img/banner2.png" alt="Imagem 1">
-                            <img src="../home/img/banner3.webp" alt="Imagem 2">
-                            <img src="../home/img/banner4.png" alt="Imagem 3">
+                            <img id="vehicle-img2" alt="Imagem Interior 1">
+                            <img id="vehicle-img3" alt="Imagem Interior 2">
+                            <img id="vehicle-img4" alt="Imagem Interior 3">
                         </div>
                     </div>
                     <div class="nav-buttons">
@@ -436,6 +436,9 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 document.getElementById('descontPrice').textContent = vehicle.descontPrice;
                 document.getElementById('price').textContent = vehicle.price;
                 document.getElementById('diaria').textContent = vehicle.diaria;
+                document.getElementById('vehicle-img2').src = vehicle.img2;
+                document.getElementById('vehicle-img3').src = vehicle.img3;
+                document.getElementById('vehicle-img4').src = vehicle.img4;
             }
         });
         // esse aqui é responsável pelo botao de reservar e os preços.
@@ -454,7 +457,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
     </script>
 
     <script>
-        // carrosel das imagens de banners
+        // carrosel das imagens de interior dos carros
         const carrossel = document.querySelector('.carrossel');
         const images = document.querySelectorAll('.carrossel img');
         const prevButton = document.getElementById('prev');
