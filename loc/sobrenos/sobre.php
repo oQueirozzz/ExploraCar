@@ -216,7 +216,7 @@ if (isset($_GET['page'])) {
                     <div class="help-content">
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
-                            <a href="../loc/duvidasfrequentes/duvidas.php">
+                            <a href="../duvidasfrequentes/duvidas.php">
                                 <button id="duvidas-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
@@ -291,7 +291,7 @@ if (isset($_GET['page'])) {
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
+                                <button class="btn" onclick="window.location.href='../form/form.php '"><span></span>Criar
                                     Nova
                                     Conta</button>
                                 <ul>
@@ -311,7 +311,7 @@ if (isset($_GET['page'])) {
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>

@@ -507,7 +507,7 @@ if (isset($_GET['page'])) {
 
         <div class="buttons">
             <div class="button-central">
-                <a href="../Locação/veiculos.html">
+                <a href="../Locação/veiculos.php">
                     <button>
                         <span></span>
                         Confira todas as opções!
