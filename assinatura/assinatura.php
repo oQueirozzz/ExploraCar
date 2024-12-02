@@ -3,13 +3,13 @@ session_start();
 $pacotes = [
     [
         "id" => 1,
-        "tittle" => "Plano Pro",
+        "title" => "Plano Pro",
         "desc" => "Pacote com alguns benefícios para o seu aluguel",
         "price" => 29.99,
     ],
     [
         "id" => 2,
-        "tittle" => "Plano Ultimate",
+        "title" => "Plano Ultimate",
         "desc" => "Pacote com diverso benefícios para o seu aluguel",
         "price" => 49.99,
     ],
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- Pacotes Dinâmicos -->
                 <?php foreach ($pacotes as $pacote): ?>
                     <div class="cards__card card">
-                        <h2 class="card__heading"><?php echo htmlspecialchars($pacote['tittle']); ?></h2>
+                        <h2 class="card__heading"><?php echo htmlspecialchars($pacote['title']); ?></h2>
                         <p class="card__price">R$ <?php echo number_format($pacote['price'], 2, ',', '.'); ?></p>
                         <p>por mês</p>
                         <ul role="list" class="card__bullets flow">
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="buttons">
                             <form action="../pagamento/pagamento.php" method="POST">
                                 <input type="hidden" name="id" value="<?php echo $pacote['id']; ?>">
-                                <input type="hidden" name="tittle" value="<?php echo htmlspecialchars($pacote['tittle']); ?>">
+                                <input type="hidden" name="title" value="<?php echo htmlspecialchars($pacote['title']); ?>">
                                 <input type="hidden" name="desc" value="<?php echo htmlspecialchars($pacote['desc']); ?>">
                                 <input type="hidden" name="price" value="<?php echo htmlspecialchars(number_format($pacote['price'], 2, '.', '')); ?>">
                                 <button id="button-assina" type="submit"><span></span>Assinar</button>

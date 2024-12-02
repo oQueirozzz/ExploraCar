@@ -528,8 +528,10 @@ label {
     font-size: 0.9rem;
     color: #333;
 }
-.menu form li input{
-    display: none;
+.menu form li button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 input[type="email"],

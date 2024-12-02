@@ -407,6 +407,7 @@ if (isset($_GET['page'])) {
             // Esse aqui é um array que monta os cards dos carros com titulo, imagem, descrição e preço...
             const vehicles = {
                 'Toyota': [{
+                        id: 3,
                         title: 'Toyota Corolla',
                         img: './img/img Carros/img Toyota/Corolla.png',
                         desc: 'O Toyota Corolla é um sedã renomado pela confiabilidade, conforto e eficiência. Com design moderno e opções de motorização híbrida e a gasolina, oferece uma condução suave, baixo consumo de combustível e uma cabine bem equipada. Ideal para quem busca um carro familiar ou de uso diário com segurança e sofisticação.',

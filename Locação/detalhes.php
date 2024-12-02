@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+var_dump($pacote); // Verifique o conteúdo da variável $pacote
 
 // Desativar exibição de erros
 error_reporting(0);
@@ -94,6 +94,8 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 // echo $mensagem;
 // echo $erro;
+
+
 
 
 ?>
@@ -336,7 +338,19 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                     <p id="vehicle-descontPrice"><span id="descontPrice"></span></p>
                     <p id="vehicle-price"><span id="price"></span></p>
                     <p id="vehicle-diaria"><span id="diaria"></span> por dia</p>
-                    <form action="../pagamento/pagamento.php" method="post"><button type="submit" class="reservar" onclick="window.location.href='../pagamento/pagamento.php'">Reservar</button></form>
+                    
+                    
+                    <form action="../pagamento/pagamento.php" method="POST">                        
+                        <input type="hidden" name="id" value="<?php echo $pacote['id']; ?>">
+                        <input type="hidden" name="title" value="<?php echo htmlspecialchars($pacote['title']); ?>">
+                        <input type="hidden" name="desc" value="<?php echo htmlspecialchars($pacote['desc']); ?>">
+                        <input type="hidden" name="price" value="<?php echo $pacote['price']; ?>">
+                        <!-- <input type="hidden" name="img" value=""> -->
+                        <!-- <input type="hidden" name="descontPrice" value=""> -->
+                        <!-- <input type="hidden" name="price" value="<?php echo htmlspecialchars(number_format($pacote['price'], 2, '.', '')); ?>"> -->
+                        <!-- <input type="hidden" name="diaria" value=""> -->
+                        <button type="submit" class="reservar" onclick="reservar()">Reservar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -428,12 +442,13 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
         function reservar() {
             const vehicle = JSON.parse(localStorage.getItem('selectedVehicle'));
             if (vehicle) {
-                const reservationDetails = {
-                    descontPrice: vehicle.descontPrice,
-                    price: vehicle.price,
-                    diaria: vehicle.diaria
-                };
-                localStorage.setItem('reservationDetails', JSON.stringify(reservationDetails));
+                document.querySelector('input[name="title"]').value = vehicle.title;
+                document.querySelector('input[name="desc"]').value = vehicle.desc;
+                document.querySelector('input[name="id"]').value = vehicle.id;
+                // document.querySelector('input[name="img"]').value = vehicle.img;
+                // document.querySelector('input[name="descontPrice"]').value = vehicle.descontPrice;
+                document.querySelector('input[name="price"]').value = vehicle.price;
+                // document.querySelector('input[name="diaria"]').value = vehicle.diaria;
             }
         }
     </script>
@@ -462,10 +477,6 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
     </script>
 
     <script src="../global/global.js"></script>
-
-    <script>
-
-    </script>
     <footer>
         <div class="footer-container">
             <!-- Logo e Slogan -->

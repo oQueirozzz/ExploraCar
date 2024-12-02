@@ -1,6 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 
+
 // Verifique se a sessão está com 'loggedin' definida corretamente
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../loc/form/form.php");
@@ -10,26 +11,37 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 // // Validação dos dados recebidos
 // $id = isset($_POST['id']) ? $_POST['id'] : null;
-// $tittle = isset($_POST['tittle']) ? $_POST['tittle'] : null;
+// $title = isset($_POST['title']) ? $_POST['title'] : null;
 // $desc = isset($_POST['desc']) ? $_POST['desc'] : null;
 // $price = isset($_POST['price']) ? $_POST['price'] : null;
 
 // // Verifique se todos os dados foram enviados
-// if ($id && $tittle && $desc && $price):
+// if ($id && $title && $desc && $price):
 
 
-    // Receba os dados do POST
-$id = $_POST['id'] ?? null;
-$tittle = $_POST['tittle'] ?? null;
-$desc = $_POST['desc'] ?? null;
-$price = $_POST['price'] ?? null;
+
+// Garantir que os dados estão sendo enviados via POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = isset($_POST['id']) ? $_POST['id'] : null;
+    $title = isset($_POST['title']) ? $_POST['title'] : null;
+    $desc = isset($_POST['desc']) ? $_POST['desc'] : null;
+    $price = isset($_POST['price']) ? $_POST['price'] : null;
+
+    if (!$id || !$title || !$desc || !$price) {
+        echo "Erro: Dados do pacote não foram enviados corretamente.";
+        // exit;
+    }
+} else {
+    echo "Erro: Formulário não enviado corretamente.";
+    // exit;
+}
 
 // Valida os dados
-if ($id && $tittle && $desc && $price) {
+if ($id && $title && $desc && $price) {
     // Salva os dados na sessão
     $_SESSION['pagamento'] = [
         'id' => $id,
-        'tittle' => $tittle,
+        'title' => $title,
         'desc' => $desc,
         'price' => $price,
     ];
@@ -51,7 +63,7 @@ if ($id && $tittle && $desc && $price) {
     // Exibir os dados na página de pagamento (ou redirecionar para checkout)
     //    echo "<h1>Resumo do Pacote</h1>";
     //    echo "<p>ID: " . htmlspecialchars($id) . "</p>";
-    //    echo "<p>Título: " . htmlspecialchars($tittle) . "</p>";
+    //    echo "<p>Título: " . htmlspecialchars($title) . "</p>";
     //    echo "<p>Descrição: " . htmlspecialchars($desc) . "</p>";
     //    echo "<p>Valor: R$ " . number_format((float)$price, 2, ',', '.') . "</p>";
   
@@ -69,6 +81,9 @@ if ($id && $tittle && $desc && $price) {
 //     echo "Dados inválidos.";
 //     // exit();
 // }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="hydrated">
@@ -260,7 +275,7 @@ if ($id && $tittle && $desc && $price) {
             <p style="display: none;"><strong>Pacote ID:</strong> <?php echo htmlspecialchars($id); ?></p>
         </div>
         <div class="cart-item">
-            <h3><?php echo htmlspecialchars($tittle); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($price); ?></span></span></h3>
+            <h3><?php echo htmlspecialchars($title); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($price); ?></span></span></h3>
             <p> <?php echo htmlspecialchars($desc); ?></p>
         </div>
 
@@ -289,6 +304,34 @@ if ($id && $tittle && $desc && $price) {
 //     echo "Erro: Informações incompletas.";
 // endif;
 ?>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
+
+        if (!reservationDetails) {
+            alert('Erro: Nenhuma reserva foi encontrada.');
+            window.location.href = '../detalhes/detalhes.php';
+        } else {
+            document.getElementById('vehicle-title').innerText = reservationDetails.title;
+            document.getElementById('vehicle-img').src = reservationDetails.img;
+            document.getElementById('vehicle-price').innerText = reservationDetails.price;
+            document.getElementById('vehicle-descontPrice').innerText = reservationDetails.descontPrice;
+            document.getElementById('vehicle-diaria').innerText = reservationDetails.diaria;
+        }
+    });
+
+    // Enviar dados do Local Storage para o servidor antes de redirecionar
+    const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
+
+if (!reservationDetails) {
+    alert('Erro: Nenhuma reserva foi encontrada.');
+} else {
+    console.log(reservationDetails); // Verifique o conteúdo de reservationDetails
+}
+</script>
 
     <script src="pagamento.js"></script>
     <script>

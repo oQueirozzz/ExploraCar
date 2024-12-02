@@ -102,7 +102,7 @@ if (isset($_GET['page'])) {
     // Redireciona com base no valor do botão clicado
     switch ($page) {
         case 'carros':
-            header("Location: ../locacao/veiculos.html");
+            header("Location: ../locação/veiculos.php");
             break;
         case 'sobre':
             header("Location: ../loc/sobrenos/sobre.php");
@@ -110,12 +110,16 @@ if (isset($_GET['page'])) {
         case 'assinatura':
             header("Location: ../assinatura/assinatura.php");
             break;
+        case 'blog':
+            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            break;
         default:
             header("Location: index.php"); // Página padrão
             break;
     }
     exit; // Sempre encerre o script após header()
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -324,38 +328,35 @@ if (isset($_GET['page'])) {
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <form action="" method="get">
-                    <li>
-                        <button>
-                            <input type="submit" name="cars" value="carros">
-                            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
-                            <span>Carros</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" name="about" value="sobre">
-                            <input type="submit" name="page" value="sobre">
-                            <img src="../global/img/sobre.png" alt="Sobre">
-                            <span>sobre nós</span>
-                        </button>
-                    </li>
-                    <hr>
+            <form action="" method="get">
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="blog">
+            <img src="icons/flight.png" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+</form>
 
-
-                    <li>
-                        <input type="submit" name="assignment" value="assinatura">
-                        <img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span>
-                    </li>
-                    <li>
-                        <input type="submit" name="fly" value="blog">
-                        <img src="icons/flight.png" alt="Voos Diretos">
-                        <span>Blog</span>
-                        </input>
-                    </li>
-
-                    <hr>
-                </form>
             </ul>
         </nav>
     </header>
