@@ -149,7 +149,7 @@ color: rgb(2, 168, 2);
 }
 
 .none-wallet {
-    width: 100vw;
+    width: 99vw;
     height: fit-content;
     display: flex;
     flex-direction: column;
