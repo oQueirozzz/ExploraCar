@@ -55,6 +55,8 @@ function verificarLogin($email, $senha)
 
             // Salva o nome completo na sessão
             $_SESSION['nome'] = $nome;
+            $_SESSION['loggedin'] = true;  // Define que o usuário está logado
+            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
             return true;
         }
     }
@@ -65,7 +67,7 @@ function verificarLogin($email, $senha)
     if ($email === $emailArquivo && $senha === $senhaArquivo) {
         fclose($handle);
 
-        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        $_SESSION['nome'] = $nome ;
         echo "Usuário logado: " . $_SESSION['nome']; // Debug
         return true;
     }
@@ -87,8 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
 }
 
 // Após validar o login
-$_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
-$_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+// $_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
+// $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 
 // echo $mensagem;
@@ -100,7 +102,7 @@ if (isset($_GET['page'])) {
     // Redireciona com base no valor do botão clicado
     switch ($page) {
         case 'carros':
-            header("Location: ../locacao/veiculos.html");
+            header("Location: ../locação/veiculos.php");
             break;
         case 'sobre':
             header("Location: ../loc/sobrenos/sobre.php");
@@ -108,12 +110,16 @@ if (isset($_GET['page'])) {
         case 'assinatura':
             header("Location: ../assinatura/assinatura.php");
             break;
+        case 'blog':
+            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            break;
         default:
             header("Location: index.php"); // Página padrão
             break;
     }
     exit; // Sempre encerre o script após header()
 }
+
 ?>
 
 
@@ -321,38 +327,39 @@ if (isset($_GET['page'])) {
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <form action="" method="get">
-                    <li>
-                        <input type="submit" name="page" value="carros">
-                        <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
-                        <span>Carros</span>
-                    </li>
-                    <li>
-                        <input type="submit" name="page" value="sobre">
-                        <img src="../global/img/sobre.png" alt="Sobre">
-                        <span>sobre nós</span>
-                    </li>
-                    <hr>
+            <form action="" method="get">
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="blog">
+            <img src="icons/flight.png" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+</form>
 
-
-                    <li>
-                        <input type="submit" name="page" value="assinatura">
-                        <img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span>
-                    </li>
-                    <li>
-                        <input type="submit" name="page" value="blog">
-                        <img src="icons/flight.png" alt="Voos Diretos">
-                        <span>Blog</span>
-                        </input>
-                    </li>
-
-                    <hr>
-                </form>
             </ul>
         </nav>
     </header>
-
+    
     <main>
         <div class="banner">
             <h1 class="text-title">Sua Viagem Começa Aqui</h1>
@@ -408,16 +415,15 @@ if (isset($_GET['page'])) {
                 <h2>ExploraCar</h2>
                 <p>Sua jornada começa aqui. Aluguel de carros com segurança e conforto.</p>
             </div>
-            
+
             <!-- Links Rápidos -->
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="../../home/index.php">Início</a></li>
-                    <li><a href="./sobre.php">Sobre Nós</a></li>
-                    <li><a href="../../Locação/veiculos.html">Carros Disponíveis</a></li>
-                    <li><a href="../duvidasfrequentes/duvidas.php">Contato</a></li>
-                    <li><a href="../politicas/politicas.html">Termos e Condições</a></li>
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="../loc/sobrenos/sobre.php">Sobre Nós</a></li>
+                    <li><a href="../Locação/veiculos.php">Carros Disponíveis</a></li>
+                    <li><a href="../loc/duvidasfrequentes/duvidas.php">Contato</a></li>
                 </ul>
             </div>
 
@@ -432,23 +438,23 @@ if (isset($_GET['page'])) {
             <!-- Redes Sociais -->
             <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
-                <a id="correction" href="#"><img src="../../global/img/face.png" width="30px" height="30px"
-                alt="Facebook"></a>
-                <a href="#"><img src="../../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
-                <a href="#"><img src="../../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
+                <a id="correction" href="#"><img src="../global/img/face.png" width="30px" height="30px"
+                        alt="Facebook"></a>
+                <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
+                <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>&copy;
                 ExploraCar | Todos os direitos reservados.</p>
-                <ul>
-                    <li><a href="#">Termos de uso</a></li>
-                    <li><a href="../../loc/politicas/politicas.html">Política de Privacidade</a></li>
-                    <li><a href="#">LGPD</a></li>
-                </ul>
-            </div>
-        </footer>
+            <ul>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="#">LGPD</a></li>
+            </ul>
+        </div>
+    </footer>
         <script src="../../global/global.js"></script>
     </body>
     

@@ -294,7 +294,6 @@ input[type="email"], input[type="password"]{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   margin-top: 25px;
 }
 
@@ -312,6 +311,7 @@ input[type="email"], input[type="password"]{
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  max-height: 200px;
 }
 
 .cart-item:last-child {
@@ -320,7 +320,8 @@ input[type="email"], input[type="password"]{
 
 .cart-item h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
+  min-width: 247px;
 }
 
 .cart-item p {
