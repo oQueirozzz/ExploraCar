@@ -195,7 +195,7 @@ if ($id && $title && $desc && $price) {
                 </div>
             </div>
 
-            <form class="form" action="/loader/loader.php" method="POST">
+            <form class="form" action="../loader/loader.php" method="POST">
                 <h2>Detalhes do Cartão</h2>
 
                 <div class="form__name form__detail">
@@ -260,7 +260,7 @@ if ($id && $title && $desc && $price) {
                 </div>
 
                 <div class="buttons">
-                    <form action="../loader/loader.php" method="POST">
+                    <form action="..loader/loader.php" method="POST">
                         <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
                         <input type="submit" style="display: none;"><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button>></input>
 
@@ -309,13 +309,13 @@ if ($id && $title && $desc && $price) {
 
 
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
 
         if (!reservationDetails) {
             alert('Erro: Nenhuma reserva foi encontrada.');
-            window.location.href = '../detalhes/detalhes.php';
+            window.location.href = '../locação/detalhes.php';
         } else {
             document.getElementById('vehicle-title').innerText = reservationDetails.title;
             document.getElementById('vehicle-img').src = reservationDetails.img;
@@ -332,7 +332,7 @@ if ($id && $title && $desc && $price) {
     } else {
         console.log(reservationDetails); // Verifique o conteúdo de reservationDetails
     }
-</script>
+</script> -->
 
 <script src="pagamento.js"></script>
 <script>

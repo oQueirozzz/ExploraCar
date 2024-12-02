@@ -410,6 +410,7 @@ if (isset($_GET['page'])) {
                         <button id="next" class="next-button">→</button>
                     </div>
                 </div>
+            </div>
                 <div class="container-especification">
                     <div class="rental-policy">
                         <h3 class="titulo">Política de Aluguel</h3>
@@ -430,7 +431,6 @@ if (isset($_GET['page'])) {
                         <p class="info"> <i class="fas fa-clock"></i> Horário de funcionamento das 7h30 - 18h00</p>
                     </div>
                 </div>
-            </div>
         </div>
         <div class="container-performance">
             <div class="title">PERFORMANCE</div>

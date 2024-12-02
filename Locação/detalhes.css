@@ -1,4 +1,9 @@
-         .detail-container {
+body{
+    background-color: #f4f4f4;
+    font-family: ;
+}      
+      
+      .detail-container {
             display: flex; /* Alinha os itens em uma linha */
             align-items: flex-start; /* Alinha os itens no topo */
             padding: 20px; /* Adiciona espaçamento interno */
@@ -92,8 +97,6 @@
     padding: 20px; /* Adiciona espaçamento interno */
     border-radius: 10px; /* Arredonda os cantos */
     background-color: #f9f9f9; /* Define a cor de fundo */
-    margin-top: -250px; /* Adiciona espaçamento superior para separar os cartões */
-    margin-left: 760px;
 }
 
 .location-pickup{
@@ -183,10 +186,11 @@ margin-bottom: 20px;
 
 .container-especification{
     width: 50%;
+    display: flex;
+    flex-direction: column;
     
 }
 .parteBaixo{
-    gap: 50px;
     display: flex;
     height: 550px;
 }
