@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
 
 <body>
     <div class="form-container">
+        <img src="./img/OIP.jfif" alt="">
         <form id="formCadastro" action="" method="post">
             <input type="hidden" name="acao" value="esqueceuSenha">
             <h2>Esqueceu sua senha?</h2>
