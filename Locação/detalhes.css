@@ -166,12 +166,15 @@ margin-bottom: 20px;
 .button-container button {
     margin: 5px;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(220, 143, 0, 0.909);
-    color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+#buttons{
+    margin-left: 470px;
+
+}
+#buttons button{
+    width: 180px;
 }
 
 .button-container button:hover {

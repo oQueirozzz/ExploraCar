@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($pacote); // Verifique o conteúdo da variável $pacote
+
 
 // Desativar exibição de erros
 error_reporting(0);
@@ -55,6 +55,8 @@ function verificarLogin($email, $senha)
 
             // Salva o nome completo na sessão
             $_SESSION['nome'] = $nome;
+            $_SESSION['loggedin'] = true;  // Define que o usuário está logado
+            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
             return true;
         }
     }
@@ -65,7 +67,7 @@ function verificarLogin($email, $senha)
     if ($email === $emailArquivo && $senha === $senhaArquivo) {
         fclose($handle);
 
-        $_SESSION['nome'] = $nome . ' ' . $sobrenome;
+        $_SESSION['nome'] = $nome ;
         echo "Usuário logado: " . $_SESSION['nome']; // Debug
         return true;
     }
@@ -86,17 +88,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-
 // Após validar o login
-$_SESSION['logged_in'] = true; // Ou qualquer valor que identifique o usuário
-$_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+// $_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
+// $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 
 
 // echo $mensagem;
 // echo $erro;
 
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
 
-
+    // Redireciona com base no valor do botão clicado
+    switch ($page) {
+        case 'carros':
+            header("Location: ../locação/veiculos.php");
+            break;
+        case 'sobre':
+            header("Location: ../loc/sobrenos/sobre.php");
+            break;
+        case 'assinatura':
+            header("Location: ../assinatura/assinatura.php");
+            break;
+        case 'blog':
+            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            break;
+        default:
+            header("Location: index.php"); // Página padrão
+            break;
+    }
+    exit; // Sempre encerre o script após header()
+}
 
 ?>
 
@@ -108,8 +130,8 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas de carros - ExploraCar</title>
     <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
-    <link rel="stylesheet" href="./detalhes.css">
     <link rel="stylesheet" href="../global/global.css">
+    <link rel="stylesheet" href="./detalhes.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
     <!-- Link para o Font Awesome -->
@@ -119,7 +141,7 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
 </head>
 
 <body>
-    <header>
+<header>
         <div class="cabecalho">
             <div id="menu-toggle" onclick="toggleMenu()">
                 <i class="material-symbols-outlined ">menu</i>
@@ -308,16 +330,35 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
         </div>
         <nav id="sidebar">
             <ul class="menu">
-                <li><a href="../Locação/veiculos.html"><img src="../global/img/carroICON.jpg" alt="veiculos"
-                            id="transparent">
-                        <span>Carros</span></a>
-                </li>
-                <li><a href="#"><img src="../global/img/sobre.png" alt="Sobre"> </a><span>Sobre Nós</span></li>
-                <hr>
-                <li><a href="../assinatura/assinatura.php"><img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span></a></li>
-                <li><img src="icons/flight.png" alt="Voos Diretos"> <span>Blog</span></li>
-                <hr>
+            <form action="" method="get">
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="blog">
+            <img src="icons/flight.png" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+</form>
+
             </ul>
         </nav>
     </header>
@@ -344,12 +385,12 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                         <input type="hidden" name="id" value="<?php echo $pacote['id']; ?>">
                         <input type="hidden" name="title" value="<?php echo htmlspecialchars($pacote['title']); ?>">
                         <input type="hidden" name="desc" value="<?php echo htmlspecialchars($pacote['desc']); ?>">
-                        <input type="hidden" name="price" value="<?php echo $pacote['price']; ?>">
+                        <!-- <input type="hidden" name="price" value="<?php echo $pacote['price']; ?>"> -->
                         <!-- <input type="hidden" name="img" value=""> -->
                         <!-- <input type="hidden" name="descontPrice" value=""> -->
-                        <!-- <input type="hidden" name="price" value="<?php echo htmlspecialchars(number_format($pacote['price'], 2, '.', '')); ?>"> -->
+                        <input type="hidden" name="price" value="<?php echo htmlspecialchars(number_format($pacote['price'], 2, '.', '')); ?>">
                         <!-- <input type="hidden" name="diaria" value=""> -->
-                        <button type="submit" class="reservar" onclick="reservar()">Reservar</button>
+                        <div class="buttons" id="buttons"><button type="submit" class="reservar" onclick="reservar()"><span></span>Reservar</button></div>
                     </form>
                 </div>
             </div>
@@ -493,10 +534,9 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="index.php">Início</a></li>
-                    <li><a href="sobre.php">Sobre Nós</a></li>
-                    <li><a href="carros.php">Carros Disponíveis</a></li>
-                    <li><a href="contato.php">Contato</a></li>
-                    <li><a href="termos.php">Termos e Condições</a></li>
+                    <li><a href="../loc/sobrenos/sobre.php">Sobre Nós</a></li>
+                    <li><a href="../Locação/veiculos.php">Carros Disponíveis</a></li>
+                    <li><a href="../loc/duvidasfrequentes/duvidas.php">Contato</a></li>
                 </ul>
             </div>
 
@@ -511,18 +551,20 @@ $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
             <!-- Redes Sociais -->
             <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
-                <a href="#"><img src="../global/img/face.png" width="30px" height="30px" alt="Facebook"></a>
+                <a id="correction" href="#"><img src="../global/img/face.png" width="30px" height="30px"
+                        alt="Facebook"></a>
                 <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
                 <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; <?php echo date("Y"); ?> ExploraCar | Todos os direitos reservados.</p>
+            <p>&copy;
+                ExploraCar | Todos os direitos reservados.</p>
             <ul>
-                <li><a href="termos.php">Termos de uso</a></li>
-                <li><a href="politica-privacidade.php">Política de Privacidade</a></li>
-                <li><a href="lgpd.php">LGPD</a></li>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="#">LGPD</a></li>
             </ul>
         </div>
     </footer>

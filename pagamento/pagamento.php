@@ -51,32 +51,32 @@ if ($id && $title && $desc && $price) {
 
     // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //     $dados = $_POST['pacote'];
-    
+
     //     // Valide o pacote antes de redirecionar
     //     if (!empty($pacote)) {
     //         // Redirecione para a página final com o pacote
     //         header("Location: checkout.php?pacote=" . urlencode($pacote));
     //         exit(); // Certifique-se de usar `exit()` após o header
-       
-    
-    
+
+
+
     // Exibir os dados na página de pagamento (ou redirecionar para checkout)
     //    echo "<h1>Resumo do Pacote</h1>";
     //    echo "<p>ID: " . htmlspecialchars($id) . "</p>";
     //    echo "<p>Título: " . htmlspecialchars($title) . "</p>";
     //    echo "<p>Descrição: " . htmlspecialchars($desc) . "</p>";
     //    echo "<p>Valor: R$ " . number_format((float)$price, 2, ',', '.') . "</p>";
-  
-  
-    } else {
-      // Erro caso os dados estejam incompletos
-       echo "Erro: Dados do pacote não foram enviados corretamente.";
-   }
 
-    // Redireciona para o loader
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     header("Location: ../pagamento/pagamento.php");
-    // }  
+
+} else {
+    // Erro caso os dados estejam incompletos
+    echo "Erro: Dados do pacote não foram enviados corretamente.";
+}
+
+// Redireciona para o loader
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     header("Location: ../pagamento/pagamento.php");
+// }  
 //       else {
 //     echo "Dados inválidos.";
 //     // exit();
@@ -87,6 +87,7 @@ if ($id && $title && $desc && $price) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="hydrated">
+
 <head>
     <meta charset="UTF-8">
     <style data-styles="">
@@ -182,7 +183,7 @@ if ($id && $title && $desc && $price) {
                 <div class="card__name">
                     <h3>Proprietário do cartão</h3>
                     <p id="card-name">
-                        
+
                     </p>
                 </div>
 
@@ -257,47 +258,48 @@ if ($id && $title && $desc && $price) {
                         CVV invalido
                     </div>
                 </div>
-                
+
                 <div class="buttons">
                     <form action="../loader/loader.php" method="POST">
                         <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
                         <input type="submit" style="display: none;"><button id="button-payment" type="submit" class="form__btn"><span></span>Confirmar</button>></input>
-                        
+
                     </form>
                 </div>
             </form>
 
 
         </div>
-    <div class="cart-container">
-        <div class="cart-header">
-            <h2>Meu Carrinho</h2>
-            <p style="display: none;"><strong>Pacote ID:</strong> <?php echo htmlspecialchars($id); ?></p>
-        </div>
-        <div class="cart-item">
-            <h3><?php echo htmlspecialchars($title); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($price); ?></span></span></h3>
-            <p> <?php echo htmlspecialchars($desc); ?></p>
-        </div>
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Meu Carrinho</h2>
+                <p style="display: none;"><strong>Pacote ID:</strong> <?php echo htmlspecialchars($id); ?></p>
+            </div>
+            <div class="cart-item">
+                <h3><?php echo htmlspecialchars($title); ?> <span class="price">R$ <span id="preco-item"><?php echo htmlspecialchars($price); ?></span></span></h3>
+                <p> <?php echo htmlspecialchars($desc); ?></p>
+            </div>
 
-        <!-- Onde o desconto será exibido -->
-        <div id="desconto" class="cart-item promo-code" style="display: none;">
-            <h3>Cupom <span class="price">−R$ <span id="valor-desconto"></span></span></h3>
-            <p id="cupom-aplicado"></p>
-        </div>
-        <!-- Total -->
-        <div class="container-descont">
-            <div class="total">
-                Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($price); ?></span></span>
+            <!-- Onde o desconto será exibido -->
+            <div id="desconto" class="cart-item promo-code" style="display: none;">
+                <h3>Cupom <span class="price">−R$ <span id="valor-desconto"></span></span></h3>
+                <p id="cupom-aplicado"></p>
             </div>
-            <!-- Entrada para cupom -->
-            <div class="promo-input">
-                <input type="text" id="input-cupom" placeholder="Cupom de Desconto">
-                <button id="btn-verificar">Verificar</button>
+            <!-- Total -->
+            <div class="container-descont">
+                <div class="total">
+                    Total (R$) <span>R$ <span id="total-valor"><?php echo htmlspecialchars($price); ?></span></span>
+                </div>
+                <!-- Entrada para cupom -->
+                <div class="promo-input">
+                    <input type="text" id="input-cupom" placeholder="Cupom de Desconto">
+                    <button id="btn-verificar">Verificar</button>
+                </div>
             </div>
         </div>
-    </div>   
- </div>
+    </div>
 </body>
+
 </html>
 <?php
 // else:
@@ -308,7 +310,7 @@ if ($id && $title && $desc && $price) {
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
 
         if (!reservationDetails) {
@@ -318,54 +320,71 @@ if ($id && $title && $desc && $price) {
             document.getElementById('vehicle-title').innerText = reservationDetails.title;
             document.getElementById('vehicle-img').src = reservationDetails.img;
             document.getElementById('vehicle-price').innerText = reservationDetails.price;
-            document.getElementById('vehicle-descontPrice').innerText = reservationDetails.descontPrice;
-            document.getElementById('vehicle-diaria').innerText = reservationDetails.diaria;
+
         }
     });
 
     // Enviar dados do Local Storage para o servidor antes de redirecionar
     const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
 
-if (!reservationDetails) {
-    alert('Erro: Nenhuma reserva foi encontrada.');
-} else {
-    console.log(reservationDetails); // Verifique o conteúdo de reservationDetails
-}
+    if (!reservationDetails) {
+        alert('Erro: Nenhuma reserva foi encontrada.');
+    } else {
+        console.log(reservationDetails); // Verifique o conteúdo de reservationDetails
+    }
 </script>
 
-    <script src="pagamento.js"></script>
-    <script>
+<script src="pagamento.js"></script>
+<script>
     // Lista de cupons válidos e seus descontos
     const cupons = {
-            "EXPLORACAR": 10.00,
-            "DESCONTO15": 15.00
-        };
+        "EXPLORACAR": 10.00,
+        "DESCONTO15": 15.00,
+        "MELHORLOCADORA": 100.00
+    };
 
-        // Função para verificar e aplicar o cupom
-        document.getElementById('btn-verificar').addEventListener('click', () => {
-            const cupomInput = document.getElementById('input-cupom').value.toUpperCase(); // Converte o cupom para maiúsculas
-            const descontoCard = document.getElementById('desconto'); // Card do desconto
-            const precoItem = parseFloat(document.getElementById('preco-item').innerText); // Preço do item
-            const totalValor = document.getElementById('total-valor'); // Total atualizado
+    // Função para verificar e aplicar o cupom
+    document.getElementById('btn-verificar').addEventListener('click', () => {
+        const cupomInput = document.getElementById('input-cupom').value.toUpperCase(); // Converte o cupom para maiúsculas
+        const descontoCard = document.getElementById('desconto'); // Card do desconto
+        const precoItem = document.getElementById('preco-item').innerText; // Preço do item
+        const totalValor = document.getElementById('total-valor'); // Total atualizado
 
-            // Verifica se o cupom é válido
-            if (cupons[cupomInput]) {
-                const desconto = cupons[cupomInput]; // Obtém o valor do desconto
+        // Limpar os valores "R$" e vírgula para garantir que são números válidos
+        const precoItemNum = parseFloat(precoItem.replace('R$', '').replace('.', '').replace(',', '.'));
 
-                // Atualiza o card de desconto
-                descontoCard.style.display = 'block';
-                document.getElementById('valor-desconto').innerText = desconto.toFixed(2);
-                document.getElementById('cupom-aplicado').innerText = cupomInput;
+        // Verificar se o preço é válido
+        if (isNaN(precoItemNum)) {
+            alert('Erro: Preço do item inválido!');
+            return;
+        }
 
-                // Atualiza o valor total
-                const novoTotal = Math.max(precoItem - desconto, 0);
-                totalValor.innerText = novoTotal.toFixed(2);
-            } else {
-                alert('Cupom inválido!'); // Mensagem de erro se o cupom for inválido
+        // Se o cupom for válido, calcule o novo total
+        if (cupons[cupomInput]) {
+            const desconto = cupons[cupomInput]; // Obtém o valor do desconto
+
+            // Atualiza o card de desconto
+            descontoCard.style.display = 'block';
+            document.getElementById('valor-desconto').innerText = desconto.toFixed(2);
+            document.getElementById('cupom-aplicado').innerText = cupomInput;
+
+            // Calcula o novo total
+            let novoTotal = precoItemNum - desconto;
+
+            // Garantir que o total não seja negativo
+            if (novoTotal < 0) {
+                novoTotal = 0;
             }
-        });
-    
+
+            // Atualiza o valor total na interface
+            totalValor.innerText = `R$ ${novoTotal.toFixed(2)}`;
+        } else {
+            alert('Cupom inválido!');
+        }
+    });
 </script>
+
+
 
 
 </body>
