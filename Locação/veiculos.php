@@ -2694,7 +2694,7 @@ if (isset($_GET['page'])) {
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="index.php">Início</a></li>
+                    <li><a href="../home/index.php">Início</a></li>
                     <li><a href="../loc/sobrenos/sobre.php">Sobre Nós</a></li>
                     <li><a href="../Locação/veiculos.php">Carros Disponíveis</a></li>
                     <li><a href="../loc/duvidasfrequentes/duvidas.php">Contato</a></li>

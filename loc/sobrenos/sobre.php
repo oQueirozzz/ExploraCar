@@ -102,13 +102,13 @@ if (isset($_GET['page'])) {
     // Redireciona com base no valor do botão clicado
     switch ($page) {
         case 'carros':
-            header("Location: ../locação/veiculos.php");
+            header("Location: ../../locação/veiculos.php");
             break;
         case 'sobre':
-            header("Location: ../loc/sobrenos/sobre.php");
+            header("Location: ../../loc/sobrenos/sobre.php");
             break;
         case 'assinatura':
-            header("Location: ../assinatura/assinatura.php");
+            header("Location: ../../assinatura/assinatura.php");
             break;
         case 'blog':
             header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
@@ -160,7 +160,7 @@ if (isset($_GET['page'])) {
                     <?php if (isset($_SESSION['nome'])): ?>
                         <!-- Botão com o nome do usuário logado -->
                         <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
-                            <img src="../global/img/file.png" alt="">
+                            <img src="../../global/img/file.png" alt="">
                             <span></span>
                             <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
                             <div class="seta"></div>
@@ -180,7 +180,7 @@ if (isset($_GET['page'])) {
                         <!-- Botão padrão "ENTRAR" -->
 
                         <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                            <img src="../global/img/file.png" alt="">
+                            <img src="../../global/img/file.png" alt="">
                             <span></span>
                             <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
                             <div class="seta"></div>
@@ -189,7 +189,7 @@ if (isset($_GET['page'])) {
                         </a>
                     <?php endif; ?>
                     <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                        <img src="../global/img/help.png" alt="">
+                        <img src="../../global/img/help.png" alt="">
                         <span></span>
                         <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
                         <div class="seta"></div>
@@ -216,7 +216,7 @@ if (isset($_GET['page'])) {
                     <div class="help-content">
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
-                            <a href="../loc/duvidasfrequentes/duvidas.php">
+                            <a href="../duvidasfrequentes/duvidas.php">
                                 <button id="duvidas-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
@@ -291,7 +291,7 @@ if (isset($_GET['page'])) {
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
+                                <button class="btn" onclick="window.location.href='../form/form.php '"><span></span>Criar
                                     Nova
                                     Conta</button>
                                 <ul>
@@ -311,7 +311,7 @@ if (isset($_GET['page'])) {
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
@@ -330,20 +330,20 @@ if (isset($_GET['page'])) {
             <form action="" method="get">
     <li>
         <button type="submit" name="page" value="carros">
-            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <img src="../../global/img/carroICON.jpg" alt="veiculos" id="transparent">
             <span>Carros</span>
         </button>
     </li>
     <li>
         <button type="submit" name="page" value="sobre">
-            <img src="../global/img/sobre.png" alt="Sobre">
+            <img src="../../global/img/sobre.png" alt="Sobre">
             <span>Sobre nós</span>
         </button>
     </li>
     <hr>
     <li>
         <button type="submit" name="page" value="assinatura">
-            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <img src="../../global/img/assinatura.png" alt="Pacotes">
             <span>Pacotes</span>
         </button>
     </li>
@@ -420,10 +420,10 @@ if (isset($_GET['page'])) {
             <div class="footer-section links">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="index.php">Início</a></li>
-                    <li><a href="../loc/sobrenos/sobre.php">Sobre Nós</a></li>
-                    <li><a href="../Locação/veiculos.php">Carros Disponíveis</a></li>
-                    <li><a href="../loc/duvidasfrequentes/duvidas.php">Contato</a></li>
+                    <li><a href="../../home/index.php">Início</a></li>
+                    <li><a href="sobre.php">Sobre Nós</a></li>
+                    <li><a href="../../Locação/veiculos.php">Carros Disponíveis</a></li>
+                    <li><a href="../duvidasfrequentes/duvidas.php">Contato</a></li>
                 </ul>
             </div>
 
@@ -438,10 +438,10 @@ if (isset($_GET['page'])) {
             <!-- Redes Sociais -->
             <div class="footer-section redes-sociais">
                 <h3>Nos Siga</h3>
-                <a id="correction" href="#"><img src="../global/img/face.png" width="30px" height="30px"
+                <a id="correction" href="#"><img src="../../global/img/face.png" width="30px" height="30px"
                         alt="Facebook"></a>
-                <a href="#"><img src="../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
-                <a href="#"><img src="../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
+                <a href="#"><img src="../../global/img/logoInsta.webp" width="50px" height="50px" alt="Instagram"></a>
+                <a href="#"><img src="../../global/img/linke.png" width="50px" height="50px" alt="LinkedIn"></a>
             </div>
         </div>
 
@@ -450,7 +450,7 @@ if (isset($_GET['page'])) {
                 ExploraCar | Todos os direitos reservados.</p>
             <ul>
                 <li><a href="#">Termos de uso</a></li>
-                <li><a href="../loc/politicas/politicas.html">Política de Privacidade</a></li>
+                <li><a href="../politicas/politicas.html">Política de Privacidade</a></li>
                 <li><a href="#">LGPD</a></li>
             </ul>
         </div>
