@@ -129,6 +129,7 @@ if (isset($_GET['page'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas de carros - ExploraCar</title>
+    <link rel="shortcut icon" href="../global/img/logoOFC.png" type="image/x-icon">
     <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="./detalhes.css">
@@ -141,7 +142,7 @@ if (isset($_GET['page'])) {
 </head>
 
 <body>
-<header>
+ <header>
         <div class="cabecalho">
             <div id="menu-toggle" onclick="toggleMenu()">
                 <i class="material-symbols-outlined ">menu</i>
@@ -357,7 +358,7 @@ if (isset($_GET['page'])) {
         </button>
     </li>
     <hr>
-</form>
+ </form>
 
             </ul>
         </nav>
