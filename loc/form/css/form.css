@@ -11,6 +11,7 @@ body {
     /* Define a largura máxima do container */
     max-width: 1000px;
     /* Define o preenchimento interno do container */
+    padding-top: 40px;
     padding: 10px;
     /* Define cantos arredondados para o container */
     border-radius: 10px;
