@@ -136,7 +136,7 @@ if (isset($_GET['page'])) {  // Verifica se existe o parâmetro 'page' na URL
                 <i class="material-symbols-outlined ">menu</i> <!-- Exibe um ícone de menu usando as fontes Material Symbols -->
             </div>
 
-            <a href="index.php">
+            <a href="../home/index.php">
                 <div class="logo"></div> <!-- Cria uma área para o logotipo, que é um link para a página inicial -->
             </a>
 
@@ -339,8 +339,8 @@ if (isset($_GET['page'])) {  // Verifica se existe o parâmetro 'page' na URL
             </li>  <!-- Fecha o item 'Pacotes' -->
 
             <li>  <!-- Item do menu 'Blog' -->
-                <button type="submit" name="page" id="blog" value="blog">  <!-- Botão para enviar o valor 'blog' via GET -->
-                    <img src="../global/img/blog.png" alt="Blog">  <!-- Ícone de blog -->
+                <button type="submit" name="page" value="blog">  <!-- Botão para enviar o valor 'blog' via GET -->
+                    <img src="../global/img/blog.png" id="blog" alt="Blog">  <!-- Ícone de blog -->
                     <span>Blog</span>  <!-- Texto do item de menu -->
                 </button>  <!-- Fecha o botão -->
             </li>  <!-- Fecha o item 'Blog' -->
