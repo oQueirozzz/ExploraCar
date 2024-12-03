@@ -9,17 +9,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 }
 
 
-// // Validação dos dados recebidos
-// $id = isset($_POST['id']) ? $_POST['id'] : null;
-// $title = isset($_POST['title']) ? $_POST['title'] : null;
-// $desc = isset($_POST['desc']) ? $_POST['desc'] : null;
-// $price = isset($_POST['price']) ? $_POST['price'] : null;
-
-// // Verifique se todos os dados foram enviados
-// if ($id && $title && $desc && $price):
-
-
-
 // Garantir que os dados estão sendo enviados via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = isset($_POST['id']) ? $_POST['id'] : null;
@@ -47,41 +36,12 @@ if ($id && $title && $desc && $price) {
     ];
 
 
-    //estava dando conflito e redundãncia
-
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //     $dados = $_POST['pacote'];
-
-    //     // Valide o pacote antes de redirecionar
-    //     if (!empty($pacote)) {
-    //         // Redirecione para a página final com o pacote
-    //         header("Location: checkout.php?pacote=" . urlencode($pacote));
-    //         exit(); // Certifique-se de usar `exit()` após o header
-
-
-
-    // Exibir os dados na página de pagamento (ou redirecionar para checkout)
-    //    echo "<h1>Resumo do Pacote</h1>";
-    //    echo "<p>ID: " . htmlspecialchars($id) . "</p>";
-    //    echo "<p>Título: " . htmlspecialchars($title) . "</p>";
-    //    echo "<p>Descrição: " . htmlspecialchars($desc) . "</p>";
-    //    echo "<p>Valor: R$ " . number_format((float)$price, 2, ',', '.') . "</p>";
 
 
 } else {
     // Erro caso os dados estejam incompletos
     echo "Erro: Dados do pacote não foram enviados corretamente.";
 }
-
-// Redireciona para o loader
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     header("Location: ../pagamento/pagamento.php");
-// }  
-//       else {
-//     echo "Dados inválidos.";
-//     // exit();
-// }
-
 
 
 ?>
@@ -301,38 +261,9 @@ if ($id && $title && $desc && $price) {
 </body>
 
 </html>
-<?php
-// else:
-//     echo "Erro: Informações incompletas.";
-// endif;
-?>
 
 
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
-
-        if (!reservationDetails) {
-            alert('Erro: Nenhuma reserva foi encontrada.');
-            window.location.href = '../locação/detalhes.php';
-        } else {
-            document.getElementById('vehicle-title').innerText = reservationDetails.title;
-            document.getElementById('vehicle-img').src = reservationDetails.img;
-            document.getElementById('vehicle-price').innerText = reservationDetails.price;
-
-        }
-    });
-
-    // Enviar dados do Local Storage para o servidor antes de redirecionar
-    const reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
-
-    if (!reservationDetails) {
-        alert('Erro: Nenhuma reserva foi encontrada.');
-    } else {
-        console.log(reservationDetails); // Verifique o conteúdo de reservationDetails
-    }
-</script> -->
 
 <script src="pagamento.js"></script>
 <script>
