@@ -1893,9 +1893,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Kicks 2.avif',
+                        img3: './img/img Interior/Nissan/Nissan Kicks 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan Kicks 4.jpg'
                     },
                     {
                         title: 'Nissan Sentra',
@@ -1911,9 +1911,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Sentra 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan Sentra 3.webp',
+                        img4: './img/img Interior/Nissan/Nissan Sentra 4.webp'
                     },
                     {
                         title: 'Nissan Frontier',
@@ -1929,9 +1929,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Frontier 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan Frontier 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan Frontier 4.jpg'
                     },
                     {
                         title: 'Nissan Leaf',
@@ -1947,9 +1947,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Leaf 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan Leaf 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan Leaf 4.jpg'
                     },
                     {
                         title: 'Nissan March',
@@ -1965,9 +1965,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan March 2.jpg',
+                        img3: './img/img Interior/Nissan/Nissan March 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan March 4.jpg'
                     },
                     {
                         title: 'Nissan Pathfinder',
@@ -1983,9 +1983,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Pathfinder 2.png',
+                        img3: './img/img Interior/Nissan/Nissan Pathfinder 3.avif',
+                        img4: './img/img Interior/Nissan/Nissan Pathfinder 4.jpg'
                     },
                     {
                         title: 'Nissan X-Trail',
@@ -2001,9 +2001,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan X-Trail 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan X-Trail 3.webp',
+                        img4: './img/img Interior/Nissan/Nissan X-Trail 4.jpg'
                     },
                     {
                         title: 'Nissan Altima',
@@ -2019,9 +2019,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Altima 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan Altima 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan Altima 4.png'
                     },
                     {
                         title: 'Nissan Skyline GT-R',
@@ -2037,9 +2037,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Nissan/Nissan Versa 2.webp',
-                        img3: './img/img Interior/Nissan/Nissan Versa 3.jpg',
-                        img4: './img/img Interior/Nissan/Nissan Versa 4.jpg'
+                        img2: './img/img Interior/Nissan/Nissan Skyline GT-R 2.webp',
+                        img3: './img/img Interior/Nissan/Nissan Skyline GT-R 3.jpg',
+                        img4: './img/img Interior/Nissan/Nissan Skyline GT-R 4.webp'
                     },
                 ],
                 'Peugeot': [{
@@ -2056,9 +2056,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 208 2.avif',
+                        img3: './img/img Interior/Peugeot/Peugeot 208 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 208 4.webp'
                     },
                     {
                         title: 'Peugeot 3008',
@@ -2074,9 +2074,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 3008 2.webp',
+                        img3: './img/img Interior/Peugeot/Peugeot 3008 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 3008 4.jpg'
                     },
                     {
                         title: 'Peugeot 2008',
@@ -2092,9 +2092,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 2008 2.avif',
+                        img3: './img/img Interior/Peugeot/Peugeot 2008 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 2008 4.jpg'
                     },
                     {
                         title: 'Peugeot 408',
@@ -2110,9 +2110,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 408 2.webp',
+                        img3: './img/img Interior/Peugeot/Peugeot 408 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 408 4.webp'
                     },
                     {
                         title: 'Peugeot Partner',
@@ -2128,9 +2128,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot Partner 2.jpg',
+                        img3: './img/img Interior/Peugeot/Peugeot Partner 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot Partner 4.jpg'
                     },
                     {
                         title: 'Peugeot 5008',
@@ -2146,9 +2146,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 5008 2.jpg',
+                        img3: './img/img Interior/Peugeot/Peugeot 5008 3.webp',
+                        img4: './img/img Interior/Peugeot/Peugeot 5008 4.jpg'
                     },
                     {
                         title: 'Peugeot 308',
@@ -2164,9 +2164,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 308 2.jpg',
+                        img3: './img/img Interior/Peugeot/Peugeot 308 3.webp',
+                        img4: './img/img Interior/Peugeot/Peugeot 308 4.jpg'
                     },
                     {
                         title: 'Peugeot 508',
@@ -2182,9 +2182,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 508 2.jpg',
+                        img3: './img/img Interior/Peugeot/Peugeot 508 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 508 4.jpg'
                     },
                     {
                         title: 'Peugeot RCZ',
@@ -2200,9 +2200,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot RCZ 2.webp',
+                        img3: './img/img Interior/Peugeot/Peugeot RCZ 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot RCZ 4.webp'
                     },
                     {
                         title: 'Peugeot 106',
@@ -2218,9 +2218,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Peugeot/Peugeot 106 2.jpeg',
+                        img3: './img/img Interior/Peugeot/Peugeot 106 3.jpg',
+                        img4: './img/img Interior/Peugeot/Peugeot 106 4.jpg'
                     },
                 ],
                 'Citroën': [{
@@ -2237,9 +2237,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën C3 2.webp',
+                        img3: './img/img Interior/Citroën/Citroën C3 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën C3 4.jpg'
                     },
                     {
                         title: 'Citroën C4 Cactus',
@@ -2255,9 +2255,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën C4 Cactus 2.webp',
+                        img3: './img/img Interior/Citroën/Citroën C4 Cactus 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën C4 Cactus 4.webp'
                     },
                     {
                         title: 'Citroën C5 Aircross',
@@ -2273,9 +2273,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën C5 Aircross 2.jpg',
+                        img3: './img/img Interior/Citroën/Citroën C5 Aircross 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën C5 Aircross 4.avif'
                     },
                     {
                         title: 'Citroën Berlingo',
@@ -2291,9 +2291,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën Berlingo 2.avif',
+                        img3: './img/img Interior/Citroën/Citroën Berlingo 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën Berlingo 4.jpg'
                     },
                     {
                         title: 'Citroën Jumper',
@@ -2309,9 +2309,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën Jumper 2.webp',
+                        img3: './img/img Interior/Citroën/Citroën Jumper 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën Jumper 4.jpg'
                     },
                     {
                         title: 'Citroën C3 Aircross',
@@ -2327,9 +2327,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën C3 Aircross 2.jpg',
+                        img3: './img/img Interior/Citroën/Citroën C3 Aircross 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën C3 Aircross 4.jpg'
                     },
                     {
                         title: 'Citroën Jumpy',
@@ -2345,9 +2345,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën Jumpy 2.webp',
+                        img3: './img/img Interior/Citroën/Citroën Jumpy 3.webp',
+                        img4: './img/img Interior/Citroën/Citroën Jumpy 4.jpg'
                     },
                     {
                         title: 'Citroën DS3',
@@ -2363,9 +2363,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën DS3 2.webp',
+                        img3: './img/img Interior/Citroën/Citroën DS3 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën DS3 4.webp'
                     },
                     {
                         title: 'Citroën DS7 Crossback',
@@ -2381,9 +2381,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën DS7 Crossback 2.jpg',
+                        img3: './img/img Interior/Citroën/Citroën DS7 Crossback 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën DS7 Crossback 4.jpg'
                     },
                     {
                         title: 'Citroën Grand C4 Picasso',
@@ -2399,9 +2399,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Citroën/Citroën Grand C4 Picasso 2.jpg',
+                        img3: './img/img Interior/Citroën/Citroën Grand C4 Picasso 3.jpg',
+                        img4: './img/img Interior/Citroën/Citroën Grand C4 Picasso 4.webp'
                     },
                 ],
                 'BlackFriday': [{
@@ -2418,9 +2418,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Audi A8 2.jpg',
+                        img3: './img/img Interior/Black Friday/Audi A8 3.jpg',
+                        img4: './img/img Interior/Black Friday/Audi A8 4.jpg'
                     },
                     {
                         title: 'Volvo C40 Recharge',
@@ -2436,9 +2436,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Volvo C40 Recharge 2.jpg',
+                        img3: './img/img Interior/Black Friday/Volvo C40 Recharge 3.jpg',
+                        img4: './img/img Interior/Black Friday/Volvo C40 Recharge 4.jpeg'
                     },
                     {
                         title: 'Audi RS7',
@@ -2454,9 +2454,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Audi RS7 2.jpg',
+                        img3: './img/img Interior/Black Friday/Audi RS7 3.jpg',
+                        img4: './img/img Interior/Black Friday/Audi RS7 4.jpg'
                     },
                     {
                         title: 'Lexus LC',
@@ -2472,9 +2472,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Lexus LC 2.jpg',
+                        img3: './img/img Interior/Black Friday/Lexus LC 3.jpg',
+                        img4: './img/img Interior/Black Friday/Lexus LC 4.webp'
                     },
                     {
                         title: 'BMW i8',
@@ -2490,9 +2490,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/BMW i8 2.jpg',
+                        img3: './img/img Interior/Black Friday/BMW i8 3.jpg',
+                        img4: './img/img Interior/Black Friday/BMW i8 4.webp'
                     },
                     {
                         title: 'Mercedes-Benz AMG GT',
@@ -2508,9 +2508,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Mercedes-Benz AMG GT 2.webp',
+                        img3: './img/img Interior/Black Friday/Mercedes-Benz AMG GT 3.webp',
+                        img4: './img/img Interior/Black Friday/Mercedes-Benz AMG GT 4.avif'
                     },
                     {
                         title: 'BMW X6',
@@ -2526,9 +2526,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/BMW X6 2.jpg',
+                        img3: './img/img Interior/Black Friday/BMW X6 3.webp',
+                        img4: './img/img Interior/Black Friday/BMW X6 4.jpg'
                     },
                     {
                         title: 'Volvo V90',
@@ -2544,9 +2544,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Volvo V90 2.webp',
+                        img3: './img/img Interior/Black Friday/Volvo V90 3.jpg',
+                        img4: './img/img Interior/Black Friday/Volvo V90 4.jpg'
                     },
                     {
                         title: 'Lexus LX',
@@ -2562,9 +2562,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Lexus LX 2.webp',
+                        img3: './img/img Interior/Black Friday/Lexus LX 3.jpg',
+                        img4: './img/img Interior/Black Friday/Lexus LX 4.webp'
                     },
                     {
                         title: 'Mercedes-Benz S-Class',
@@ -2580,9 +2580,9 @@ if (isset($_GET['page'])) {
                         combustivel: 'mesma quantidade',
                         quilometragem: 'Inclui quilometragem ilimitada',
                         seguro: 'Seguro CDW',
-                        img2: './img/img Interior/Toyota/Toyota Corolla 2.jpg',
-                        img3: './img/img Interior/Toyota/Toyota Corolla 3.webp',
-                        img4: './img/img Interior/Toyota/Toyota Corolla 4.jpg'
+                        img2: './img/img Interior/Black Friday/Mercedes-Benz S-Class 2.jpg',
+                        img3: './img/img Interior/Black Friday/Mercedes-Benz S-Class 3.jpg',
+                        img4: './img/img Interior/Black Friday/Mercedes-Benz S-Class 4.jpg'
                     },
      
                 ]
