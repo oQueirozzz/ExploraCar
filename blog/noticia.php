@@ -150,31 +150,36 @@ if (isset($_GET['page'])) {
 
         }
         .container-noticia{
-            width: 70%;
+            width: 60%;
             height: auto;
-            margin-top: 100px;
+            margin-top: 150px;
         }
         .parteCima{
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 50px;
-            background-color: orange;
+            background-color: #ec821f;
             padding: 80px;
-            height: 550px;
+            height: 500px;
+            margin-top: 50px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .container-noticia h1{
             text-align: center;
             font-size: 40px;
-            margin: 20px 0;
         }
         .container-noticia p{
             text-align: justify;
-            margin-top: 30px;
+            margin-top: 100px;
+            font-size: 18px;
         }
         .parteCima img{
             width: 60%;
+            border-radius: 20px;
         }
+        .container-noticia .data
     
 
     </style>
