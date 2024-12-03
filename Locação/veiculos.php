@@ -405,6 +405,96 @@ if (isset($_GET['page'])) {  // Verifica se existe o parâmetro 'page' na URL
         </div>
         <div id="card-container">
         </div>
+<<<<<<< HEAD
+=======
+        <nav id="sidebar">
+            <ul class="menu">
+            <form action="" method="get">
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page"  value="blog">
+            <img src="../global/img/blog.png" id="blog" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+</form>
+
+            </ul>
+        </nav>
+    </header>
+ <main>
+     <div class="button-container">
+        <button class="brand-button" onclick="addCards(10, 'Toyota', this)">
+            <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
+            Toyota
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Ford', this)">
+            <img src="./img/img Logos/Ford Logo.png" alt="Ford Logo">
+            Ford
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Chevrolet', this)">
+            <img src="./img/img Logos/Chevrolet Logo.png" alt="Chevrolet Logo">
+            Chevrolet
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Volkswagen', this)">
+            <img src="./img/img Logos/Volkswagen Logo.png" alt="Volkswagen Logo">
+            Volkswagen
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Fiat', this)">
+            <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
+            Fiat
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Honda', this)">
+            <img src="./img/img Logos/Honda Logo.png" alt="Honda Logo">
+            Honda
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Hyundai', this)">
+            <img src="./img/img Logos/Hyundai Logo.png" alt="Hyundai Logo">
+            Hyundai
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Renault', this)">
+            <img src="./img/img Logos/Renault Logo.png" alt="Renault Logo">
+            Renault
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Nissan', this)">
+            <img src="./img/img Logos/Nissan Logo.png" alt="Nissan Logo">
+            Nissan
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Peugeot', this)">
+            <img src="./img/img Logos/Peugeot Logo.png" alt="Peugeot Logo">
+            Peugeot
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'Citroën', this)">
+            <img src="./img/img Logos/Citroën Logo.png" alt="Citroën Logo">
+            Citroën
+        </button>
+        <button class="brand-button" onclick="addCards(10, 'BlackFriday', this)">
+            <img src="./img/img Logos/Black Friday Logo.png" alt="Audi Logo">
+            Black Friday
+        </button>
+     </div>
+            <div id="card-container">
+            </div>
+>>>>>>> 5fea0058d0f136d75945a36f05df8779b564a681
         <script>
             // Esse aqui é um array que monta os cards dos carros com titulo, imagem, descrição e preço...
             const vehicles = {

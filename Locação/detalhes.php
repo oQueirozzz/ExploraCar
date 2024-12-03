@@ -222,6 +222,42 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        <nav id="sidebar">
+            <ul class="menu">
+            <form action="" method="get">
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="blog">
+            <img src="../global/img/blog.png" id="blog" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+ </form>
+
+            </ul>
+        </nav>
+>>>>>>> 5fea0058d0f136d75945a36f05df8779b564a681
     </header>
 
 
