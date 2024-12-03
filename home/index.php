@@ -349,8 +349,8 @@ if (isset($_GET['page'])) {
         </button>
     </li>
     <li>
-        <button type="submit" name="page" id="blog" value="blog">
-            <img src="../global/img/blog.png" alt="Blog">
+        <button type="submit" name="page" value="blog">
+            <img src="../global/img/blog.png" id="blog"  alt="Blog">
             <span>Blog</span>
         </button>
     </li>
