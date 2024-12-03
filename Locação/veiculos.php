@@ -1,90 +1,84 @@
 <?php
-session_start();
+session_start();  // Inicia a sessão, permitindo que dados sejam armazenados durante a navegação (como o nome do usuário)
 
 
 // Desativar exibição de erros
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(0);  // Desativa a exibição de erros PHP, não mostra avisos ou erros na tela
+ini_set('display_errors', 0);  // Define a configuração do PHP para não exibir erros
 
-$erro = '';
-$mensagem = '';
-$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+$erro = '';  // Inicializa a variável de erro, usada para armazenar mensagens de erro
+$mensagem = '';  // Inicializa a variável de mensagem, usada para mensagens informativas
+$mostrarFormulario = 'login'; // Define que o formulário inicial a ser exibido será o de login
 
 // Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
 if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
-    $mostrarFormulario = 'esqueceuSenha';
+    $mostrarFormulario = 'esqueceuSenha';  // Se a URL contiver 'acao=esqueceu_senha', troca o formulário para o de recuperação de senha
 }
 
 // Função para verificar login
 function verificarLogin($email, $senha)
 {
-    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo
+    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo onde os usuários estão armazenados
 
-    if (!file_exists($arquivo)) {
-        echo "Erro: Arquivo de usuários não encontrado.<br>";
-        return false;
+    if (!file_exists($arquivo)) {  // Verifica se o arquivo de usuários existe
+        echo "Erro: Arquivo de usuários não encontrado.<br>";  // Exibe mensagem de erro caso o arquivo não exista
+        return false;  // Retorna falso, pois o arquivo não foi encontrado
     }
 
-    $handle = fopen($arquivo, 'r'); // Abre o arquivo
-    if (!$handle) {
-        echo "Erro: Não foi possível abrir o arquivo.<br>";
-        return false;
+    $handle = fopen($arquivo, 'r'); // Abre o arquivo para leitura
+    if (!$handle) {  // Verifica se o arquivo foi aberto corretamente
+        echo "Erro: Não foi possível abrir o arquivo.<br>";  // Exibe mensagem de erro se o arquivo não puder ser aberto
+        return false;  // Retorna falso, pois o arquivo não foi aberto
     }
 
-    // Lê linha por linha
-    while (($linha = fgets($handle)) !== false) {
-        // echo "Lendo linha: $linha<br>"; // Debug
+    // Lê linha por linha do arquivo
+    while (($linha = fgets($handle)) !== false) {  // Lê cada linha do arquivo até o final
+        // echo "Lendo linha: $linha<br>"; // Debug (comentado)
 
-        // Remove espaços e quebras de linha
+        // Remove espaços em branco e quebras de linha, separa os dados por vírgula
         $dados = explode(",", trim($linha));
 
-        // Verifica se o número de campos está correto
+        // Verifica se o número de campos está correto (deve ter pelo menos 8 campos)
         if (count($dados) < 8) {
-            // echo "Erro: Linha com dados incompletos.<br>";
-            continue;
+            // echo "Erro: Linha com dados incompletos.<br>"; // Debug (comentado)
+            continue;  // Se a linha estiver incompleta, pula para a próxima
         }
 
+        // Atribui as variáveis a partir da linha do arquivo (descompacta os dados)
         list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
 
-        // Exibe os dados para debug
+        // Exibe os dados para debug (comentado)
         // echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
 
-        // Verifica o email e a senha
+        // Verifica se o email e a senha correspondem ao que foi enviado pelo usuário
         if ($email === $emailArquivo && $senha === $senhaArquivo) {
-            fclose($handle);
+            fclose($handle);  // Fecha o arquivo após encontrar uma correspondência
 
-            // Salva o nome completo na sessão
-            $_SESSION['nome'] = $nome;
+            // Salva os dados do usuário na sessão para futuras referências
+            $_SESSION['nome'] = $nome;  // Salva o nome do usuário
             $_SESSION['loggedin'] = true;  // Define que o usuário está logado
-            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
-            return true;
+            $_SESSION['user_id'] = $cpf;  // Armazena o CPF do usuário como um identificador único
+            return true;  // Retorna verdadeiro, indicando que o login foi bem-sucedido
         }
     }
 
-    fclose($handle); // Fecha o arquivo
-    return false; // Se não encontrou o usuário
-
-    if ($email === $emailArquivo && $senha === $senhaArquivo) {
-        fclose($handle);
-
-        $_SESSION['nome'] = $nome ;
-        echo "Usuário logado: " . $_SESSION['nome']; // Debug
-        return true;
-    }
+    fclose($handle);  // Fecha o arquivo após terminar a leitura
+    return false;  // Retorna falso caso não tenha encontrado um usuário com o email e senha fornecidos
 }
 
 // Processa o login
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
-    $email = trim($_POST['email']);
-    $senha = trim($_POST['senha']);
+    $email = trim($_POST['email']);  // Obtém e limpa o valor do email informado pelo usuário
+    $senha = trim($_POST['senha']);  // Obtém e limpa o valor da senha informada pelo usuário
 
-    // Debug dos valores recebidos
+    // Debug dos valores recebidos (comentado)
     // var_dump($email, $senha);
 
+    // Verifica se os campos de email e senha estão preenchidos
     if (empty($email) || empty($senha)) {
-        $erro = "Por favor, preencha todos os campos.";
-    } elseif (!verificarLogin($email, $senha)) {
-        $erro = "Email ou senha incorretos.";
+        $erro = "Por favor, preencha todos os campos.";  // Mensagem de erro se algum campo estiver vazio
+    } elseif (!verificarLogin($email, $senha)) {  // Chama a função de verificação de login
+        $erro = "Email ou senha incorretos.";  // Mensagem de erro caso o login falhe
     }
 }
 
@@ -96,65 +90,63 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['ac
 // echo $mensagem;
 // echo $erro;
 
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
+if (isset($_GET['page'])) {  // Verifica se existe o parâmetro 'page' na URL
+    $page = $_GET['page'];  // Obtém o valor do parâmetro 'page'
 
-    // Redireciona com base no valor do botão clicado
-    switch ($page) {
-        case 'carros':
+    // Redireciona com base no valor do parâmetro 'page'
+    switch ($page) {  // Compara o valor de 'page' e realiza a ação correspondente
+        case 'carros':  // Se for 'carros', redireciona para a página de veículos
             header("Location: ../locação/veiculos.php");
             break;
-        case 'sobre':
+        case 'sobre':  // Se for 'sobre', redireciona para a página sobre
             header("Location: ../loc/sobrenos/sobre.php");
             break;
-        case 'assinatura':
+        case 'assinatura':  // Se for 'assinatura', redireciona para a página de assinatura
             header("Location: ../assinatura/assinatura.php");
             break;
-        case 'blog':
+        case 'blog':  // Se for 'blog', redireciona para a página do blog
             header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
             break;
-        default:
+        default:  // Caso o valor de 'page' não corresponda a nenhum dos casos, redireciona para a página inicial
             header("Location: index.php"); // Página padrão
             break;
     }
-    exit; // Sempre encerre o script após header()
+    exit;  // Sempre encerre o script após redirecionar
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
+
+<!DOCTYPE html> <!-- Declara o tipo do documento, especificando que é um documento HTML5 -->
+<html lang="pt-BR"> <!-- Inicia o documento HTML e define o idioma como português do Brasil -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluguel de Carros - ExploraCar</title>
-    <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');">
-    <link rel="stylesheet" href="../global/global.css">
-    <link rel="stylesheet" href="veiculos.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8, que suporta caracteres especiais, como acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta a escala da página para dispositivos móveis, garantindo que ela seja responsiva -->
+    <title>Aluguel de Carros - ExploraCar</title> <!-- Define o título da página que será exibido na aba do navegador -->
+    <link rel="stylesheet" href="@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');"> <!-- Importa fontes do Google Fonts para estilizar o texto da página -->
+    <link rel="stylesheet" href="../global/global.css"> <!-- Importa um arquivo CSS global para estilos gerais da página -->
+    <link rel="stylesheet" href="veiculos.css"> <!-- Importa um arquivo CSS específico para a página de veículos -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" /> <!-- Importa ícones de fontes Material Symbols para ícones gráficos na página -->
 </head>
 
 <body>
-<header>
-        <div class="cabecalho">
-            <div id="menu-toggle" onclick="toggleMenu()">
-                <i class="material-symbols-outlined ">menu</i>
+    <header>
+        <div class="cabecalho"> <!-- Define a estrutura principal do cabeçalho da página -->
+            <div id="menu-toggle" onclick="toggleMenu()"> <!-- Cria um botão que, ao ser clicado, chama a função 'toggleMenu()' para alternar o menu -->
+                <i class="material-symbols-outlined ">menu</i> <!-- Exibe um ícone de menu usando as fontes Material Symbols -->
             </div>
 
             <a href="index.php">
-                <div class="logo"></div>
+                <div class="logo"></div> <!-- Cria uma área para o logotipo, que é um link para a página inicial -->
             </a>
 
-            <form action="buscar.php" method="GET" class="barra-pesquisa">
-                <input type="text" name="query" placeholder="Digite aqui..." required>
-                <button type="submit">Pesquisar</button>
+            <form action="buscar.php" method="GET" class="barra-pesquisa"> <!-- Cria um formulário de pesquisa com método GET, que envia os dados para 'buscar.php' -->
+                <input type="text" name="query" placeholder="Digite aqui..." required> <!-- Campo de entrada de texto para o usuário digitar a pesquisa, o atributo 'required' exige que o campo seja preenchido -->
+                <button type="submit">Pesquisar</button> <!-- Botão para submeter o formulário de pesquisa -->
             </form>
 
-
-
-            <div class="buttons">
-                <div class="dropdown">
+            <div class="buttons"> <!-- Início de uma seção de botões (ainda não foi finalizada no trecho do código fornecido) -->
+                <div class="dropdown"> <!-- Inicia um menu suspenso (dropdown), que provavelmente vai ser usado para exibir opções adicionais (não completo) -->
                     <?php if (isset($_SESSION['nome'])): ?>
                         <!-- Botão com o nome do usuário logado -->
                         <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
@@ -177,239 +169,242 @@ if (isset($_GET['page'])) {
                     <?php else: ?>
                         <!-- Botão padrão "ENTRAR" -->
 
-                        <button id="principal-button" class="btn" onclick="toggleInfoTab()">
-                            <img src="../global/img/file.png" alt="">
-                            <span></span>
-                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
-                            <div class="seta"></div>
-                            <!-- <img id="seta" src="img/seta.png" alt=""> -->
-                        </button>
-                        </a>
-                    <?php endif; ?>
-                    <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                        <img src="../global/img/help.png" alt="">
-                        <span></span>
-                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
-                        <div class="seta"></div>
-                    </button>
-                </div>
+                        <button id="principal-button" class="btn" onclick="toggleInfoTab()"> <!-- Cria um botão com ID 'principal-button' e classe 'btn', que chama a função 'toggleInfoTab()' quando clicado -->
+                            <img src="../global/img/file.png" alt=""> <!-- Exibe uma imagem de um arquivo (ícone) dentro do botão -->
+                            <span></span> <!-- Um elemento vazio de 'span', provavelmente utilizado para aplicar algum estilo ou efeitos visuais -->
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p> <!-- Um parágrafo com atributos personalizados que podem ser utilizados para animações ou interatividade -->
+                            <div class="seta"></div> <!-- Um elemento 'div' com a classe 'seta', provavelmente usado para desenhar ou exibir uma seta indicativa -->
+                            <!-- <img id="seta" src="img/seta.png" alt=""> --> <!-- Linha comentada, talvez uma imagem de seta que estava sendo usada anteriormente -->
+                        </button> <!-- Fecha o botão principal -->
+                        </a> <!-- Fechamento de uma tag de link (não está claro de onde vem) -->
+                    <?php endif; ?> <!-- Fim de uma condição PHP, provavelmente após um 'if' que decide se esse botão será exibido -->
+                    <button id="help-button" class="btn" onclick="toggleHelpTab()"> <!-- Cria um botão de ajuda, com ID 'help-button', que chama a função 'toggleHelpTab()' -->
+                        <img src="../global/img/help.png" alt=""> <!-- Exibe um ícone de ajuda dentro do botão -->
+                        <span></span> <!-- Um elemento 'span' vazio, possivelmente utilizado para efeitos visuais ou animações -->
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p> <!-- Um parágrafo com atributos personalizados para efeitos -->
+                        <div class="seta"></div> <!-- Um elemento 'div' com a classe 'seta', provavelmente usado para exibir uma seta -->
+                    </button> <!-- Fecha o botão de ajuda -->
+                </div> <!-- Fecha o contêiner de botões -->
 
-                <div id="logout-tab" class="logout-tab">
-                    <div class="logout-content">
-                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
-                        <div class="buttons">
-                            <a href="logout.php">
-                                <button id="logout-button">
-                                    <span></span>
-                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
-                                    </button">
-                            </a>
-                        </div>
-                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                <!-- Início da aba de logout -->
+                <div id="logout-tab" class="logout-tab"> <!-- Define a aba de logout com ID 'logout-tab' e a classe 'logout-tab' -->
+                    <div class="logout-content"> <!-- Contêiner principal da aba de logout -->
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span> <!-- Um botão de fechar (ícone '×') que chama a função 'toggleLogoutTab()' ao ser clicado -->
+                        <div class="buttons"> <!-- Início de um contêiner para botões dentro da aba de logout -->
+                            <a href="logout.php"> <!-- Cria um link para 'logout.php', provavelmente para realizar o logout -->
+                                <button id="logout-button"> <!-- Cria um botão de logout com ID 'logout-button' -->
+                                    <span></span> <!-- Um elemento 'span' vazio, utilizado para efeitos visuais ou animações -->
+                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p> <!-- Um parágrafo com atributos personalizados para animações ou interatividade -->
+                                </button> <!-- Fecha o botão de logout -->
+                            </a> <!-- Fecha o link para logout -->
+                        </div> <!-- Fecha o contêiner de botões -->
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span> <!-- Outro ícone de fechar (ícone '×'), para fechar a aba de logout -->
+                    </div> <!-- Fecha o contêiner principal de logout -->
+                </div> <!-- Fecha a aba de logout -->
 
-                    </div>
-                </div>
-
-                <div id="help-tab" class="help-tab">
-                    <div class="help-content">
-                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
-                        <div class="buttons">
-                            <a href="../loc/duvidasfrequentes/duvidas.php">
-                                <button id="duvidas-button">
-                                    <span></span>
-                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
-                                </button>
-                            </a>
-                        </div>
-                        <div class="container-contact">
-                            <div class="header-contact">
-                                <span>Canais de atendimento</span>
-                            </div>
-                            <div class="contact-info">
-                                <div>
-                                    <i class="fas fa-phone"></i> Principais Capitais
-                                    <div><strong>4003 7368</strong></div>
-                                </div>
+                <!-- Início da aba de ajuda -->
+                <div id="help-tab" class="help-tab"> <!-- Define a aba de ajuda com ID 'help-tab' e classe 'help-tab' -->
+                    <div class="help-content"> <!-- Contêiner principal da aba de ajuda -->
+                        <span class="close-btn" onclick="toggleHelpTab()">&times;</span> <!-- Botão de fechar (ícone '×') que chama a função 'toggleHelpTab()' ao ser clicado -->
+                        <div class="buttons"> <!-- Contêiner para os botões dentro da aba de ajuda -->
+                            <a href="../loc/duvidasfrequentes/duvidas.php"> <!-- Link para a página de dúvidas frequentes -->
+                                <button id="duvidas-button"> <!-- Botão para acessar a página de dúvidas frequentes -->
+                                    <span></span> <!-- Elemento 'span' vazio, utilizado para efeitos visuais -->
+                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p> <!-- Parágrafo com atributos personalizados -->
+                                </button> <!-- Fecha o botão de dúvidas frequentes -->
+                            </a> <!-- Fecha o link para dúvidas frequentes -->
+                        </div> <!-- Fecha o contêiner de botões -->
+                        <div class="container-contact"> <!-- Contêiner que agrupa informações de contato -->
+                            <div class="header-contact"> <!-- Cabeçalho do contêiner de contato -->
+                                <span>Canais de atendimento</span> <!-- Título 'Canais de atendimento' -->
+                            </div> <!-- Fecha o cabeçalho de contato -->
+                            <div class="contact-info"> <!-- Contêiner com informações de contato -->
+                                <div> <!-- Informações de contato -->
+                                    <i class="fas fa-phone"></i> Principais Capitais <!-- Ícone de telefone seguido do texto 'Principais Capitais' -->
+                                    <div><strong>4003 7368</strong></div> <!-- Número de telefone para as principais capitais -->
+                                </div> <!-- Fecha o item de contato -->
                                 <!-- <div>
-                                        <i class="fas fa-phone"></i> Demais Localidades
-                                        <div><strong>0800 604 7368</strong></div>
-                                    </div> -->
-                                <div>
-                                    <i class="fas fa-phone"></i> Ligações Internacionais
-                                    <div><strong>+55 (41) 4042 1479</strong></div>
-                                </div>
-                            </div>
-                            <div class="schedule">
-                                <div class="schedule-header">Horarios de atendimento</div>
-                                <table class="schedule-table">
-                                    <tr>
-                                        <td>Segunda-feira</td>
-                                        <td>07:00 - 23:59</td>
-                                    </tr>
-                                    <tr>
+                        <i class="fas fa-phone"></i> Demais Localidades
+                        <div><strong>0800 604 7368</strong></div>
+                    </div> -->
+                                <div> <!-- Outra informação de contato -->
+                                    <i class="fas fa-phone"></i> Ligações Internacionais <!-- Ícone de telefone seguido do texto 'Ligações Internacionais' -->
+                                    <div><strong>+55 (41) 4042 1479</strong></div> <!-- Número de telefone para ligações internacionais -->
+                                </div> <!-- Fecha o item de contato -->
+                            </div> <!-- Fecha o contêiner de informações de contato -->
+                            <div class="schedule"> <!-- Contêiner para os horários de atendimento -->
+                                <div class="schedule-header">Horarios de atendimento</div> <!-- Cabeçalho 'Horários de atendimento' -->
+                                <table class="schedule-table"> <!-- Tabela com os horários de atendimento -->
+                                    <tr> <!-- Linha de horário -->
+                                        <td>Segunda-feira</td> <!-- Dia da semana -->
+                                        <td>07:00 - 23:59</td> <!-- Horário de atendimento -->
+                                    </tr> <!-- Fecha a linha -->
+                                    <tr> <!-- Outra linha de horário -->
                                         <td>Terça-feira</td>
                                         <td>07:00 - 23:59</td>
                                     </tr>
-                                    <tr>
+                                    <tr> <!-- Linha para quarta-feira -->
                                         <td>Quarta-feira</td>
                                         <td>00:00 - 23:59</td>
                                     </tr>
-                                    <tr>
+                                    <tr> <!-- Linha para quinta-feira -->
                                         <td>Quinta-feira</td>
                                         <td>00:00 - 23:59</td>
                                     </tr>
-                                    <tr>
+                                    <tr> <!-- Linha para sexta-feira -->
                                         <td>Sexta-feira</td>
                                         <td>00:00 - 23:59</td>
                                     </tr>
-                                    <tr>
+                                    <tr> <!-- Linha para sábado -->
                                         <td>Sábado</td>
                                         <td>00:00 - 19:00</td>
                                     </tr>
-                                    <tr>
+                                    <tr> <!-- Linha para domingo -->
                                         <td>Domingo</td>
                                         <td>10:00 - 19:00</td>
                                     </tr>
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-                </div>
-
+                                </table> <!-- Fecha a tabela de horários -->
+                            </div> <!-- Fecha o contêiner de horários -->
+                        </div> <!-- Fecha o contêiner de contato -->
+                    </div> <!-- Fecha o conteúdo da aba de ajuda -->
+                </div> <!-- Fecha a aba de ajuda -->
 
                 <!-- Aba de informações que será exibida no meio da página -->
-                <div id="info-tab" class="info-tab">
-                    <div class="info-content">
-                        <?php if ($mostrarFormulario === 'login'): ?>
-                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
-                            <div class="register-section">
-                                <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
-                                    Nova
-                                    Conta</button>
-                                <ul>
-                                    <li>✅ Rápido e fácil reservar</li>
-                                    <li>✅ Descontos de até 30%</li>
-                                    <li>✅ Acesso a ofertas exclusivas</li>
-                                    <li>✅ Ganhe cashback</li>
-                                </ul>
-                            </div>
-                            <div class="login-section">
-                                <h2>Acesse sua Conta</h2>
-                                <form action="" method="post">
-                                    <input type="hidden" name="acao" value="login"> <!-- Ação para diferenciar o login -->
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" required>
+                <div id="info-tab" class="info-tab">  <!-- Define um contêiner para uma aba de informações com ID 'info-tab' e a classe 'info-tab' -->
+    <div class="info-content">  <!-- Contêiner principal da aba de informações -->
+        <?php if ($mostrarFormulario === 'login'): ?>  <!-- Verifica se a variável $mostrarFormulario é igual a 'login' para exibir o formulário de login -->
+            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>  <!-- Um ícone de fechar (×) que chama a função 'toggleInfoTab()' ao ser clicado, para fechar a aba -->
+            <div class="register-section">  <!-- Seção de cadastro -->
+                <h2>Cadastre-se</h2>  <!-- Título da seção de cadastro -->
+                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar Nova Conta</button>  <!-- Botão para redirecionar para a página de cadastro -->
+                <ul>  <!-- Lista de benefícios ao se cadastrar -->
+                    <li>✅ Rápido e fácil reservar</li>  <!-- Benefício de ser rápido e fácil -->
+                    <li>✅ Descontos de até 30%</li>  <!-- Benefício de descontos -->
+                    <li>✅ Acesso a ofertas exclusivas</li>  <!-- Benefício de ofertas exclusivas -->
+                    <li>✅ Ganhe cashback</li>  <!-- Benefício de cashback -->
+                </ul>  <!-- Fecha a lista de benefícios -->
+            </div>  <!-- Fecha a seção de cadastro -->
 
-                                    <label for="senha">Senha</label>
-                                    <input type="password" id="password" name="senha" required>
+            <div class="login-section">  <!-- Seção de login -->
+                <h2>Acesse sua Conta</h2>  <!-- Título da seção de login -->
+                <form action="" method="post">  <!-- Formulário para login -->
+                    <input type="hidden" name="acao" value="login"> <!-- Campo oculto para indicar que é uma ação de login -->
+                    <label for="email">Email</label>  <!-- Rótulo para o campo de email -->
+                    <input type="email" id="email" name="email" required>  <!-- Campo de entrada de email com validação de campo obrigatório -->
+                    
+                    <label for="senha">Senha</label>  <!-- Rótulo para o campo de senha -->
+                    <input type="password" id="password" name="senha" required>  <!-- Campo de entrada de senha com validação de campo obrigatório -->
 
-                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>  <!-- Link para recuperação de senha -->
 
-                                    <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
-                                </form>
-                                <?php if (!empty($erro)): ?>
-                                    <p class="erro"><?= htmlspecialchars($erro) ?></p>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
+                    <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>  <!-- Botão para submeter o formulário de login -->
+                </form>
 
+                <?php if (!empty($erro)): ?>  <!-- Se houver uma mensagem de erro, exibe-a -->
+                    <p class="erro"><?= htmlspecialchars($erro) ?></p>  <!-- Exibe o erro de login, escapando caracteres especiais para evitar XSS -->
+                <?php endif; ?>  <!-- Fim da verificação de erro -->
+            </div>  <!-- Fecha a seção de login -->
+        <?php endif; ?>  <!-- Fim da verificação do formulário de login -->
+    </div>  <!-- Fecha o contêiner principal da aba de informações -->
+</div>  <!-- Fecha a aba de informações -->
+
+</div>  <!-- Parece ser o fechamento de um contêiner maior (não mostrado aqui) -->
+
+<!-- Barra lateral de navegação -->
+<nav id="sidebar">  <!-- Define a barra lateral de navegação com o ID 'sidebar' -->
+    <ul class="menu">  <!-- Lista de itens de menu -->
+        <form action="" method="get">  <!-- Formulário de envio via método GET, provavelmente para navegar entre páginas -->
+
+            <li>  <!-- Item do menu 'Carros' -->
+                <button type="submit" name="page" value="carros">  <!-- Botão para enviar o valor 'carros' via GET -->
+                    <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">  <!-- Ícone de carro, imagem relacionada à categoria 'carros' -->
+                    <span>Carros</span>  <!-- Texto do item de menu -->
+                </button>  <!-- Fecha o botão -->
+            </li>  <!-- Fecha o item 'Carros' -->
+
+            <li>  <!-- Item do menu 'Sobre nós' -->
+                <button type="submit" name="page" value="sobre">  <!-- Botão para enviar o valor 'sobre' via GET -->
+                    <img src="../global/img/sobre.png" alt="Sobre">  <!-- Ícone de sobre -->
+                    <span>Sobre nós</span>  <!-- Texto do item de menu -->
+                </button>  <!-- Fecha o botão -->
+            </li>  <!-- Fecha o item 'Sobre nós' -->
+            
+            <hr>  <!-- Linha horizontal separadora -->
+
+            <li>  <!-- Item do menu 'Pacotes' -->
+                <button type="submit" name="page" value="assinatura">  <!-- Botão para enviar o valor 'assinatura' via GET -->
+                    <img src="../global/img/assinatura.png" alt="Pacotes">  <!-- Ícone de pacotes -->
+                    <span>Pacotes</span>  <!-- Texto do item de menu -->
+                </button>  <!-- Fecha o botão -->
+            </li>  <!-- Fecha o item 'Pacotes' -->
+
+            <li>  <!-- Item do menu 'Blog' -->
+                <button type="submit" name="page" id="blog" value="blog">  <!-- Botão para enviar o valor 'blog' via GET -->
+                    <img src="../global/img/blog.png" alt="Blog">  <!-- Ícone de blog -->
+                    <span>Blog</span>  <!-- Texto do item de menu -->
+                </button>  <!-- Fecha o botão -->
+            </li>  <!-- Fecha o item 'Blog' -->
+
+            <hr>  <!-- Linha horizontal separadora -->
+        </form>  <!-- Fecha o formulário de navegação -->
+    </ul>  <!-- Fecha a lista de itens do menu -->
+</nav>  <!-- Fecha a barra lateral de navegação -->
+
+</header>  <!-- Fecha o cabeçalho da página -->
+    <main>
+        <!-- Esse código gera botões de marcas -->
+        <div class="button-container">
+            <button class="brand-button" onclick="addCards(10, 'Toyota', this)">
+                <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
+                Toyota
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Ford', this)">
+                <img src="./img/img Logos/Ford Logo.png" alt="Ford Logo">
+                Ford
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Chevrolet', this)">
+                <img src="./img/img Logos/Chevrolet Logo.png" alt="Chevrolet Logo">
+                Chevrolet
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Volkswagen', this)">
+                <img src="./img/img Logos/Volkswagen Logo.png" alt="Volkswagen Logo">
+                Volkswagen
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Fiat', this)">
+                <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
+                Fiat
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Honda', this)">
+                <img src="./img/img Logos/Honda Logo.png" alt="Honda Logo">
+                Honda
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Hyundai', this)">
+                <img src="./img/img Logos/Hyundai Logo.png" alt="Hyundai Logo">
+                Hyundai
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Renault', this)">
+                <img src="./img/img Logos/Renault Logo.png" alt="Renault Logo">
+                Renault
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Nissan', this)">
+                <img src="./img/img Logos/Nissan Logo.png" alt="Nissan Logo">
+                Nissan
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Peugeot', this)">
+                <img src="./img/img Logos/Peugeot Logo.png" alt="Peugeot Logo">
+                Peugeot
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'Citroën', this)">
+                <img src="./img/img Logos/Citroën Logo.png" alt="Citroën Logo">
+                Citroën
+            </button>
+            <button class="brand-button" onclick="addCards(10, 'BlackFriday', this)">
+                <img src="./img/img Logos/Black Friday Logo.png" alt="Audi Logo">
+                Black Friday
+            </button>
         </div>
-        <nav id="sidebar">
-            <ul class="menu">
-            <form action="" method="get">
-    <li>
-        <button type="submit" name="page" value="carros">
-            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
-            <span>Carros</span>
-        </button>
-    </li>
-    <li>
-        <button type="submit" name="page" value="sobre">
-            <img src="../global/img/sobre.png" alt="Sobre">
-            <span>Sobre nós</span>
-        </button>
-    </li>
-    <hr>
-    <li>
-        <button type="submit" name="page" value="assinatura">
-            <img src="../global/img/assinatura.png" alt="Pacotes">
-            <span>Pacotes</span>
-        </button>
-    </li>
-    <li>
-        <button type="submit" name="page" id="blog" value="blog">
-            <img src="../global/img/blog.png" alt="Blog">
-            <span>Blog</span>
-        </button>
-    </li>
-    <hr>
-</form>
-
-            </ul>
-        </nav>
-    </header>
- <main>
-     <div class="button-container">
-        <button class="brand-button" onclick="addCards(10, 'Toyota', this)">
-            <img src="./img/img Logos/Toyota Logo.png" alt="Toyota Logo">
-            Toyota
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Ford', this)">
-            <img src="./img/img Logos/Ford Logo.png" alt="Ford Logo">
-            Ford
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Chevrolet', this)">
-            <img src="./img/img Logos/Chevrolet Logo.png" alt="Chevrolet Logo">
-            Chevrolet
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Volkswagen', this)">
-            <img src="./img/img Logos/Volkswagen Logo.png" alt="Volkswagen Logo">
-            Volkswagen
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Fiat', this)">
-            <img src="./img/img Logos/Fiat Logo.png" alt="Fiat Logo">
-            Fiat
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Honda', this)">
-            <img src="./img/img Logos/Honda Logo.png" alt="Honda Logo">
-            Honda
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Hyundai', this)">
-            <img src="./img/img Logos/Hyundai Logo.png" alt="Hyundai Logo">
-            Hyundai
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Renault', this)">
-            <img src="./img/img Logos/Renault Logo.png" alt="Renault Logo">
-            Renault
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Nissan', this)">
-            <img src="./img/img Logos/Nissan Logo.png" alt="Nissan Logo">
-            Nissan
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Peugeot', this)">
-            <img src="./img/img Logos/Peugeot Logo.png" alt="Peugeot Logo">
-            Peugeot
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'Citroën', this)">
-            <img src="./img/img Logos/Citroën Logo.png" alt="Citroën Logo">
-            Citroën
-        </button>
-        <button class="brand-button" onclick="addCards(10, 'BlackFriday', this)">
-            <img src="./img/img Logos/Black Friday Logo.png" alt="Audi Logo">
-            Black Friday
-        </button>
-     </div>
-            <div id="card-container">
-            </div>
+        <div id="card-container">
+        </div>
         <script>
             // Esse aqui é um array que monta os cards dos carros com titulo, imagem, descrição e preço...
             const vehicles = {
@@ -491,7 +486,7 @@ if (isset($_GET['page'])) {
                         desc: 'O Toyota SW4 é um SUV robusto, com tração 4x4 e excelente desempenho off-road. Baseado na Hilux, é perfeito para quem precisa de um veículo para terrenos difíceis, com conforto, espaço e recursos de tecnologia avançada para toda a família.',
                         descontPrice: 'de R$ 4.900,00 por ',
                         price: 'R$ 2.800,00 ',
-                        diaria: 'R$ ' ,
+                        diaria: 'R$ ',
                         doors: '4',
                         engine: '2.8 Turbo Diesel',
                         cambio: 'Automático de 6 marchas',
@@ -2584,7 +2579,7 @@ if (isset($_GET['page'])) {
                         img3: './img/img Interior/Black Friday/Mercedes-Benz S-Class 3.jpg',
                         img4: './img/img Interior/Black Friday/Mercedes-Benz S-Class 4.jpg'
                     },
-     
+
                 ]
             };
             // Atualiza a variável diaria com base no price
@@ -2609,8 +2604,9 @@ if (isset($_GET['page'])) {
                 'Peugeot': false,
                 'Citroën': false,
                 'BlackFriday': false,
-     
+
             };
+
             function addCards(number, type, button) {
                 removeAllCards(); // Remove todos os cards antes de adicionar novos
                 // Esconde a seção none-wallet
@@ -2645,11 +2641,13 @@ if (isset($_GET['page'])) {
                 }
                 setActiveButton(button); // Define o botão como ativo
             }
+
             function reserveVehicle(index, type) {
                 const vehicle = vehicles[type][index];
                 localStorage.setItem('selectedVehicle', JSON.stringify(vehicle));
                 window.location.href = 'detalhes.php';
             }
+
             function removeAllCards() {
                 const cardContainer = document.getElementById('card-container');
                 cardContainer.innerHTML = ''; // Remove todos os cards
@@ -2660,6 +2658,7 @@ if (isset($_GET['page'])) {
                 };
                 resetActiveButtons(); // Reseta o estado dos botões
             }
+
             function setActiveButton(activeButton) {
                 const buttons = document.querySelectorAll('.brand-button');
                 buttons.forEach(button => {
@@ -2667,6 +2666,7 @@ if (isset($_GET['page'])) {
                 });
                 activeButton.classList.add('active'); // Adiciona a classe ativa ao botão clicado
             }
+
             function resetActiveButtons() {
                 const buttons = document.querySelectorAll('.brand-button');
                 buttons.forEach(button => {
@@ -2674,15 +2674,16 @@ if (isset($_GET['page'])) {
                 });
             }
         </script>
+        <!-- esse aqui é responsável pela imagem do carro quando o usuário nao clicou em nenhuma marca -->
         <section class="none-wallet">
             <h3>Nenhuma marca selecionada</h3>
             <p>Por favor selecione um dos botões acima para continuar.</p>
             <img src="./img/CarroPretoBranco.png">
         </section>
- </main>
+    </main>
 
-     <!-- Footer -->
-     <footer>
+    <!-- Footer -->
+    <footer>
         <div class="footer-container">
             <!-- Logo e Slogan -->
             <div class="footer-section about">
