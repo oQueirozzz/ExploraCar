@@ -111,7 +111,7 @@ if (isset($_GET['page'])) {
             header("Location: ../../assinatura/assinatura.php");
             break;
         case 'blog':
-            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            header("Location: ../../blog/blog.php"); // Ajuste o caminho se necessário
             break;
         default:
             header("Location: index.php"); // Página padrão
@@ -348,8 +348,8 @@ if (isset($_GET['page'])) {
         </button>
     </li>
     <li>
-        <button type="submit" name="page" value="blog">
-            <img src="icons/flight.png" alt="Blog">
+        <button type="submit" name="page" id="blog" value="blog">
+            <img src="../../global/img/blog.png" alt="Blog">
             <span>Blog</span>
         </button>
     </li>
@@ -392,7 +392,7 @@ if (isset($_GET['page'])) {
                 </div>
                 <div class="vision">
                     <img src="./img/lampada.png" alt="visão">
-                    <h2 class="title-icon">Visão</h2>
+                    <h2 class="title-icon" id="visao23">Visão</h2>
                     <p class="text-mvv">"Ser a principal referência em locação de veículos, <br>
                         oferecendo inovação, qualidade e sustentabilidade. <br>
                         Queremos facilitar o transporte, transformar jornadas em experiências <br>
