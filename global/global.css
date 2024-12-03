@@ -730,6 +730,7 @@ footer {
 .footer-bottom p {
     font-size: 0.8em;
     margin: 5px 0;
+    color: #000;
 }
 
 .footer-bottom ul {

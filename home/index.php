@@ -231,7 +231,7 @@ if (isset($_SESSION['message'])) {
                     <div class="help-content">
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
-                            <a href="../duvidasfrequentes/duvidas.php">
+                            <a href="../loc/duvidasfrequentes/duvidas.php">
                                 <button id="duvidas-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
@@ -326,7 +326,7 @@ if (isset($_SESSION['message'])) {
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>

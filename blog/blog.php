@@ -434,6 +434,7 @@ if (isset($_GET['page'])) {
         <img src="../home/img/familia-viagem-carro-1091522177.jpg" alt="Banner">
     </div>
 
+    <h1 style="margin: 80px 0px 0px 190px ;">Principais Notícias</h1>
 
 
 
