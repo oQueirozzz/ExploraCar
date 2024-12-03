@@ -120,6 +120,14 @@ if (isset($_GET['page'])) {
     exit; // Sempre encerre o script após header()
 }
 
+
+// Captura a mensagem da sessão, se existir
+$message = null;
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']); // Remove a mensagem após capturá-la
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -139,6 +147,12 @@ if (isset($_GET['page'])) {
 </head>
 
 <body>
+
+<?php if ($message): ?>
+        <div class="message">
+            <?php echo htmlspecialchars($message); ?>
+        </div>
+    <?php endif; ?>
     <header>
         <div class="cabecalho">
             <div id="menu-toggle" onclick="toggleMenu()">
@@ -217,7 +231,7 @@ if (isset($_GET['page'])) {
                     <div class="help-content">
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
-                            <a href="../loc/duvidasfrequentes/duvidas.php">
+                            <a href="../duvidasfrequentes/duvidas.php">
                                 <button id="duvidas-button">
                                     <span></span>
                                     <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
@@ -292,7 +306,7 @@ if (isset($_GET['page'])) {
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
+                                <button class="btn" onclick="window.location.href='../form/form.php '"><span></span>Criar
                                     Nova
                                     Conta</button>
                                 <ul>
@@ -312,7 +326,7 @@ if (isset($_GET['page'])) {
                                     <label for="senha">Senha</label>
                                     <input type="password" id="password" name="senha" required>
 
-                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+                                    <a href="../../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
 
                                     <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
                                 </form>
@@ -349,8 +363,8 @@ if (isset($_GET['page'])) {
         </button>
     </li>
     <li>
-        <button type="submit" name="page" value="blog">
-            <img src="../global/img/blog.png" id="blog"  alt="Blog">
+        <button type="submit" name="page"  value="blog">
+            <img src="../global/img/blog.png" id="blog" alt="Blog">
             <span>Blog</span>
         </button>
     </li>
@@ -360,6 +374,8 @@ if (isset($_GET['page'])) {
             </ul>
         </nav>
     </header>
+
+    
     <main>
         <section>
 
@@ -518,7 +534,7 @@ if (isset($_GET['page'])) {
         </section>
 
         <aside>
-            <a href="../Locação/veiculos.html">
+            <a href="../Locação/veiculos.php">
                 <div class="propaganda">
 
                 </div>
