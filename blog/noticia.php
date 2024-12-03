@@ -2,6 +2,128 @@
 require_once("arrays.php");
 $index = $_GET["index"];
 $noticia = $noticias[$index];
+
+session_start();
+
+
+// Desativar exibição de erros
+error_reporting(0);
+ini_set('display_errors', 0);
+
+$erro = '';
+$mensagem = '';
+$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+
+// Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
+if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
+    $mostrarFormulario = 'esqueceuSenha';
+}
+
+// Função para verificar login
+function verificarLogin($email, $senha)
+{
+    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo
+
+    if (!file_exists($arquivo)) {
+        echo "Erro: Arquivo de usuários não encontrado.<br>";
+        return false;
+    }
+
+    $handle = fopen($arquivo, 'r'); // Abre o arquivo
+    if (!$handle) {
+        echo "Erro: Não foi possível abrir o arquivo.<br>";
+        return false;
+    }
+
+    // Lê linha por linha
+    while (($linha = fgets($handle)) !== false) {
+        // echo "Lendo linha: $linha<br>"; // Debug
+
+        // Remove espaços e quebras de linha
+        $dados = explode(",", trim($linha));
+
+        // Verifica se o número de campos está correto
+        if (count($dados) < 8) {
+            // echo "Erro: Linha com dados incompletos.<br>";
+            continue;
+        }
+
+        list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
+
+        // Exibe os dados para debug
+        // echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
+
+        // Verifica o email e a senha
+        if ($email === $emailArquivo && $senha === $senhaArquivo) {
+            fclose($handle);
+
+            // Salva o nome completo na sessão
+            $_SESSION['nome'] = $nome;
+            $_SESSION['loggedin'] = true;  // Define que o usuário está logado
+            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
+            return true;
+        }
+    }
+
+    fclose($handle); // Fecha o arquivo
+    return false; // Se não encontrou o usuário
+
+    if ($email === $emailArquivo && $senha === $senhaArquivo) {
+        fclose($handle);
+
+        $_SESSION['nome'] = $nome ;
+        echo "Usuário logado: " . $_SESSION['nome']; // Debug
+        return true;
+    }
+}
+
+// Processa o login
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
+
+    // Debug dos valores recebidos
+    // var_dump($email, $senha);
+
+    if (empty($email) || empty($senha)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif (!verificarLogin($email, $senha)) {
+        $erro = "Email ou senha incorretos.";
+    }
+}
+
+// Após validar o login
+// $_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
+// $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+
+
+// echo $mensagem;
+// echo $erro;
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+
+    // Redireciona com base no valor do botão clicado
+    switch ($page) {
+        case 'carros':
+            header("Location: ../locação/veiculos.php");
+            break;
+        case 'sobre':
+            header("Location: ../loc/sobrenos/sobre.php");
+            break;
+        case 'assinatura':
+            header("Location: ../assinatura/assinatura.php");
+            break;
+        case 'blog':
+            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            break;
+        default:
+            header("Location: index.php"); // Página padrão
+            break;
+    }
+    exit; // Sempre encerre o script após header()
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -10,80 +132,55 @@ $noticia = $noticias[$index];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../global/global.css">
+
     <style>
         body{
             display: flex;
             flex-direction: column;
             align-items: center;
             background-color: #f5f5f5;
+            font-family: "Poppins", sans-serif ;
+            justify-content: center;
+
         }
-        img{
-            width: 100vw;
-            height: 700px;
+        .container-noticia{
+            width: 60%;
+            height: auto;
+            margin-top: 150px;
+        }
+        .parteCima{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            background-color: #ec821f;
+            padding: 80px;
+            height: 500px;
             margin-top: 50px;
-            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        h1{
-            margin-top: 50px;
-            font-size: 50px;
+        .container-noticia h1{
+            text-align: center;
+            font-size: 40px;
         }
-        p{
-            margin: 100px 100px 0px 100px;
-            font-size: 20px;
+        .container-noticia p{
             text-align: justify;
+            margin-top: 100px;
+            font-size: 18px;
         }
-        header {
-            width: 100vw;
+        .parteCima img{
+            width: 60%;
+            border-radius: 20px;
         }
-        nav {
-            background-color: #171a4a;
-            width: 100%;
-            height: 100px;
-            color: white;
-            display: flex;
-            justify-content: space-evenly;
-            
-        }
-        nav img{
-            width: 200px;
-            height: 100px;
-            margin-right: 600px;
-            transform: translateY(-50px);
-
-        }
-
-        nav ul {
-            display: flex;
-            width: 400px;
-        }
-
-
-        .menu {
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            margin: 20px;
-            float: left;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            transition: all 0.5s ease;
-            transform: scale(1);
-            margin: auto;
-
-        }
-
-        .menu:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: white;
-        }
+        .container-noticia .data
+    
 
     </style>
 </head>
@@ -299,7 +396,7 @@ $noticia = $noticias[$index];
     </li>
     <li>
         <button type="submit" name="page" value="blog">
-            <img src="icons/flight.png" alt="Blog">
+            <img src="../global/img/blog.png" id="blog" alt="Blog">
             <span>Blog</span>
         </button>
     </li>
@@ -309,15 +406,20 @@ $noticia = $noticias[$index];
             </ul>
         </nav>
     </header>
+
 <?php
 $index = $_GET["index"];
 $noticia = $noticias[$index];
 
 print
-"<h1>" . $noticia["nome"] . "</h1>
-<img src='imge/" . $noticia["imagem"] . "'>
-<p>" . $noticia["main"] . "</p>
-<p>" . $noticia["data"] . "</p>"
+ "<div class='container-noticia'>
+   <div class='parteCima'>
+       <h1>" . $noticia["nome"] . "</h1>
+        <img src='imgs-blog/" . $noticia["imagem"] . "'>
+   </div>
+    <p>" . $noticia["main"] . "</p>
+    <p>" . $noticia["data"] . "</p>
+</div>"
 ?>
     
 </body>

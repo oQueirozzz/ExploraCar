@@ -638,6 +638,12 @@ input[type="password"] {
 #sidebar.active #entrar {
     display: block;
 }
+#blog{
+    width: 80px;
+    object-fit: cover;
+    margin-left: 5px;
+}
+
 
 /* Estilo para o Footer */
 footer {

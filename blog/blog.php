@@ -1,23 +1,132 @@
 <?php
 require_once("arrays.php");
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $titulo = $_POST["nome"];
-    $descricao = $_POST["descricao"];
 
-    $novaNoticia = [
-        "nome" => $titulo,
-        "descricao" => $descricao,
-        "imagem" => '',
-        "data" => '2024-10-30'
-    ];
 
-    array_push($noticias, $novaNoticia);
-    $_SESSION['noticias'] = $noticias;
-}
 // print "<pre>";
 // print_r($_SERVER);
 // print "</pre>";
+
+session_start();
+
+
+// Desativar exibição de erros
+error_reporting(0);
+ini_set('display_errors', 0);
+
+$erro = '';
+$mensagem = '';
+$mostrarFormulario = 'login'; // Variável para alternar entre os formulários
+
+// Detecta se o usuário clicou em "Esqueci a senha" e muda o formulário a ser exibido
+if (isset($_GET['acao']) && $_GET['acao'] === 'esqueceu_senha') {
+    $mostrarFormulario = 'esqueceuSenha';
+}
+
+// Função para verificar login
+function verificarLogin($email, $senha)
+{
+    $arquivo = "../loc/form/usuarios/usuarios.txt"; // Caminho do arquivo
+
+    if (!file_exists($arquivo)) {
+        echo "Erro: Arquivo de usuários não encontrado.<br>";
+        return false;
+    }
+
+    $handle = fopen($arquivo, 'r'); // Abre o arquivo
+    if (!$handle) {
+        echo "Erro: Não foi possível abrir o arquivo.<br>";
+        return false;
+    }
+
+    // Lê linha por linha
+    while (($linha = fgets($handle)) !== false) {
+        // echo "Lendo linha: $linha<br>"; // Debug
+
+        // Remove espaços e quebras de linha
+        $dados = explode(",", trim($linha));
+
+        // Verifica se o número de campos está correto
+        if (count($dados) < 8) {
+            // echo "Erro: Linha com dados incompletos.<br>";
+            continue;
+        }
+
+        list($cpf, $nome, $sobrenome, $emailArquivo, $pais, $dataNascimento, $telefone, $senhaArquivo) = $dados;
+
+        // Exibe os dados para debug
+        // echo "Email no arquivo: $emailArquivo, Senha no arquivo: $senhaArquivo<br>";
+
+        // Verifica o email e a senha
+        if ($email === $emailArquivo && $senha === $senhaArquivo) {
+            fclose($handle);
+
+            // Salva o nome completo na sessão
+            $_SESSION['nome'] = $nome;
+            $_SESSION['loggedin'] = true;  // Define que o usuário está logado
+            $_SESSION['user_id'] = $cpf;  // Você pode armazenar o ID do usuário, se necessário
+            return true;
+        }
+    }
+
+    fclose($handle); // Fecha o arquivo
+    return false; // Se não encontrou o usuário
+
+    if ($email === $emailArquivo && $senha === $senhaArquivo) {
+        fclose($handle);
+
+        $_SESSION['nome'] = $nome ;
+        echo "Usuário logado: " . $_SESSION['nome']; // Debug
+        return true;
+    }
+}
+
+// Processa o login
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['acao']) && $_POST['acao'] === 'login') {
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
+
+    // Debug dos valores recebidos
+    // var_dump($email, $senha);
+
+    if (empty($email) || empty($senha)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } elseif (!verificarLogin($email, $senha)) {
+        $erro = "Email ou senha incorretos.";
+    }
+}
+
+// Após validar o login
+// $_SESSION['loggedin'] = true; // Ou qualquer valor que identifique o usuário
+// $_SESSION['user_id'] = $userId; // Opcional, caso precise identificar o usuário
+
+
+// echo $mensagem;
+// echo $erro;
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+
+    // Redireciona com base no valor do botão clicado
+    switch ($page) {
+        case 'carros':
+            header("Location: ../locação/veiculos.php");
+            break;
+        case 'sobre':
+            header("Location: ../loc/sobrenos/sobre.php");
+            break;
+        case 'assinatura':
+            header("Location: ../assinatura/assinatura.php");
+            break;
+        case 'blog':
+            header("Location: ../blog/blog.php"); // Ajuste o caminho se necessário
+            break;
+        default:
+            header("Location: index.php"); // Página padrão
+            break;
+    }
+    exit; // Sempre encerre o script após header()
+}
 
 
 ?>
@@ -39,10 +148,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         body {
             /* display: flex; */
             flex-direction: row;
+            font-family: "Poppins", sans-serif ;
+        }
+        .card-container{
+            margin-left: 70px;
         }
 
         .card {
-            width: 25%;
+            width: 22%;
             display: flex;
             flex-direction: column;
             float: left;
@@ -53,19 +166,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             transform: scale(1);
             margin-top: 200px;
             justify-content: space-between;
-            margin: 50px;
-            padding: 30px;
+            margin: 70px;
+            padding: 10px;
             margin-left: 105px;
         }
 
         .card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transform:translateY(-30px);
+
         }
 
         .card img {
             width: 100%;
-            height: 450px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+
 
         }
 
@@ -87,11 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             object-fit: cover;
             margin-top: 90px;
         }
-        #blog{
-            width: 80px;
-            object-fit: cover;
-            margin-left: 5px;
-        }
+       
     </style>
 </head>
 
@@ -332,20 +444,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $count = 0;
     foreach ($noticias as $noticia) {
         print "
-        <div class='card'>
-        <a  href='noticia.php?index=" . $count++ . "'> <img src='imgs-blog/" . $noticia["imagem"] . "'>
-        " . $noticia["nome"] . "</a>
-        <p>" . $noticia["descricao"] . "</p>
-        <p>" . $noticia["data"] . "</p>
-        </div>
-        ";
+        <div class='card-container'>
+            <div class='card'>
+            <a  href='noticia.php?index=" . $count++ . "'> <img src='imgs-blog/" . $noticia["imagem"] . "'>
+            " . $noticia["nome"] . "</a>
+            <p>" . $noticia["descricao"] . "</p>
+            <p>" . $noticia["data"] . "</p>
+            </div>
+            </div>
+            ";
     }
 
 
     ?>
 
     <script src="../global/global.js"></script>
-    <div style="height: 150vh;"></div>
+    <div style="height: 160vh;"></div>
 
 
     <footer>
