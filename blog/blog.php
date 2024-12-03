@@ -87,6 +87,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             object-fit: cover;
             margin-top: 90px;
         }
+        #blog{
+            width: 80px;
+            object-fit: cover;
+            margin-left: 5px;
+        }
     </style>
 </head>
 
@@ -301,8 +306,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </button>
                     </li>
                     <li>
-                        <button type="submit" name="page" value="blog">
-                            <img src="../global/img/blog.png" alt="Blog">
+                        <button type="submit" name="page"  value="blog">
+                        <img src="../global/img/blog.png" id="blog" alt="Blog">
                             <span>Blog</span>
                         </button>
                     </li>
@@ -328,7 +333,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     foreach ($noticias as $noticia) {
         print "
         <div class='card'>
-        <a  href='noticia.php?index=" . $count++ . "'> <img src='imge/" . $noticia["imagem"] . "'>
+        <a  href='noticia.php?index=" . $count++ . "'> <img src='imgs-blog/" . $noticia["imagem"] . "'>
         " . $noticia["nome"] . "</a>
         <p>" . $noticia["descricao"] . "</p>
         <p>" . $noticia["data"] . "</p>
