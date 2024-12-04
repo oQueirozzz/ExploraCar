@@ -306,7 +306,7 @@ if (isset($_SESSION['message'])) {
                             <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
                             <div class="register-section">
                                 <h2>Cadastre-se</h2>
-                                <button class="btn" onclick="window.location.href='../form/form.php '"><span></span>Criar
+                                <button class="btn" onclick="window.location.href='../loc/form/form.php '"><span></span>Criar
                                     Nova
                                     Conta</button>
                                 <ul>
