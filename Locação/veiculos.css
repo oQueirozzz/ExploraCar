@@ -41,13 +41,18 @@ body {
     width: 100%;  /* Faz o botão ocupar 100% da largura disponível */
     font-family: "Poppins", sans-serif;  /* Define a fonte do botão */
 }
-
+#sidebar{
+    transform: translateY(24px);
+}
 /* Estilos para as imagens dentro dos botões */
 .brand-button img {
     width: 55px;  /* Define a largura da imagem dentro do botão */
     height: 55px;  /* Define a altura da imagem dentro do botão */
     margin-right: 15px;  /* Adiciona um espaço à direita da imagem */
     transition: filter 0.2s;  /* Adiciona uma transição suave para o filtro da imagem */
+}
+#buttons {
+    width: 180px ;
 }
 
 /* Estilo quando o botão é hover (passar o mouse sobre) */
@@ -66,6 +71,13 @@ body {
 /* Estilos para os contêineres de cards */
 .card-container {
     width: 90%;  /* Define a largura do contêiner dos cards como 90% da largura da página */
+}
+#desconto{
+    text-decoration: line-through; /* Adiciona um risco sobre o preço original */
+}
+#diaria{
+    color: green;
+    font: 8px;
 }
 
 /* Estilos para cada card */

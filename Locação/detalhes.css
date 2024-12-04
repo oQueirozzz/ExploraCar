@@ -92,6 +92,9 @@ body {
 #vehicle-descontPrice {
     text-decoration: line-through; /* Adiciona um risco sobre o preço original */
 }
+#vehicle-diaria{
+    color: green;
+}
 
 /* Estilo do botão de reservar */
 .reservar {

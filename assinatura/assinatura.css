@@ -148,4 +148,4 @@ ul {
 :not(.overlay) > .card {
   transition: 400ms background ease;
   will-change: background;
-}x
+}

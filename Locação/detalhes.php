@@ -81,7 +81,7 @@ if (isset($_GET['page'])) {
     // Verifica o valor de 'page' e redireciona para a página correspondente
     switch ($page) {
         case 'carros':
-            header("Location: ../locação/veiculos.php"); // Página de veículos
+            header("Location: veiculos.php"); // Página de veículos
             break;
         case 'sobre':
             header("Location: ../loc/sobrenos/sobre.php"); // Página sobre nós
@@ -93,7 +93,7 @@ if (isset($_GET['page'])) {
             header("Location: ../blog/blog.php"); // Página de blog
             break;
         default:
-            header("Location: index.php"); // Página padrão
+            header("Location: ../home/index.php"); // Página padrão
             break;
     }
     exit; // Encerra o script após o redirecionamento
@@ -119,72 +119,86 @@ if (isset($_GET['page'])) {
     <!-- Cabeçalho da página -->
     <header>
         <div class="cabecalho">
-            <!-- Menu Toggle -->
             <div id="menu-toggle" onclick="toggleMenu()">
-                <i class="material-symbols-outlined">menu</i>
+                <i class="material-symbols-outlined ">menu</i>
             </div>
 
-            <!-- Logo -->
             <a href="../home/index.php">
                 <div class="logo"></div>
             </a>
 
-            <!-- Formulário de Pesquisa -->
             <form action="buscar.php" method="GET" class="barra-pesquisa">
                 <input type="text" name="query" placeholder="Digite aqui..." required>
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <!-- Área de Botões -->
+
+
             <div class="buttons">
                 <div class="dropdown">
-                    <!-- Verifica se o usuário está logado -->
                     <?php if (isset($_SESSION['nome'])): ?>
                         <!-- Botão com o nome do usuário logado -->
                         <button id="principal-button" class="btn" onclick="toggleLogoutTab()">
                             <img src="../global/img/file.png" alt="">
-                            <p data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"></p>
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="<?= htmlspecialchars($_SESSION['nome']); ?>"> </p>
                             <div class="seta"></div>
                         </button>
+
+                        <!-- <button id="help-button" class="btn" onclick="toggleHelpTab()">
+                            <img src="../global/img/file.png" alt="">
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
+                            <div class="seta"></div>
+                        </button> -->
+
+
+
+
                     <?php else: ?>
                         <!-- Botão padrão "ENTRAR" -->
+
                         <button id="principal-button" class="btn" onclick="toggleInfoTab()">
                             <img src="../global/img/file.png" alt="">
-                            <p data-title="ENTRAR"></p>
+                            <span></span>
+                            <p data-start="good luck!" data-text="start!" data-title="ENTRAR"> </p>
                             <div class="seta"></div>
+                            <!-- <img id="seta" src="img/seta.png" alt=""> -->
                         </button>
+                        </a>
                     <?php endif; ?>
-
-                    <!-- Botão de Ajuda -->
                     <button id="help-button" class="btn" onclick="toggleHelpTab()">
                         <img src="../global/img/help.png" alt="">
-                        <p data-title="AJUDA"></p>
+                        <span></span>
+                        <p data-start="good luck!" data-text="start!" data-title="AJUDA"> </p>
                         <div class="seta"></div>
                     </button>
                 </div>
 
-                <!-- Aba de Logout -->
                 <div id="logout-tab" class="logout-tab">
                     <div class="logout-content">
                         <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
                         <div class="buttons">
                             <a href="logout.php">
                                 <button id="logout-button">
-                                    <p data-title="Sair"></p>
-                                </button>
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
+                                    </button">
                             </a>
                         </div>
+                    
+
                     </div>
                 </div>
 
-                <!-- Aba de Ajuda -->
                 <div id="help-tab" class="help-tab">
                     <div class="help-content">
                         <span class="close-btn" onclick="toggleHelpTab()">&times;</span>
                         <div class="buttons">
                             <a href="../loc/duvidasfrequentes/duvidas.php">
                                 <button id="duvidas-button">
-                                    <p data-title="Central de Ajuda"></p>
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Central de Ajuda"> </p>
                                 </button>
                             </a>
                         </div>
@@ -197,6 +211,10 @@ if (isset($_GET['page'])) {
                                     <i class="fas fa-phone"></i> Principais Capitais
                                     <div><strong>4003 7368</strong></div>
                                 </div>
+                                <!-- <div>
+                                        <i class="fas fa-phone"></i> Demais Localidades
+                                        <div><strong>0800 604 7368</strong></div>
+                                    </div> -->
                                 <div>
                                     <i class="fas fa-phone"></i> Ligações Internacionais
                                     <div><strong>+55 (41) 4042 1479</strong></div>
@@ -205,7 +223,6 @@ if (isset($_GET['page'])) {
                             <div class="schedule">
                                 <div class="schedule-header">Horarios de atendimento</div>
                                 <table class="schedule-table">
-                                    <!-- Tabela de horários -->
                                     <tr>
                                         <td>Segunda-feira</td>
                                         <td>07:00 - 23:59</td>
@@ -214,93 +231,113 @@ if (isset($_GET['page'])) {
                                         <td>Terça-feira</td>
                                         <td>07:00 - 23:59</td>
                                     </tr>
-                                    <!-- Outros dias da semana -->
+                                    <tr>
+                                        <td>Quarta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quinta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sexta-feira</td>
+                                        <td>00:00 - 23:59</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sábado</td>
+                                        <td>00:00 - 19:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Domingo</td>
+                                        <td>10:00 - 19:00</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
+
+
+
+
+
+                    </div>
+                </div>
+
+
+                <!-- Aba de informações que será exibida no meio da página -->
+                <div id="info-tab" class="info-tab">
+                    <div class="info-content">
+                        <?php if ($mostrarFormulario === 'login'): ?>
+                            <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
+                            <div class="register-section">
+                                <h2>Cadastre-se</h2>
+                                <button class="btn" onclick="window.location.href='../form/form.php '"><span></span>Criar
+                                    Nova
+                                    Conta</button>
+                                <ul>
+                                    <li>✅ Rápido e fácil reservar</li>
+                                    <li>✅ Descontos de até 30%</li>
+                                    <li>✅ Acesso a ofertas exclusivas</li>
+                                    <li>✅ Ganhe cashback</li>
+                                </ul>
+                            </div>
+                            <div class="login-section">
+                                <h2>Acesse sua Conta</h2>
+                                <form action="" method="post">
+                                    <input type="hidden" name="acao" value="login"> <!-- Ação para diferenciar o login -->
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+
+                                    <label for="senha">Senha</label>
+                                    <input type="password" id="password" name="senha" required>
+
+                                    <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
+
+                                    <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
+                                </form>
+                                <?php if (!empty($erro)): ?>
+                                    <p class="erro"><?= htmlspecialchars($erro) ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
+
         </div>
-    </header>
-
-
-
-
-    <!-- Aba de informações que será exibida no meio da página -->
-    <div id="info-tab" class="info-tab">
-        <div class="info-content">
-            <?php if ($mostrarFormulario === 'login'): ?>
-                <span class="close-btn" onclick="toggleInfoTab()">&times;</span>
-                <div class="register-section">
-                    <h2>Cadastre-se</h2>
-                    <button class="btn" onclick="window.location.href='../loc/form/form.php'"><span></span>Criar
-                        Nova
-                        Conta</button>
-                    <ul>
-                        <li>✅ Rápido e fácil reservar</li>
-                        <li>✅ Descontos de até 30%</li>
-                        <li>✅ Acesso a ofertas exclusivas</li>
-                        <li>✅ Ganhe cashback</li>
-                    </ul>
-                </div>
-                <div class="login-section">
-                    <h2>Acesse sua Conta</h2>
-                    <form action="" method="post">
-                        <input type="hidden" name="acao" value="login"> <!-- Ação para diferenciar o login -->
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="senha">Senha</label>
-                        <input type="password" id="password" name="senha" required>
-
-                        <a href="../esqueceusenha/esqueceusenha.php" class="esqueci">Esqueci minha senha</a>
-
-                        <button type="submit" name="acao" value="login" class="login-button"><span></span>Entrar</button>
-                    </form>
-                    <?php if (!empty($erro)): ?>
-                        <p class="erro"><?= htmlspecialchars($erro) ?></p>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-    </div>
-
-    </div>
-    <nav id="sidebar">
-        <ul class="menu">
+        <nav id="sidebar">
+            <ul class="menu">
             <form action="" method="get">
-                <li>
-                    <button type="submit" name="page" value="carros">
-                        <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
-                        <span>Carros</span>
-                    </button>
-                </li>
-                <li>
-                    <button type="submit" name="page" value="sobre">
-                        <img src="../global/img/sobre.png" alt="Sobre">
-                        <span>Sobre nós</span>
-                    </button>
-                </li>
-                <hr>
-                <li>
-                    <button type="submit" name="page" value="assinatura">
-                        <img src="../global/img/assinatura.png" alt="Pacotes">
-                        <span>Pacotes</span>
-                    </button>
-                </li>
-                <li>
-                    <button type="submit" name="page" value="blog">
-                        <img src="../global/img/blog.png" id="blog" alt="Blog">
-                        <span>Blog</span>
-                    </button>
-                </li>
-                <hr>
-            </form>
+    <li>
+        <button type="submit" name="page" value="carros">
+            <img src="../global/img/carroICON.jpg" alt="veiculos" id="transparent">
+            <span>Carros</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page" value="sobre">
+            <img src="../global/img/sobre.png" alt="Sobre">
+            <span>Sobre nós</span>
+        </button>
+    </li>
+    <hr>
+    <li>
+        <button type="submit" name="page" value="assinatura">
+            <img src="../global/img/assinatura.png" alt="Pacotes">
+            <span>Pacotes</span>
+        </button>
+    </li>
+    <li>
+        <button type="submit" name="page"  value="blog">
+            <img src="../global/img/blog.png" id="blog" alt="Blog">
+            <span>Blog</span>
+        </button>
+    </li>
+    <hr>
+</form>
 
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+    </header>
 
     <main>
     <!-- Contêiner principal de detalhes do veículo -->

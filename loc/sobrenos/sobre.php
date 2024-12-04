@@ -154,14 +154,17 @@ if (isset($_GET['page'])) {
                     </button>
                 <?php endif; ?>
 
-                <!-- Botão de ajuda -->
-                <button id="help-button" class="btn" onclick="toggleHelpTab()">
-                    <img src="../../global/img/help.png" alt="">
-                    <span></span>
-                    <p data-start="good luck!" data-text="start!" data-title="AJUDA"></p>
-                    <div class="seta"></div>
-                </button>
-            </div>
+                <div id="logout-tab" class="logout-tab">
+                    <div class="logout-content">
+                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
+                        <div class="buttons">
+                            <a href="logout.php">
+                                <button id="logout-button">
+                                    <span></span>
+                                    <p data-start="good luck!" data-text="start!" data-title="Sair"> </p>
+                                    </button">
+                            </a>
+                        </div>
 
             <!-- Aba de logout -->
             <div id="logout-tab" class="logout-tab">
