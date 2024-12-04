@@ -207,7 +207,6 @@ if (isset($_GET['page'])) {
                                     </button">
                             </a>
                         </div>
-                        <span class="close-btn" onclick="toggleLogoutTab()">&times;</span>
 
                     </div>
                 </div>

@@ -5,7 +5,11 @@ body {
     background-color: #ffffff;
     color: #333;
 }
+#logout-button{
+    width: 175px;
+    margin-right: 215px;
 
+}
 header {
     background-color: #d87314;
     color: #fff;

@@ -191,7 +191,7 @@ if (isset($_GET['page'])) {
                 <i class="material-symbols-outlined ">menu</i>
             </div>
 
-            <a href="index.php">
+            <a href="../home/index.php">
                 <div class="logo"></div>
             </a>
 

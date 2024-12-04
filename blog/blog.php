@@ -151,11 +151,11 @@ if (isset($_GET['page'])) {
             font-family: "Poppins", sans-serif ;
         }
         .card-container{
-            margin-left: 70px;
+            margin-left: 130px;
         }
 
         .card {
-            width: 22%;
+            width: 21%;
             display: flex;
             flex-direction: column;
             float: left;
@@ -214,7 +214,7 @@ if (isset($_GET['page'])) {
                 <i class="material-symbols-outlined ">menu</i>
             </div>
 
-            <a href="index.php">
+            <a href="../home/index.php">
                 <div class="logo"></div>
             </a>
 
@@ -434,7 +434,7 @@ if (isset($_GET['page'])) {
         <img src="../home/img/familia-viagem-carro-1091522177.jpg" alt="Banner">
     </div>
 
-    <h1 style="margin: 80px 0px 0px 190px ;">Principais Notícias</h1>
+    <h1 style="margin: 80px 0px 0px 250px; font-size: 40px ;">Principais Notícias</h1>
 
 
 
@@ -460,7 +460,7 @@ if (isset($_GET['page'])) {
     ?>
 
     <script src="../global/global.js"></script>
-    <div style="height: 160vh;"></div>
+    <div style="height: 150vh;"></div>
 
 
     <footer>
